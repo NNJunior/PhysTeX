@@ -1,5 +1,5 @@
 <all name="Все семестры" description="Все семестры, которые конспектировались">
-  <semester name="Семестр 1" description="Все предметы первого семестра">
+  <semester name="Семестр 2" description="Все предметы второго семестра">
     <subject name="Введение в математический анализ" description="Коллега рассказывает про матан">
       <file name="Лекция 1" path="sem_2/lecture_1.tex" date="12.12.12"/>
     </subject>
