@@ -2,6 +2,7 @@
   <semester name="Семестр 2" description="Все предметы второго семестра">
     <subject name="Введение в математический анализ" description="Коллега рассказывает про матан">
       <file name="Лекция 1" path="2_Semester/lecture_1" date="12.12.12"/>
+      <file name="Лекция 2" path="2_Semester/lecture_2" date="12.12.12"/>
     </subject>
   </semester>
 </all>
