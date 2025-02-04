@@ -1,6 +1,26 @@
-% !TEX root = ../../main.tex
+% !TEX root = ../../../main.tex
 
-\section{Привет, мир!}
-$$\sum_{min}^{max}$$
-Hello, world!
-asdasda
+\section{Преобразование Абеля}
+Пусть $a_n, b_n$ --- последовательности комплексных чисел $m \in \N$ и $A_k = \sum_{i = 1}^{k} a_i$. Тогда $a_k = A_k - A_{k-1}$ (если считать, что $A_0 = 0$) и $\sum_{k = m}^{n}a_kb_k = \sum_{k = m}^{n}(A_k - A_{k-1})b_k = \sum_{k = m}^{n}A_kb_k - \sum_{k = m}^{n}A_{k-1}b_k$.
+Следовательно, справедливо тождество (Преобразование Абеля) $\sum_{k = m}^{n}a_kb_k = A_nb_n - A_{m-1}b_m - \sum_{k = m}^{n - 1}A_k(b_{k+1} - b_k)$
+\begin{lemma}[Абеля]
+    Пусть $a_n, b_n$ --- последовательности, причем $\{b_n\}$ монотонна. Если $\left\lvert \sum_{i = m}^k a_i\right\rvert \le M \forall k$, то $\left\lvert \sum_{k = m}^{n}a_kb_k\right\rvert \le 2M(|b_n| + |b_m|)$
+\end{lemma}
+\begin{proof}
+    Считаем, что $a_k = 0$ при $k < m$. Тогда $\left\lvert \sum_{k = m}^{n}a_kb_k\right\rvert = \left\lvert A_nb_n - \sum_{k = m}^{n}A_k(b_{k+1} - b_k)\right\rvert \le |A_n||b_n| - \sum_{k = m}^{n}|A_k||b_{k+1} - b_k| \le M(|b_n| + \left\lvert \sum_{k = m}^{n-1}(b_{k+1} - b_k)\right\rvert )$. Т.к. $\{b_n\}$ монотонна, то $b_{k+1} - b_k$ одного знака $\forall k$, тогда 
+    $$\left\lvert \sum_{k = m}^{n}a_kb_k\right\rvert \le M(|b_n| + |b_n - b_{m}|)$$
+\end{proof}
+
+\begin{note}
+    Если $m = 1, \{b_n\}$ нестрого убывает и неотрицательна, $c \le A_k \le C$, то 
+    $$cb_1 \le \sum a_kb_k \le Cb_1$$
+\end{note}
+
+\begin{lemma}[Абель]
+    Пусть $f \in R[a, b], g$ --- монотонна на $[a, b]$. Если  $\left\lvert \int_{a}^{b} f(t) \,dt\right\rvert \le M$, то 
+    $$\left\lvert \int_{a}^{b} f(x)g(x) \,dx\right\rvert  \le 2M(|g(a)| + |g(b)|)$$
+\end{lemma}
+\begin{proof}
+    Пусть $T_n = \{x_k\}_{k = 0}^n$ --- разбиение отрезка $[a, b]$ на $n$ равных частей. Положим $\Delta_kg = g(x_k) - g(x_{k-1}), \sigma_n = \sum_{k = 1}^{n} g(\xi_k)\int_{x_{k-1}}^{x_k}f(t)dt, \xi_k \in [x_{k-1}, x_k]$. 
+    Тогда $\alpha_n := \left\lvert \int_{a}^{b}f(x)g(x)dx - \sigma_n\right\rvert = \left\lvert \sum_{k = 1}^n \int_{x_{k-1}}^{x_k}fgdx - \right\rvert $
+\end{proof}
