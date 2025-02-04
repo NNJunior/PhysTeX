@@ -22,7 +22,13 @@
 \end{lemma}
 \begin{proof}
     Пусть $T_n = \{x_k\}_{k = 0}^n$ --- разбиение отрезка $[a, b]$ на $n$ равных частей. Положим $\Delta_kg = g(x_k) - g(x_{k-1}), \sigma_n = \sum_{k = 1}^{n} g(\xi_k)\int_{x_{k-1}}^{x_k}f(t)dt, \xi_k \in [x_{k-1}, x_k]$. 
-    Тогда $\alpha_n := \left\lvert \int_{a}^{b}f(x)g(x)dx - \sigma_n\right\rvert = \left\lvert \sum_{k = 1}^{n}\int_{x_{k-1}}^{x_k}f(t)g(t)dt - \sum_{k = 1}^{n} g(\xi_k)\int_{x_{k-1}}^{x_k}f(t)dt\right\rvert = \left\lvert \sum_{k = 1}^{n}\int_{x_{k-1}}^{x_k}f(t)g(t)dt - \sum_{k = 1}^{n} g(\xi_k)\int_{x_{k-1}}^{x_k}f(t)dt\right\rvert \le \sum_{k = 1}^{n}\int_{x_{k-1}}^{x_k}|f(t)||g(t) - g(\xi_k)|dt$. Т.к. $g$ --- монотонна, $\Delta_kg$ все одного знака и $|g(x) - g(\xi_k)| \le |\Delta_kg|$. Тогда $\alpha_n \le \sum_{x_{k - 1}}^{x_k}|f(x)||\Delta_kg|dx$. Т.к. $f \in R[a, b] \Ra$
+    Тогда $\alpha_n := \left\lvert \int_{a}^{b}f(x)g(x)dx - \sigma_n\right\rvert = \left\lvert \sum_{k = 1}^{n}\int_{x_{k-1}}^{x_k}f(t)g(t)dt - \sum_{k = 1}^{n} g(\xi_k)\int_{x_{k-1}}^{x_k}f(t)dt\right\rvert = $ \newline $ = \left\lvert \sum_{k = 1}^{n}\int_{x_{k-1}}^{x_k}f(t)g(t)dt - \sum_{k = 1}^{n} g(\xi_k)\int_{x_{k-1}}^{x_k}f(t)dt\right\rvert \le \sum_{k = 1}^{n}\int_{x_{k-1}}^{x_k}|f(t)||g(t) - g(\xi_k)|dt$. Т.к. $g$ --- монотонна, $\Delta_kg$ все одного знака и $|g(x) - g(\xi_k)| \le |\Delta_kg|$. Тогда $\alpha_n \le \sum_{x_{k - 1}}^{x_k}|f(x)||\Delta_kg|dx$. Т.к. $f \in R[a, b] \Ra \exists c (|f| \le c)$
+    $$\sum_{k = 1}^nc|\Delta_kg|(\underbrace{x_k - x_{k-1}}_{\frac{b - a}{n}}) = c\frac{b - a}{n}\left\lvert \sum_{k  =1}^{n} \Delta_kg\right\rvert = c\frac{b - a}{n}|g(x_n) - g(x_0)| = c\frac{b - a}{n}|g(b) - g(a)|$$
+    Таким образом, $0 \le \alpha_n \le c\frac{b - a}{n}|g(b) - g(a)|$, но правая часть $\ra 0$, поэтому $\alpha_n \ra 0$. Тогда достаточно оценить $\sigma_n$. Применим лемму 1, где $b_k = g(\xi_k), a_k = \int_{x_{k-1}}^{x_k}f(t)dt$. Тогда $b_n$ --- монотонная последовательность.
+    $$\left\lvert \sum_{i = 1}^{k} a_i\right\rvert = \left\lvert \int_{a}^{x_k}f(t)dt\right\rvert 
+    \le M$$
+    Откуда получаем, что $|\sigma_n| \le 2M(|b_1 + |b_n|) = 2M(|g(b)| + |g(a)|)$. Выбрав $\xi_1 = a, \xi_n = b$
+    $$\left\lvert \int_{a}^{b}f(x)g(x)dx \right\rvert = \left\lvert \int_{a}^{b}f(x)g(x)dx + \sigma_n - \sigma_n\right\rvert \le \alpha_n + \sigma_n \le 2M(|g(a)| + |g(b)|) + \underbrace{\alpha_n}_{\ra 0}$$
 \end{proof}
 
 \section{Несобственный интеграл}
@@ -39,19 +45,50 @@
 $\int_{a}^{b}f(x)dx = \lim_{x \ra b - 0} \int_{a}^{x}f(t)dt$, т.е. новая ситуация имеет место в случае $b = +\infty$ или $b \in \R$ и $f$ неограничена на $[a, b)$. Ряд свойств определенного интеграла перносится на несобственный, т.к. можно применить предельныйм переход.
 
 \begin{proposition}[Принцип локализации]
-    Пусть $f$ локально интегрируема на $[a, b)$. Тогда для любого $a^* \in (a, b)$ несобственный интеграл $\int_{a^*}^{b}f(x)dx$ и $\int_{a^*}^{b}f(x)dx$ сходятся или расходятся одновременно, причем, в случае сходимости:
+    Пусть $f$ локально интегрируема на $[a, b)$. Тогда для любого $a^* \in (a, b)$ несобственный интеграл $\int_{a^*}^{b}f(x)dx$ и $\int_{a}^{b}f(x)dx$ сходятся или расходятся одновременно, причем, в случае сходимости:
     $$\int_{a}^{a^*}f(x)dx + \int_{a^*}^{b}f(x)dx = \int_{a}^{b}f(x)dx$$
 \end{proposition}
 \begin{proof}
-    
+    Заметим, что по аддитивности (нормального интеграла)
+    $$\int_{a}^{a^*}f(x)dx + \int_{a^*}^{c}f(x)dx = \int_{a}^{c}f(x)dx$$
+    Но т.к. 
+    $$\lim_{c \ra b} \int_{a}^{c}f(x)dx = \int_{a}^{b}f(x)dx$$
+    В предельном переходе получаем требуемое.
 \end{proof}
 
 \begin{proposition}[Линейность]
-    Пусть $f$ локально интегрируема на $[a, b)$. Тогда для любого $a^* \in (a, b)$ несобственный интеграл $\int_{a^*}^{b}f(x)dx$ и $\int_{a^*}^{b}f(x)dx$ сходятся или расходятся одновременно, причем, в случае сходимости:
-    $$\int_{a}^{a^*}f(x)dx + \int_{a^*}^{b}f(x)dx = \int_{a}^{b}f(x)dx$$
+    Если несобственные интегралы $\int_a^b f(x)dx, \int_a^b g(x)dx$ сходятся и $\lambda, \mu \in \R$, то сходятся и несобственный интеграл 
+    $$\int_a^b (\lambda f(x) + \mu g(x))dx = \lambda\int_a^b f(x)dx + \mu\int_a^b g(x)dx$$
 \end{proposition}
 \begin{proof}
-    
+    Фигачим предельный переход
 \end{proof}
 
-Сегодня вечером доделаю
+\begin{proposition}[Формула Ньютона-Лейбница]
+    Пусть $f$ локально интегрируема на $[a, b)$, $F$ --- первообразная на $[a, b)$, тогда
+    $$\int_a^bf(x)dx = F(b) - F(a)$$
+\end{proposition}
+\begin{proof}
+    Фигачим предельный переход
+\end{proof}
+
+\begin{example}
+    Хотим узнать сходимость 
+    $$\int_1^{+\infty} \frac{dx}{x^\alpha}$$
+    В зависимости от $\alpha$
+    \begin{enumerate}
+        \item[$\alpha \ne 1$:]
+        $$\int_1^{+\infty} \frac{dx}{x^\alpha} = \left. \frac{x^{-\alpha + 1}}{-\alpha + 1}\right|_1^{+\infty} = \left\{\begin{array}{l}
+            \frac{1}{\alpha - 1}, \alpha > 1 \\
+            +\infty, \alpha < 1
+        \end{array}\right.$$
+        \item[$\alpha = 1$:] 
+        $$\int_1^{+\infty} \frac{1}{x}dx = \left.\ln x\right|_1^{+\infty} = +\infty$$
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    Аналогично проверяется, что 
+    $$\exists \int_{0}^{1}\frac{dx}{x^\alpha} \Lra \alpha < 1$$
+    Причем сходится к $\frac{1}{1 - \alpha}$
+\end{example}
