@@ -1,8 +1,8 @@
 <all name="Все семестры" description="Все семестры, которые конспектировались">
   <semester name="Семестр 2" description="Все предметы второго семестра">
-    <collection name="Введение в математический анализ" description="Коллега рассказывает про матан" setting="Lectures/2_Semester/setting">
-      <file name="Лекция 1" path="Lectures/2_Semester/lecture_1" setting="Lectures/2_Semester/setting" date="12.12.12"/>
-      <file name="Лекция 2" path="Lectures/2_Semester/lecture_2" setting="Lectures/2_Semester/setting" date="12.12.12"/>
+    <collection name="Введение в математический анализ" description="Коллега рассказывает про матан" setting="Lectures/2_Semester/matan/setting">
+      <file name="Лекция 1" path="Lectures/2_Semester/matan/lecture_1" setting="Lectures/2_Semester/setting" date="12.12.12"/>
+      <file name="Лекция 2" path="Lectures/2_Semester/matan/lecture_2" setting="Lectures/2_Semester/setting" date="12.12.12"/>
     </collection>
   </semester>
 </all>
