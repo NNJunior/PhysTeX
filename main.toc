@@ -1,0 +1,2 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Несобственный интеграл}{3}{section.1}%
