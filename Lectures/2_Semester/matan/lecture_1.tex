@@ -1,6 +1,6 @@
 % !TEX root = ../../../main.tex
 
-\section{Преобразование Абеля}
+% \section{Преобразование Абеля}
 Пусть $a_n, b_n$ --- последовательности комплексных чисел $m \in \N$ и $A_k = \sum_{i = 1}^{k} a_i$. Тогда $a_k = A_k - A_{k-1}$ (если считать, что $A_0 = 0$) и $\sum_{k = m}^{n}a_kb_k = \sum_{k = m}^{n}(A_k - A_{k-1})b_k = \sum_{k = m}^{n}A_kb_k - \sum_{k = m}^{n}A_{k-1}b_k$.
 Следовательно, справедливо тождество (Преобразование Абеля) $\sum_{k = m}^{n}a_kb_k = A_nb_n - A_{m-1}b_m - \sum_{k = m}^{n - 1}A_k(b_{k+1} - b_k)$
 \begin{lemma}[Абеля]
@@ -22,5 +22,36 @@
 \end{lemma}
 \begin{proof}
     Пусть $T_n = \{x_k\}_{k = 0}^n$ --- разбиение отрезка $[a, b]$ на $n$ равных частей. Положим $\Delta_kg = g(x_k) - g(x_{k-1}), \sigma_n = \sum_{k = 1}^{n} g(\xi_k)\int_{x_{k-1}}^{x_k}f(t)dt, \xi_k \in [x_{k-1}, x_k]$. 
-    Тогда $\alpha_n := \left\lvert \int_{a}^{b}f(x)g(x)dx - \sigma_n\right\rvert = \left\lvert \sum_{k = 1}^n \int_{x_{k-1}}^{x_k}fgdx - \right\rvert $
+    Тогда $\alpha_n := \left\lvert \int_{a}^{b}f(x)g(x)dx - \sigma_n\right\rvert = \left\lvert \sum_{k = 1}^{n}\int_{x_{k-1}}^{x_k}f(t)g(t)dt - \sum_{k = 1}^{n} g(\xi_k)\int_{x_{k-1}}^{x_k}f(t)dt\right\rvert = \left\lvert \sum_{k = 1}^{n}\int_{x_{k-1}}^{x_k}f(t)g(t)dt - \sum_{k = 1}^{n} g(\xi_k)\int_{x_{k-1}}^{x_k}f(t)dt\right\rvert \le \sum_{k = 1}^{n}\int_{x_{k-1}}^{x_k}|f(t)||g(t) - g(\xi_k)|dt$. Т.к. $g$ --- монотонна, $\Delta_kg$ все одного знака и $|g(x) - g(\xi_k)| \le |\Delta_kg|$. Тогда $\alpha_n \le \sum_{x_{k - 1}}^{x_k}|f(x)||\Delta_kg|dx$. Т.к. $f \in R[a, b] \Ra$
 \end{proof}
+
+\section{Несобственный интеграл}
+\begin{definition}
+    Функция $f$ назывется локально интегрируемой по Риману, на промежутке $I$, если $\forall [a, c] \subset I (f \in R[a, c])$
+\end{definition}
+
+\begin{definition}
+    Пусть $-\infty < a < b \le +\infty$ и $f$ локально интегрируема на $[a, b]$. Предел $\int_a^b f(x)dx := \lim_{c \ra b - 0}\int_{a}^{c}f(x)dx$ называется несобственным интегралом $f$ на $[a, b]$. Если предел существует и конечен, то $\int_{a}^{b}f(x)dx$ называют сходящимся, иначе --- расходящимся.
+\end{definition}
+
+Пусть $b \in \R$, $f$ локально интегрируема на $[a, b)$ и ограничена, тогда $f \in R[a, b]$ (при любом доопределении в точке $b$) и по свойству непрерывности определенного интеграла с переменным пределом, несобственный интеграл сопадает с определенным
+
+$\int_{a}^{b}f(x)dx = \lim_{x \ra b - 0} \int_{a}^{x}f(t)dt$, т.е. новая ситуация имеет место в случае $b = +\infty$ или $b \in \R$ и $f$ неограничена на $[a, b)$. Ряд свойств определенного интеграла перносится на несобственный, т.к. можно применить предельныйм переход.
+
+\begin{proposition}[Принцип локализации]
+    Пусть $f$ локально интегрируема на $[a, b)$. Тогда для любого $a^* \in (a, b)$ несобственный интеграл $\int_{a^*}^{b}f(x)dx$ и $\int_{a^*}^{b}f(x)dx$ сходятся или расходятся одновременно, причем, в случае сходимости:
+    $$\int_{a}^{a^*}f(x)dx + \int_{a^*}^{b}f(x)dx = \int_{a}^{b}f(x)dx$$
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+
+\begin{proposition}[Линейность]
+    Пусть $f$ локально интегрируема на $[a, b)$. Тогда для любого $a^* \in (a, b)$ несобственный интеграл $\int_{a^*}^{b}f(x)dx$ и $\int_{a^*}^{b}f(x)dx$ сходятся или расходятся одновременно, причем, в случае сходимости:
+    $$\int_{a}^{a^*}f(x)dx + \int_{a^*}^{b}f(x)dx = \int_{a}^{b}f(x)dx$$
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+
+Сегодня вечером доделаю
