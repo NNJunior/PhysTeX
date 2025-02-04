@@ -1,13 +1,13 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.3)  4 FEB 2025 15:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.3)  5 FEB 2025 02:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**preamble
-(./preamble.tex
+**main
+(./main.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
-(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+(./preamble/preamble.tex (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
@@ -1176,19 +1176,138 @@ Package: listofitems 2024/03/09 v1.65 Grab items in lists using user-specified s
 \c@ROWcellindex@=\count360
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybabel.code.tex
 File: tikzlibrarybabel.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
-! Emergency stop.
-<*> preamble
-            
-*** (job aborted, no legal \end found)
+)) (./Lectures/2_Semester/matan/setting.tex) (./main.aux)
+\openout1 = `main.aux'.
 
- 
-Here is how much of TeX's memory you used:
- 31636 strings out of 474116
- 626983 string characters out of 5743683
- 1926187 words of memory out of 5000000
- 53332 multiletter control sequences out of 15000+600000
- 559482 words of font info for 39 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 84i,0n,97p,1239b,104s stack positions out of 10000i,1000n,20000p,200000b,200000s
-!  ==> Fatal error occurred, no output PDF file produced!
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Info: Redefining \th on input line 6.
+ (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count361
+\scratchdimen=\dimen352
+\scratchbox=\box132
+\nofMPsegments=\count362
+\nofMParguments=\count363
+\everyMPshowfont=\toks57
+\MPscratchCnt=\count364
+\MPscratchDim=\dimen353
+\MPnumerator=\count365
+\makeMPintoPDFobject=\count366
+\everyMPtoPDFconversion=\toks58
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(71.13188pt, 688.5567pt, 85.35826pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=688.5567pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 6.
+(./main.out) (./main.out)
+\@outlinefile=\write4
+\openout4 = `main.out'.
+
+ (./preamble/title_page.tex
+<images/logo_ltc.png, id=12, 1371.2028pt x 770.88pt>
+File: images/logo_ltc.png Graphic file (type png)
+<use images/logo_ltc.png>
+Package pdftex.def Info: images/logo_ltc.png  used on input line 15.
+(pdftex.def)             Requested size: 193.47578pt x 108.76938pt.
+ [1
+
+
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc} <./images/logo_ltc.png>]) (./main.toc<<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
+
+LaTeX Font Warning: Font shape `T2A/cmr/m/up' undefined
+(Font)              using `T2A/cmr/m/n' instead on input line 2.
+
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 2.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+
+LaTeX Font Warning: Font shape `OML/cmr/m/up' undefined
+(Font)              using `OML/cmr/m/it' instead on input line 2.
+
+LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 2.
+LaTeX Font Info:    Font shape `OML/cmr/m/up' in size <8> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 2.
+LaTeX Font Info:    Font shape `OML/cmr/m/up' in size <6> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 2.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 2.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+
+LaTeX Font Warning: Font shape `OMS/cmr/m/up' undefined
+(Font)              using `OMS/cmr/m/n' instead on input line 2.
+
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `OMS/cmr/m/up' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `OMS/cmr/m/up' in size <6> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 2.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+LaTeX Font Info:    Trying to load font
