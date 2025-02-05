@@ -84,11 +84,109 @@
 \end{definition}
 \begin{example}
     \[
-    \begin{array}{ll}
+    \begin{array}{lc}
         \N, \le & \omega \\\\
         \left\{1 - \frac{1}{n}| n \in \N_+\right\} & \omega \\\\
         \left\{1 - \frac{1}{n}| n \in \N_+\right\}\cup\left\{2 - \frac{1}{n}| n \in \N_+\right\} & \omega\cdot2 \\\\
-        \cup\left\{k - \frac{1}{n}| k, n \in \N_+\right\} & \omega^2 \\\\
+        \left\{k - \frac{1}{n}| k, n \in \N_+\right\} & \omega^2 \\\\
+        \left\{1 - \frac{1}{n} - \frac{1}{m}| m, n \in \N_+\right\} & \omega^2 \\\\
+        \left\{1 - \frac{1}{n} - \frac{1}{m} - \frac{1}{k}| m, n, k \in \N_+\right\} & \omega^3 \\\\
+        \left\{1 - \frac{1}{n_1} - \frac{1}{n_2} - \dots - \frac{1}{n_k}| k \text{ --- произвольное}\right\} & \text{не фундированное}\\\\
+        \left\{k - \frac{1}{n_1} - \frac{1}{n_2} - \dots - \frac{1}{n_k}| k \text{ --- произвольное}\right\} & \omega^\omega \\\\
     \end{array}
     \]
 \end{example}
+
+\begin{definition}
+    Пусть \(S\) --- ВУМ. Тогда \(K \subset S\) называется начальным отрезком, если \(\forall x, y ((x \in K \wedge y < x) \ra y \in K)\)
+\end{definition}
+Эквивалентные свойства:
+\[\forall x \in K \forall y \notin K x < y\]
+\[\forall x, y ((x \notin K \wedge y > x) \ra y \notin K)\]
+\subsection{Непосредственно следующие элементы}
+\begin{proposition}
+    \(S\) --- ВУМ, \(x \in S, x\) --- не наибольший в \(S \Ra \exists!y(y > x \wedge \neg\exists z y > z > x)\).
+\end{proposition}
+\begin{proof}
+    \(\exists\) --- из Фундированности, \(y = \min\{t \in S | t > x\}\)
+\end{proof}
+\begin{definition}
+    \(y\) из предыдущего утверждения называется непосредственно следующим элементом после \(x\) и обозначается \(x + 1\).
+\end{definition}
+
+\begin{note}
+    \[[0, a] = [0, a + 1)\]
+\end{note}
+
+\begin{theorem}
+    \(K\) --- начальный отрезок \(S \Ra K = S \vee K = [0, a)\)
+\end{theorem}
+\begin{proof}
+    Если \(K = S\), то победили, иначе рассматриваем \(a = \min(S \setminus K)\). Докажем, что \(K = [0, a)\).
+    \begin{enumerate}
+        \item \(K \subset [0, a)\): Если \(x \in K, x > a\), то \(a \in K\), но \(a \in S \setminus K\)
+        \item \(K \supset [0, a)\): Если \(x < a, x \notin K\), то \(a \ne \min(S \setminus K)\) --- противоречие.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}\indent
+    \begin{enumerate}
+        \item \(S\)
+        \item \([0, \alpha] = \{x | x \le \alpha\}\)
+        \item \([0, \alpha) = \{x | x < \alpha\}\)
+    \end{enumerate}
+\end{example}
+
+\subsection{Предельные элементы}
+\begin{definition}
+    \(z\) назывется предельным элементом, если \(\nexists y (z = y + 1)\).
+\end{definition}
+или 
+\begin{definition}
+    \(z\) назывется предельным элементом, если
+    \[\forall y < z \exists t \in (y, z)\]
+\end{definition}
+
+\begin{theorem}
+    \(S\) --- ВУМ, \(x \in S \Ra \exists l \in S, k \in \N: x = l + k = l + \underbrace{1 + 1 + \dots + 1}_{k} \)
+\end{theorem}
+
+\subsection{Сложение и умножение Фундированных множеств и ВУМов}
+Сложение и умножение определены так же, как и для ЧУМов.
+\begin{theorem}
+    \begin{enumerate}
+        \item \(A, B\) --- фундированные, тогда и \(A + B\) --- тоже.
+        \item \(A, B\) --- ВУМ, тогда и \(A + B\) --- тоже.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \(C \subset A \sqcup B\):
+    \begin{enumerate}
+        \item \begin{enumerate}
+            \item \(C \cap A \ne \emptyset \Ra \min(C \cap A) \text{ --- существует, т.к. } A \text{ --- фундированное}\)
+            \item \(C \cap B \ne \emptyset \Ra \min(C \cap B) \text{ --- существует, т.к. } B \text{ --- фундированное}\)
+        \end{enumerate}
+        \item  Подмножество ЛУМа --- ЛУМ, поэтому победили по (1).
+    \end{enumerate}
+\end{proof}
+
+\begin{note}
+    Любое подмножество ВУМ --- тоже ВУМ
+\end{note}
+\begin{note}
+    Множество предельных элемнтов ВУМа --- ВУМ
+\end{note}
+\begin{note}
+    Между любыми двумя предельными элементами бесконечно много других
+\end{note}
+\begin{note}
+    Элементы между соседними предельными элементами образуют множество, \(\approxeq \omega\)
+\end{note}
+ 
+\begin{theorem}[О структуре ВУМ]
+    \(S\) --- ВУМ, тогда \(\exists L\) --- тоже ВУМ, конечное множество \(K\), такие, что \(S \cong \omega \cdot L + K\)
+\end{theorem}
+
+\begin{theorem}[О сравнимости ВУМов]
+    Любые два ВУМа либо изоморфны, либо один из них изоморфен начальному отрезку другого.
+\end{theorem}
