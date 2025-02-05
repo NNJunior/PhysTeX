@@ -4,10 +4,10 @@
       <file name="Лекция 1" path="Lectures/2_Semester/matan/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Lectures/2_Semester/matan/setting" date="04.02.25"/>
     </collection>
     <collection name="Технологии программирования" description="Какую-то шнягу изучаем" setting="Lectures/2_Semester/TP/setting">
-      <file name="Лекция 1" path="Lectures/2_Semester/TP/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все" setting="Lectures/2_Semester/TP/setting" />
+      <file name="Лекция 1" path="Lectures/2_Semester/TP/lecture_1" description="Что-то порассказывали" setting="Lectures/2_Semester/TP/setting" />
     </collection>
     <collection name="Алгебра и Геометрия" description="Какую-то шнягу изучаем" setting="Lectures/2_Semester/Algem/setting">
-      <file name="Лекция 1" path="Lectures/2_Semester/Algem/lecture_1" description="Что-то порассказывали" setting="Lectures/2_Semester/Algem/setting" />
+      <file name="Лекция 1" path="Lectures/2_Semester/Algem/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все" setting="Lectures/2_Semester/Algem/setting" />
     </collection>
   </semester>
 </all>

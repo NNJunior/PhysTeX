@@ -43,7 +43,7 @@
 \end{note}
 
 \begin{definition}
-    Многочленом над кольцом \(R\) называется бесконечная пооследовательность \(a_0, a_1 \dots \), в которой лишь конечное число коэффициентов отличны от 0. Такие пооследовательности называются финитными.
+    Многочленом над коммутативным кольцом с 1 \(R\) называется бесконечная пооследовательность \(a_0, a_1 \dots \), в которой лишь конечное число коэффициентов отличны от 0. Такие пооследовательности называются финитными.
 \end{definition}
 
 \subsection{Операции над новыми многочленами}
@@ -53,3 +53,127 @@
     \item \(A \cdot B = C \Lra c_k = \sum_{i = 0}^ka_ib_{k-i}\)
     \item \(A \cdot \lambda = C \Lra c_k = \lambda\cdot a_i\)
 \end{enumerate}
+
+\begin{proposition}
+    \(R[x]\) --- коммутативное кольцо относительно ''\(+\)'', ''\(\cdot\)''
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \((R[x], +)\) --- абелева группа (очев)
+        \item \(A \cdot B = B \cdot A\) --- тут мы пользуемся тем, что \(R\) --- коммутативное кольцо. Поэтому в сумме \(\sum_{i = 0}^ka_ib_{k-i}\) если переставить множители местами, ничего не поменяется
+        \item \(A(BC) = (AB)C\) 
+        \[\sum_{i = 0}^na_i\left(\sum_{j = 0}^{n-i}b_jc_{n-i-j}\right) = \sum_{i = 0}^k\sum_{j = 0}^{n-i}a_ib_jc_{n-i-j} = \sum_{i + j + k = n}a_ib_jc_k = \sum_{k = 0}^nc_k\left(\sum_{i = 0}^{n-k}a_ib_{n-k-i}\right)\]
+        \item \(A(B + C) = AB + AC\) --- Достаточно раскрыть скобки, чтобы проверить, мне лень техать.
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    \(R[x]\) --- бесконечномерное линейное пространство с базисом \(1, x, x^2 \dots\).
+\end{corollary}
+\begin{corollary}
+    Нетрудно проверить, что в \(R[x]\), \(1 = (1, 0, 0, \dots)\). Аналогично, \(x^n = (\underbrace{0, 0, \dots 0}_{n} , 1, 0, 0, \dots)\)
+\end{corollary}
+
+\begin{definition}
+    Старший коэффициент --- последний ненулевой элемент последовательности.
+\end{definition}
+\begin{definition}
+    Индекс старшего коэффициента называется степенью многочлена \(\deg P\). У многочлена \((0, 0, \dots)\) степень зависит от контекста. Мы будем считать, что его степень \(-\infty\).
+\end{definition}
+\begin{definition}
+    Кольцо с \(1 \ne 0\) называется областью целостности, если в нем нет делителей нуля.
+\end{definition}
+\begin{proposition}
+    Пусть  \(R\) --- область целостности. Тогда \(ab = ac, a\ne 0 \Ra b = c\)
+\end{proposition}
+\begin{proof}
+    \[a(b - c) = 0\]
+    \[b - c = 0\]
+    \[b = c\]
+\end{proof}
+\begin{proposition}
+    \(A, B \in R[x], 1 \in R\). Тогда:
+    \begin{enumerate}
+        \item \(\deg A + \deg B \le \max(\deg A, \deg B)\)
+        \item \(\deg AB \le \deg A + \deg B\)
+    \end{enumerate}
+    Причем, если \(R\) --- область целотности, то во втором пункте будет равенство.
+\end{proposition}
+\begin{proof}
+    Все понятно
+\end{proof}
+\begin{corollary}
+    Если \(R\) --- область целостности, то \(R[x]\) --- тоже.
+\end{corollary}
+\begin{definition}
+    Многочлен от \(n\) переменных определяется рекурсивно: многочлен от одной переменной --- как мы определяли выше, далее \(R[x_1, x_2, \dots x_{n}] = R[x_1, x_2, \dots x_{n-1}][x_{n}]\).
+\end{definition}
+\subsection{Деление многочленов с остатком}
+\begin{theorem}
+    Пусть \(F\) --- поле, \(A, B \in F[x], B \ne 0\). тогда
+    \begin{enumerate}
+        \item \(\exists! Q, R: A = BQ + R, \deg R < \deg B\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Существование доказывается алгоритмом деления в столбик. Проверим единственность:
+    \[BQ + R = BS + T\]
+    \[BQ - BS = T - R\]
+    \[\deg (B(Q - S)) > \deg(T - R)\]
+    Противоречие
+\end{proof}
+
+\begin{theorem}[Безу]
+    Пусть \(P \in F[x]\). Тогда \(P(x) - P(c) \vdots (x - c)\)
+\end{theorem}
+\begin{proof}
+    Разделим многочлен \(P\) на \(x - c\) с остатком. Получится \(P = Q(x - c) + R\), причем \(R\) --- константа. Тогда подставим \(x = c\), получим, что \(R = P(c)\).
+\end{proof}
+
+\subsubsection{Схема Горнера}
+Задан многочлен:
+\[P(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots + a_n x^n, \quad a_i \in \R\]
+
+Пусть требуется вычислить значение данного многочлена при фиксированном значении \(x = x_0\). Представим многочлен \(P(x)\) в следующем виде:
+\[P(x) = a_0 + x(a_1 + x(a_2 + \cdots x(a_{n-1} + a_n x) \dots))\]
+
+Определим следующую последовательность:
+\[b_n = a_n,\]
+\[b_{n-1} = a_{n-1} + b_n x_0,\]
+\[\vdots\]
+\[b_i = a_i + b_{i+1} x_0,\]
+\[\vdots\]
+\[b_0 = a_0 + b_1 x_0.\]
+
+Искомое значение \(P(x_0)\) есть \(b_0\). Покажем, что это так.
+
+В полученную форму записи \(P(x)\) подставим \(x = x_0\) и будем вычислять значение выражения, начиная с внутренних скобок. Для этого будем заменять подвыражения через \(b_i\)
+\[
+\begin{array}{ll}
+ P(x_0) & = a_0 + x_0(a_1 + x_0(a_2 + \cdots x_0(a_{n-1} + a_n x_0)\dots)) = \\
+  & = a_0 + x_0(a_1 + x_0(a_2 + \cdots x_0 b_{n-1}\dots)) = \\
+  & ~~ \vdots \\
+  & = a_0 + x_0 b_1 = \\
+  & = b_0.
+\end{array}
+\]
+\subsection{НОД двух многочленов. Алгоритм Евклида}
+\begin{definition}
+    Многочлен \(f\) делится на \(g\), еcли \(f = gh\) для некототорого \(h\)
+\end{definition}
+\begin{definition}
+    Многочлены \(f, g\) называются ассоциированными, если \(f \vdots g, g \vdots f\).
+\end{definition}
+\begin{definition}
+    Многочлен  \(d\) называется Наибольшим общим делителем двух многочленов \(f, g\), если:
+    \begin{enumerate}
+        \item \(f \vdots d, g \vdots d\)
+        \item \(f \vdots d', g \vdots d' \Ra d \vdots d', d \vdots d'\)
+    \end{enumerate}
+\end{definition}
+\begin{theorem}[О представлении НОДа]\indent
+    \begin{enumerate}
+        \item НОД любых двух многочленов существует
+        \item НОД любых двух многочленов представим в виде их линейной комбинации
+    \end{enumerate}
+\end{theorem}
