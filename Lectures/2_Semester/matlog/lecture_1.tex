@@ -157,6 +157,8 @@
     \begin{enumerate}
         \item \(A, B\) --- фундированные, тогда и \(A + B\) --- тоже.
         \item \(A, B\) --- ВУМ, тогда и \(A + B\) --- тоже.
+        \item \(A, B\) --- фундированные, тогда и \(A \cdot B\) --- тоже.
+        \item \(A, B\) --- ВУМ, тогда и \(A \cdot B\) --- тоже.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -201,9 +203,12 @@
             \[\{x | f(x) \ne g(x)\} \ne \emptyset \Ra \exists m = \min\{x| f(x) \ne g(x)\} \Ra f|_{[0, m)} = g|_{[0, m)}\]
             Но тогда \(f(m) = F(f|_{[0, m)}) = F(g|_{[0, m)}) = g(m)\), противоречие.
 
-            \item[] \textbf{Cуществование}. Пусть \(f, g\) --- 2 подходящие функции.
-            \[\{x | f(x) \ne g(x)\} \ne \emptyset \Ra \exists m = \min\{x| f(x) \ne g(x)\} \Ra f|_{[0, m)} = g|_{[0, m)}\]
-            Но тогда \(f(m) = F(f|_{[0, m)}) = F(g|_{[0, m)}) = g(m)\), противоречие.
+            \item[] \textbf{Cуществование}. По трансфинитной индукции докажем сущесвование \(f|_{[0, x)}\), соответствующее \(F\).
+            \[\forall y < x \exists f|_{[0, y)} \Ra \exists f|_{[0, x)}\]
+            \begin{enumerate}
+                \item \(x = w + 1 \Ra \exists f|_{[0, w)}, f(w) = F(f|_{[0, w)})\)
+                \item \(x\)  --- в следующий раз
+            \end{enumerate}
         \end{enumerate}
     \end{proof}
     \begin{theorem}[Обобщенная теорема о трансфинитной рекурсии]
