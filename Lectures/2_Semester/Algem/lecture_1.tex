@@ -1,0 +1,55 @@
+% !TEX root = ../../../main.tex
+
+\section{Алгебра многочленов}
+
+\begin{definition}
+    Многочленом называется функция \(f: \R \ra \R, f = a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0\)
+\end{definition}
+
+\begin{definition}
+    \(\F[x]\) --- множество всех многочленов над \(\F\) (с коэффициентами в \(\F\))
+\end{definition}
+
+\subsection{Операции над многочленами}
+\begin{enumerate}
+    \item \(+\) --- сложение
+    \item \(\cdot\) --- умножение
+    \item \(\cdot\lambda\) --- домножение на константу
+\end{enumerate}
+
+\begin{note}
+    Многочлены над \(\R\) образуют коммутативное кольцо
+\end{note}
+
+\begin{definition}
+    Алгебра над полем \(\F\) называется называется множество \(A\), с определенными на нем операциями \(+, \cdot, \cdot \lambda\), которое удовлетворяет следующим условиям:
+    \begin{enumerate}
+        \item \((A, +, \cdot\lambda)\) --- линейное пространство над $\F$
+        \item \((A, +, \cdot)\) --- кольцо (необязательно коммутативное)
+        \item \(\lambda(xy) = x(\lambda y) = (\lambda x)y, \lambda \in \F, x, y \in A\)
+    \end{enumerate}
+\end{definition}
+
+\begin{example}\indent
+    \begin{enumerate}
+        \item \(\R[x]\)
+        \item \(M_n(\F)\)
+        \item \(\Z_p[x]\)
+    \end{enumerate}
+\end{example}
+
+\begin{note}
+    Возникает проблема: в \(\Z_p[x]\) сущесвтует многочлен \(x^p - x \equiv 0 \forall x \in \Z_p\). Но тогда у нас будет конечный базис в \(\Z_p[x]\), чего не хотелось бы. Определим многочлен по-другому:
+\end{note}
+
+\begin{definition}
+    Многочленом над кольцом \(R\) называется бесконечная пооследовательность \(a_0, a_1 \dots \), в которой лишь конечное число коэффициентов отличны от 0. Такие пооследовательности называются финитными.
+\end{definition}
+
+\subsection{Операции над новыми многочленами}
+Пусть \(A = (a_i), B = (b_i)\)
+\begin{enumerate}
+    \item \(A + B = C \Lra c_i = a_i + b_i\)
+    \item \(A \cdot B = C \Lra c_k = \sum_{i = 0}^ka_ib_{k-i}\)
+    \item \(A \cdot \lambda = C \Lra c_k = \lambda\cdot a_i\)
+\end{enumerate}
