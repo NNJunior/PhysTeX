@@ -1,0 +1,94 @@
+% !TEX root = ../../../main.tex
+
+Короче, как-то будем сдавать какой-то экзамен. Очень сложно, ничего не понятно
+
+\section{Вступление}
+Вот у нас были натуральные числа:
+\[
+\begin{array}{c}
+    0 = \emptyset \\
+    1 = \{\emptyset\} \\
+    2 = \{\emptyset, \{\emptyset\}\} = \{0, 1\} \\
+    \vdots\\
+    n + 1 = \{0, 1, 2, \dots n\} \\
+\end{array}
+\]
+Вопрос: что будет в бесконечности?
+\[
+\begin{array}{c}
+    \omega = \{0, 1, 2, \dots\} \\ 
+    \omega + 1 = \{0, 1, 2, \dots, \omega\} \\ 
+    \omega + 2 = \{0, 1, 2, \dots, \omega, \omega + 1\} \\
+    \vdots \\
+    2\omega = \dots\\
+    2\omega + 1 = \dots\\
+    \vdots\\
+    3\omega = \dots\\
+    \vdots\\
+    \omega\cdot\omega = \dots\\
+\end{array}
+\]
+Таким образом, получаем различные многочлены от \(\omega\), если продолжать этот абсурд, то получится \(\omega^\omega\), потом получится \(\underbrace{\omega^{\omega^{\omega^{\dots^\omega}}}}_{\omega} \) и короче всякое такое.
+
+\section{Фундированные множества}
+\begin{definition}
+    Пусть \(S\) --- ЧУМ. Тогда \(S\) называется Фундированным, если \(\forall A \subset S \exists \min A\)
+\end{definition}
+\begin{example}[Фундированные]\indent
+    \begin{enumerate}
+        \item \(\N, \le\)
+        \item \(\N, |\)
+        \item \(\{a, b\}^*, \sqsubset \)
+    \end{enumerate}
+\end{example}
+\begin{example}[Не фундированные]\indent
+    \begin{enumerate}
+        \item \(\Z, \le\)
+        \item \(\N, \ge\)
+        \item \([0, 1], \le \)
+        \item \(\{a, b\}^*, \le_{lex} \)
+    \end{enumerate}
+\end{example}
+
+\subsection{Свойства, эквивалентные фундированности}
+\begin{enumerate}
+    \item (БС) Невозможность бесконечного спуска
+    \[\nexists a_1 > a_2 > a_3 \dots\]
+    \item (Ст) Стабилизация
+    \[\forall a_1 \ge a_2 \ge a_3 \dots \Ra \exists k: \forall n > k (a_k = a_n)\]
+    \item (ТИ) Трансфинитная индукция
+    \[\forall x (\forall y < x\;\; \phi(y) \ra \phi(x)) \Ra \forall z \phi(z)\]
+\end{enumerate}
+\begin{theorem}
+    Свойства Фундированность, БС, Ст, ТИ эквивалентны.
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \(\neg \text{Ф} \Ra \neg \text{БС}\). Пусть \(A \neq \emptyset, \nexists \min A\). Тогда \(\forall a_1 \in A \exists a_2 \in A: a_2 < a_1\). Используя аксиому выбора (выбирая по одному элементу из оставшихся), получается бесконечную убывающую последовательность.
+        \item \(\neg \text{Ф} \La \neg \text{БС}\). Тогда существует \(a_1 > a_2 > a_3 \dots\). Рассмотрим это множество, в нем не будет минимального элемента.
+        \item \(\neg \text{БС} \Ra \neg \text{Ст}\). Тогда существует \(a_1 > a_2 > a_3 \dots\). Заметим, что для это последовательности неверна стабилизация.
+        \item \(\neg \text{БС} \La \neg \text{Ст}\). Рассмотрим последовательность, которая не стабилизируется. Тогда \(\forall n \exists k: a_n > a_k\). Тогда \(\exists\) бесконечная убывающая цепочка.
+        \item \(\neg \text{Ф} \Ra \neg \text{ТИ}\). \(A \ne \emptyset\) --- множество без минимального элемента, \(\phi(x) \Lra x \notin A \Ra \phi(x) \not\equiv 1\).
+        \[\forall y < x\;y\notin A \Ra x \notin A\]
+        Утверждение вверу верно, т.к. \(\forall y < x (y \notin A, x \in A) \Ra x = \min A\).
+        \item \(\neg \text{Ф} \La \neg \text{ТИ}\). Тогда для некоторго \(\phi\) верно, что  
+        \[\forall x (\forall y < x \; \phi(y) \ra \phi(x))\]
+        Но
+        \[\neg\forall z \phi(z) (1)\]
+        Пусть \(A = \{z | \phi(z) = 0\}\). Причем \(A\) непусто, т.к. \((1)\). Тогда рассмотрим минимальный элемент в \(A\) и получим противоречие с определением ТИ.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Вполне упорядоченное множество --- Линейная упорядоченность + Фундированность
+\end{definition}
+\begin{example}
+    \[
+    \begin{array}{ll}
+        \N, \le & \omega \\\\
+        \left\{1 - \frac{1}{n}| n \in \N_+\right\} & \omega \\\\
+        \left\{1 - \frac{1}{n}| n \in \N_+\right\}\cup\left\{2 - \frac{1}{n}| n \in \N_+\right\} & \omega\cdot2 \\\\
+        \cup\left\{k - \frac{1}{n}| k, n \in \N_+\right\} & \omega^2 \\\\
+    \end{array}
+    \]
+\end{example}
