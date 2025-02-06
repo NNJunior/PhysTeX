@@ -12,5 +12,8 @@
     <collection name="Математическая логика" description="Логично" setting="Lectures/2_Semester/matlog/setting">
       <file name="Лекция 1" path="Lectures/2_Semester/matlog/lecture_1" description="Самая самая первая лекция" setting="Lectures/2_Semester/matlog/setting" />
     </collection>
+    <collection name="Основы Комбинаторики и Теории Чисел" description="Логично" setting="Lectures/2_Semester/oktch/setting">
+      <file name="Лекция 1" path="Lectures/2_Semester/oktch/lecture_1" description="Самая самая первая лекция" setting="Lectures/2_Semester/oktch/setting" />
+    </collection>
   </semester>
 </all>

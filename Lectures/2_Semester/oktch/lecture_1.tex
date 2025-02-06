@@ -1,0 +1,78 @@
+% !TEX root = ../../../main.tex
+
+\section{Квадратичные вычеты и невычеты}
+
+\begin{definition}
+    Пусть \(a, m \in \N, (a, m) = 1\). Тогда 
+    \begin{enumerate}
+        \item[] Если \(\exists x: x^2 \equiv_m a\), то \(a\) называется квадратичным вычетом
+        \item[] Если \(\nexists x: x^2 \equiv_m a\), то \(a\) называется квадратичным невычетом
+    \end{enumerate}
+\end{definition}
+
+Будем рассматривать случай, когда \(m\) --- простое нечетное число
+
+\begin{theorem}[Лагранжа]
+    Пусть \(f(x) = a_nx^n + \dots + a_1x + a_0\). Тогда число решений \(f(x) \equiv_p 0\) не превосходит \(n\).
+\end{theorem}
+\begin{proof}
+    От противного: пусть найдутся \(x_1, \dots x_{n+1}\), т.ч. они являются решениями. Заметим, что \(f\) можно представить следующим образом:
+    \[
+    \begin{array}{rl}
+        f(x) & = b_n(x - x_1)\dots(x-x_{n}) \\
+        & + b_{n-1}(x - x_1)\dots(x-x_{n-1}) \\
+        & \;\;\;\vdots \\
+        & + b_1(x - x_1) \\
+        & + b_0 \\
+
+    \end{array}
+    \]
+    Но тогда, подставляя \(x_1 \dots x_{n-1}\) получаем, что все \(b_i = 0 \forall i \le n - 1\). Но тогда \(f(x_{n+1}) \ne 0\). Противоречие.
+\end{proof}
+
+\begin{note}
+    Если \(m\) --- простое нечетное число, то решений 
+    \[x^2 \equiv a^2\]
+    Ровно 2 (\(x = \pm a\))
+\end{note}
+
+\begin{note}
+    Множество всех квадратичных вычетов:
+    \[\left\{1^2, 2^2, \dots \frac{p-1}{2}^2\right\}\]
+    Итого, квадратичных вычетов \(\frac{p-1}{2}\), ровно как и невычетов.
+\end{note}
+
+\begin{definition}
+    Символ Лежандра \(\left(\frac{a}{p}\right)\) --- читается ''\(a\) по \(p\)''
+    \[
+    \left(\frac{a}{p}\right) = \left\{\begin{array}{l}
+        0, a = 0 \\
+        1, a\text{ --- вычет} \\
+        -1, a\text{ --- невычет} \\
+    \end{array}\right.
+    \]
+\end{definition}
+
+\textbf{Анекдот}: посчитать сумму 
+\[\frac{4}{p + 1}\sum_{a = 1}^p\left(\frac{a}{p}\right)\]
+\begin{solution}[1]
+    Если вы знаете, что \(\left(\frac{a}{p}\right)\) --- символ Лежандра, то сумма будет равна 0
+\end{solution}
+\begin{solution}[2]
+    Иначе, вы посчитаете арифметическую прогрессию и получите свою оценку на экзамене
+\end{solution}
+
+Рассмотрим уравнение
+\[a^{p-1} \equiv_p 1\]
+\[\left(a^{\frac{p-1}{2}} - 1\right)\left(a^{\frac{p-1}{2}} + 1\right)  \equiv_p 0\]
+Причем, первая скобка имеет не более \(\frac{p-1}{2}\) решений, поэтому, т.к. любой квадратичный вычет ее зануляет, ее решения --- только квадратичные вычеты. Таким обрахзом:
+\[\left(\frac{a}{p}\right) \equiv_p = a^{\frac{p-1}{2}}\]
+Поэтому можно сказать, что 
+\[\left(\frac{a}{p}\right)\left(\frac{b}{p}\right) = \left(\frac{ab}{p}\right)\]
+\begin{note}
+    \[\left(\frac{-1}{p}\right) = (-1)^\frac{p-1}{2}\]
+\end{note}
+
+\begin{proposition}
+    Зафиксируем некоторое число \(a\). Пусть \(x\) пробегает числа \(1, 2, \dots \frac{p-1}{2} = p_1\). Рассмотрим числа \(ax = \epsilon_x\cdot r_x\), где \(\epsilon_x \in \{0, 1\}, r_x \in \{1, 2, \dots, p_1\}\). Тогда \(x \ne y \Ra r_x \ne r_y\).
+\end{proposition}
