@@ -1,4 +1,4 @@
-<all name="Все семестры" description="Все семестры, которые конспектировались" setting="">
+<all name="Все семестры" description="Все семестры, которые конспектировались">
   <semester name="Семестр 2" description="Все предметы второго семестра">
     <collection name="Введение в математический анализ" description="Коллега рассказывает про матан" setting="Lectures/2_Semester/matan/setting">
       <file name="Лекция 1" path="Lectures/2_Semester/matan/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Lectures/2_Semester/matan/setting" date="04.02.25"/>
