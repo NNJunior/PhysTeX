@@ -3,7 +3,8 @@
     <subject name="Алгебра и Геометрия" description="Какую-то шнягу изучаем" setting="Лекции/Семестр 2/Алгем/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгем/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Лекции/Семестр 2/Алгем/setting"  date="05.02.25"/>
     </subject>
-    <subject name="Алгоритмы и Структуры данных" description="Шняга">
+    <subject name="Алгоритмы и Структуры данных" description="Шняга"  setting="Лекции/Семестр 2/Алгосы/setting">
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгосы/lecture_1" description="Динамическое программирование" setting="Лекции/Семестр 2/Алгосы/setting"  date="05.02.25" />
     </subject>
     <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 2/Матлог/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матлог/lecture_1" description="ВУМы и Фундированные множества" setting="Лекции/Семестр 2/Матлог/setting"  date="05.02.25" />

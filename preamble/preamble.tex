@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt]{article}
-
+\usepackage[makeroom]{cancel}
+\usepackage[matrix,arrow,curve,frame,poly,arc]{xy}
 %%% Работа с русским языком
 \usepackage{cmap}					% поиск в PDF
 \usepackage{mathtext} 				% русские буквы в формулах
@@ -167,3 +168,23 @@
 \usepackage{tkz-euclide} % Геометрия
 \usepackage{stackengine} % Многострочные тексты в картинках
 \usetikzlibrary{angles, babel, quotes}
+
+% \newdir{|>}{%
+% !/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
+\newcommand{\threear}[2]{$\xymatrix{#1 \ar@<1ex>[r] \ar@<0ex>[r] \ar@<-1ex>[r] & #2}$}
+\newcommand{\undar}[2]{\xymatrix{#1 \ar@/_/[r] & #2}}
+\newcommand{\upar}[2]{\xymatrix{#1 \ar@/^/[r] & #2}}
+\newcommand{\uparsymb}[3]{\xymatrix{#1 \ar@/^/[r]^{#3} & #2}}
+\newcommand{\undarsymb}[3]{\xymatrix{#1 \ar@/_/[r]^{#3} & #2}}
+\newcommand{\kr}[1]{\xymatrix{ *+[o]+[F]{#1}}}
+\newcommand{\krxym}[1]{*+[o]+[F]{#1}}
+\newcommand{\sq}[1]{\xymatrix{ *+[]+[F]{#1}}}
+\newcommand{\dsq}[1]{\xymatrix{ *++[F=]{#1}}}
+\newcommand{\pnkt}[1]{\xymatrix{ *++[F.]{#1}}}
+\newcommand{\ang}[1]{\xymatrix{ *++[F,]{#1}}}
+\newcommand{\angsq}[1]{\xymatrix{ *++[F-,]{#1}}}
+\newcommand{\circlesq}[1]{\xymatrix{ *++[F-:<5pt>]{#1}}}
+\newcommand{\dpnkt}[1]{\xymatrix{ *++[F--]{#1}}}
+\setcounter{tocdepth}{5}
+\newcounter{conseq}
+\newcommand{\foo}[1]{\framebox{#1}}

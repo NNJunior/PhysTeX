@@ -1,0 +1,163 @@
+% !TEX root = ../../../main.tex
+
+\section{Динамическое программирование}
+
+\underline{Задача:} Пусть есть полоска $1 \times n$, где в $i-$ой клетке записано число $a_i$. В нулевой клетке находится кузнечик, способный прыгать на 1 или 2 позиции вправо. Хотим найти максимальную сумму
+\begin{proof}
+\text{}
+
+    \textit{Достаточно заметить, что попав на $i$-ую позицию, предыдущие прыжки никак не повлияют на максимальное значение с начальной точкой в текущей позиции.}
+
+    \textbf{Решение:}
+    \begin{enumerate}
+        \item Заведем массив dp, где в dp[i] будет хранится максимальная сумма до данной клетки (то есть из всевозможных путей выбираем наибольший)
+        \item Запишем в dp$\left[0\right]$ $= 0$, в dp$\left[1\right]$ $= a_1$
+        \item Пусть $k$ клеток заполнены. Тогда $k+1$-ая будет пересчитываться по формуле
+        $$\text{dp$\left[k + 1\right]$} = a_{k+1} + max(\text{dp$\left[k\right]$, dp$\left[k-1\right]$})$$
+        \item Тогда наш ответ равен значению dp$\left[n\right]$
+
+        -Асимптотика O(n)
+    \end{enumerate}
+\end{proof}
+\textit{Доказательства во всех задачах ДП проводятся по индукции по шагу алгоритма}
+
+\textsc{\textbf{Общая концепция:}}
+
+$\kr{\text{Придумываем, что хранить}} \to \circlesq{\text{Пишем пересчет}}\to \sq{\text{Находим ответ в конце}}$
+
+\text{}
+
+
+\underline{Задача с ЕГЭ:} Есть таблица $n \times m$, где в каждой клетке написана ее цена. Хотим найти максимальный путь из нижнего левого угла в правый верхний.
+
+\textit{P.S. двигаемся только вверх или вправо}
+
+\textbf{Решение:}
+\begin{enumerate}
+    \item Создаем массив $n \times m$, где в каждой клетке хранится наибольшая цена среди путей до этой клетки.
+    \item Записываем во всех "крайних клетках" сумму на единственном пути до нее.
+    \item Для остальных клеток формула пересчета такая:
+    $$dp\left[i\right] \left[j\right] = a_{ij} + max(dp\left[i-1\right] \left[j\right], dp\left[i\right] \left[j-1\right])$$
+    \item Получаем ответ в клетке $dp[n][m]$
+
+-Асимптотика O(nm)
+\end{enumerate}
+\underline{\textbf{Еще задачка:}} НОП (наибольшая общая последовательность)
+
+Ищем наибольшую по длине общую последовательность в двух $s$ и $t$. 
+
+\begin{enumerate}
+    \item Пусть dp$\left[i\right] \left[j\right]$ - длина НОП для последовательностей $s_{1, 2, \dots, i}$ и $t_{1, 2, \dots, j}$
+
+    \item dp$\left[0\right] \left[\circ\right]$ = 0, dp$\left[\circ\right] \left[0\right] = 0$
+    \item Хотим найти dp$\left[i\right] \left[j\right]$:
+    \begin{enumerate}
+        \item $s_i$ не участвует в НОП $\to$ dp$\left[i-1\right] \left[j\right]$
+        \item $t_j$ не учатствует в НОП $\to$ dp$\left[i\right] \left[j-1\right]$
+        \item $s_i$ и $t_j$ участвуют в НОП, тогда они должны быть равны и ответ: dp$\left[i-1\right] \left[j-1\right]$ + 1
+    \end{enumerate}
+\end{enumerate}
+
+\underline{\textbf{И еще одна:}} НВП (наибольшая возрастающая последовательность)
+
+\textbf{Решение 1:}
+
+\begin{enumerate}
+    \item dp$\left[i\right] \left[k\right]$ - минимальное значение элемента, на котором заканчивается последовательности длины $k$, если рассматривать только элементы $a_1, a_2, \dots, a_i$
+    \item dp$\left[0\right] \left[0\right] = -\infty, dp[0][k > 0] = +\infty$
+    \item Пусть известна dp$\left[i - 1\right] \left[\circ\right]$
+
+    Далее, есть 2 случая:
+    \begin{enumerate}
+        \item Не берем $a_i$, тогда ответ равен dp$\left[i - 1\right] \left[j\right]$
+        \item Берем $a_i$
+        Тогда найдем $min\ k$, что dp$\left[i\right] \left[k\right] \ge a_i$ и поменяем значение на $a_i$
+    \end{enumerate}
+    Заметим, что выполняется инвариант: $$\text{dp$\left[i\right] \left[0\right]$ < dp$\left[i\right] \left[1\right]$ < $\dots$ < dp$\left[i\right] \left[k\right]$}$$
+
+А тогда, кроме dp$\left[i\right] \left[k\right]$ под условие б) ничего не подойдет, а еще, это $k$ можно найти с помощью бин поиска. 
+\end{enumerate}
+
+\textit{Таким образом, ДП в этой задаче будет заполняться построчно, где $i+1$-ая строка получается из $i$-ой изменением одного элемента}
+
+Асимптотика $O(n \log{n})$
+
+\textbf{Решение 2}:
+
+Оживляем элементы по возрастанию, предварительно стабильно отсортировав их. dp$\left[i\right]$ - максимальная длина ВП, оканчивающейся в $a_i$ на момент оживления этого элемента.
+
+\text{} 
+
+$\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+     a_i & 2 & 3 & 1 & 5 & 4 & 6 & 5  \\
+\hline
+     dp\left[i\right] & \times & \times & \times & \times & \times & \times & \times\\
+    \hline
+\end{array} \to \ \begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+     a_i & 2 & 3 & 1 & 5 & 4 & 6 & 5  \\
+\hline
+     dp\left[i\right] & \times & \times & 1 & \times & \times & \times & \times\\
+    \hline
+\end{array}$ 
+
+\text{}
+
+$ \begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+     a_i & 2 & 3 & 1 & 5 & 4 & 6 & 5  \\
+\hline
+     dp\left[i\right] & 1 & \times & 1 & \times & \times & \times & \times\\
+    \hline
+\end{array} \to \ \begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+     a_i & 2 & 3 & 1 & 5 & 4 & 6 & 5  \\
+\hline
+     dp\left[i\right] & 1 & 2 & 1 & \times & \times & \times & \times\\
+    \hline
+\end{array} $
+
+\text{}
+
+$  \begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+     a_i & 2 & 3 & 1 & 5 & 4 & 6 & 5  \\
+\hline
+     dp\left[i\right] & 1 & 2 & 1 & \times & 3 & \times & \times\\
+    \hline
+\end{array} \to \ \begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+     a_i & 2 & 3 & 1 & 5 & 4 & 6 & 5  \\
+\hline
+     dp\left[i\right] & 1 & 2 & 1 & 3 & 3 & \times & 4\\
+    \hline
+\end{array} $
+
+\text{}
+
+$\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+     a_i & 2 & 3 & 1 & 5 & 4 & 6 & 5  \\
+\hline
+     dp\left[i\right] & 1 & 2 & 1 & 3 & 3 & 4 & 4\\
+    \hline
+\end{array}$
+
+\text{}
+
+Несложно заметить, что $dp\left[i\right]$ будет равно максимальному значению слева от текущей ячейки, что мы умеем находить за $O(\log{n})$ через ДО
+
+Тогда итог (максимальное значение в таблице) будет найдено за $O(n \log{n})$
+
+\underline{\textbf{Последняя:}} (Рюкзак)
+
+Есть $n$ предметов, $w_i$ - вес $i$-го элемента, а $c_i$ - его стоимость. Вместимость рюкзака - $W$. Найти максимальную стоимость содержимого.
+
+Обозначим за $dp\left[i\right]\left[a\right]$ максимальную стоимость предметов, если выбирать какие-то предметы из первых $i$ с суммой веса $a$.
+
+Тогда аналогично с предыдущей задачей будем вычислять $dp\left[i+1\right]\left[a\right]$, выбирая $a_{i + 1}$ или не выбирая его.
+
+Это будет соответствовать значениям $dp\left[i\right]\left[a - w_i\right] + c_i$ и $dp\left[i\right]\left[a\right]$
+
+Тогда поскольку $a \in {0, 1, \dots, W}$, окончательная асимптотика будет равна $O(nW)$
