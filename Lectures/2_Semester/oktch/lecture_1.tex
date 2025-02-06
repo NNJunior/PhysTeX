@@ -74,5 +74,52 @@
 \end{note}
 
 \begin{proposition}
-    Зафиксируем некоторое число \(a\). Пусть \(x\) пробегает числа \(1, 2, \dots \frac{p-1}{2} = p_1\). Рассмотрим числа \(ax = \epsilon_x\cdot r_x\), где \(\epsilon_x \in \{0, 1\}, r_x \in \{1, 2, \dots, p_1\}\). Тогда \(x \ne y \Ra r_x \ne r_y\).
+    Зафиксируем некоторое число \(a\). Пусть \(x\) пробегает числа \(1, 2, \dots \frac{p-1}{2} = p_1\). Рассмотрим числа \(ax = \epsilon_x\cdot r_x\), где \(\epsilon_x \in \{-1, 1\}, r_x \in \{1, 2, \dots, p_1\}\). Тогда \(x \ne y \Ra r_x \ne r_y\).
 \end{proposition}
+\begin{proof}
+    Предположим противное. Тогда \(r_x = r_y, x \ne y\). Но тогда \(\epsilon_x \ne \epsilon_y\), т.к. в противном случае \(ax = ay\), чего быть не может. Но тогда \(r_x \equiv_p -r_y \Ra r_x + r_y \equiv_p 0\), но такого тоже быть не может, т.к. \(r_x, r_y \le \frac{p-1}{2}\).
+\end{proof}
+\begin{proposition}
+    \(\epsilon_x = (-1)^{\left[\frac{2ax}{p}\right] }\)
+\end{proposition}
+\begin{proof}
+    Если \((ax \mod p) \in \{1, 2, \dots p_1\}\), то \((-1)^{\left[\frac{2ax}{p}\right] } = 1\), иначе \((-1)^{\left[\frac{2ax}{p}\right] } = -1\).
+\end{proof}
+\begin{proposition}
+    \[a^{\frac{p-1}{2}} = \Pi_{x = 1}^{p_1}\epsilon_x\]
+\end{proposition}
+\begin{proof}
+    \[a^{\frac{p-1}{2}}\Pi_{x = 1}^{p_1} x = \Pi_{x = 1}^{p_1}\epsilon_x r_x\]
+    Причем \(\Pi x = \Pi r_x\), т.к. все \(x\) различны, все \(r_x\) различны и берутся из одного множества. Сократив множители, получим желаемое.
+\end{proof}
+\begin{proposition}
+    \[\left(\frac{a}{p}\right) = a^{\frac{p-1}{2}} = (-1)^{\sum_{x = 1}^{p_1}\left[\frac{2ax}{p}\right] }\]
+\end{proposition}
+\begin{proof}
+    Соединяем предыдущие два утверждения и получаем желаемое.
+\end{proof}
+\begin{proposition}[Уточнение]
+    Пусть \(a\) --- нечетное. Тогда 
+    \[\left(\frac{a}{p}\right) = (-1)^{\sum_{x = 1}^{p_1}\left[\frac{ax}{p}\right]}\]
+\end{proposition}
+\begin{proof}
+    Рассмотрим 
+    \[\left(\frac{2a}{p}\right) = \left(\frac{2a + 2p}{p}\right) = \left(\frac{4\left(\frac{a + p}{2}\right)}{p}\right) = \left(\frac{\frac{a + p}{2}}{p}\right) = (-1)^{\sum_{x = 1}^{p_1}\left[\frac{2\frac{1}{2}(a + p)x}{p}\right] } = (-1)^{\sum_{x = 1}^{p_1}\left[\frac{ax}{p}\right] + \sum_{x = 1}^{p_1}x} = \]
+    \[ = (-1)^{\sum_{x = 1}^{p_1}\left[\frac{ax}{p}\right] + \frac{p_1(p_1 + 1)}{2}} = (-1)^{\sum_{x = 1}^{p_1}\left[\frac{ax}{p}\right] + \frac{p^2 - 1}{8}}\]
+    Из этого можно показать, что \(\left(\frac{2}{p}\right) = (-1)^{\frac{p^2 - 1}{8}}\).
+    Тогда 
+    \[\left(\frac{2a}{p}\right) = \left(\frac{2}{p}\right)\left(\frac{a}{p}\right) = (-1)^\frac{p^2 - 1}{8}\left(\frac{a}{p}\right) = (-1)^{\sum_{x = 1}^{p_1}\left[\frac{ax}{p}\right] + \frac{p^2 - 1}{8}}\]
+    Итого получили, что 
+    \[\left(\frac{a}{p}\right) = (-1)^{\sum_{x = 1}^{p_1}\left[\frac{ax}{p}\right]}\]
+\end{proof}
+
+\begin{theorem}[Квадратичный Закон Взаимности]
+    Пусть \(p, q\) --- различные нечентые простые.  Тогда
+    \[\left(\frac{p}{q}\right)\left(\frac{q}{p}\right) = (-1)^{p_1q_1}\]
+\end{theorem}
+\begin{proof}
+    \[\left(\frac{p}{q}\right)\left(\frac{q}{p}\right) = (-1)^{\sum_{x = 1}^{q_1}\left[\frac{px}{q}\right] + \sum_{y = 1}^{p_1}\left[\frac{qy}{p}\right]} \]
+    Введем множество \(S = \{1, \dots q_1\} \times \{1, \dots p_1\}\). Очевидно, что \(|S| = p_1q_1\). Введем \(S_1 = \{(x, y) \in S | qy < px\}, S_2 = \{(x, y) \in S | qy > px\}\). Тогда \(|S| = |S_1| + |S_2|\), т.к. \(px = qy\) невозможно.
+
+    Причем, \(qy < px \Lra y < \frac{px}{q}, qy > px \Lra \frac{qy}{p} > x\). Заметим, что \(|S_1| = \sum_{x = 1}^{q_1}\left[\frac{px}{q}\right]\), т.к. количество \(y\) для фиксированного \(x\) ровно \(\left[\frac{px}{q}\right]\). Но тогда получаем, что \(|S| = |S_1| + |S_2|\), что и требовалось.
+\end{proof}
