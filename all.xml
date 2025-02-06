@@ -1,19 +1,22 @@
 <all name="Все семестры" description="Все семестры, которые конспектировались">
   <semester name="Семестр 2" description="Все предметы второго семестра">
-    <subject name="Введение в математический анализ" description="Коллега рассказывает про матан" setting="Lectures/2_Semester/matan/setting">
-      <lecture name="Лекция 1" path="Lectures/2_Semester/matan/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Lectures/2_Semester/matan/setting" date="04.02.25"/>
-    </subject>
-    <subject name="Технологии программирования" description="Какую-то шнягу изучаем" setting="Lectures/2_Semester/TP/setting">
-      <lecture name="Лекция 1" path="Lectures/2_Semester/TP/lecture_1" description="Что-то порассказывали" setting="Lectures/2_Semester/TP/setting" />
-    </subject>
     <subject name="Алгебра и Геометрия" description="Какую-то шнягу изучаем" setting="Lectures/2_Semester/algem/setting">
-      <lecture name="Лекция 1" path="Lectures/2_Semester/algem/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Lectures/2_Semester/algem/setting" />
+      <lecture name="Лекция 1" path="Lectures/2_Semester/algem/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Lectures/2_Semester/algem/setting"  date="05.02.25"/>
+    </subject>
+    <subject name="Алгоритмы и Структуры данных" description="Хе-хе" setting="Lectures/2_Semester/oktch/setting">
+      <lecture name="Лекция 1" path="Lectures/2_Semester/oktch/lecture_1" description="Квадратичные вычеты. Начало" setting="Lectures/2_Semester/oktch/setting"  date="06.02.25"/>
     </subject>
     <subject name="Математическая логика" description="Логично" setting="Lectures/2_Semester/matlog/setting">
-      <lecture name="Лекция 1" path="Lectures/2_Semester/matlog/lecture_1" description="ВУМы и Фундированные множества" setting="Lectures/2_Semester/matlog/setting" />
+      <lecture name="Лекция 1" path="Lectures/2_Semester/matlog/lecture_1" description="ВУМы и Фундированные множества" setting="Lectures/2_Semester/matlog/setting"  date="05.02.25" />
+    </subject>
+    <subject name="Многомерный анализ" description="Коллега рассказывает про матан" setting="Lectures/2_Semester/matan/setting">
+      <lecture name="Лекция 1" path="Lectures/2_Semester/matan/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Lectures/2_Semester/matan/setting" date="04.02.25"/>
     </subject>
     <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Lectures/2_Semester/oktch/setting">
-      <lecture name="Лекция 1" path="Lectures/2_Semester/oktch/lecture_1" description="Квадратичные вычеты. Начало" setting="Lectures/2_Semester/oktch/setting" />
+      <lecture name="Лекция 1" path="Lectures/2_Semester/oktch/lecture_1" description="Квадратичные вычеты. Начало" setting="Lectures/2_Semester/oktch/setting"  date="06.02.25"/>
+    </subject>
+    <subject name="Технологии программирования" description="Какую-то шнягу изучаем" setting="Lectures/2_Semester/TP/setting">
+      <lecture name="Лекция 1" path="Lectures/2_Semester/TP/lecture_1" description="Что-то порассказывали" setting="Lectures/2_Semester/TP/setting" date="05.02.25"/>
     </subject>
   </semester>
 </all>
