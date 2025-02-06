@@ -7,13 +7,13 @@
       <file name="Лекция 1" path="Lectures/2_Semester/TP/lecture_1" description="Что-то порассказывали" setting="Lectures/2_Semester/TP/setting" />
     </collection>
     <collection name="Алгебра и Геометрия" description="Какую-то шнягу изучаем" setting="Lectures/2_Semester/algem/setting">
-      <file name="Лекция 1" path="Lectures/2_Semester/algem/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все" setting="Lectures/2_Semester/algem/setting" />
+      <file name="Лекция 1" path="Lectures/2_Semester/algem/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Lectures/2_Semester/algem/setting" />
     </collection>
     <collection name="Математическая логика" description="Логично" setting="Lectures/2_Semester/matlog/setting">
-      <file name="Лекция 1" path="Lectures/2_Semester/matlog/lecture_1" description="Самая самая первая лекция" setting="Lectures/2_Semester/matlog/setting" />
+      <file name="Лекция 1" path="Lectures/2_Semester/matlog/lecture_1" description="ВУМы и Фундированные множества" setting="Lectures/2_Semester/matlog/setting" />
     </collection>
-    <collection name="Основы Комбинаторики и Теории Чисел" description="Логично" setting="Lectures/2_Semester/oktch/setting">
-      <file name="Лекция 1" path="Lectures/2_Semester/oktch/lecture_1" description="Самая самая первая лекция" setting="Lectures/2_Semester/oktch/setting" />
+    <collection name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Lectures/2_Semester/oktch/setting">
+      <file name="Лекция 1" path="Lectures/2_Semester/oktch/lecture_1" description="Квадратичные вычеты. Начало" setting="Lectures/2_Semester/oktch/setting" />
     </collection>
   </semester>
 </all>
