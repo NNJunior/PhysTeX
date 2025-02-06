@@ -1,5 +1,5 @@
 <all name="Все семестры" description="Все семестры, которые конспектировались">
-  <semester name="Семестр 2" description="Все предметы второго семестра">
+  <semester name="Семестр 2" description="Все предметы второго семестра" date="03.02.25 - ~16.05.25">
     <subject name="Алгебра и Геометрия" description="Какую-то шнягу изучаем" setting="Lectures/2_Semester/algem/setting">
       <lecture name="Лекция 1" path="Lectures/2_Semester/algem/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Lectures/2_Semester/algem/setting"  date="05.02.25"/>
     </subject>
