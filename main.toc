@@ -1,0 +1,2 @@
+\babel@toc {russian}{}\relax 
+\contentsline {subsection}{\numberline {0.1}Несобственный интеграл от неотрицательной функции}{3}{subsection.0.1}%
