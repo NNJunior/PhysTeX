@@ -1,1 +1,136 @@
-What??
+% !TEX root = ../../../main.tex
+
+\begin{proposition}[Интегрирование по частям]
+    Пусть  \(f, g\) --- дифференцируемы на \([a, b]\) и \(f', g'\) локально интегрируемы на \([a, b]\). Тогда 
+    \[\int_{a}^bf(x)g'(x)dx = f(x)g(x)|_a^{b-0} - \int_a^bf'(x)g(x)dx\]
+    Данную формулу нужно понимать так: существование двух конечных пределов из 3 влечет существование третьего и выполнения равенства
+\end{proposition}
+\begin{proof}
+    Используем предельный переход
+\end{proof}
+
+\begin{proposition}[Замена переменной]
+    Пусть \(f\) непрерывна на \([a, b)\), \(\phi(x)\) --- дифференцируема, \(\phi\) строго монотонна на \([\alpha, \beta)\), причем \(\phi'\) локально интегрируема на \([\alpha, \beta)\), \(\phi(\alpha) = a, \phi(\beta) = b\). Тогда:
+    \[\int_a^b f(x)dx = \int_\alpha^\beta f(\phi(t))\phi'(t)dt\]
+\end{proposition}
+\begin{proof}
+    Определим функцию \(F(c) = \int_a^c f(x)dx, \Phi(x) = \int_\alpha^\gamma f(\phi(t))\phi'(t)dt\). По формуле замены переменной в определнном интеграле:
+    \[F(\phi(\gamma)) = \Phi(\gamma) \forall \gamma \in [\alpha, \beta)\]. Пусть в \(\overline{\R}\) существует \(I = \int_a^b f(x)dx\). Тогда по свойству предела композиции существует 
+    \[\lim_{\gamma\ra b-0}\Phi(\gamma) = \lim_{c \ra b-0}F(c) = I\]
+    так что 
+    \[\int_\alpha^\beta f(\phi(t))\phi'(t)dt = I\]
+\end{proof}
+
+В условиях предыдущего свойства \(\phi\) обратима и \(\phi^{-1} \ra \beta\) при \(c \ra b - 0\). Поэтому по свойству предела композиции существование \(\lim_{\gamma\ra  \beta - 0}\Phi(\gamma)\) влечет существование равного \(\lim_{c\ra  b - 0}F(c)\), т.е. существоввание правой части влечет существование левой.
+
+\begin{definition}
+    Примем следующее соглашение:
+    \[\int_a^bf(x)dx = -\int_b^af(x)dx\]
+\end{definition}
+
+\begin{problem}
+    \[I = \int_{0}^{\frac{\pi}{2}}\ln(\sin(x))dx\]
+\end{problem}
+\begin{solution}
+    Видно, что это несобственный интеграл, т.к. функция не определена в \(0\).
+    Докажем, что он сходится.
+    \[\int_{0}^{\frac{\pi}{2}}\ln(\sin(x))dx = \int_{0}^{\frac{\pi}{2}}\ln\left(\frac{\sin(x)}{x}\right)dx + \int_{0}^{\frac{\pi}{2}}\ln(x)dx\]
+    
+    \[\int_{0}^{\frac{\pi}{2}}\ln(x)dx = x\ln x|_0^{\frac{\pi}{2}} - \int_{0}^{\frac{\pi}{2}}1dx = \frac{\pi}{2}(\ln\frac{\pi}{2} - 1)\]
+
+    Заметим, что интеграл
+    \[\int_{0}^{\frac{\pi}{2}}\ln\left(\frac{\sin(x)}{x}\right)dx\]
+    Сходится, т.к. cходится \(\ln\left(\frac{\sin x}{x}\right)\)
+
+    Теперь вычислим его значение.
+    \[I =_{x = 2t} 2\int_{0}^{\frac{\pi}{4}}\ln(\sin(2t))dt = 2\int_{0}^{\frac{\pi}{4}}\ln(2)dt + 2\int_{0}^{\frac{\pi}{4}}\ln(\sin(t))dt + 2\int_{0}^{\frac{\pi}{4}}\ln(\cos(t))dt = \]
+    \[2\int_{0}^{\frac{\pi}{4}}\ln(2)dt + 2\int_{0}^{\frac{\pi}{4}}\ln(\sin(t))dt + 2\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}\ln(\sin(z))dz = \pi\ln2 + 2I \Ra I = \pi\ln2\]
+\end{solution}
+
+\begin{theorem}[Коши]
+    Пусть \(f\) --- локально интегрируема на \([a, b)\). 
+    \[\int_a^b f(x)dx \text{ сходится } \Lra \forall \epsilon > 0 \exists b_\epsilon \in [a, b) \forall \xi, \eta \in (b_\epsilon, b) \left(\left\lvert \int_\xi^\eta f(x)dx\right\rvert < \epsilon\right) \]
+\end{theorem}
+\begin{proof}
+    Пусть \(F(x) = \int_a^xf(t)dt, x \in [a, b)\), то \(\int_\xi^\eta f(t)dt = F(\eta) - F(\xi)\). Следовательно, доказательство утверждения --- переформулировка крититерия Коши существования предела \(F\).
+\end{proof}
+
+\begin{definition}
+    Пусть \(f\) --- локально интегрируема на \([a, b)\). Несобственный интеграл \(\int_a^bf(x)dx\) называется абсолютно сходящимся, если сходится \(\int_a^b|f(x)|dx\). Если несобственный интеграл сходится, но не сходится абсолютно, то он называется условно сходящимся.
+\end{definition}
+\begin{corollary}
+    Абсолютно сходящийся интеграл сходится. 
+\end{corollary}
+\begin{proof}
+    \[\forall [\xi, \eta] \subset [a, b] \left(\left\lvert \int_\xi^\eta f(x)dx \right\rvert \le \int_\xi^\eta |f(x)|dx\right) \]
+    Поэтому, если интеграл от \(|f|\) по \([a, b]\) удовлетворяет условию Коши, то по условию Коши удовлетворяет и интеграл от \(f\) по \([a, b)\).
+\end{proof}
+\begin{note}
+    Если интеграл \(\int_a^b f(x)dx\) абсолютно сходится, то 
+    \[\left\lvert \int_a^b f(x)dx\right\rvert \le \int_a^b |f(x)|dx\]
+\end{note}
+
+\subsection{Несобственный интеграл от неотрицательной функции}
+\begin{lemma}
+    Пусть \(f\) локально интегрируема и \(f \ge 0\) на \([a, b]\). Тогда
+    \[\int_a^bf(x)dx \text{ сходится }\Lra F(x) = \int_a^xf(t)dt \text{ определена на \([a, b]\) }\]
+\end{lemma}
+\begin{proof}
+    Функция \(F\) неотрицательна и нестрого возрастает на \([a, b)\), т.к. \(\forall x_1, x_2 \in [a, b), x_1 < x_2 \Ra F(x_2) - F(x_1) = \int_a^b f(t)dt \ge 0\). По теореме о пределе монотонной функции, существует
+    \[\lim_{x \ra b - 0}F(x) = \sup_{x \in [a, b)}F(x)\]
+    Следовательно, органиченность \(F\) на \([a, b)\) равносильна \(\exists \lim_{x \ra b - 0}F(x) \in \R\), т.е. сходимость \(\int_a^bf(x)dx\).
+\end{proof}
+\begin{note}
+    Несобственный интеграл от неотрицательной функции либо сходится, либо расходится к \(+\infty\). Для сходимости достаточно установить органиченность некоторой последовательности \(I_n = \int_a^bf(x)dx\), где \(c_n \in [a, b), c_n \ra b - 0\). Это следует из того, что  \(\lim_{n \ra \infty }I_n = \int_a^b f(x)dx\)
+\end{note}
+\begin{theorem}[Признак сравнения]
+    Пусть \(f, g\) --- локально интегрируемы на \([a, b)\) и \(0 \le f \le g\) на \([a, b)\).
+    \begin{enumerate}
+        \item Если \(\int_a^b f(x)dx\) сходится, то \(\int_a^b g(x)dx\) --- тоже
+        \item Если \(\int_a^b g(x)dx\) расходится, то \(\int_a^b f(x)dx\) --- тоже
+
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \[\forall x\ in [a, b) 0 \le \int_a^x f(t)dt \le \int_a^x g(t)dt\]
+        Если \(\int_a^b g(x)dx\) сходится, то по Лемме 1, \(\int_{a}^{x} g(t)dt\) определена на  \([a, b)\), следовательно, ограничена \(\int_a^x f(t)dt\) на \([a, b)\), что по Лемме 2 влечет сходимость \(\int_a^b f(x)dx\).
+        \item Следует из контрпозиции первого
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    Пусть \(f, g\) локально интегрируемы на \([a, b)\) и \(f, g \ge 0\) на \([a, b)\). Если \(f(x) = O_{x\ra b - 0}(g(x))\), то справедливы утверждения 1, 2 теоремы
+\end{corollary}
+\begin{proof}
+    В силу неотрицательности \(f, g\) и определения символа \(O, \exists C > 0, a^* \in [a, b) \forall x \in [a^*, b) (f(x) \le Cg(x))\). Если \(\int_{a^*}^b g(x)dx\) сходится, то \(\int_{a^*}^b Cg(x)dx\) --- тоже. Тогда по Теореме 2, сходится и \(\int_{a^*}^b  f(x)dx\), а значит, \(\int_{a}^b  f(x)dx\) --- тоже.
+\end{proof}
+
+\begin{corollary}
+    Пусть \(f, g\) локально интегрируемы на \([a, b)\) и \(f, g > 0\) на \([a, b)\). Если \(\lim_{x \ra b - 0}\frac{f(x)}{g(x)} \in (0, +\infty)\), то \(\int_a^b f(x), \int_a^b g(x)\) cходятся или не сходятся одновременно.
+\end{corollary}
+\begin{proof}
+    В условиях теоремы 2 также \(\exists \lim_{x \ra b - 0}\frac{g(x)}{f(x)} \in (0, +\infty)\). Тогда:
+    \begin{enumerate}
+        \item \(f(x) = O_{x \ra b - 0}(g(x))\)
+        \item \(g(x) = O_{x \ra b - 0}(f(x))\)
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    \item \(\int_0^{+\infty}x^{2024}e^{-x^2}dx\)
+    Посчитаем 
+    \[\lim_{x \ra +\infty}\frac{x^{2026}}{e^{x^2}} = \lim_{t \ra +\infty}\frac{t^{1013}}{e^{t}}\]
+    Применим правило Лопиталя 1014 раз:
+    \[\lim_{t \ra +\infty}\frac{t^{1013}}{e^{t}} = \lim_{t \ra +\infty}\frac{0}{e^{t}} = 0\]
+    \[x^{2024}e^{-x^2} = o\left(\frac{1}{x^2}\right), x \ra +\infty\]
+    Но при этом 
+    \[\int_1^{+\infty} \frac{1}{x^2}dx \text{ сходится}\]
+\end{example}
+
+\begin{example}
+    \item \(\int_{\ra0}^{1}\frac{dx}{\tg^2\sqrt{x}}\)
+    \[\tg^2\sqrt{x} \sim x, x \ra +0\]
+    \[\int_{\ra 0}^1 \frac{dx}{x} \text{ расходится}\]
+\end{example}
