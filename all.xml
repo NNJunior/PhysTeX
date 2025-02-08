@@ -20,7 +20,7 @@
       <lecture name="Лекция 1" path="Лекции/Семестр 2/ТП/lecture_1" description="Что-то порассказывали" setting="Лекции/Семестр 2/ТП/setting" date="05.02.25"/>
     </subject>
     <subject name="Python" description="" setting="Лекции/Семестр 2/ТП/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/ТП/lecture_1" description="Что-то порассказывали" setting="Лекции/Семестр 2/ТП/setting" date="05.02.25"/>
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/ТП/lecture_1" description="Кодстайл + идеалогия языка. Не техалась." date="05.02.25"/>
     </subject>
     <subject name="C++" description="Заходят как-то программисты на Python, C# и C++ в бар.
 Программист на Python говорит:
