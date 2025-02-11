@@ -1,23 +1,40 @@
 <all name="Все семестры" description="Все семестры, которые конспектировались">
-  <semester name="Семестр 2" description="Все предметы второго семестра" date="03.02.25 - ~16.05.25">
+  <semester name="Семестр 2" description="Все предметы второго семестра" date="03.02.25 - 16.05.25">
     <subject name="Алгебра и Геометрия" description="Какую-то шнягу изучаем" setting="Лекции/Семестр 2/Алгем/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгем/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Лекции/Семестр 2/Алгем/setting"  date="05.02.25"/>
     </subject>
     <subject name="Алгоритмы и Структуры данных" description="Конспекты техает Иван, так что не обессудьте"  setting="Лекции/Семестр 2/Алгосы/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгосы/lecture_1" description="Динамическое программирование" setting="Лекции/Семестр 2/Алгосы/setting"  date="05.02.25" />
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгосы/lecture_1" description="Динамическое программирование. &lt;a href=&quot;https://youtu.be/Cy7M4WnFFUY?si=Y39VDoNYy2Mt5Y87&quot;&gt;Запись лекции&lt;/a&gt;" setting="Лекции/Семестр 2/Алгосы/setting"  date="05.02.25" />
     </subject>
     <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 2/Матлог/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матлог/lecture_1" description="ВУМы и Фундированные множества" setting="Лекции/Семестр 2/Матлог/setting"  date="05.02.25" />
     </subject>
     <subject name="Многомерный анализ" description="Коллега рассказывает про матан" setting="Лекции/Семестр 2/Матан/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Лекции/Семестр 2/Матан/setting" date="04.02.25"/>
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Лекции/Семестр 2/Матан/setting" date="05.02.25"/>
       <lecture name="Лекция 2" path="Лекции/Семестр 2/Матан/lecture_2" description="Продолжаем свойства несобственных интегралов" setting="Лекции/Семестр 2/Матан/setting" date="07.02.25"/>
+      <lecture name="Лекция 3" path="Лекции/Семестр 2/Матан/lecture_3" description="Продолжаем свойства несобственных интегралов" setting="Лекции/Семестр 2/Матан/setting" date="11.02.25"/>
     </subject>
     <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Лекции/Семестр 2/ОКТЧ/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/ОКТЧ/lecture_1" description="Квадратичные вычеты. Начало" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="06.02.25"/>
     </subject>
     <subject name="Технологии программирования" description="Какую-то шнягу изучаем" setting="Лекции/Семестр 2/ТП/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/ТП/lecture_1" description="Что-то порассказывали" setting="Лекции/Семестр 2/ТП/setting" date="05.02.25"/>
+    </subject>
+    <subject name="Python" description="">
+      <lecture name="Лекция 1" description="Кодстайл + идеалогия языка. Не техалась." date="08.02.25"/>
+    </subject>
+    <subject name="C++" description="Заходят как-то программисты на Python, C# и C++ в бар.
+Программист на Python говорит:
+
+— Мне бокал пива. * Выпил, оплатил, ушел *
+
+Программист на C#:
+
+— Здравствуйте! налейте мне, пожалуйста, пенного хмельного пива в стеклянную тару, в простонародии называемую бокалом. * Минут 30 сидел, пил, оплатил, со всеми в баре попрощался и ушёл *
+
+А программист на C++ часа три не мог открыть рот.">
+      <lecture name="Лекция 1" description="&lt;a href=&quot;https://t.me/c/2150836650/6813&quot;&gt;Запись лекции&lt;/a&gt;" date="08.02.25" />
+      <lecture name="Лекция 2" description="Скоро здесь появится ссылка на запись лекеции" date="11.02.25" />
     </subject>
   </semester>
 </all>
