@@ -1,0 +1,58 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Несобственные интегралы от знакопеременных функций}
+Изучм вопросы сходимости несобственных интегралов от функций ни в какой функции точки \(b\).
+
+\begin{lemma}
+    Пусть \(f, g\) --- локально интегрируемы на \([a, b)\) и \(\int_a^b g(x)dx\) --- абсолютно сходится. Тогда несобственные интегралы 
+    \[\int_a^b (f(x) + g(x))dx, \int_a^b f(x)dx\]
+    Либо одинаково расходятся, либо одновременно сходятся условно, либо одновременно сходятся абсолютно.
+\end{lemma}
+\begin{proof}
+    Абсолютная сходимость влечет сходимость, поэтому \(\int_a^bg(x)dx\) сходится. Тогда по линейности 
+    \[\int_a^b f(x) dx = \int_a^b (f(x) + g(x)) dx - \int_a^b g(x) dx\]
+    И заключаем, что интегралы \(\int_a^b (f(x) + g(x))dx, \int_a^b f(x)dx\) сходятся одновременно.
+    При этом, 
+    \[|f + g| \le |f| + |g|, |f| \le |f + g| + |g|\]
+    Тогда по критерию сравнения, получаем, что \(\int_a^b |f(x) + g(x)|dx, \int_a^b |f(x)|dx\) сходятся одновременно, т.е. \(\int_a^b (f(x) + g(x))dx, \int_a^b f(x)dx\) абсолютно сходятся одновременно.
+\end{proof}
+
+\begin{theorem}[Признак Дирихле]
+    Пусть \(f, g\) локально интегрируемы на \([a, b)\), причем
+    \begin{enumerate}
+        \item \(F(x) = \int_a^x f(t)dt\) ограничена на \([a, b)\)
+        \item \(g(x)\) --- монотонна
+        \item \(g \ra 0\) при \(x \ra b - 0\)
+    \end{enumerate}
+    Тогда \(\int_a^b f(x)g(x)dx\) сходится.
+\end{theorem}
+\begin{proof}
+    Существует такая константа \(M: |F| \le M\). Тогда \(\forall \xi \in [a, b)\) имеем \(\left\lvert \int_\xi^x f(t)g(t)dt\right\rvert = |F(x) - F(\xi)| < 2M\). Пусть \(\epsilon > 0\). Тогда \(\exists b' \in [a, b) \forall x \in (b', b) \left(|g(x)| \le \frac{\epsilon}{2M}\right)\). По лемме Абеля, для интервалов \(\forall [\xi, \eta] \subset (b', b)\) выполнено \(\left\lvert \int_\xi^\eta f(x)g(x)dx\right\rvert < 2\cdot2M (|g(\xi)| + |g(\eta)|) < \epsilon\). Далее применяем свойство Коши.
+\end{proof}
+
+\begin{note}
+    Условия 1, 2 выолпнены если \(f\) непрерывна и имеет ограниченную первообразную на \([a, b)\), а \(g\) дифференцируема и \(g'\) сохраняет знак на \([a, b)\).
+\end{note}
+
+\begin{example}
+    Исследуем сходимость и абсолютную сходимость интеграла
+    \[I(\alpha) = \int_1^{+\infty}\frac{\sin kx}{x^\alpha}dx, \alpha \in \R (k > 0)\]
+    Делаем замену \(t = kx\) и получаем следующее:
+    \[I(\alpha) = \int_1^{+\infty}\frac{\sin t}{t^\alpha}dt\]
+    \begin{enumerate}
+        \item \(\alpha > 1\).
+        \[\left\lvert \frac{\sin t}{t^\alpha}\right\rvert \le \frac{1}{t^\alpha} \Ra \int_1^{+\infty} \frac{|\sin t|}{t^\alpha}dt \text{ --- сходится}\]
+        То есть \(I(\alpha)\) сходится абсолютно
+        \item \(\alpha \le 0\). Проверим расходимость при помощи Коши. 
+        \[\exists \epsilon_0 = \forall \Delta > 1 \exists \xi = 2\pi n > \Delta, \eta = 2\pi n + \pi > \Delta\]
+        \[\left\lvert \int_\xi^\eta \frac{\sin t}{t^\alpha}dt\right\rvert = \int_\xi^\eta t^{-\alpha}\sin t dt \ge (2 \pi n)^{-\alpha} \int_{2\pi n}^{2\pi n + \pi} \sin t dt = (2 \pi n)^{-\alpha} \cdot 2 \ge 2\]
+        Тогда по критерию Коши, \(I(\alpha)\) расходится.
+        \item \(\alpha \in (0, 1]\).
+        \[f(x) = \sin t, g(t) = \frac{1}{t^\alpha}, F(t) = \int_1^t \sin s \;\;ds \text{ --- ограничена на 
+        \(1, +\infty\)}\]
+        Тогда \(I(\alpha)\) сходится по признаку Дирихле. Теперь проверим абсолютную сходимость:
+        \[\left\lvert \frac{\sin x }{x^\alpha}\right\rvert \ge \frac{\sin^2 x}{x^\alpha} = \frac{1}{2}\left(\frac{1}{x^\alpha} - \frac{\cos 2x}{x^\alpha}\right) \ge 0\]
+        При этом \(\int \frac{1}{x^\alpha}\) --- расходится, а \(\int \frac{\cos 2x}{x^\alpha}\) --- сходится. Тогда их разность расходится.
+    \end{enumerate}
+    Тогда \(I(\alpha)\) сходится при \(\alpha > 0\) и абсолютно сходится при \(\alpha > 1\)
+\end{example}
