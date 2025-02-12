@@ -24,7 +24,7 @@
 &lt;a href=&quot;https://akhpl.ru/tp2025-chat&quot;&gt;Чат курса&lt;/a&gt;&#xA;
 &lt;a href=&quot;https://akhcheck.ru/system registration&quot;&gt;Регистрация на Курс Вики страница&lt;/a&gt;&#xA;
 " setting="Лекции/Семестр 2/ТП/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/ТП/lecture_1" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1DfpqFcF3h-oRZz1AVyQBDWUygNWfihk0hnckn1mNT1o/edit&quot;&gt;Презентация лекции&lt;/a&gt;" setting="Лекции/Семестр 2/ТП/setting" date="05.02.25"/>
+      <lecture name="Лекция 1" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1DfpqFcF3h-oRZz1AVyQBDWUygNWfihk0hnckn1mNT1o/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="05.02.25"/>
       <lecture name="Лекция 2" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1uB9vzsJRM24gPfP60dp9FIg3wDB0QjlRoTIpSbkcVt8/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="12.02.25"/>
     </subject>
     <subject name="Python" description="">
