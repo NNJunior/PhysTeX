@@ -189,29 +189,113 @@
     \(S\) --- ВУМ, тогда \(\exists L\) --- тоже ВУМ, конечное множество \(K\), такие, что \(S \cong \omega \cdot L + K\)
 \end{theorem}
 
+\begin{theorem}[О трансфинитной рекурсии]
+    Пусть задано рекурсивное правило:
+    \[F: f|_{[0, x)} \mapsto f(x) \in R\]
+    Тогда \(\exists! f: S \ra R\), т.ч. \(\forall x f(x) = F(f|_{[0, x)})\)
+    % Если задано правило \(f(x) = F(f|_{[0, x)})\), то есть ровно одна \(f\), которая соответствует правилу.
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[] \textbf{Единственность}. Пусть \(f, g\) --- 2 подходящие функции.
+        \[\{x | f(x) \ne g(x)\} \ne \emptyset \Ra \exists m = \min\{x| f(x) \ne g(x)\} \Ra f|_{[0, m)} = g|_{[0, m)}\]
+        Но тогда \(f(m) = F(f|_{[0, m)}) = F(g|_{[0, m)}) = g(m)\), противоречие.
+
+        \item[] \textbf{Cуществование}. По трансфинитной индукции докажем сущесвование \(f|_{[0, x)}\), соответствующее \(F\).
+        \[\forall y < x \exists f|_{[0, y)} \Ra \exists f|_{[0, x)}\]
+        \begin{enumerate}
+            \item \(x = w + 1 \Ra \exists f|_{[0, w)}, f(w) = F(f|_{[0, w)})\)
+            \item \(x\) --- предельное
+            \[y < x \Ra \exists z: y < z < x\]
+            \[z < x \Ra \exists f: [0, z) \ra R\]
+            Так и доопределяем \(f(y)\) (если разные \(z\) дают разные значения, то противоречие аналогично с доказательством единственности). То есть \(\forall y < x\) задано \(f(y) \Ra f\) задано на \([0, x)\).
+        \end{enumerate}
+    \end{enumerate}
+    По трансфинитной индукции получили, что \(\forall x \phi(x)\). 
+    Теперь нужно сделать последний переход ко всему множеству (\textit{Прим. от автора:} мы научились делать ее на начальных отрезках \(\Ra\) для ''самых больших элементов'' потенциально могут быть проблемы, т.к. начальные отрезки --- полуинтервалы. Их мы и будем чинить последним переходом). Если в множестве есть наибольший элемент, то доопределяем так же, как и в случае а) (Важно: наибольший элемент может быть предельным). Если наибольшего элемента нет, то доопределяем значение, как в пункте б).
+\end{proof}
+\begin{theorem}[Обобщенная теорема о трансфинитной рекурсии]
+    \(F\) может быть частично определена, тогда \(f\) определена на начальном отрезке.
+\end{theorem}
+\begin{proof}
+    Добавим значение \(f(x) = \perp\), если функция \(f\) не определена в точке \(x\). Тогда по теореме о Трансфинитной рекурсии, \(\exists! f: S \ra R \cup \{\perp\}\).
+\end{proof}
 \begin{theorem}[О сравнимости ВУМов]
     Любые два ВУМа либо изоморфны, либо один из них изоморфен начальному отрезку другого.
 \end{theorem}
 \begin{proof}
-    Рекурсивно построим \(f: A \ra B\). Пусть \(f\) определена на \([0, x) \subset A\). Тогда определим \(f(x) = \min(B \setminus f([0, x)))\) (рекурсивно). 
-    \begin{theorem}[О трансфинитной рекурсии]
-        Если задано правило \(f(x) = F(f|_{[0, x)})\), то есть ровно одна \(f\), которая соответствует правилу.
-    \end{theorem}
-    \begin{proof}\indent
-        \begin{enumerate}
-            \item[] \textbf{Единственность}. Пусть \(f, g\) --- 2 подходящие функции.
-            \[\{x | f(x) \ne g(x)\} \ne \emptyset \Ra \exists m = \min\{x| f(x) \ne g(x)\} \Ra f|_{[0, m)} = g|_{[0, m)}\]
-            Но тогда \(f(m) = F(f|_{[0, m)}) = F(g|_{[0, m)}) = g(m)\), противоречие.
-
-            \item[] \textbf{Cуществование}. По трансфинитной индукции докажем сущесвование \(f|_{[0, x)}\), соответствующее \(F\).
-            \[\forall y < x \exists f|_{[0, y)} \Ra \exists f|_{[0, x)}\]
-            \begin{enumerate}
-                \item \(x = w + 1 \Ra \exists f|_{[0, w)}, f(w) = F(f|_{[0, w)})\)
-                \item \(x\) --- предельное --- в следующий раз
-            \end{enumerate}
-        \end{enumerate}
-    \end{proof}
-    \begin{theorem}[Обобщенная теорема о трансфинитной рекурсии]
-        \(F\) может быть частично определена, тогда \(f\) определена на начальном отрезке.
-    \end{theorem}
+    Строим \(f: S \ra T\), заданное правилом \(F(f|_{[0, x)}) = \min (T \setminus f([0, x)))\). По обобщенной теореме о трансфинитной рекурсии, \(\exists! f\), соответствующая \(F\). Есть два случая:
+    \begin{enumerate}
+        \item \(f\) определена на \(S\). \(Im_f = \left[\begin{array}{l}
+            T \\
+            \left[0, t\right)
+        \end{array}\right.\). Тогда  иначе \(\exists t_1 < t_2: t_1, t_2 \notin Im_f\).
+        \item \(f\) определена на \([0, s) \Ra Im_f = T\), иначе доопределим \(f(s)\)
+    \end{enumerate}
 \end{proof}
+
+\begin{proposition}
+    \(S\) --- ВУМ, \(s \in S \Ra s \not\cong [0, s)\)
+\end{proposition}
+\begin{proof}
+    Иначе \(\exists\) монотонная \(g: S \ra [0, s) \Ra\) т.к. \(g(s) \ge s\) (нетрудно доказать) \(\Ra g(s) \notin [0, s)\), противоречие.
+\end{proof}
+\begin{corollary}
+    Из \(S \cong T, S \cong [0, t), T \cong [0, s)\) выполнено ровно 1 утверждение
+\end{corollary}
+
+\section{Ординалы}
+\begin{definition}
+    \(S\) --- транзитивно, если \(y \in S, x \in y \Ra x \in S\).
+\end{definition}
+\begin{example}
+    \(\emptyset, \{\emptyset\}\) и все элементы \(\N\)
+\end{example}
+\begin{example}
+    \(\{\emptyset, \{\emptyset\}, \{\{\emptyset\}\}\}\)
+\end{example}
+\begin{definition}
+    Ординал --- транзитивное множество, любой элемент которого --- транзитивен.
+\end{definition}
+
+Неформально --- порядковый тип (отношение эквивалентности на всех множествах)
+
+\begin{proposition}
+    \(\alpha\) --- ординал, тогда \(\beta \subset \alpha\) --- тоже.
+\end{proposition}
+\begin{proof}
+    \(\beta\) --- транзитивно, т.к. \(\beta\) --- элемент ординала. \(\gamma \in \beta \Ra\) по транизитивности \(\alpha \Ra \gamma \in \alpha \Ra \gamma\) --- транзитивно.
+\end{proof}
+
+\begin{proposition}
+    \(\alpha\) --- ординал \(\Ra \alpha \cup \{\alpha\}\) --- ординал.
+\end{proposition}
+\begin{proof}
+    \[\beta \in \alpha \cup \{\alpha\} \Ra \beta \in \alpha \vee \beta = \alpha\] 
+    В обоих случаях, \(\beta\) транзитивно.
+    Теперь рассмотрим \(\gamma \in \beta\). 
+    \[\begin{array}{l}
+        \beta \in \alpha \Ra \gamma \in \alpha \\
+        \beta = \alpha \Ra \gamma \in \alpha
+    \end{array}\]
+    Т.к. \(\alpha\) --- транзитивно, то и \(\gamma\) --- тоже.
+\end{proof}
+\begin{proposition}
+    Объединение любого множества ординалов --- ординал.
+\end{proposition}
+\begin{proof}
+    \[\alpha = \bigcup_{i \in I}\alpha_i\]
+    \[\gamma \in \beta, \beta \in \alpha \Ra \gamma \in \beta, \beta \in \alpha_i \Ra \beta, \gamma \in \alpha_i\]
+    \(\Ra \beta, \gamma\) транзитивны
+\end{proof}
+
+\begin{proposition}
+    Ординал --- ВУМ с отношением \(\in\) (как строгого порядка)
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+
+\begin{theorem}
+    Любой ординал --- ВУМ, с отношением порядка \(\in\), при этом отношение ''быть начальным отрезком'' --- тот же порядок. Подмножества являющиеся ординалами --- тоьлко начальные отрезки. То есть \(\in, \subset, \text{''быть начальным отрезком''}\) --- один и тот же порядок, называемый ординальным
+\end{theorem}

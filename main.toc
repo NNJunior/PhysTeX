@@ -1,0 +1,8 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Вступление}{2}{section.1}%
+\contentsline {section}{\numberline {2}Фундированные множества}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Свойства, эквивалентные фундированности}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Непосредственно следующие элементы}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Предельные элементы}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Сложение и умножение Фундированных множеств и ВУМов}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Ординалы}{7}{section.3}%
