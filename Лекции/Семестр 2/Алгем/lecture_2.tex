@@ -1,0 +1,121 @@
+% !TEX root = ../../../main.tex
+
+\section{Неприводимые многочлены}
+\begin{definition}
+    Пусть \(F\) --- поле, \(F[x]\) --- кольцо многочленов над \(F\). Многочлен \(P \in F[x], \deg P > 0\) называется наприводимым, если \(AB = P \Ra \deg A = 0 \vee \deg B = 0\). Иначе говоря, многочлен неприводим над полем \(F\), если он не раскладывается в произведение многолченов более низких степеней.
+\end{definition}
+
+\begin{example}
+    \(x^2 + 1 \in \R[x]\) --- неприводим. Очев, т.к. не имеет корней.
+\end{example}
+\begin{example}
+    \(x^2 + 1 = (x - i)(x + i) \in \Cm[x]\)
+\end{example}
+\begin{proposition}
+    \(P\) --- неприводимый, тогда \(\forall A: (A, P) = \left[\begin{array}{l}
+        \sim 1 \\
+        \sim P
+    \end{array}\right.\)
+\end{proposition}
+\begin{proof}
+    По-другому быть не может, т.к. у \(P\) нет делителей, кроме 1 и самого себя.
+\end{proof}
+\begin{lemma}[Евклида]
+    Пусть \(P\) --- неприводиный многочлен, \(AB \vdots P \Ra A \vdots P \vee B \vdots P\).
+\end{lemma}
+\begin{proof}
+    От противного, тогда \(A \not\vdots P, B \not\vdots P\). Тогда по теореме о представлении НОДа в виде линейной комбинации:
+    \[(A, P) = u_1A + u_2P = 1\]
+    \[u_1AB + u_2PB = B \vdots P\]
+    Противоречие
+\end{proof}
+
+\begin{theorem}[Основная Теорема Арифметики]
+    Пусть \(A\) --- ненулевой многочлен из \(F[x], F\) --- поле. Тогда \(\exists! P_1, P_2 \dots P_n\) c точностью до перестановки множителей и домножения на константу, где \(P_i\) --- неприводим и \(A = \Pi_{i = 1}^n P_i\).
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[] \textbf{Существование.} По индукции: либо он неприводим и очев, либо нет, тогда разложим и для каждого множителя разложим его.
+        \item[] \textbf{Единственность.} Пусть не единственно, будем тогда сокращать на \(P_1, P_2, \dots\). Получим, что в разложении должны содержаться многочлены, пропорциональные \(P_1, \dots P_n\) соответственно
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    Если \(A \vdots P\), то разложение \(A\) является подмножеством разложения \(P\)
+\end{corollary}
+
+\subsection{Корни многочленов}
+
+\begin{definition}
+    Многолчен \(P\) имеет корень \(c\) кратности \(k\), если \(P\vdots (x-c)^k, P \not\vdots(x-c)^{k+1}\)
+\end{definition}
+
+\begin{definition}
+    Если многочлен раскладывается в произведение линейных множителей над полем \(F\), то он называется линейно факторизуемым над ним.
+\end{definition}
+
+\begin{note}
+    Основная Теорема Арифметики неверна (разложение может быть не единственным) для случаев, когда \(F\) --- коммутативное кольцо.
+\end{note}
+
+\subsection{Основная Теорема Алгебры}
+
+На лекции было миллион лемм и вспомогательных утвеждений, но я просто вставлю доказательство из лекции по матану, потому что я так могу (и потому что доказательство идейно не отличается от него).
+
+\begin{theorem}[Больцано-вейерштрасса]
+    Пусть $\{z_n\}$ ограничена, то есть $\exists C > 0: \forall n (|z_n| \le C)$. Тогда у нее существует сходящаяся подпоследовательность
+\end{theorem}
+\begin{proof}
+    По обычной теореме Больцано-Вейерштрасса, ищем подпоследовательность, действительная часть которой имеет предел. В ней выбираем последовательность, мнимая часть которой имеет предел. Получили.
+\end{proof}
+
+\begin{definition}
+    Функция $f: E \subset \Cm \rightarrow \Cm$ непрерывна в точке $z_0$, если $\forall \{z_n\} \subset E (z_n \rightarrow z_0 \Rightarrow f(z_n) \rightarrow f(z_0))$.
+\end{definition}
+
+\begin{proposition}
+    Пусть $f: \{|z| \le R\} \rightarrow \R$ непрерывна на $\Cm$. Тогда $\exists z_0, |z_0| \le R, \inf_{|z| \le R} f(z) = f(z_0)$.
+\end{proposition}
+\begin{proof}
+    $$m = \inf_{|z| \le R} f(z)$$
+    Рассмотрим $r_n \rightarrow m, r_n > m$. $\exists z_n, |z_n| \le R, m \le f(z_n) \le r_n$
+    В частности, $f(z_n) \rightarrow m$. При этом, $\{z_n\}$ --- ограничена, $\Rightarrow \exists z_{n_k} \rightarrow  z_0 \Rightarrow |z_0| \le R$. В частности $||z| - |z_0|| \le |z - z_0|$. В силу непрерывности $f$ в $z_0$: $f(z_{n_k}) \rightarrow f(z_0), f(z_{n_k}) \rightarrow m \Rightarrow m = f(z_0)$.
+\end{proof}
+
+\begin{theorem}
+    Пусть \(f \in \Cm[z], \deg f > 0\). Тогда \(f\) имеет корень.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Покажем, что $\exists z_0 \in \Cm \inf_{z \in \Cm} |P(z)| = |P(z_0)|$. Для начала возьмем $R \ge 1$. 
+        $$\left|\sum_{k = 0}^{n-1} a_kz^k\right| \le \sum_{k = 0}^{n-1} |a_k||z|^k \le |z|^n\sum_{k = 0}^{n-1}|a_k| = A$$
+        Теперь рассмотрим $|z| \ge \frac{2A}{|a_n|} \Rightarrow A|z|^{n-1} \le \frac{1}{2}|a_n||z|^n$. Тогда $|P(z)| \ge |a_nz^n| - \left|\sum_{k = 0}^{n-1}a_kz^k\right| = \frac{1}{2}|a_n|z^n$. Возьем радиус $R = \max\left\{1, \frac{2A}{|a_n|}, \sqrt[n]{\frac{2|a_0|}{|a_n|}}\right\}$. Тогда при $|z| \ge R$ выполнено $|P(z)| \ge |P(0)|$, поэтому $\inf_{\Cm}|P(z)| = \inf_{|z| \le R}|P(z)|$. Но тогда найдется такое $|z_0| \le R$, что у нас $\inf_{\Cm}|P(z)| = |P(z_0)|$
+        \item Докажем, что если $P(z_0) \ne 0$, то $\exists z_* \in \Cm |P(z_*)| < |P(z_0)|$. Рассмотрим многочлен $Q(z) = \frac{P(z + z_0)}{P(z_0)}$. Тогда $Q(0) = 1$. Обозначим через $\alpha_k$ --- наименьший коэффициент $Q$, отличный от 0 и $k \ge 1$. $Q(z) = 1 + \alpha_kz^k + \dots$. Возьмем $z_1 \in \Cm$, $\alpha_kz_1^k = -1$, пусть $t \in (0, 1)$. $Q(tz_1) = 1 - t^k + t^{k+1}\phi(t)$, $\phi(t)$ --- многочлен степени $n - k - 1$. $C$ --- наибольший из модулей коэффициентов $\phi(t)$, тогда $|\phi(t)| \le C(n - k)$. Тогда
+        $$Q(tz_1) < 1 - t^k|\phi(t)| \le 1 - t^k(1 - tC(n - k))$$
+        Рассмотрим произвольное $t \in \left(0, \frac{1}{C(n - k)}\right)$. Тогда $|Q(tz_1)| < 1$. Но тогда при $z_* = tz_1$ верно, что $|P(z_*)| < |P(z_0)|$
+        
+        Но тогда, точка $z_0$ (из первого пункта) такова, что $P(z_0) = 0$.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Следствия из основной теоремы алгебры}
+\begin{definition}
+    Поле \(F\) называется алгебраически замкнутым, если \(\forall f \in F[x], \deg f > 0\) он имеет хотя бы один корень.
+\end{definition}
+\begin{corollary}
+    Поле \(\Cm\) --- алгебраически замкнуто
+\end{corollary}
+\begin{corollary}
+    Любой многолчен из \(\Cm\) --- линейно факторизуем.
+\end{corollary}
+\begin{corollary}
+    Любой многолчен из \(\R\) раскладывается в произведение многочленов 1 и 2 степени
+\end{corollary}
+\begin{proof}
+    Пусть \(c \notin \R\) --- корень \(f\). Тогда \(\overline{c}\) --- тоже. Но тогда \(f \vdots (x - c)(x - \overline{c})\)
+\end{proof}
+
+\subsection{Формальная производная}
+\begin{definition}
+    \[(a_nx^n + \dots + a_1x + a_0)' = na_nx^{n-1} + \dots + 2a_2x + a_1\]
+\end{definition}
