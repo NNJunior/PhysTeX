@@ -122,8 +122,18 @@
 \begin{note}
     Все свойства обычной производной верны
     \begin{enumerate}
-        \item \((fg)' = f'g + fg'\)
-        \item \((f \pm g)' = f \pm g\)
-        \item \(\)
+        \item \((\alpha P + \beta Q)' = \alpha P' + \beta Q'\)
+        \item \((PQ)' = P'Q + PQ'\)
+        \item \(\left(P_1 P_2 P_3 \dots P_{n-1} P_n\right)' = P_1' P_2 P_3 \dots P_{n-1} P_n + P_1 P_2' P_3 \dots P_{n-1} P_n + \dots P_1 P_2 P_3 \dots P_{n-1} P_n' \) 
+        \item \((P^n)' = nP^{n-1}\)
     \end{enumerate}
+    \begin{proof}
+        \begin{enumerate}
+            \item Доказательство по определению: \\ \(\left(\sum_{i = 1}^k \alpha_i x^i\right)' + \left(\sum_{i = 1}^i \beta_k x^{i - 1}\right)' = \left(\sum_{i = 1}^k i \alpha_i x^{i - 1}\right) + \left(\sum_{i = 1}^i i \beta_i x^{i - 1}\right)' = \\ = \sum_{i = 0}^k (\alpha_i + \beta_i) \cdot i x^{i - 1} = \left(\sum_{i = 0}^k (\alpha_i + \beta_i) x^i\right)'\)
+            \item Раскроем скобки:
+            \(\left(\sum_{i = 0}^k \alpha_i x^i \cdot Q(x)\right)' = \left(\sum_{i = 0}^k \sum_{j = 0}^l \alpha_i \beta_j x^{i + j}\right)' = \\ = \sum_{i = 0}^k \sum_{j = 0}^l (i + j)\alpha_i \beta_j x^{i + j - 1} = \sum_{i = 0}^k \sum_{j = 0}^l i \alpha_i \beta_j x^{i + j - 1} + \sum_{i = 0}^k \sum_{j = 0}^l j \alpha_i \beta_j x^{i + j - 1} = \\ = P'Q + PQ'\)
+            \item Индукция: \textit{База} $n = 2 \to \text{см п. 2}$. \textit{Переход:} Объединим $P_{n-1}P_n$ в $Q \to$ 2 раза п. 2.
+            \item Применяем п. 4 для $P_1 = P_2 = \dots = P_{n-1} = P_n = P$
+        \end{enumerate}
+    \end{proof}
 \end{note}
