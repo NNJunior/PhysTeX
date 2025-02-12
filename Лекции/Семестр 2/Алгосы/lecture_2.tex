@@ -1,0 +1,163 @@
+% !TEX root = ../../../main.tex
+
+\section{Продолжение ДП}
+
+\subsection{Рюкзак с оптимизацией}
+
+\begin{enumerate}
+  \item[$\longrightarrow$] \(w\) предметов
+  \item[$\longrightarrow$] \(w_i\) - вес
+  \item[$\longrightarrow$] \(c_i\) - стоимость  
+\end{enumerate}
+
+Решение мы помним с прошлой лекции, а сейчас займемся оптимизацией памяти:
+
+\(dp[i][\circ]\) зависят только от $dp[i - 1][\circ]$, поэтому нам достаточно хранить не всю таблицу целиком, а всего 2 слоя, с которыми мы работаем.
+
+Итог - память \(O(W)\)
+
+\subsubsection{Альтернативный вариант}
+
+Будем действовать от стоимости предметов:
+
+\begin{enumerate}
+  \item Заводим массив $dp[0\dots n-1][0\dots C-1]$, где $C = \sum_{i = 0} ^ {n - 1} c_i$
+  \item $dp'[i][b]$ - min суммарный вес предметов, имеющих номера \(\le i\), и общую стоимость b
+  \item $dp'[i][b] = min(dp[i-1][b], dp'[i-1][b-c_i] + w_i$)
+\end{enumerate}
+\textit{Это используется, если суммарная стоимость значительно меньше суммарного веса.}
+
+\subsection{Динамическое программирование с помощью матриц}
+Попробуем найти $F_n = F_{n-1} + F_{n-2}$ с методом матриц.
+$$\left(\begin{array}{c}
+  F_n \\
+  F_{n-1}
+\end{array}\right) = \left(\begin{array}{c c}
+ 1 & 1 \\
+  1 & 0
+\end{array}\right) \cdot \left(\begin{array}{c}
+  F_{n-1} \\
+  F_{n-2}
+\end{array}\right) = \left(\begin{array}{c c}
+  1 & 1 \\
+   1 & 0
+ \end{array}\right) \cdot \left(\begin{array}{c c}
+  1 & 1 \\
+   1 & 0
+ \end{array}\right) \cdot \left(\begin{array}{c}
+   F_{n-2} \\
+   F_{n-3}
+ \end{array}\right) = \left(\begin{array}{c c}
+  1 & 1 \\
+   1 & 0
+ \end{array}\right)^{n-1}\cdot \left(\begin{array}{c}
+  F_{1} \\
+  F_{0}
+\end{array}\right)$$
+
+\textsc{\textbf{Бинарное возведение матрицы в степень}}
+
+Проводится так же, как и для натуральных чисел:
+
+\begin{equation}
+  a^n =
+  \begin{cases}
+    1,& \text{если $n$ = 0} \\
+    \left(a^{\frac{n}{2}}\right)^2,& \text{если $n$ четно}\\
+    a \cdot a ^ {n-1},& \text{если $n$ нечетно}
+  \end{cases}
+\end{equation}
+
+Если две матрицы имеют размеры $k \times k$, то их произведение можно найти за $O(k^3)$
+
+Тогда $A^n$ описанным алгоритмом находится за $O(k^3 \log{n})$
+
+ \underline{Задача} $a_n = \lambda a_{n - 1} + \mu a_{n-2} + 1$
+$$\left(\begin{array}{c}
+  a_n \\
+  a_{n-1} \\
+  1
+\end{array}\right) = \left(\begin{array}{c c c}
+  \lambda & \mu & 1 \\
+  1 & 0 & 0\\
+  0 & 0 & 1
+\end{array}\right) \cdot \left(\begin{array}{c c c}
+  a_{n-1} \\
+  a_{n-2} \\
+  1
+\end{array}\right)$$
+
+Взяв произведение этих матриц, получим ответ за $O(3^3 \log{n})$
+
+ \underline{Задача} Пусть $G$ -- невзвешенный ориентированный граф. Найти количество путей длины ровно \(k\) из вершины $x$ в вершину $y$ 
+ 
+ \textit{На ввод дается матрица смежности $M$, где $m_{ij}$ = 1 $\Leftrightarrow$ есть ребро $i \to j$, а 0 иначе.}
+
+ Пусть $dp[v][l]$ - количество путей длины $l$ от $x$ до $v$.
+
+ Тогда $dp[v][l] = \sum_{u \in v: M_{uv} = 1} dp[u][l - 1]$
+ $$\left(\begin{array}{c}
+  dp[1][l]\\
+  dp[2][l] \\
+  \ddots \\
+  dp[v][l]\\
+  \ddots\\
+  dp[n][l]
+ \end{array}\right) = M^T \cdot \left(\begin{array}{c}
+  dp[1][l - 1]\\
+  dp[2][l - 1] \\
+  \ddots \\
+  dp[v][l - 1]\\
+  \ddots\\
+  dp[n][l - 1]
+ \end{array}\right)$$
+
+\textbf{Комментарий от эксперта:}
+
+\texttt{Пересчет динамики получается домножением столбца $dp[v][i-1]$ на транспонированную матрицу смежности слева}
+\begin{proposition}
+  $M^k$ - количество путей из $u$ в $v$ длины ровно $k$.
+\end{proposition}
+
+\subsection{Задача} Найти количество путей длины \(\leq k\) из $x$ в $y$.
+
+Можно найти ответ из суммы $(M^0 + M^1 + \dots + M^k)_{xy}$, но как ее посчитать быстро?
+
+Введем $f(M, k) = (M^k, M^0 + M^1 + \dots + M^{k - 1}).$
+\begin{enumerate}
+  \item $k = 0 \to f(M, k) = (E, E)$
+  \item  $k \cancel{\vdots} 2 \to f(M, k - 1) = (M^{k - 1}, M^0 + M^1 + \dots + M^{k - 2})$, откуда $f(M, k) = f(M, k - 1)$, в котором умножили первый элемент на $M$, предварительно прибавив его ко второму.
+  \item  $k \vdots 2$, $f(M, k)$ получается из $f(M, \frac{k}{2})$ умножением первой части, увеличенной на 1, на вторую и возведением первой части в квадрат.
+\end{enumerate}
+
+\textsc{\textbf{Второй комментарий от эксперта:}}
+
+\texttt{По формуле геометрической прогрессии $\sum_{i = 0} ^ {k} M^{i} = (M^{k + 1} - E) \cdot {(M - E) ^ {-1}}.$ Если $M - E$ необратима, подкрутим её коэффициент на 0.00001.}
+
+\subsection{Задача} 
+Пусть $G$ - граф. Надо проверить, есть ли хотя бы 1 путь из \(x\) в \(y\) длины ровно $k$?
+
+$$d[v][l] = \bigvee_{u}(dp[u][l - 1] \wedge M_{uv})$$
+
+Обозначим $A * B = C$, где $*$ - булевское умножение, такое выражение:
+
+$$c_{ij} = \bigvee_{k}(A_{ik} \wedge B_{kj})$$
+\begin{proposition}
+  $M^{*k}_{uv} = 1, \text{если есть пусть $u \to v$, а иначе 0}$
+
+  Такое тоже работает за $O(n^3 \log{k})$
+\end{proposition}
+\subsection{Задача} $G$ - взвешенный граф. Хотим найти $min$ стоимость пути длины ровно $k$ из $x$ в $y$.
+
+Пусть $dp[v][l]$ - минимальная стоимость пути $x \to v$ за $l$ ребер.
+Тогда его можно найти по формуле $min(dp[u][l-1] + cost(u, v))$
+
+Обозначим: $A \circ B = C$, где $$c_{ij} = min_{k}(a_{ik} + b_{kj})$$
+
+$(A \circ B) \circ C = A \circ (B \ circ C)$
+
+\begin{proposition}
+  
+  $M^{\circ k}$ - минимальная стоимость пути из $u$ в $v$, используя ровно $k$ ребер.
+\end{proposition}
+
