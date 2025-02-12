@@ -31,7 +31,7 @@
 \end{proof}
 
 \begin{note}
-    Условия 1, 2 выолпнены если \(f\) непрерывна и имеет ограниченную первообразную на \([a, b)\), а \(g\) дифференцируема и \(g'\) сохраняет знак на \([a, b)\).
+    Условия 1, 2 выполнены если \(f\) непрерывна и имеет ограниченную первообразную на \([a, b)\), а \(g\) дифференцируема и \(g'\) сохраняет знак на \([a, b)\).
 \end{note}
 
 \begin{example}
@@ -56,3 +56,76 @@
     \end{enumerate}
     Тогда \(I(\alpha)\) сходится при \(\alpha > 0\) и абсолютно сходится при \(\alpha > 1\)
 \end{example}
+
+\begin{theorem}[Признак Абеля]
+    Пусть \(f, g\) локально интегрируемы на \([a, b)\), причем
+    \begin{enumerate}
+        \item \(\int_a^b f(x)dx\) сходится
+        \item \(g\) монотонна на \([a, b)\)
+        \item \(g\) ограничена на \([a, b)\)
+    \end{enumerate}
+    Тогда 
+    \[\int_a^b f(x)g(x) dx\]
+    сходится.
+\end{theorem}
+\begin{proof}
+    Из монотонности и ограниченности следует, что \(\exists \lim_{x \ra b - 0} g(x) = c 
+    \in \R\). Поэтому \(\int_a^b f(x)(g(x) - c)dx\) сходится, но тогда \(\int_a^b f(x)g(x)dx = \int_a^bf(x)(g(x) - c)dx + c\int_a^b f(x)dx\) --- сходится
+\end{proof}
+
+\begin{example} 
+\[\int_1^{+\infty}\frac{\sin x}{\sqrt{x} - \sin x}dx\]
+\[\frac{\sin x}{\sqrt{x} - \sin x} \sim_{x \ra +\infty} \frac{\sin x}{\sqrt{x}}\]
+Так делать нельзя, т.к. свойство, котоыре мы использовали выше, рабоатет только для неотрициательных функций. Как правильно:
+
+\[g(x) = \frac{\sin x }{\sqrt{x}} = \frac{\sin x(\sqrt{x} - (\sqrt{x} - \sin x))}{\sqrt{x}(\sqrt{x} - \sin x)}\]
+\[g(x) = \frac{\sin^2 x}{x(1 - \frac{\sin x}{\sqrt{x}})} \sim \frac{\sin^2 x}{x} = \frac{1}{2} \left(\frac{1}{x} - \frac{\cos x}{x}\right) \ge 0 \Ra \int_1^{+\infty} g(x)dx \text{ --- расходится}\]
+\end{example}
+
+\begin{center}
+    \foo{Короче говоря, принцип сравнения для знакопеременных функций не применим}
+\end{center}
+
+\begin{corollary}[Из теоремы 4]
+    Пусть \(f, g\) локально интегрируемы на \([a, b)\) и \(g\) монотонна на \([a, b)\), \(\lim_{x \ra b - 0} g(x) = c \in \R \setminus \{0\}\). Тогда \(\int_a^b f(x)g(x)dx, \int_a^b f(x)dx\) либо одновременно расходятся, либо одновременно сходятся условно, либо одновременно сходятся абсолютно.
+\end{corollary}
+\begin{proof}
+    Из сходимости \(\int_a^b f(x)dx\) следует сходимость \(int_a^b f(x)g(x)dx\) по теореме 4. Т.к. \(c 
+    \ne 0\), то \(\exists a^* \in [a, b) \forall x \in [a^*, b) (g(x) \ne 0)\). Следовательно, \(f = fg \cdot \frac{1}{g}\) на \([a, b)\). По теореме 4, сходимость \(\int_{a^*}^bf(x)g(x)dx\) влечет \(\int_{a^*}^b f(x)dx\), а значит, \(\int_a^b f(x)dx\) сходится
+\end{proof}
+
+\subsection{Несобственные интегралы с несколькими особенностями}
+\begin{definition}
+    Пусть \(a < b \in \overline{\R}\), функция \(f\) определена на \(a, b\) за исключением, быть может, конечного числа точек. 
+    \begin{enumerate}
+        \item Точка \(c \in (a, b)\) называется особенностью \(f\), если \(\forall [\alpha, \beta]: c \in [\alpha, \beta] \subset (a, b)\) функция \(f \notin R[\alpha, \beta]\). 
+        
+        \item Точка \(b\) называется особенностью \(f\), если либо $b = +\infty$, либо $b \in \R$ и $f \cancel{\in} R[\alpha, b] \forall a < \alpha < b$
+
+        \textit{Заметим, что такое определение работает для любого доопределения $f$ в точке $b$.}
+    \end{enumerate}
+\end{definition}
+    \begin{note}
+        $f$ не имеет особенностей на $(c, d) \rightarrow$ $f$ локально интегрируема на $(с, d)$.
+    \end{note}
+    \begin{proof}
+        Пусть $[u,v] \subset (a,b)$
+        Докажем, что $f \in R [u,v]$
+        По условию $\forall x \in [u,v] \exists [\alpha_x,\beta_x]$
+        $$\bigcup_{x \in [u, v]}(\alpha_x, \beta_x) \supset [u, v]$$
+        Тогда по лемме Гейне-Бореля есть конечное покрытие этого отрезка. 
+        Рассмотрим его.
+        По аддитивности $f$ интегрируема на некотором отрезке, содержащем $[u, v] \Rightarrow$ и на $[u, v]$
+    \end{proof}
+    \begin{definition}
+        Пусть $c_1 < c_2 < \dots < c_{N-1} $ - все особенности функции $f$ на $(a, b)$, причем определим \(c_0 = a, c_N = b\).
+
+    \angsq{\text{$\xi_k \in (c_{k-1}, c_k), \text{ где } k \in \{1, 2, \dots, N\}$}}
+    \end{definition}
+
+    Несобственным интегралом $\int_{a}^b f(x) dx$ называется совокупность интегралов $\int_{c_{k-1}}^{\xi_k}f(x)dx$ и $\int_{\xi_k}^{c_k} f(x)dx$
+
+    Причем если все интегралы и их суммы имеют смысл в $\overline{\R}$, то несобственным интегралом называют именно сумму.
+        
+    
+        

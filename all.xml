@@ -12,7 +12,7 @@
     <subject name="Многомерный анализ" description="Коллега рассказывает про матан" setting="Лекции/Семестр 2/Матан/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Лекции/Семестр 2/Матан/setting" date="05.02.25"/>
       <lecture name="Лекция 2" path="Лекции/Семестр 2/Матан/lecture_2" description="Продолжаем свойства несобственных интегралов" setting="Лекции/Семестр 2/Матан/setting" date="07.02.25"/>
-      <lecture name="Лекция 3" path="Лекции/Семестр 2/Матан/lecture_3" description="Продолжаем свойства несобственных интегралов" setting="Лекции/Семестр 2/Матан/setting" date="11.02.25"/>
+      <lecture name="Лекция 3" path="Лекции/Семестр 2/Матан/lecture_3" description="Абсолютная сходимость, лемма Дирихле, Абеля" setting="Лекции/Семестр 2/Матан/setting" date="11.02.25"/>
     </subject>
     <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Лекции/Семестр 2/ОКТЧ/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/ОКТЧ/lecture_1" description="Квадратичные вычеты. Начало" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="06.02.25"/>
