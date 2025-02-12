@@ -1,5 +1,60 @@
 % !TEX root = ../../../main.tex
 
+\begin{theorem}[О трансфинитной рекурсии]
+    Пусть задано рекурсивное правило:
+    \[F: f|_{[0, x)} \mapsto f(x) \in R\]
+    Тогда \(\exists! f: S \ra R\), т.ч. \(\forall x f(x) = F(f|_{[0, x)})\)
+    % Если задано правило \(f(x) = F(f|_{[0, x)})\), то есть ровно одна \(f\), которая соответствует правилу.
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[] \textbf{Единственность}. Пусть \(f, g\) --- 2 подходящие функции.
+        \[\{x | f(x) \ne g(x)\} \ne \emptyset \Ra \exists m = \min\{x| f(x) \ne g(x)\} \Ra f|_{[0, m)} = g|_{[0, m)}\]
+        Но тогда \(f(m) = F(f|_{[0, m)}) = F(g|_{[0, m)}) = g(m)\), противоречие.
+
+        \item[] \textbf{Cуществование}. По трансфинитной индукции докажем сущесвование \(f|_{[0, x)}\), соответствующее \(F\).
+        \[\forall y < x \exists f|_{[0, y)} \Ra \exists f|_{[0, x)}\]
+        \begin{enumerate}
+            \item \(x = w + 1 \Ra \exists f|_{[0, w)}, f(w) = F(f|_{[0, w)})\)
+            \item \(x\) --- предельное
+            \[y < x \Ra \exists z: y < z < x\]
+            \[z < x \Ra \exists f: [0, z) \ra R\]
+            Так и доопределяем \(f(y)\) (если разные \(z\) дают разные значения, то противоречие аналогично с доказательством единственности). То есть \(\forall y < x\) задано \(f(y) \Ra f\) задано на \([0, x)\).
+        \end{enumerate}
+    \end{enumerate}
+    По трансфинитной индукции получили, что \(\forall x \phi(x)\). 
+    Теперь нужно сделать последний переход ко всему множеству (\textit{Прим. от автора:} мы научились делать ее на начальных отрезках \(\Ra\) для ''самых больших элементов'' потенциально могут быть проблемы, т.к. начальные отрезки --- полуинтервалы. Их мы и будем чинить последним переходом). Если в множестве есть наибольший элемент, то доопределяем так же, как и в случае а) (Важно: наибольший элемент может быть предельным). Если наибольшего элемента нет, то доопределяем значение, как в пункте б).
+\end{proof}
+\begin{theorem}[Обобщенная теорема о трансфинитной рекурсии]
+    \(F\) может быть частично определена, тогда \(f\) определена на начальном отрезке.
+\end{theorem}
+\begin{proof}
+    Добавим значение \(f(x) = \perp\), если функция \(f\) не определена в точке \(x\). Тогда по теореме о Трансфинитной рекурсии, \(\exists! f: S \ra R \cup \{\perp\}\).
+\end{proof}
+\begin{theorem}[О сравнимости ВУМов]
+    Любые два ВУМа либо изоморфны, либо один из них изоморфен начальному отрезку другого.
+\end{theorem}
+\begin{proof}
+    Строим \(f: S \ra T\), заданное правилом \(F(f|_{[0, x)}) = \min (T \setminus f([0, x)))\). По обобщенной теореме о трансфинитной рекурсии, \(\exists! f\), соответствующая \(F\). Есть два случая:
+    \begin{enumerate}
+        \item \(f\) определена на \(S\). \(Im_f = \left[\begin{array}{l}
+            T \\
+            \left[0, t\right)
+        \end{array}\right.\). Тогда  иначе \(\exists t_1 < t_2: t_1, t_2 \notin Im_f\).
+        \item \(f\) определена на \([0, s) \Ra Im_f = T\), иначе доопределим \(f(s)\)
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    \(S\) --- ВУМ, \(s \in S \Ra s \not\cong [0, s)\)
+\end{proposition}
+\begin{proof}
+    Иначе \(\exists\) монотонная \(g: S \ra [0, s) \Ra\) т.к. \(g(s) \ge s\) (нетрудно доказать) \(\Ra g(s) \notin [0, s)\), противоречие.
+\end{proof}
+\begin{corollary}
+    Из \(S \cong T, S \cong [0, t), T \cong [0, s)\) выполнено ровно 1 утверждение
+\end{corollary}
+
 \begin{theorem}[Цермело]
     У любого множества есть равномощный ему ВУМ
 \end{theorem}
@@ -11,3 +66,158 @@
         \exists A' \subset A: B \cong A' \\
     \end{array}\right.\]
 \end{corollary}
+
+\section{Ординалы}
+\begin{definition}
+    \(S\) --- транзитивно, если \(y \in S, x \in y \Ra x \in S\).
+\end{definition}
+\begin{example}
+    \(\emptyset, \{\emptyset\}\) и все элементы \(\N\)
+\end{example}
+\begin{example}
+    \(\{\emptyset, \{\emptyset\}, \{\{\emptyset\}\}\}\)
+\end{example}
+\begin{definition}
+    Ординал --- транзитивное множество, любой элемент которого --- транзитивен.
+\end{definition}
+
+Неформально --- порядковый тип (отношение эквивалентности на всех множествах)
+
+\begin{proposition}
+    \(\alpha\) --- ординал, тогда \(\beta \subset \alpha\) --- тоже.
+\end{proposition}
+\begin{proof}
+    \(\beta\) --- транзитивно, т.к. \(\beta\) --- элемент ординала. \(\gamma \in \beta \Ra\) по транизитивности \(\alpha \Ra \gamma \in \alpha \Ra \gamma\) --- транзитивно.
+\end{proof}
+
+\begin{proposition}
+    \(\alpha\) --- ординал \(\Ra \alpha \cup \{\alpha\}\) --- ординал.
+\end{proposition}
+\begin{proof}
+    \[\beta \in \alpha \cup \{\alpha\} \Ra \beta \in \alpha \vee \beta = \alpha\] 
+    В обоих случаях, \(\beta\) транзитивно.
+    Теперь рассмотрим \(\gamma \in \beta\). 
+    \[\begin{array}{l}
+        \beta \in \alpha \Ra \gamma \in \alpha \\
+        \beta = \alpha \Ra \gamma \in \alpha
+    \end{array}\]
+    Т.к. \(\alpha\) --- транзитивно, то и \(\gamma\) --- тоже.
+\end{proof}
+\begin{proposition}
+    Объединение любого множества ординалов --- ординал.
+\end{proposition}
+\begin{proof}
+    \[\alpha = \bigcup_{i \in I}\alpha_i\]
+    \[\gamma \in \beta, \beta \in \alpha \Ra \gamma \in \beta, \beta \in \alpha_i \Ra \beta, \gamma \in \alpha_i\]
+    \(\Ra \beta, \gamma\) транзитивны
+\end{proof}
+
+\begin{proposition}
+    Ординал --- ВУМ с отношением \(\in\) (как строгого порядка)
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Антирефлексивность: По Аксиоме фундированности, \(\neg\exists x_1 \ni x_2 \ni x_3 \dots \Ra x \notin x\)
+        \item Антисимметричность: \(\neg\exists x, y (x \in y \wedge y \in x) \Ra\)
+        \item Транзитивность: по определению
+        \item Линейность: \(x\) --- минимальный элемент, не сравнимый с кем-то, а \(y\) --- минимальный, не сравнимый с \(x\).
+        \(z \in x \Ra z \text{ сравнимо с } y\). 
+        
+        Но \(z \ne y\), поэтому \(y \in z \Ra y \in x\), тогда \(z \in y \Ra x \subset y\).
+        
+        Теперь, \(w \in y \Ra w\) --- сравним с \(x, w \ne x\). \(x \in w \Ra x \in y\). Поэтому \(w \in x (\Ra y \subset x)\).
+        Но тогда \(x = y\), противоречие.
+    \end{enumerate}
+\end{proof}
+\begin{proposition}
+    \(\alpha\) --- ординал, \(x \in \alpha \Ra x = [0, x)\)
+\end{proposition}
+\begin{proof}
+    \(y \in x \Ra\) по транизитивности \(y \in \alpha \). \(y \in [0, x)\)  (по определению начального отрезка). \(y \in [0, x) \Ra y < x \Lra y \in x\)
+\end{proof}
+\begin{theorem}
+    Любой ординал --- ВУМ, с отношением порядка \(\in\), при этом отношение ''быть начальным отрезком'' --- тот же порядок. Подмножества являющиеся ординалами --- тоьлко начальные отрезки. То есть \(\in, \subset, \text{''быть начальным отрезком''}\) --- один и тот же порядок, называемый ординальным
+\end{theorem}
+\begin{proof}
+    очев
+\end{proof}
+\begin{theorem}[О сравнимости ординалов]
+    \(\alpha, \beta\) --- ординалы \(\Ra \alpha = \beta, \alpha \in \beta, \beta \in \alpha\)
+\end{theorem}
+\subsection{Конечные ординалы}
+\[\begin{array}{l}
+    0 = \emptyset \\
+    1 = \{\emptyset\} \\
+    2 = \{\emptyset, \{\emptyset\}\} \\ 
+    \vdots \\
+    n + 1 = \{0, 1, 2, \dots n\} \\ 
+\end{array}\]
+
+\subsection{Сложение ординалов}
+Неформально: \(A\) --- ВУМ, \(A \cong \alpha\) --- ординал; \(B\) --- ВУМ, \(B \cong \beta\) --- ординал, тогда \(\alpha + \beta\) --- ординал, изоморфный \(A + B\)
+
+Формально:
+\begin{enumerate}
+    \item \(\alpha + 0 = \alpha\)
+    \item \(\alpha + (\beta + 1) = (\alpha + \beta) + 1\)
+    \item \(\alpha + \bigcup \gamma_i = \bigcup (\alpha + \gamma_i)\)
+\end{enumerate}
+\begin{note}
+    \[1 + \omega = 1 + \bigcup n = \bigcup (1 + n) = \omega \ne \omega + 1\]
+\end{note}
+
+\begin{proposition}
+    \[B \ne \emptyset \Ra A + B \not\cong A\]
+    \[\beta > 0 \Ra \alpha + \beta > \alpha\]
+\end{proposition}
+\begin{proof}
+    Верно, т.к. \(\alpha\) --- начальный отрезок \(\alpha + \beta\)
+\end{proof}
+
+\begin{theorem}[О вычитании]
+    \(\alpha \ge \beta \Ra \exists! \gamma: \beta + \gamma = \alpha\)
+\end{theorem}
+\begin{proof}
+    Рассмотрим \(A \cong \alpha, B \cong \beta \Ra C = A \setminus B\). Тогда \(C\) --- ВУМ, \(\gamma\) --- ординал, \(\cong C\).
+\end{proof}
+
+\subsection{Умножение ординалов}
+\(\alpha \cdot \beta\) --- ординал, изоморфный \(A \cdot B\) (обратный лексикографический порядок)
+\begin{enumerate}
+    \item \(\alpha \cdot 0 = 0\)
+    \item \(\alpha \cdot (\beta + 1) = \alpha\beta + \alpha\)
+    \item \(\alpha \cdot (\bigcup \gamma_i) = \bigcup (\alpha + \gamma_i)\)
+\end{enumerate}
+\begin{note}
+    \[2\cdot \omega = \omega, \omega \cdot 2 = \omega + \omega \ne \omega\]
+\end{note}
+\begin{theorem}[О делении с остатком]
+    Пусть \(\alpha \ne 0, \beta\) --- ординалы. Тогда \(\exists! \gamma, \delta: \beta = \alpha\cdot\gamma + \delta, \delta < \alpha\)
+\end{theorem}
+\begin{proof}
+    Пусть \(\mu\) таково, что \(\alpha \cdot \mu > \beta\)
+\end{proof}
+\subsection{Возведение в степень}
+\begin{enumerate}
+    \item \(\alpha^0 = 1\)
+    \item \(\alpha^{\beta + 1} = \alpha^\beta \cdot \alpha\)
+    \item \(\alpha^{\bigcup \gamma_i} = \bigcup \alpha^{\gamma_i}\)
+\end{enumerate}
+\begin{note}
+    \[2^\omega = \omega\]
+\end{note}
+
+\subsubsection{ВУМ, изоморфный \(\alpha^\beta\)}
+Рассмотрим все функции, которые \(\ne 0\) на конечном числе элементов. Тогда: \(f > g\), если:
+\begin{enumerate}
+    \item \(\underbrace{\max \{x| f(x) \ne 0\}}_{m_f}  > \underbrace{\max\{x| g(x) \ne 0\}}_{m_g} \)
+    \item \(m_f = m_g, f(m_f) > g(m_g)\)
+    \item \(m_f = m_g, f(m_f) = g(m_g), \{x < m_f| f(x) \ne 0\} > \max\{x < m_g|g(x) \ne 0\}\)
+\end{enumerate}
+Или: рассмотрим конечное число точек, где \(f \ne 0 \vee g \ne 0\), сравниваем обратно лексикографически.
+\begin{note}
+    \(2^\omega\) по этому определению --- обратная двоичная запись натуральных чисел
+\end{note}
+\begin{theorem}[Об ординарной системе счисления]
+    Пусть \(\gamma < \alpha^\beta\). Тогда \(\exists!\) представление \(\gamma = \alpha^{\beta_1}\cdot\alpha_1 + \alpha^{\beta_2}\cdot\alpha_2 + \dots + \alpha^{\beta_n}\cdot\alpha_n\), где \(\beta > \beta_1 > \beta_2 > \dots > \beta_n, \alpha_i < \alpha\)
+\end{theorem}
