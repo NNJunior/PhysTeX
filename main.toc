@@ -1,0 +1,10 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Продолжение ДП}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Рюкзак с оптимизацией}{2}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Альтернативный вариант}{2}{subsubsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.2}Динамическое программирование с помощью матриц}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Задача}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Задача}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Задача}{4}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Матрицы Адамара}{4}{section.2}%
+\contentsline {section}{\numberline {3}Коды, исправляющие ошибки}{6}{section.3}%
