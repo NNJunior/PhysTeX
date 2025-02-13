@@ -18,6 +18,7 @@
     </subject>
     <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Лекции/Семестр 2/ОКТЧ/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/ОКТЧ/lecture_1" description="Квадратичные вычеты. Начало" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="06.02.25"/>
+      <lecture name="Лекция 2" path="Лекции/Семестр 2/ОКТЧ/lecture_2" description="Матрицы Адамара. Коды, исправляющие ошибки (начало)." setting="Лекции/Семестр 2/ОКТЧ/setting"  date="13.02.25"/>
     </subject>
     <subject name="Технологии программирования" description="
 Основные ссылки по курсу:&#xA;
