@@ -1,0 +1,127 @@
+% !TEX root = ../../../main.tex
+
+\section{Числовые Ряды}
+\begin{definition}
+    Пусть \(\{a_n\}\) --- последовательность чисел. Выражение \(\sum_{i = 1}^{\infty} a_i = a_1 + a_2 + \dots \) Называется числовым рядом с \(n\)-ым членом \(a_n\). При этом сумма \(\sum_{i = 1}^N a_i = S_N\) называется \(N\)-ой частичной суммой, а \(\lim_{N\ra\infty}S_N\) называется суммой ряда. Тогда кратко пишут: \(S = \sum_{i = 1}^\infty a_i\). Причем, если указанный предел конечен, то ряд называется сходящимся, иначе --- расходящимся.
+\end{definition}
+
+\begin{example}[Геометрический ряд]
+    Рассмотрим ряд 
+    \[\sum_{i = 1}^{\infty}z^n\]
+    \begin{enumerate}
+        \item \(|z| < 1\). Заметим, что \(1 + z + \dots + z^N = \frac{1 - z^{N+1}}{1 - z}\). Тогда \(\lim_{N\ra\infty}z^{N+1} = 0\) и \(\exists\lim_{N\ra\infty}S_N = \frac{1}{1 - z}\)
+        \item \(|z| \ge 1\). Заметим, что \(z^N = S_{N} - S_{N - 1} \ra 0\). Но \(z^N \not\ra 0\), тогда этот ряд расходится. \(\nexists\lim_{N\ra\infty}S_N\). 
+    \end{enumerate}
+\end{example}
+\begin{note}
+    Геометрический ряд сходится \(\Lra |z| < 1\).
+\end{note}
+
+\begin{lemma}[Телескопические ряды]
+    Для числовой последовательности \(\{s_n\}\) рассмотрим последовательность \(a_n = s_n - s_{n + 1}\). Тогда
+    \[\sum_{i = 1}^\infty a_i \text{ сходится} \Lra \{s_i\} \text{ сходится}\]
+    В этом случае, 
+    \[\sum_{i = 1}^\infty a_i = s_1 - \lim_{N\ra\infty}s_N\]
+\end{lemma}
+\begin{proof}
+    \[S_n = (s_1 - s_2) + (s_2 - s_3) + \dots + (s_n - s_{n+1}) \Ra \lim_{n\ra\infty}S_n = s_1 - \lim_{n\ra\infty}s_n\]
+\end{proof}
+\begin{example}
+    \[\sum_{i = 1}^\infty \frac{1}{i(i+1)}\]
+    \[a_i = \frac{1}{i} - \frac{1}{i + 1}\]
+    Т.к. \(\frac{1}{i}\) --- 
+\end{example}
+\begin{proposition}[Локализация]
+    Для любого \(m \in \N\) ряды 
+    \[\sum_{i = 1}^\infty a_n, \sum_{i = m + 1}^\infty a_n\]
+    Сходятся или не сходятся одновременно, причем, если сходятся, то 
+    \[\sum_{i = 1}^\infty a_n = \sum_{i = 1}^m a_n + \sum_{i = m + 1}^\infty a_n\]
+\end{proposition}
+\begin{proof}
+    При \(N > m\) имеем 
+    \[\sum_{i = 1}^N = \sum_{i = 1}^m a_n + \sum_{i = m + 1}^N a_n\]
+    Поэтому 
+    \[\sum_{i = 1}^\infty a_n, \sum_{i = m + 1}^\infty a_n\]
+    Сходятся или не сходятся одновременно. В случае сходимости достаточно применить предельный переход для доказательства равенства.
+\end{proof}
+\begin{definition}
+    Ряд \(r_N = \sum_{i = N + 1}^\infty a_n\) называется \(N\)-ым остатком ряда
+\end{definition}
+\begin{proposition}[Линейность]
+    Пусть ряды \(\sum_{i = 1}^\infty a_n, \sum_{i = 1}^\infty b_n\) сходятся и \(\lambda, \mu \in \Cm\). Тогда сходится и ряд \(\sum_{i = 1}^\infty \lambda a_n + \mu b_n\), причем
+    \[\lambda\sum_{i = 1}^\infty a_n + \mu\sum_{i = 1}^\infty b_n = \sum_{i = 1}^\infty \lambda a_n + \mu b_n\]
+\end{proposition}
+\begin{proof}
+    Очевидно при предельном переходе
+\end{proof}
+\begin{proposition}[Необходимое условие сходимости ряда]
+    Если \(\sum_{i = 1}^\infty a_n\) сходится, то \(\lim_{n\ra\infty} = 0\)
+\end{proposition}
+\begin{proof}
+    \(a_n = S_n - S_{n-1}\). Тогда \(S_n - S_{n-1} \ra \sum_{i = 1}^\infty a_n - \sum_{i = 1}^\infty a_n = 0 = \lim_{n\ra\infty}a_n\)
+\end{proof}
+Обратное неверно:
+\begin{example}[Гармонический ряд]
+    \[\sum_{k = 1}^\infty \frac{1}{k}\]
+    \(H_n = \sum_{k = 1}^n \frac{1}{k}\). Но тогда: 
+    \[H_{2n} - H_n \ge n\frac{1}{2n} = \frac{1}{2}\]
+    Противоречие, т.к. если ряд сходится, то начиная с какого то момента все \(H_n\) удалены друг от друга не более чем на \(\epsilon \forall \epsilon > 0\).
+\end{example}
+\begin{theorem}[Коши]
+    \(\sum_{i = 1}^\infty a_n\) сходится \(\Ra \forall \epsilon > 0 \exists N \forall n > N \forall m, n \ge N \left(\left|\sum_{k = m + 1}^n a_k\right| < \epsilon\right)\)
+\end{theorem}
+\begin{proof}
+    Утверждение является переформулировкой критерия Коши для последовательности \(s_n\).
+\end{proof}
+\begin{definition}
+    Если ряд \(\sum_{i = 1}^\infty |a_n|\) сходится, то его называют абсолютно сходящимся, иначе --- условно сходящимся.
+\end{definition}
+\begin{corollary}
+    Абсолютная сходимость влечет условную сходимоть
+\end{corollary}
+\begin{proof}
+    \[\forall n > m \left|\sum_{k = m + 1}^n a_k\right| \le \sum_{k = m + 1}^n |a_n|\]
+\end{proof}
+\begin{corollary}
+    \(a_n \in \Cm, a_n = u_n + iv_n\). Тогда ряд сходится \(\Lra\) сходятся ряды вещественной и мнимой частей. При этом,
+    \[\sum_{n = 1}^\infty a_n = \sum_{n = 1}^\infty u_n + i\sum_{n = 1}^\infty v_n\]
+\end{corollary}
+Пусть \(a_n \in \R\) --- последовательность вещественных чисел. Рассмотрим \(f_a: [1, +\infty) \ra \R, f_a(x) = a_n, n \le x < n + 1\)
+\begin{lemma}[О равносходимости]
+    Пусть \(a_n \in \R\). Тогда \[\sum_{i = 1}^n\text{ сходится } \Lra \int_1^{+\infty}f_a(x)dx\text{ сходится}\]
+    Причем в случае сходимости, левая и правая части равны
+\end{lemma}
+\begin{proof}
+    Пусть интеграл сходится:
+    \[s_n = \sum_{k = 1}^\infty a_k \Ra s_n = \int_1^{n + 1}f_a(x)dx\]
+    Пусть ряд сходится, \(s_n\) --- его частичная сумма (\(n = [x]\)). Тогда:
+    \[\left|\int_1^xf_a(t)dt - S\right| \le \left|\int_1^xf_a(t)dt - S_n\right| + |S_n - S| \le  \left|\int_1^xf_a(t)dt - \int_1^{n+1}f_a(t)dt\right| + |S_n - S| \le\]
+    \[ \le |a_n| + |S_n - S|\]
+\end{proof}
+\subsection{Ряды с неотрицательными членами}
+\begin{lemma}
+    Пусть \(a_n \ge 0 \forall n \in \N\). Тогда ряд \(a_n\) сходится тогда и только тогда, когда \(\{S_n\}\) --- ограничена.
+\end{lemma}
+\begin{proof}
+    Т.к. \(S_{n+1} = S_n + a_n \Ra S_n\) нестрого возрастает. По теореме о монотонной последовательности, она сходится \(\Lra\) она ограничена.
+\end{proof}
+\begin{theorem}[Признак сравнения]
+    Пусть  \(0 \le a_n \le b_n \forall n \in \N\)
+    \begin{enumerate}
+        \item Если \(\sum_{n = 1}^\infty b_n\) сходится, то и \(\sum_{n = 1}^\infty a_n\) --- тоже
+        \item Если \(\sum_{n = 1}^\infty a_n\) расходится, то и \(\sum_{n = 1}^\infty b_n\) --- тоже
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    По лемме о равносходимости данная теорема равносильна признаку сходимости для интегралов
+\end{proof}
+\begin{corollary}
+    Пусть \(a_n, b_n \ge 0 \forall n \in \N\), \(a_n = O(b_n), n\ra \infty\). Тогда справедливо заключение предыдущей теоремы
+\end{corollary}
+\begin{corollary}
+    Пусть \(a_n, b_n \ge 0 \forall n \in \N\), \(\exists \lim_{n\ra\infty}\frac{a_n}{b_n} \in (0, +\infty)\). Тогда \(\sum_{i = 1}^\infty a_n, \sum_{i = 1}^\infty b_n\) сходятся или расходятся одновременно
+\end{corollary}
+
+\begin{theorem}[Интегральный признак]
+    Пусть \(f\) нестрого убывает и неотрицательна на \([1, +\infty]\). Тогда последовательность \(u_n = f(1) + \dots + f(n) - \int_{1}^{n+1}f(t)dt\) сходится, в частности, \(\sum_{i = 1}^\infty a_n, \int_{1}^{+\infty}f(t)dt\) сходятся или расходятся одновременно
+\end{theorem}
