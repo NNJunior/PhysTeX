@@ -1,3 +1,0 @@
-\babel@toc {russian}{}\relax 
-\contentsline {section}{\numberline {1}Числовые Ряды}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Ряды с неотрицательными членами}{4}{subsection.1.1}%
