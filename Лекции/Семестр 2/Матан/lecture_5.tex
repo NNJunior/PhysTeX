@@ -1,8 +1,81 @@
 % !TEX root = ../../../main.tex
 
 \begin{theorem}[Интегральный признак]
-    Пусть \(f\) нестрого убывает и неотрицательна на \([1, +\infty]\). Тогда последовательность \(u_n = f(1) + \dots + f(n) - \int_{1}^{n+1}f(t)dt\) сходится, в частности, \(\sum_{i = 1}^\infty a_n, \int_{1}^{+\infty}f(t)dt\) сходятся или расходятся одновременно
+    Пусть \(f\) нестрого убывает и неотрицательна на \([1, +\infty)\). Тогда последовательность \(u_n = f(1) + \dots + f(n) - \int_{1}^{n+1}f(t)dt\) сходится, в частности, \(\sum_{i = 1}^\infty a_n, \int_{1}^{+\infty}f(t)dt\) сходятся или расходятся одновременно
 \end{theorem}
 \begin{proof}
-    
+    Докажем, что последовательность \(u_n\) нестрого убывает и ограничена снизу. В силу монотонности \(f\) имеем:
+    \[f(k+1) \le \int_k^{k+1}f(t)dt \le f(k)\]
+    Тогда 
+    \[u_n = \sum_{k = 1}^n f(k) - \sum_{k = 1}^{n-1}\int_k^{k+1}f(t)dt = \sum_{k = 1}^{n - 1}\left(f(x) - \int_k^{k + 1}f(t)dt\right) + f(n) \ge f(n) \ge 0 \Ra u_n \ge 0\]
+    \[u_{n+1} - u_n = f(n+1) - \int_n^{n + 1}f(x)dx \le 0\]
+    Следовательно, по теореме о пределе монотонной последовательности \(u_n\) --- сходится.
 \end{proof}
+
+\begin{example}
+    Исследуем на сходимость \(\sum_{n = 1}^{\infty} \frac{1}{n^\alpha}\).
+    \begin{enumerate}
+        \item \(\alpha \le 0\) --- расходится, т.к. его члены не бесконечно маленькие.
+        \item \(\alpha > 0\), тогда \(f(x) = \frac{1}{x^\alpha}\) --- неотрицательная монотонная функция. Но тогда по интегральному признаку, этот ряд сходится \(\Lra\) сходится \(\int_1^{+\infty} \frac{1}{x^\alpha}dx \Lra \alpha > 1\).
+    \end{enumerate}
+    \(\Ra\) сходится при \(\alpha > 1\).
+\end{example}
+
+\begin{example}
+    Рассмотрим гармонический ряд, обозначим \(H_n = \sum_{i = 1}^n \frac{1}{n}, u_n = H_n - \int_1^n \frac{1}{x}dx = H_n - \ln n\). По интегральному признаку \(\exists \lim_{n\ra \infty}u_n = \gamma\)  --- константа Эйлера-Маскерони.
+\end{example}
+
+\begin{theorem}[признак Коши]
+    Пусть \(a_n \ge 0, q = \limsup_{n \ra \infty}\sqrt[n]{a_n}\).
+    \begin{enumerate}
+        \item \(q < 1 \Ra \sum_{n = 1}^\infty a_n\) --- сходится
+        \item \(q > 1 \Ra \sum_{n = 1}^\infty a_n\) --- расходится, причем \(a_n \not\ra 0\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Пусть \(q_0 \in (q, 1)\). Выберем \(N\) так, что \(\sup_{n \ge N}\sqrt[n]{a_n} \le q_0\). Но тогда \(\sqrt[n]{a_n} \le q_0 \Ra a_n \le q_0^n \Ra\) по принципу локализации, т.к. \(\sum_{n = 1}^\infty q_0^n\) сходится, то и \(\sum_{n = 1}^\infty a_n\) сходится.
+        \item Т.к. \(q\) --- частичный предел, то \(\exists \sqrt[n]{a_{n_k}} \ra q \Ra \exists k_0: \forall k > k_0\;\;a_{n_k} > 1\).
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[признак Даламбера]
+    Пусть \(a_n \ge 0, \overline{r} = \limsup_{n \ra \infty}\frac{a_{n + 1}}{a_n}, \underline{r} = \liminf_{n \ra \infty}\frac{a_{n + 1}}{a_n}\).
+    \begin{enumerate}
+        \item \(\overline{r} < 1 \Ra \sum_{n = 1}^\infty a_n\) --- сходится
+        \item \(\underline{r} > 1 \Ra \sum_{n = 1}^\infty a_n\) --- расходится, причем \(a_n \not\ra 0\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Пусть \(r \in (\overline{r}, 1)\). Выберем \(N\) так, что \(\sup_{n \ge N}\frac{a_{n + 1}}{a_n} \le r\), а значит \(\frac{a_{n + 1}}{a_n} \le r \forall n > N\). Но тогда \(a_{n + m} \le a_nr^m \forall n > N\). Но тогда, т.к. \(\sum_{m = 1}^\infty a_nr^m\) --- сходится, то, по локализации, сходится и \(\sum_{n = 1}^\infty a_n\)
+        \item Т.к. \(\underline{r}\) --- частичный предел, то \(\exists \frac{a_{n + 1}}{a_n} \ra \underline{r} \Ra \exists k_0: \forall k > k_0\;\;a_{n_k} \ge a_{n_{k_0}}\). Но тогда \(a_n \ne\ra 0\).
+    \end{enumerate}
+\end{proof}
+
+\begin{note}
+    Если в признаке Коши \(q = 1\) или в признаке Даламбера \(\underline{r} \le 1, \overline{r} \ge 1\), то в общем случае нельзя определить тип сходимости \(a_n\).
+\end{note}
+\begin{example}
+    \[\sum_{n = 1}^\infty \frac{1}{n} \Ra q = 1, \overline{r} = 1, \underline{r} = 1 \text{ --- расходится}\]
+    \[\sum_{n = 1}^\infty \frac{1}{n^2} \Ra q = 1, \overline{r} = 1, \underline{r} = 1 \text{ --- сходится}\]
+\end{example}
+
+\begin{example}
+    \[\sum_{i = 1}^\infty 2^{(-1)^n - n}\]
+    \begin{enumerate}
+        \item \[\frac{a_{2k + 1}}{a_{2k}} = \frac{2^{-1 - (2k + 1)}}{2^{-1 - 2k}} = \frac{1}{8}\]
+        \item \[\frac{a_{2k}}{a_{2k - 1}} = \frac{2^{-1 - 2k}}{2^{-1 - (2k - 1)}} = \frac{1}{2}\]
+    \end{enumerate}
+    Итого, признак Даламбера ничего нам не дал. Посмотрим на признак Коши:
+    \[\sqrt[n]{a_n} = 2^{-1 + \frac{(-1)^n}{n}} \ra \frac{1}{2} \Ra \sum_{i = 1}^\infty 2^{(-1)^n - n} \text{ --- сходится}\]
+\end{example}
+
+\begin{problem}
+    Доказать, что 
+    \[\liminf_{n \ra \infty}\frac{a_{n + 1}}{a_n} \le \liminf_{n \ra \infty}\sqrt[n]{a_n} \le \limsup_{n \ra \infty}\sqrt[n]{a_n} \le \limsup_{n \ra \infty}\frac{a_{n + 1}}{a_n}\]
+\end{problem}
+
+\begin{theorem}[Признак Гаусса]
+    Пусть \(a_n \ge 0, \exists S > 1, A \in \R\), ограниченная последовательность \(\alpha_n\), такие, что \(\frac{a_{n + 1}}{a_n} = 1 - \frac{A}{n} + \frac{\alpha_n}{n^2}\)
+\end{theorem}
