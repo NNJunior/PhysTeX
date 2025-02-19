@@ -1,0 +1,203 @@
+% !TEX root = ../../../main.tex
+
+\section{Рациональные дроби}
+\subsection{Поле частных}
+Пусть \(A\) --- область целостности, обозначим  \(A^* = A\setminus\{0\}\). Рассмотрим множество \(A \times A^* = \{(f, g)\} = \{\frac{f}{g}\}\) и введем на нем следующие операции и отношения: 
+\subsection{Отношение равенства}
+    \[\frac{f_1}{g_1} = \frac{f_2}{g_2} \Lra f_1g_2 - f_2g_1 = 0\]
+\subsection{Операция сложения}
+\[\frac{f_1}{g_1} + \frac{f_2}{g_2} = \frac{f_1g_2 + f_2g_1}{g_1g_2}\]
+\begin{proof}[Доказательство корректности]
+    \[\frac{f_1}{g_1} = \frac{a}{b}, \frac{f_2}{g_2} = \frac{c}{d}, \frac{f_1g_2 + f_2g_1}{g_1g_2} =^? \frac{ad + bc}{bd}\]
+    \[(f_1g_2 + f_2g_1)bd =^? (ad + bc)g_1g_2\]
+    \[f_1g_2bd + f_2g_1bd =^? adg_1g_2 + bcg_1g_2\]
+    \[f_1g_2bd + f_2g_1bd - adg_1g_2 - bcg_1g_2 =^? 0\]
+    \[dg_2\underbrace{(bf_1 - g_1a)}_{0}  - bg_1\underbrace{(f_2d - cg_2)}_{0}  = 0\]
+\end{proof}
+
+\begin{note}
+    \(\frac{0}{f}, f\ne 0 \) --- нейтральный по сложению
+\end{note}
+
+\subsection{Операция умножения}
+\[\frac{f_1}{g_1}\frac{f_2}{g_2} = \frac{f_1f_2}{g_1g_2}\]
+\begin{proof}[Доказательство корректности]
+    \[\frac{f_1}{g_1} = \frac{a}{b}, \frac{f_2}{g_2} = \frac{c}{d} \Ra \frac{f_1f_2}{g_1g_2} = \frac{ac}{bd}\]
+    Доказательство предоставляется читателю в качестве нетрудного упражнения
+\end{proof}
+
+
+\begin{definition}
+    Полученное поле называется полем частных области целостности \(A\) и обозначается \(Q(A)\)
+\end{definition}
+
+\begin{definition}
+    Полученное поле называется полем частных области целостности \(A\) и обозначается \(Q(A)\)
+\end{definition}
+
+\begin{example}
+    \(Q(\Z) = \Q\)
+\end{example}
+\begin{example}
+    \(Q(F) = F\)
+\end{example}
+\subsection{Поле рациональных дробей}
+\begin{definition}
+    \(Q(F[x]) = F(x)\) --- поле рациональных дробей
+\end{definition}
+\begin{definition}
+    \(\deg \frac{f}{g} = \deg f - \deg g\). Если \(deg \frac{f}{g} < 0\), то дровь называется правильной, иначе --- неправильной
+\end{definition}
+
+\begin{proposition}
+    Любая рациональная дробь представима единственным образом в виде \(p + \frac{q}{r}\), где \(p\) --- многочлен, а \(\frac{q}{r}\) --- рациональная дробь
+\end{proposition}
+\begin{proof}
+    Делим с остатком и очев.
+\end{proof}
+
+\begin{proposition}
+    \[\deg\left(\frac{f_1}{g_1} + \frac{f_2}{g_2}\right) = \max\left(\deg\frac{f_1}{g_1}, \deg\frac{f_2}{g_2}\right)\]
+    \[\deg\left(\frac{f_1}{g_1} \cdot \frac{f_2}{g_2}\right) = \\deg\frac{f_1}{g_1} + \deg\frac{f_2}{g_2}\]
+\end{proposition}
+
+\begin{theorem}
+    Путсь \(\frac{f}{g}\) --- правильная рациональная дробь, \(g = g_1g_2\dots g_n\), причем \((g_i, g_j) = 1\). Тогда существует единственный набор \(f_1, f_2\dots f_n\), таких, что:
+    \[\frac{f}{g} = \frac{f_1}{g_1} + \frac{f_2}{g_2} + \dots + \frac{f_n}{g_n}, \deg f_i < \deg g_i\]
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[] \textbf{Существование.} ведем индукцию по \(n\)
+        \begin{enumerate}
+            \item[] \textbf{База:} \(n = 1\). Очевидно.
+            \item[] \textbf{Переход:} Обозначим \(h = g_1g_2\dots g_{n-1}\). Тогда 
+            \[\frac{f}{g} = \frac{\mu f}{g_1} + \frac{\lambda f}{h}\]
+            Где \(\lambda g + \mu h = 1 = (g, h)\) (существуют из разложения НОДа). Но тогда по предположению индукции, разложим \(\frac{\lambda f}{h}\) и получим желаемое
+        \end{enumerate}
+        \item[] \textbf{Единственность.} ведем индукцию по \(n\)
+        \begin{enumerate}
+            \item[] \textbf{База:} \(n = 1\). Очевидно.
+            \item[] \textbf{Переход:} Обозначим \(h = g_1g_2\dots g_{n-1}\). Пусть это не так. Но тогда у нас есть два разложения, приведем в каждом из них дроби с \(g_i, i \ne n\) к общему знаменателю. Тогда сущесвтуют \(a, b, c, d\), такие, что
+            \[\frac{f}{g} = \frac{a}{g_n} + \frac{b}{h} = \frac{c}{g_n} + \frac{d}{h}\]
+            \[ah + bg_n = ch + dg_n\]
+            Но тогда \(h(a - c) = g_n(b - d)\). Т.к. \(\deg(b - d) < h \Ra (g_n, h) \ne 1 \), противоречие
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\begin{note}
+    Если в предыдущем утверждении \(g_1, g_2, \dots g_n\) --- неприводимые множители, то они взаимно просты между собой, но тогда любая правильная рациональная дробь единственным образом представляется в таком виде.
+\end{note}
+
+\begin{definition}
+    Правильная рациональная дробь \(\frac{f}{g}\) называется простейшей, если ее знаменатель --- степень неприводимого многочлена.
+\end{definition}
+
+\begin{corollary}
+    Любая правильная рациональная дробь единственным образом представима в виде суммы простейших дробей.
+\end{corollary}
+
+\begin{theorem}
+    Пусть \(f\) --- ненулевой многочлен, \(p\) --- многочлен положительной степени. Тогда \(\exists!\) представление \(f\) в виде:
+    \[f = \phi_0 + \phi_1p + \phi_2p^2 + \dots + \phi_np^n, \deg\phi_i < \deg p\]
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[] \textbf{Cуществование.} ведем индукцию по степени \(f\).
+        \begin{enumerate}
+            \item[] \textbf{База:} \(\deg f = 1\). Очевидно.
+            \item[] \textbf{Переход:} Разделим \(f\) на \(p\) с остатком, получится \(\phi_0 + rp = f\). Получили \(\phi_0\), по предположению индукции разложим \(r\) и получим разложение
+        \end{enumerate}
+        \item[] \textbf{Единственность.} Пусть есть два разложения. Вычтем одно из другого: с одной стороны получим 0, с другой стороны, рассмотрим минимальный индекс, где \(\phi_i \ne \phi'_i\) и получим ненулевой многочлен. Противоречие.
+    \end{enumerate}
+\end{proof}
+
+\section{Инвариантные пространства}
+Теперь снова вернемся к линейным операторам
+\subsection{Напоминание}
+
+\begin{definition}
+    \(\phi: V \ra V\) называется линейным оператором, если он удовлетворяет следующим условиям:
+    \begin{enumerate}
+        \item Аддитивность --- \(\phi(x + y) = \phi(x) + \phi(y)\)
+        \item Однородность --- \(\phi(\lambda x) = \lambda\phi(x)\)
+    \end{enumerate}
+    Эти два условия можно заменить одним --- линейностью
+\end{definition}
+
+Пусть  \(\mathfrak{E}\) --- базис в \(V\). Т.к. линейный оператор линеен, то нам достаточно знать его значения на элементах \(\mathfrak{E}\) (все остальное узнаем из линейности).
+Пусть \(\phi(e_i) = \sum_{k = 1}^n a_{ki}e_k\). Тогда:
+\[\phi(\mathfrak{E}) = \mathfrak{E}\cdot A\]
+Где \([A]_{ij} = a_{ij}\).
+
+\begin{definition}
+    \(\mathfrak{L}(V)\) --- пространство всех линейных отображений
+\end{definition}
+
+Причем линейные операторы можно умножать:
+\[\phi\cdot\psi(x) = \phi(\psi(x))\]
+И тогда выполнено:
+\[\phi \longleftrightarrow_{\mathfrak{E}} A, \psi \longleftrightarrow_{\mathfrak{E}} B \Ra \phi\psi \longleftrightarrow{\mathfrak{E}} AB\]
+
+\subsection{Инвариантное подпространство}
+\begin{definition}
+    Подпространство \(U \le V\) называется инвариантным относительно оператора \(\phi\), если \(\forall x \in U\;\;\phi(x) \in U\). Иначе говоря, \(\phi(U) \subset U \Leftrightarrow \phi(U) \le U\).
+\end{definition}
+
+\begin{definition}
+    Базис \(\mathfrak{E}\) в \(V\) называется согласованным с инвариантным подпространством \(U\), если \(e_1, e_2, \dots e_k\) --- базис в \(U\).
+\end{definition}
+
+\begin{proposition}
+    Подпространство \(U\) инвариантно относительно \(\phi \Lra\) в базисе \(\mathfrak{E}\), солгласованным с \(U\), выполнено:
+    \[A_\phi = \left(\begin{array}{c|c}
+        A_U & B \\
+        \hline
+        0 & C
+    \end{array}\right), A_U \in M_{k \times k}, k = \dim U\]
+\end{proposition}
+\begin{proof}
+    Пусть \(\mathfrak{E}\) --- согласован с \(U\). \(U\) --- инвариантен относительно \(\phi \Lra \phi(e_j) \in U = \langle e_1, e_2, \dots e_k\rangle, i \le j \le k\)
+    \[\Lra \phi(e_j) = \left(\begin{array}{l}
+        *_1 \\
+        \vdots \\
+        *_k \\
+        0 \\
+        \vdots \\
+        0
+    \end{array}\right) \Ra A_\phi = \left(\begin{array}{c|c}
+        A_U & B \\
+        \hline
+        0 & C
+    \end{array}\right), A_U \in M_{k \times k}, k = \dim U\]
+\end{proof}
+
+\begin{proposition}
+    Если \(U, V\) --- инвариантны относительно \(\phi: V \ra V\), то \(U \cap V, U + V\) --- тоже.
+\end{proposition}
+\begin{proof}
+    \[\phi(U \cap W) \le \underbrace{\phi(U)}_{\le U}  \cap \underbrace{\phi(W)}_{\le W} \le U \cap W\]
+    \[\phi(U + W) = \phi(U) + \phi(W) \le U + W\]
+\end{proof}
+
+\begin{proposition}[О коммутатирующих операторах]
+    Пусть \(\phi, \psi \in \mathfrak{L}(V), \phi \cdot \psi = \psi \cdot \phi\). Тогда подпространства \(\ker \phi, \ker \psi, Im\phi, Im\psi\) инвариантны относительно каждого из этих операторов.
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item \(\phi(\ker \phi) = \{0\}\)
+        \item \(\phi(Im \phi) \le Im \phi\) ---  очев
+        \item \(\phi(\ker \psi) \le \ker \psi\)
+        \[\psi(\phi(\ker\psi)) = \phi(\psi(\ker\psi)) = \{0\} \Ra \phi(\ker \psi) \le \ker\psi\]
+        \item \(\phi(Im \psi) \le Im \psi\)
+        \[\phi(x) = \phi(\psi(x')) = \psi(\phi(x')) \le Im \phi\]
+    \end{enumerate}
+\end{proof}
+
+Короче тут лектор так разогнался, что я ничего не успел записать, поэтому вот вам основные определения:
+\begin{definition}
+    Ненулевой вектор \(x\) называется собственным, если \(\phi(x) = \lambda x\)
+\end{definition}
+\begin{definition}
+    Собственным подпространством линейного преобразования \(\phi\) называется пространство \(\ker(\phi - \lambda \cdot \id)\)
+\end{definition}
