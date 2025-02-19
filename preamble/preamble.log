@@ -1,13 +1,13 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.3)  19 FEB 2025 18:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.3)  19 FEB 2025 18:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**main
-(./main.tex
+**preamble
+(./preamble.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
-(./preamble/preamble.tex (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
@@ -1256,27 +1256,18 @@ File: tikzlibrarybabel.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 \c@conseq=\count372
 )
-
-! LaTeX Error: File `Lectures/2_Semester/Алгем/setting.tex' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: tex)
-
-Enter file name: 
-./main.tex:2: Emergency stop.
-<read *> 
-         
-l.2 ...Lectures/2_Semester/Алгем/setting.tex}
-                                                  ^^M
-*** (cannot \read from terminal in nonstop modes)
+! Emergency stop.
+<*> preamble
+            
+*** (job aborted, no legal \end found)
 
  
 Here is how much of TeX's memory you used:
- 34205 strings out of 474116
- 658423 string characters out of 5743683
+ 34194 strings out of 474116
+ 658139 string characters out of 5743683
  1926187 words of memory out of 5000000
- 55849 multiletter control sequences out of 15000+600000
+ 55842 multiletter control sequences out of 15000+600000
  560355 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,0n,100p,1458b,104s stack positions out of 10000i,1000n,20000p,200000b,200000s
-./main.tex:2:  ==> Fatal error occurred, no output PDF file produced!
+ 84i,0n,97p,1436b,104s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!
