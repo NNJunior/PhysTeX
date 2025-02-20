@@ -1,0 +1,102 @@
+% !TEX root = ../../../main.tex
+
+\section{ОТА}
+
+Эту часть конспекта для вас затеха: \href{\ivanbir}{Иван Бирюков}
+
+\begin{theorem}
+  \item[1)]$\forall n > 1 \  \exists!$ его представление в виде $$n = p_1 p_2 \dots p_s$$
+
+  \textit{Комментарий:} $p_1, p_2, \dots, p_s$ - простые числа, единственность с точностью до порядка множителей
+  \item[2)] $p_i$ - $i$-ое простое число
+  Тогда $\forall n \ \exists! \ (\alpha_1, \alpha_2, \dots, \alpha_n)$:
+    $$n = \prod_{i = 1}^{\infty} p_i ^ {\alpha_i}$$
+\end{theorem}
+
+
+\begin{corollary}
+  $\nu_p(n)$ - max степень вхождения $p$ в $n \Longrightarrow$
+  $n \not \vdots p^{\nu_p(n) + 1}$
+\end{corollary}
+
+\textbf{Сейчас мы приведем несколько доказательств этой теоремы}
+
+\subsection{Первое доказательство (не было доведено)}
+\begin{proof}
+  Найдем существование разложения по индукции по n:
+
+База: $n = 2$. Переход: $n = ab \rightarrow \left(p_{a_1}^{\alpha_{a_1}} p_{a_2}^{\alpha_{a_2}} \dots p_{a_s}^{\alpha_{a_s}}\right) \cdot \left(p_{b_1}^{\alpha_{b_1}} p_{b_2}^{\alpha_{b_2}} \dots p_{b_k}^{\alpha_{b_k}}\right) \text{или $n$ - простое} $
+
+Осталось понять единственность.
+
+Пойдем от противного: пусть $\exists \ min \ n = p_1 p_2 \dots p_s = q_1 q_2 \dots q_k$
+
+Для простоты упорядочим простые числа в обоих разложениях.
+
+Если $p_1 = q_1$, то у числа $\frac{n}{p_1}$ есть 2 разложения. Значит, $p_1 \ne q_1 \to n \geq p_1 p_2 \geq p_1^2$
+
+Аналогично получается $n \ge q_1^2 \rightarrow n \ge max(p_1^2, q_1^2) \ge q_1(p_1 + 2) > q_1p_1 + 1$
+
+Рассмотрим число $x = n - p_1 q_1$. Оно меньше $n$ и больше 1, а тогда у него есть единственное разложение на простые сомножители $\tau_1, \tau_2, \dots, \tau_m$:
+
+$x = p_1(p_2\dots p_s - q_1) = q_1(q_2 \dots q_k - p_1) = \tau_1 \dots \tau_m$, в наборе $\tau: \tau_1 \le \dots \le p_1 \le q_1 \le \tau_m$
+\end{proof}
+
+\subsection{Второе доказательство}
+
+\begin{lemma}[Евклида]
+  $p$ - простое. Тогда $mn \vdots p \to m \vdots p$ или $n \vdots p$
+\end{lemma}
+
+\begin{lemma}[Евклида 2.0]
+ $(m, k) = 1, mn \vdots k \to n \vdots k$
+\end{lemma}
+
+\begin{proof}[$2 \Longrightarrow 1:$]
+  $ k = p, m \not \vdots p \to (m, p) = 1 \to n \vdots k $
+\end{proof}
+
+\begin{proof}
+  Докажем единственность по лемме Евклида:
+
+  $n = p_1 \underbrace{\dots p_s}_{m} = q_1 \dots q_l$
+
+  По лемме Евклида $p_1 = q_1$ или $m \vdots q_1$. Повторяя процедуру, получим, что $p_i = q_1$, сократим на него и повторим алгоритм.
+\end{proof}
+
+\newpage
+
+\textbf{Докажем теперь лемму Евклида 2.0}
+\begin{proof}
+  По линейному представлению НОДа $\exists x \ \exists y: \ mx + ky = 1$
+
+  $$mx + ny = 1 \to \underbrace{mn}_{\vdots k}x + \underbrace{k}_{\vdots k}ny = n \to n \vdots k$$
+\end{proof}
+
+\textbf{Доказательство этой же леммы через идеалы:}
+
+\begin{definition}
+  I - идеал в $\Z$, если:
+  \begin{enumerate}
+    \item $\forall a, b \ \in I: a + b = I$
+    \item $\forall a \ \in I \  \forall b \ \in \Z: ab \in I$
+
+  \end{enumerate}
+\end{definition}
+
+\begin{proof}
+  Зафиксируем $m$ и определим $I_m = \{ a \ | \ ma \ \vdots\  p\} \to$
+\textit{$n$, $p$ лежат в идеале} 
+
+  \begin{lemma}
+    Пусть $d$ - минимальное положительное число в $I$
+
+    Тогда $I = \{cd \ |\  c \in \Z\}$
+  
+  \end{lemma}
+  \textit{Следует из деления элемента с остатком}
+\end{proof}
+
+А тогда $d = 1$ или $d = p$. Во втором случае $n \vdots p$, в первом - $m \dots p$
+
+
