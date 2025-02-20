@@ -1,11 +1,20 @@
 % !TEX root = ../../../main.tex
 
-\section{Продолжим теорию с кодами}
-
-\begin{theorem}[Граница Плоткина]
-  Пусть дан \((n, M, d)\)-код, где \(2d > n\). Тогда \(M  \le \frac{2d}{2d - n}\).
+\begin{theorem}
+  Пусть \(\mathcal{R}_n = \{1, 2, \dots n\}\). Пусть  \(\{M_1, M_2, \dots M_n\} \subseteq \mathcal{R}\). Тогда \(\exists\) раскраска множества \(\mathcal{R}_n\) в красный и синий цвета, при которой \(\forall i\) в \(M_i\) разность между количеством чисел элементов по модулю \(\le 6\sqrt{n}\)
 \end{theorem}
-
 \begin{proof}
-  Рассмотрим $(n, M, d)$-код, $a_{ij} \in \{\}
+  Доказательство нас будет ожидать в 4 семестре и будет использовать энтропию. Не бойтесь никакой физики там не будет.
+\end{proof}
+\begin{theorem}
+  Пусть \(\chi\) --- раскраска \(\mathcal{R}_n\) в красный и синий цвета. Введем \(\chi: 2^{\mathcal{R}_n} \ra \Z: \chi(A) = \#(\text{красных элементов } A) - \#(\text{синих элементов } A)\). Пусть существует матрица Адамара порядка \(n\). Тогда \(\exists M_1, M_2, \dots M_n: \forall \chi: \exists i |\chi(M_i)| \ge \frac{\sqrt{n}}{2}\)
+\end{theorem}
+\begin{proof}
+  
+\end{proof}
+\begin{corollary}
+  При \(n \ra +\infty \exists M_1, M_2, \dots M_n \forall \chi \exists i |\chi(M_i)| \ge \frac{\sqrt{n}}{2}(1 - o(1))\)
+\end{corollary}
+\begin{proof}[Доказательство неулучшаемости оценки]
+  
 \end{proof}
