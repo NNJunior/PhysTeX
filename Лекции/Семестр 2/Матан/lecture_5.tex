@@ -80,13 +80,16 @@
     Пусть \(a_n \ge 0, \exists S > 1, A \in \R\), ограниченная последовательность \(\alpha_n\), такие, что \(\frac{a_{n + 1}}{a_n} = 1 - \frac{A}{n} + \frac{\alpha_n}{n^s}\). Тогда \(\sum_{i = 1}^\infty a_n\) --- сходится только при \(A > 1\).
 \end{theorem}
 \begin{proof}
-    При \(n > 1\) имеем
-    \[a_n = a_1\prod_{k = 1}^{n - 1}\frac{a{k + 1}}{a_k} = a_1\exp\left(\sum_{k = 1}^{n - 1}\ln \frac{a_{k +1}}{a_k}\right) = \]
-    \[= a_1\exp\left(\sum_{k = 1}^{n - 1}\ln\left(1 - \frac{A}{k} - \frac{\alpha_k}{k^s}\right)\right)\]. По формуле Тейлора, \(\ln(1 + x) = x + O(x^2), x \ra 0\). Поэтому
-    \[a_n = a_1\exp\left(\sum_{k = 1}^{n - 1}\left(-\frac{A}{k} + \frac{\alpha_k}{k^s} + O\left(\frac{1}{k^2}\right)\right)\right)\]
-    \[\sum_{k = 1}^n\frac{1}{k} = \ln n + O(1), \sum_{k = 1}^n \frac{1}{k^\alpha} \text{ сходится при }\alpha > 1 \Ra a_n = a_1\exp\left(-A\ln n + O(1)\right) = a_1 \frac{e^{O(1)}}{n^A}\]
-    Но тогда \(\sum_{n = 1}^\infty a_n\) сходится только при \(A > 1\)
+    Покажем, что \(\{n^Aa_n\}\) сходится к положительному числу. Рассмотрим \(v_n = \ln(n^Aa_n)\) и \(\sum_{n = 1}^\infty w_n\), где \(w_n = v_{n + 1} - v_n\). Тогда \(w_n = \ln\left(\frac{n + 1}{n}\right)^A + \ln\left(\frac{a_{n + 1}}{a_n}\right) = A\ln\left(1 + \frac{1}{n}\right) + \ln\left(1 - \frac{A}{n} + O\left(\frac{1}{n^2}\right)\right) = \left(\frac{A}{n} + O\left(\frac{1}{n^2}\right)\right) + \left(-\frac{A}{n} + O\left(\frac{1}{n^2}\right)\right) = O\left(\frac{1}{n^2}\right)\)
 \end{proof}
+% \begin{proof}[Неверное]
+%     При \(n > 1\) имеем
+%     \[a_n = a_1\prod_{k = 1}^{n - 1}\frac{a{k + 1}}{a_k} = a_1\exp\left(\sum_{k = 1}^{n - 1}\ln \frac{a_{k +1}}{a_k}\right) = \]
+%     \[= a_1\exp\left(\sum_{k = 1}^{n - 1}\ln\left(1 - \frac{A}{k} - \frac{\alpha_k}{k^s}\right)\right)\]. По формуле Тейлора, \(\ln(1 + x) = x + O(x^2), x \ra 0\). Поэтому
+%     \[a_n = a_1\exp\left(\sum_{k = 1}^{n - 1}\left(-\frac{A}{k} + \frac{\alpha_k}{k^s} + O\left(\frac{1}{k^2}\right)\right)\right)\]
+%     \[\sum_{k = 1}^n\frac{1}{k} = \ln n + O(1), \sum_{k = 1}^n \frac{1}{k^\alpha} \text{ сходится при }\alpha > 1 \Ra a_n = a_1\exp\left(-A\ln n + O(1)\right) = a_1 \frac{e^{O(1)}}{n^A}\]
+%     Но тогда \(\sum_{n = 1}^\infty a_n\) сходится только при \(A > 1\)
+% \end{proof}
 
 \subsection{Числовые ряды с произвольными членами}
 \begin{lemma}

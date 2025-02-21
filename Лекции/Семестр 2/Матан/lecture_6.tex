@@ -1,0 +1,68 @@
+% !TEX root = ../../../main.tex
+
+\begin{example}[Применение признака Лейбница]
+    \(\sum_{n = 1}^\infty \frac{(-1)^n}{n^\alpha}\) сходится при \(\Lra \alpha > 0\), причем сходится условно при \(\alpha \in (0, 1]\).
+\end{example}
+\begin{theorem}[Признак Дирихле]
+    Пусть \(\{a_n\}, \{b_n\}\) такие, что 
+    \begin{enumerate}
+        \item \(A_N = \sum_{n = 1}^Na_n\) ограничена
+        \item \(b_n\) монотонна
+        \item \(\lim_{n \ra \infty} b_n = 0\)
+    \end{enumerate}
+    Тогда \(\sum_{n = 1}^\infty a_nb_n\) сходится.
+\end{theorem}
+\begin{proof}
+    Можно доказать переходом к интегралу
+\end{proof}
+
+\begin{corollary}[Признак Абеля]
+    Пусть \(\{a_n\}, \{b_n\}\) такие, что 
+    \begin{enumerate}
+        \item \(\sum_{n = 1}^\infty a_n\) сходится
+        \item \(b_n\) монотонна
+        \item \(b_n\) ограничена
+    \end{enumerate}
+    Тогда \(\sum_{n = 1}^\infty a_nb_n\) сходится.
+\end{corollary}
+\begin{proof}
+    (Можно доказать переходом к интегралу)
+
+    \(b_n \ra c \in \R\). Но \(\sum_{n = 1}^\infty a_n(b_n - c)\) сходится по признаку Дирихле. Но тогда \(\sum_{n = 1}^\infty a_nb_n = \sum_{n = 1}^\infty a_n(b_n - c) + c\sum_{n = 1}^\infty a_n\). Но тогда последний интеграл тоже сходится.
+\end{proof}
+
+\begin{corollary}
+    Если \(\{\alpha_n\}\) --- монотонна и \(\alpha_n \ra 0\), то \(\sum_{n = 1}^\infty \alpha_n \cos nx\) и \(\sum_{n = 1}^\infty \alpha_n \sin nx\) --- сходятся, если \(x \ne 2\pi m, m \in \Z\).
+\end{corollary}
+\begin{proof}
+    \(S_N = \sum_{n = 1}^Ne^{inx}\) --- геометрическая прогрессия с коэффициентом \(q = e^{ix}\). По формуле Эйлера, \(S_N = A_N + iB_N\), где \(A_N = \sum_{n = 1}^N\cos nx, B_N = \sum_{n = 1}^N\sin nx\). Имеем: \(S_N = e^{ix}\frac{1 - e^{iNx}}{1 - e^{ix}}\). Т.к. \(|e^{ikx}| = 1\), то \(|S_N| \le \frac{2}{|1 - e^{ix}|} = \frac{2}{|1 - \cos x - i\sin x|} = \frac{2}{\sqrt{(1 - \cos x)^2 + (\sin x)^2}} = \frac{2}{\sqrt{1 - 2\cos x + \cos^2 x + (\sin x)^2}} = \frac{2}{\sqrt{2 - 2\cos x}} = \frac{1}{\sin \frac{x}{2}}\)
+\end{proof}
+\begin{example}
+    \(a_n = (-1)^n, b_n = (-1)^n\left(\frac{1}{\sqrt{n}} + \frac{(-1)^n}{n}\right)\).
+    \[\sum_{n = 1}^\infty \frac{(-1)^n}{\sqrt{n}} \text{ сходится }\]
+    \[\sum_{n = 1}^\infty b_n \text{ расходится, т.к. } b_n = a_n + \frac{1}{n}\]
+    Но \(b_n \sim a_n\left(1 + \frac{(-1)^n}{\sqrt{n}}\right)\)
+\end{example}
+\subsection{Группировки и перестановки}
+Пусть дана строго возрастающая последовательность \(\sum_{n = 1}^\infty a_n\)
+\begin{definition}
+    Пусть дана строго возрастающая последовательность целых чисел  \(0 = n_1 < n_2 < \dots\). Ряд \(\sum_{k = 1}^\infty b_k = a_{n_{k - 1} + 1} + \dots + a_{n_{k}}\) называется группировкой \(\sum_{n = 1}^\infty a_n\).
+\end{definition}
+
+\begin{lemma}
+    \begin{enumerate}
+        \item Если \(\sum_{n = 1}^\infty a_n\) сходится, то и любая группировка \(a_n\) сходится к той же сумме.
+        \item Пусть \(\exists L > 0: n_{k} - n_{k - 1} < L \forall k\). Если \(a_n \ra 0\) и группировка \(b_n\) --- сходится, то \(\sum_{n = 1}^\infty a_n\) сходится к той же сумме.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Пусть \(S_n\) --- частичные суммы \(a_n\), \(S^*_n\) --- частичные суммы группировки.
+    \begin{enumerate}
+        \item Пусть \(S_n \ra S\). Т.к. \(S_n^*\) --- подпослежовательность \(S_n\), то она тоже сходится, причем их пределы совпадают.
+        \item Пусть \(\epsilon > 0\). Выберем \(K, M \in \N\) так, что \(|S_k^* - S| = |S_{n_k} - S| < \frac{\epsilon}{2} \forall k \ge K, |a_n| \le \frac{\epsilon}{2L}, \forall n \ge M\). Положим \(N = \max\{K, M + L\}\). Тогда для любого \(n \ge N \exists k (n_k \le n < n_{k + 1})\), а значит, \(S_n = S_{n_k} + a_{n_k + 1} + \dots + a_n\). Поэтому \(|S_n - S| \le |S_{n_k} - S| + |a_{n_k + 1}| + \dots + |a_{n}| < \frac{\epsilon}{2} + L\frac{2\epsilon}{2L} = \epsilon\).
+    \end{enumerate} 
+\end{proof}
+
+\begin{problem}
+    Пусть все \(a_n \in \R\) и одного знака внутри группы. Доказать, что сходимость группировки влечет сходимость \(\sum_{n = 1}^\infty a_n\), причем к той же сумме.
+\end{problem}
