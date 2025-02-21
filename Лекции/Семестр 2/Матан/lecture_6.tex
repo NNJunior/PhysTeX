@@ -66,3 +66,31 @@
 \begin{problem}
     Пусть все \(a_n \in \R\) и одного знака внутри группы. Доказать, что сходимость группировки влечет сходимость \(\sum_{n = 1}^\infty a_n\), причем к той же сумме.
 \end{problem}
+
+\begin{proof}
+    Ряд \(\sum_{n = 1}^\infty a_{\phi(n)}\), где \(\phi: \N \ra \N\) --- биекция, называется перестановкой.
+\end{proof}
+\begin{theorem}
+    Пусть \(\sum_{n = 1}^{\infty} a_n\) сходится абсолютно. Тогда любая его перестановка \(\sum_{n = 1}^\infty a_{\phi(n)}\) сходится абсолютно к той же сумме.
+\end{theorem}
+\begin{proof}
+    Покажем, что частичные суммы ряда \(\sum_{n = 1}^\infty a_{\phi(n)}\) ограничены.
+    \[\sum_{n = 1}^N|a_{\phi(n)}| \le \sum_{n = 1}^{\max_{k \in {1, 2, \dots N}}\phi(k)} \le \sum_{n = 1}^\infty |a_n|\]
+    Зафиксируем \(\epsilon > 0\) и выберем \(m\) так, что \(\left|\sum_{n = m + 1}^\infty a_n\right| < \epsilon\). Выберем \(M\) так, что \(\{1, 2, \dots m\} \subset \{\phi(1), \phi(2), \dots \phi(M)\}\). Положим \(N = \max \{m, M\}\). Тогда \(\forall n \ge N\;\;\{1, 2, \dots m\} \subset \{\phi(1), \phi(2), \dots \phi(N)\}\), поэтому 
+    \[\left|\sum_{n = 1}^\infty a_n - \sum_{n = 1}^N a_{\phi(n)}\right| \le \sum_{n = m + 1}^\infty |a_n| < \epsilon\]
+\end{proof}
+\begin{example}
+    \(\sum_{n = 1}^\infty \frac{(-1)^n}{n}\).
+    \[S_{2m} = 1 - \frac{1}{2} + \frac{1}{3} \dots - \frac{1}{2m} = 1 + \frac{1}{2} + \frac{1}{3} \dots + \frac{1}{2m} - 2\left(\frac{1}{2} + \dots + \frac{1}{2m}\right) = H_{2m} - H_m = \ln 2 + o(1)\]
+\end{example}
+\begin{example}[Как не надо делать]
+    \[S_\Pi = 1 - \frac{1}{2} - \frac{1}{4} + \frac{1}{3} - \frac{1}{6} - \frac{1}{8} + \dots = \frac{1}{2} - \frac{1}{4} + \frac{1}{6} + \dots = \frac{1}{2\left(\ln 2\right)}\]
+    Получилась фигня, т.к. ряд не сходился абсолютно. Для условно сходящихся рядов при перестановке может получиться что угодно
+\end{example}
+
+\begin{lemma}
+    Пусть даны два расходящихся ряда \(\sum_{k = 1}^\infty b_k, \sum_{k = 1}^\infty c_k\), где \(b_k > 0, c_k > 0,\;\;\;b_k, c_k \ra 0\). Тогда для любого \(L \in \R\) найдется \(\sum_{n = 1}^\infty d_k\) с суммой \(L\), так что \(\{d_k\}\) содержит все \(b_k, c_k\), причем по одному разу.
+\end{lemma}
+\begin{proof}
+    Идея: так как ряды расходятся, будем добавлять члены из них, чтобы переваливать через \(L\) туда-сюда. Нормальное доказательство в следующий раз
+\end{proof}
