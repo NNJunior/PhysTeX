@@ -1,2 +1,0 @@
-    return (mask >> pos) & 1;
-  }
