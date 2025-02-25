@@ -15,29 +15,20 @@
     \[\sum_{n = 1}^N |a_{i_n}b_{j_n}| \le \sum_{i = 1}^{(\max_{i \le n \le N}i_n)}\sum_{j = 1}^{(\max_{i \le n \le N}j_n)} |a_ib_j| \le \left(\sum_{i = 1}^\infty |a_i|\right)\left(\sum_{j = 1}^\infty |b_j|\right)\]
     Поэтому, эта шняга сходится. К чему? Ха-ха...
     \[\begin{array}{ccccccccccc}
-        (1, 1) & \color{red}\ra\color{black} & (1, 2) &  & (1, 3) & \color{red}\ra\color{black} & (1, 4) &  & (1, 5) & \dots \\
+        (1, 1)^{\textcolor{red}{(1)}} & (1, 2)^{\textcolor{red}{(2)}} &(1, 3)^{\textcolor{red}{(5)}} & (1, 4)^{\textcolor{red}{(10)}} & (1, 5)^{\textcolor{red}{(17)}} & \dots \\
         
-        & & \color{red}\downarrow\color{black} & & \color{red}\uparrow\color{black}  & & \color{red}\downarrow\color{black}  & & \color{red}\uparrow\color{black}  \\
+        (2, 1)^{\textcolor{red}{(4)}} & (2, 2)^{\textcolor{red}{(3)}} & (2, 3)^{\textcolor{red}{(6)}} & (2, 4)^{\textcolor{red}{(11)}} & (2, 5)^{\textcolor{red}{(18)}} & \dots \\
         
-        (2, 1) & \color{red}\leftarrow\color{black}  & (2, 2) &  & (2, 3) &  & (2, 4) &  & (2, 5) & \dots \\
-        
-        \color{red}\downarrow\color{black} & & & & \color{red}\uparrow\color{black}  & & \color{red}\downarrow\color{black} & & \color{red}\uparrow\color{black}  \\
-        
-        (3, 1) & \color{red}\ra\color{black} & (3, 2) & \color{red}\ra\color{black} & (3, 3) &  & (3, 4) &  & (3, 5) & \dots \\
-        
-        & & & & & & \color{red}\downarrow\color{black} & & \color{red}\uparrow\color{black} & &\\
-        
-        
-        (4, 1) & \color{red}\la\color{black} & (4, 2) & \color{red}\la\color{black} & (4, 3) & \color{red}\la\color{black} & (4, 4) &  & (4, 5) & \dots \\
-        
-        \color{red}\downarrow\color{black} & & & & & & & & \color{red}\uparrow\color{black} \\
+        (3, 1)^{\textcolor{red}{(9)}} & (3, 2)^{\textcolor{red}{(8)}} & (3, 3)^{\textcolor{red}{(7)}} & (3, 4)^{\textcolor{red}{(12)}} & (3, 5)^{\textcolor{red}{(20)}} & \dots \\
+        (4, 1)^{\textcolor{red}{(16)}} & (4, 2)^{\textcolor{red}{(15)}} & (4, 3)^{\textcolor{red}{(14)}} & (4, 4)^{\textcolor{red}{(13)}} & (4, 5)^{\textcolor{red}{(19)}} & \dots \\
 
-        (5, 1) & \color{red}\ra\color{black} & (5, 2) & \color{red}\ra\color{black} & (5, 3) & \color{red}\ra\color{black} & (5, 4) & \color{red}\ra\color{black} & (5, 5) & \dots \\
-        \vdots & & \vdots & & \vdots & & \vdots & & \vdots & \ddots
+        (5, 1)^{\textcolor{red}{(25)}} & (5, 2)^{\textcolor{red}{(24)}} & (5, 3)^{\textcolor{red}{(23)}} & (5, 4)^{\textcolor{red}{(22)}} & (5, 5)^{\textcolor{red}{(21)}} & \dots \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
     \end{array}\]
-
-    В ПРОЦЕССЕ
-
+    \begin{center}
+        (красным помечен порядок обхода)
+    \end{center}
+    Заметим, что частичные суммы с индексом \(n^2, n \in \N\) таковы, что \(S_{n^2} = \sum_{i, j = 1}^Na_ib_j = \left(\sum_{i = 1}^N a_i\right)\left(\sum_{j = 1}^N b_j\right) \ra AB\). Тогда и вся последовательность \(\ra AB\).
 \end{proof}
 
 \begin{definition}
@@ -48,7 +39,7 @@
     Если \(\sum_{n = 1}^\infty a_n, \sum_{n = 1}^\infty b_n\) cходятся абсолютно, то их произведение по Коши схоится абсолютно к их произведению сумм рядов
 \end{corollary}
 
-\begin{theorem}[Мертекс]
+\begin{theorem}[Мертенс]
     Если \(\sum_{n = 1}^\infty a_n\) абсолютно сходится, \(\sum_{n = 1}^\infty b_n\) сходится, то их произведеие Коши сходится к произведению их сумм
 \end{theorem}
 \begin{proof}
