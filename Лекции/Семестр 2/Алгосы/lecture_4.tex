@@ -1,0 +1,169 @@
+% !TEX root = ../../../main.tex
+
+\section{Графы}
+
+\begin{definition}
+  Ориентированный граф $G = (V, E)$, где $V$ - конечное множество. $E \subset V \times V$
+\end{definition}
+\begin{definition}
+  Неориентированный граф $G = (V, E)$, где $V$ - конечное множество. $E \subset C_v^2$
+\end{definition}
+
+\begin{center}
+  $\xymatrix{
+  *=0{\bullet} \ar[r] & *=0{\bullet} \ar[rd]\\
+  & *=0{\bullet}\ar[r] \ar[u] & *=0{\bullet}\\ 
+}\hspace{20mm}\xymatrix{
+{\circ}\ar@{|->} '[dr] 
+'[rr]
+[drrr]
+& {\circ} & {\bullet} & {\circ} \\
+{\circ} & {\circ} & {\circ} & {\circ} }$
+\end{center}
+
+\subsection{Алгоритм dfs (поиск в глубину)}
+\textbf{Псевдокод:}
+
+\begin{verbatim}
+vector<vector<int>> g;
+
+vector<int> parent;
+
+vector<int> tin, tout; // время входа и выхода из вершины
+
+vector<string> color; // для покраски вершин
+\end{verbatim}
+
+\textit{Изначально все вершины покрашены в белый цвет - сигнал, что в вершину еще не заходили, цвет серый - вершина в обработке, цвет черный - вершина полностью обработана, больше нас не интересует}
+
+\begin{verbatim}
+ 
+void dfs(int v) {
+  color[v] = "GRAY"; tin[v] = timer; ++timer;
+  for (int to: g[v]) {
+    if (color[to] == "WHITE"): parent[to] = v; dfs(to);
+  }
+  tout[v] = timer; ++timer;
+  color[v] = "BLACK";
+}
+\end{verbatim}
+
+\begin{lemma}[О белых путях]
+  За время с $tin[v]$ до $tout[v]$ dfs посетит все те вершины, которые были достижимы из $v$ по белым путям и перекрасит их в черный цвет.
+\end{lemma}
+
+\begin{proof}
+  Понятно, что перекрасить можем только описанные вершины. Заметим, что GRAY вершины - это в точности стек рекурсии. Значит, в момент $tout[v]$ новых серых не появилось. 
+
+$\xymatrix{
+  \ar@{}[r]^>{G} & *=0{\bullet} \ar[r]^>{G}& *=0{\bullet}\ar[r]^>{G}  &  *=0{\bullet}\ar[r]^>{W} & \\
+}$
+
+Остается доказать, что белые вершины достижимы по белым путям и не могут остаться белыми. Рассотрим вершину $u$ - самую высокую оставшуюся из белых. 
+Тогда ее родитель не мог почернеть без захода в эту вершину.
+\end{proof}
+\begin{corollary}
+  Пусть изначально все вершины - белые. Тогда после внешнего запуска dfs($s$) посетятся все достижимые из $s$ вершины.
+\end{corollary}
+\begin{corollary}
+  В графе $\exists$ цикл, достижимый из $s \leftrightarrow dfs(s)$ в какой-то момент ведет ребро в серую вершину.  
+\end{corollary}
+
+\begin{note}
+Мы не пытаемся обойтись 2 цветами - черным и белым, чтобы иметь возможность понять, есть ли цикл в графе
+\end{note}
+\begin{note}
+  Асимптотика алгоритма равно $O(n + m)$, где $n = |V|, m = |E|$.
+\end{note}
+\begin{definition}
+  DAG(directed acyclic graph) - ориентированный граф без циклов.
+\end{definition}
+\begin{definition}
+  Топологическая сортировка графа: перестановка вершин графа, чтобы все ребра вели "слева направо".
+  $$\xymatrix{
+    *=0{\bullet}\ar@/_/[rr] & *=0{\bullet}\ar@/^/[rr] \ar@/_/[rrr]& *=0{\bullet}\ar[rr]&*=0{\bullet} &*=0{\bullet}\\
+  }$$
+\end{definition}
+
+\begin{proposition}
+Топологическая сортировка сущесутвует тогда и только тогда, когда граф - $DAG$
+\end{proposition}
+
+\begin{proof}
+
+\text{}
+
+  \begin{enumerate}
+    \item[$\rightarrow$] Очев
+    \item[$\leftarrow$] Алгоритмом:
+    все вершины красим в белый цвет.
+    \begin{verbatim}
+      for (s = 0...n-1)
+        if (color[s] == "WHITE") dfs(s)
+    \end{verbatim}  
+    \textit{Топологическая сортировка} - перестановка вершин в порядке убывания $tout$
+
+  \textbf{Проверим корректность:} Достаточно показать, что не может быть ребра из $u$ в $v$: $tout[u] < tout[v]$. Предположим противное и разберем 2 случая:
+    \begin{enumerate}
+      \item $tin[u] < tin[v]$
+   
+   По лемме о белых путях, к моменту времени выхода из $u$ вершина $v$ уже полностью обработается $\rightarrow tout[v] < tout[u]$. Противоречие.
+  \item $tin[v] < tin[u]$
+  Тогда $\cancel \exists$ пути из $v$ в $u$. Значит, пол лемме, к моменту $tout[v]$ мы даже не увидим $u$. А следовательно, $tout[v] < tout[u]$. Противоречие.
+\end{enumerate}
+  \end{enumerate}
+\end{proof}
+
+\begin{definition}
+  Пусть $G$ - ориентированный граф, $u, v \in V(G)$. Тогда говорим, что $u, v$ сильно связны, если $\exists$ пусть из $u$ в $v$ и из $v$ в $u$.
+\end{definition}
+
+\begin{problem}
+Сильная связанность - отношение эквивалентности.
+\end{problem}
+\begin{definition}
+  Класс эквивалентности по этому отношению - компонента сильной связности (КСС)
+\end{definition}
+
+\newpage
+\subsubsection{Алгоритм Косарайю}
+\textbf{Алгоритм выделения КСС за $O(n + m)$}
+
+\begin{enumerate}
+  \item dfs от всех вершин, сортируя все вершины в порядке убывания tout
+  \item В этом порядке запускаем dfs по обратным ребрам (dfs Reversed). Все, что посетим за один такой запуск - очередная КСС. 
+\end{enumerate}
+
+\textbf{Корректность?}
+
+\begin{proof}
+  Ясно, что каждый запуск dfs Reversed обойдет одну или несколько КСС целиком. Но вдруг мы возьмем 2 КСС вместо одной\dots
+
+  \begin{proposition}
+    \text{}
+
+    Пусть $C_1, C_2$ - две КСС, причем есть ребро из $C_1$ в $C_2$. Тогда $max_{x \in C_1}(tout(x)) > max_{y \in C_2}(tout(y))$
+  \end{proposition}
+  \begin{proof}
+    \text{}
+
+    \begin{enumerate}
+      \item $min_{a \in C_1} tin(a) < min_{b \in C_2} tin(b)$
+      
+      В этом случае к моменту времени входа в $a$ все вершины в $C_1$ и $C_2$ - еще белые. По лемме о белых путях к  моменту $tout[a]$ все вершины из $C_1$ и $C_2$ покрасятся в черный $\Longrightarrow$ $tout(a) > max_{y \in C_2}(tout(y))$.
+    
+
+    \item $min_{a \in C_1} tin(a) > min_{b \in C_2} tin(b)$
+    
+    Тогда к моменту входа в $b$ все вершины из $C_1$ и $C_2$ еще белые. Отметим, что не существует пути из $b$ в $C_1$ (иначе $C_1$ и $C_2$ - одна КСС). Значит, к моменту выхода из $b$ вся $C_1$ еще белая $\Longrightarrow$ $max_{x \in C_1}(tout(x)) > max_{y \in C_2}(tout(y))$
+  \end{enumerate}
+  \end{proof}
+
+  Теперь воспользуемя утверждением и получим искомое.
+\end{proof}
+
+\begin{note}
+  Пусть алгоритм Косарайю нумерует все КСС в порядке их обнаружения. $id[v]$ - номер КСС, содержащий $v$. Значит, если есть ребро из $a$ в $b$, $id[a] \leq id[b]$
+\end{note}
+
+\textit{$a, b$ сильно связаны $\Longrightarrow id[a] = id[b]$}
