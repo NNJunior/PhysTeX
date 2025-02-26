@@ -39,6 +39,7 @@
       <lecture name="Лекция 1" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1DfpqFcF3h-oRZz1AVyQBDWUygNWfihk0hnckn1mNT1o/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="05.02.25"/>
       <lecture name="Лекция 2" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1uB9vzsJRM24gPfP60dp9FIg3wDB0QjlRoTIpSbkcVt8/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="12.02.25"/>
       <lecture name="Лекция 3" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="19.02.25"/>
+      <lecture name="Лекция 4" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="26.02.25"/>
     </subject>
     <subject name="Python" description="">
       <lecture name="Лекция 1" description="Кодстайл + идеалогия языка. Не техалась." date="08.02.25"/>
