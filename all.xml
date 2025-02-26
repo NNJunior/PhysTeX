@@ -14,6 +14,7 @@
     <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 2/Матлог/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матлог/lecture_1" description="ВУМы и Фундированные множества" setting="Лекции/Семестр 2/Матлог/setting"  date="05.02.25" />
       <lecture name="Лекция 2" path="Лекции/Семестр 2/Матлог/lecture_2" description="Теорема о сравнимости ВУМов. Ординалы" setting="Лекции/Семестр 2/Матлог/setting"  date="12.02.25" />
+      <lecture name="Лекция 3" path="Лекции/Семестр 2/Матлог/lecture_3" description="Теорема Цермело. Лемма Цорна." setting="Лекции/Семестр 2/Матлог/setting"  date="26.02.25" />
     </subject>
     <subject name="Многомерный анализ, интегралы и ряды" description="Коллега рассказывает про матан" setting="Лекции/Семестр 2/Матан/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Лекции/Семестр 2/Матан/setting" date="04.02.25"/>
