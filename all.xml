@@ -4,6 +4,7 @@
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгем/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Лекции/Семестр 2/Алгем/setting"  date="05.02.25"/>
       <lecture name="Лекция 2" path="Лекции/Семестр 2/Алгем/lecture_2" description="Скоро здесь будет описание" setting="Лекции/Семестр 2/Алгем/setting"  date="12.02.25"/>
       <lecture name="Лекция 3" path="Лекции/Семестр 2/Алгем/lecture_3" description="По техническим причинам, инвариантные пространства затеханы очень плохо (простите)" setting="Лекции/Семестр 2/Алгем/setting"  date="19.02.25"/>
+      <lecture name="Лекция 4 ☠️" path="Лекции/Семестр 2/Алгем/lecture_4" description="я сдаюсь..." setting="Лекции/Семестр 2/Алгем/setting"  date="26.02.25"/>
     </subject>
     <subject name="Алгоритмы и Структуры данных" description="Конспекты техает Иван, так что не обессудьте"  setting="Лекции/Семестр 2/Алгосы/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгосы/lecture_1" description="Динамическое программирование. &lt;a href=&quot;https://youtu.be/Cy7M4WnFFUY?si=Y39VDoNYy2Mt5Y87&quot;&gt;Запись лекции&lt;/a&gt;" setting="Лекции/Семестр 2/Алгосы/setting"  date="05.02.25" />

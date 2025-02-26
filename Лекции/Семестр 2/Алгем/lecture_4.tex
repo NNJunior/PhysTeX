@@ -1,0 +1,133 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Структура линейного оператора}
+\begin{definition}
+    \(\chi_A(\lambda) = \det(A - \lambda E)\) --- характеристический многочлен линейного оператора \(A\).
+\end{definition}
+
+\begin{proposition}[О свойствах характеристического многочлена]\indent
+    \begin{enumerate}
+        \item \(\chi_A(\lambda) = 0, \lambda \in F\), тогда \(\lambda\) --- собственное значение оператора \(A\).
+        \item \(\chi_A(\lambda)\) не зависит от выбора базиса, в котором записывается \(A\).
+    \end{enumerate}
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \(Ax = \lambda x \Lra (A - \lambda E)x = 0\) имеет нетривиальное решение \(\Lra \det(A - \lambda E) = 0\)
+        \item
+        \(\det(SAS^{-1} - \lambda E) = \det(SAS^{-1} - \lambda SES^{-1}) = \det S \det S^{-1} \det (A - \lambda E) = \det(A - \lambda E)\)
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Линейный оператор называется диагонализируемым, если существует базис, в котором его матрица является диагональной
+\end{definition}
+
+\begin{theorem}[Критерий диагонализируемости]
+    Пусть \(\phi: V \ra V\) --- линейный оператор, \(\lambda_1, \lambda_2 \dots \lambda_k\) --- все попарно различные корни характеристического многочлена. Тогда следующие утверждения эквивалентны:
+    \begin{enumerate}
+        \item \(\phi\) --- диагонализируема
+        \item В \(V\) суещствует бащис, состоящий из собственных векторов для \(\phi\)
+        \item \(V = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \dots \oplus V_{\lambda_k}\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(1 \Ra 2\)] Рассмотрим базис, в котором матрица имеет диагоанльный вид \(\mathfrak{E}\). Но тогда \(\forall e \in \mathfrak{E}: Ae = \lambda_i e\) для некоторого \(i\). Но тогда этот базис состоит из собственных векторов.
+        \item[\(2 \Ra 3\)] Рассмотрим отдельно базисы, отвечающие собственным значениям \(\lambda_1, \lambda_2 \dots \lambda_k\). Они образуют базисы пространств \(V_{\lambda_1}, V_{\lambda_2}, \dots V_{\lambda_k}\). Но тогда \(V = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \dots \oplus V_{\lambda_k}\)
+        \item[\(3 \Ra 1\)] Рассмотрим объединение базисов этих пространств. Т.к. каждый вектор полученного базиса будет собственным, в каждой строке и каждом столбце матрицы будет записано ровно одно число. Но тогда можно поменять местами векторы базиса так, чтобы матрица была диагональной
+    \end{enumerate}   
+\end{proof}
+
+\subsection{Алгебраическая и Геометрическая кратности}
+\begin{definition}
+    Алгебраической кратностью собственного значения \(\lambda_0\) многочлена \(\chi_A(\lambda)\) называется кратность его как корня данного многочлена.
+\end{definition}
+\begin{definition}
+    Геометрической кратностью собственного значения \(\lambda_0\) называется \(\dim V_{\lambda_0}\)
+\end{definition}
+
+\begin{proposition}
+    Пусть \(\phi: V \ra V\) --- линейный оператор, \(U \le V\), \(U\) инвариантно относительно \(phi, \psi = \phi|_U \in \mathcal{L}(U)\). Тогда \(\chi_\phi \vdots \chi_\psi\)
+\end{proposition}
+\begin{proof}
+    \[\mathfrak{E} = (\underbrace{\underbrace{e_1, e_2, \dots e_k}_{\text{Базис } U}, e_{k + 1}, \dots e_n}_{\text{Базис }V})\]
+    Но тогда:
+    \[A_\phi = \left(\begin{array}{c|c}
+        A_\psi & B \\ 
+        \hline
+        0 & C \\
+    \end{array}\right) \Ra \chi_\phi(\lambda) = |A_\phi - \lambda E| = |A_\psi - \lambda E||C - \lambda E| = \chi_\psi(\lambda)\chi_C(\lambda)\]
+\end{proof}
+
+\begin{corollary}
+    Пусть \(\lambda\) --- собственное значение \(\phi: V \ra V\). Тогда \(geom(\lambda) \le alg(\lambda)\)
+\end{corollary}
+\begin{proof}
+    Рассмотрим \(V_\lambda, \psi = \phi|_{V_\lambda}\). Тогда
+    \[\psi = \left(\begin{array}{cccc}
+        \lambda & 0 & \dots & 0\\
+        0 & \lambda & \dots & 0\\ 
+        \vdots & \vdots & \ddots & \vdots\\
+        0 & 0 & \dots & \lambda \\
+    \end{array}\right)\]
+    И тогда \(\chi_\psi(t) = (\lambda - t)^k\), где \(k = \dim V_{\lambda}\)
+    По вышедоказанному утверждению, \(\chi_\phi \vdots \chi_\psi \Ra \chi_\phi(t) \vdots (\lambda - t)^k \Ra alg(\lambda) \ge geom(\lambda)\)
+\end{proof}
+
+\begin{corollary}
+    Если \(\chi_\phi\) --- не линейно факторизуем, то \(\phi\) --- не диагонализируем
+\end{corollary}
+
+\begin{theorem}
+    Пусть \(\phi: V \ra V\) --- линейные оператор. Тогда он диагонализируем тогда и только тогда, когда 
+    \begin{enumerate}
+        \item \(\phi\) --- линейно факторизуем над \(F\)
+        \item \(\forall i\;\; alg(\lambda_i) = geom(\lambda_i)\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\Ra\)] Т.к. \(V = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \dots \oplus V_{\lambda_k}\), то \(\dim V = \dim V_{\lambda_1} + \dim V_{\lambda_2} + \dots + \dim V_{\lambda_k}\). Но тогда 1 и 2 верны, т.к. \(alg(\lambda_i) \ge geom(\lambda_i)\), и, при этом \(\sum alg(\lambda_i) = \sum geom(\lambda_i)\).
+        \item[\(\La\)] В таком случае \(\sum alg(\lambda_i) = \sum geom(\lambda_i)\). Но тогда \(\dim V = \sum geom(\lambda_i)\). Но тогда \(V = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \dots \oplus V_{\lambda_k}\)
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Жорданова клетка порядка \(n\), отвечающая собственному значению \(\lambda\) --- это матрица:
+    \[J_n(\lambda) = \left(\begin{array}{cccccc}
+        \lambda & 1 & 0 & \dots & 0 & 0 \\
+        0 & \lambda & 1 & \dots & 0 & 0 \\
+        0 & 0 & \lambda & \dots & 0 & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0 & 0 & 0 & \dots & \lambda & 1 \\
+        0 & 0 & 0 & \dots & 0 & \lambda \\
+    \end{array}\right)\]
+\end{definition}
+
+\begin{note}
+    Линейной факторизуемости \(\chi_\phi\) недостаточно, чтобы утверждать диагонализируемость \(\phi\). Например, \(J_n(\lambda)\) не диагонализируема, т.к. \(J_n(\lambda) - \lambda E\) имеет размерность решений \(2\), но \(\chi_{J_n(\lambda)}(t) = (\lambda - t)^n\).
+\end{note}
+
+\begin{proposition}
+    \(\phi: V \ra V, \phi_\lambda = \phi - \lambda E\). Тогда следующие утверждения эквивалентны:
+    \begin{enumerate}
+        \item Подпространство \(U \le V\) инвариантно относительно \(\phi\).
+        \item \(\exists \lambda \in F: U\) --- инвариантно относительно \(\phi_\lambda\).
+        \item \(\forall \lambda \in F: U\) --- инвариантно относительно \(\phi_\lambda\).
+    \end{enumerate}
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(1 \Ra 2\)] очевидно, \(\lambda = 0\)
+        \item[\(2 \Ra 3\)] \((\phi - \lambda E)x = \mu x \Ra (\phi - \lambda E - \lambda_1 E)x = (\mu - \lambda_1) x\)
+        \item[\(3 \Ra 1\)] Тоже очевидно
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    Пусть \(\phi: V \ra V\) --- линейный оператор и \(\chi_\phi(t)\) линейно факторизуем. Тогда у \(\phi\) найдется \(n - 1\) мерное подпространство.
+\end{proposition}
+
+Я СДАЮСЬ
+он победил
