@@ -1,0 +1,65 @@
+% !TEX root = ../../../main.tex
+
+\begin{theorem}[Римана]
+    Если действительный ряд \(\sum_{n = 1}^\infty a_n\) сходится условно, то для любого \(L \in \R\) существует такая перестановка \(\sum_{n = 1}^\infty a_{\phi(n)}\), что\(\sum_{n = 1}^\infty a_{\phi(n)} = L\)
+\end{theorem}
+\begin{proof}
+    Положим \(b_i\) --- положительные члены \(a_i\), \(c_i\) --- отрицательные члены \(a_i\). Заметим, что т.к. \(\lim_{n \ra \infty} a_n = 0 \Ra \lim_{n \ra \infty} c_n = 0, \lim_{n \ra \infty} c_n = 0\). Проверим, что \(b_i, c_i\) расходятся. Действительно, пусть это не так, тогда один из них сходится. Но тогда, т.к. \(\sum_{n = 1}^\infty a_n = \sum_{n = 1}^\infty b_n + \sum_{n = 1}^\infty c_n\) (это следует из того, что если мы сложим некоторые частичные суммы \(b_i, c_i\), то получим частичную сумму \(a_i\)), получаем, что они либо оба сходятся, либо асболюнто расходятся. Но \(a_i\) не сходится абсолютно, значит \(\sum_{n = 1}^\infty b_n - \sum_{n = 1}^\infty c_n = \sum_{n = 1}^\infty |a_n|\) --- расходится, тогда один из рядов \(\sum_{n = 1}^\infty b_n, \sum_{n = 1}^\infty c_n\) --- расходится, тогда они оба расходятся. Далее применяем предыдущую лемму и получаем требуемую перестановку.
+\end{proof}
+
+\begin{theorem}[Коши]
+    Если ряды \(\sum_{n = 1}^\infty a_n, sum_{n = 1}^\infty b_n\) абсолютно сходятся к числам \(A, B\) соответственно \(\phi: \N \ra \N^2, \phi(n) = (i_n, j_n)\) --- биекция, то \(\sum_{n = 1}a_{i_n}b_{j_n}\) сходится абсолюнто к \(AB\)
+\end{theorem}
+\begin{proof}
+    Покажем, что частичные суммы ряда \(\sum_{n = 1}^\infty |a_{i_n}b_{j_n}|\) ограничены.
+    \[\sum_{n = 1}^N |a_{i_n}b_{j_n}| \le \sum_{i = 1}^{(\max_{i \le n \le N}i_n)}\sum_{j = 1}^{(\max_{i \le n \le N}j_n)} |a_ib_j| \le \left(\sum_{i = 1}^\infty |a_i|\right)\left(\sum_{j = 1}^\infty |b_j|\right)\]
+    Поэтому, эта шняга сходится. К чему? Ха-ха...
+    \[\begin{array}{ccccccccccc}
+        (1, 1)^{\textcolor{red}{(1)}} & (1, 2)^{\textcolor{red}{(2)}} &(1, 3)^{\textcolor{red}{(5)}} & (1, 4)^{\textcolor{red}{(10)}} & (1, 5)^{\textcolor{red}{(17)}} & \dots \\
+        
+        (2, 1)^{\textcolor{red}{(4)}} & (2, 2)^{\textcolor{red}{(3)}} & (2, 3)^{\textcolor{red}{(6)}} & (2, 4)^{\textcolor{red}{(11)}} & (2, 5)^{\textcolor{red}{(18)}} & \dots \\
+        
+        (3, 1)^{\textcolor{red}{(9)}} & (3, 2)^{\textcolor{red}{(8)}} & (3, 3)^{\textcolor{red}{(7)}} & (3, 4)^{\textcolor{red}{(12)}} & (3, 5)^{\textcolor{red}{(20)}} & \dots \\
+        (4, 1)^{\textcolor{red}{(16)}} & (4, 2)^{\textcolor{red}{(15)}} & (4, 3)^{\textcolor{red}{(14)}} & (4, 4)^{\textcolor{red}{(13)}} & (4, 5)^{\textcolor{red}{(19)}} & \dots \\
+
+        (5, 1)^{\textcolor{red}{(25)}} & (5, 2)^{\textcolor{red}{(24)}} & (5, 3)^{\textcolor{red}{(23)}} & (5, 4)^{\textcolor{red}{(22)}} & (5, 5)^{\textcolor{red}{(21)}} & \dots \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+    \end{array}\]
+    \begin{center}
+        (красным помечен порядок обхода)
+    \end{center}
+    Заметим, что частичные суммы с индексом \(n^2, n \in \N\) таковы, что \(S_{n^2} = \sum_{i, j = 1}^Na_ib_j = \left(\sum_{i = 1}^N a_i\right)\left(\sum_{j = 1}^N b_j\right) \ra AB\). Тогда и вся последовательность \(\ra AB\).
+\end{proof}
+
+\begin{definition}
+    Ряд \(\sum_{n = 1}^\infty c_n, c_n = \sum_{k = 1}^na_kb_{n + 1 - k}\) называется произведением по Коши рядов \(\sum_{n = 1}^\infty a_n, \sum_{n = 1}^\infty b_n\)
+\end{definition}
+
+\begin{corollary}
+    Если \(\sum_{n = 1}^\infty a_n, \sum_{n = 1}^\infty b_n\) cходятся абсолютно, то их произведение по Коши схоится абсолютно к их произведению сумм рядов
+\end{corollary}
+
+\begin{theorem}[Мертенс]
+    Если \(\sum_{n = 1}^\infty a_n\) абсолютно сходится, \(\sum_{n = 1}^\infty b_n\) сходится, то их произведеие Коши сходится к произведению их сумм
+\end{theorem}
+\begin{proof}
+    \(B_N\) --- \(N\)-ая частичная сумма, \(B\) --- сумма ряда \(\sum_{n = 1}^\infty b_n\). Тогда \(B_N = B + \beta_N\), где \(\beta_N \ra 0\). Представим \(\sum_{n = 1}^\infty c_n\) в следующем виде:
+    \[\sum_{n = 1}^N c_n = a_1b_1 + (a_1b_2 + b_1a_2) + \dots + (a_1b_N + \dots + b_1a_N) = a_1B_N + a_2B_{N - 1} + \dots + a_NB_1 = \sum_{k = 1}^N a_k \cdot B + \gamma_N\]
+    Где \(\gamma_N = a_1\beta_N + a_2\beta_{N - 1} + \dots + a_N\beta_1\). Т.к. \(\sum_{k = 1}^N a_kB \ra AB\), то достаточно показать, что \(\gamma_N \ra 0\). 
+
+    Зафиксируем \(\epsilon > 0\) и выберем \(m \in \N\), т.ч. \(\sum_{n = m + 1}^N|a_n| < \epsilon, |\beta_n| < \epsilon\) при \(n \ge m\). Пусть \(N \ge 2m\), тогда (положим \(C = \sum |\beta_n|\)):
+    \[|\gamma_N| = |a_1\beta_N + a_2\beta_{N - 1} + \dots + a_N\beta_1| \le |a_1\beta_N + a_2\beta_{N - 1} + \dots + a_m\beta_{N - m + 1}|  + |a_{m + 1}\beta_{N - m} + \dots + a_N\beta_1|\]
+    \[|a_1\beta_N + a_2\beta_{N - 1} + \dots + a_m\beta_{N - m + 1}|  + |a_{m + 1}\beta_{N - m} + \dots + a_N\beta_1| \le \sum_{k = 1}^m |a_k|\epsilon + C \sum_{k = m + 1}^\infty |a_k| < \epsilon\left(\sum_{k = 1}^\infty|a_k| + C\right)\]
+\end{proof}
+
+\section{Ряд и Интеграл}
+\[g(b) = \sum_{k = 0}^m \frac{g^{(k)}(a)}{k!}(b - a)^k + \frac{1}{m!}\int_a^b(b - t)^mg^{(m + 1)}(t)dt\]
+
+Пусть \(f \in C^1[1, +\infty]\) и \(\int_1^\infty|f'(t)|dt\) сходится. Тогда \(\sum_{k = 1}^\infty f(k)\) сходится одновременно с \(\left\{\int_1^n f(t)dt\right\}\)
+
+\begin{proof}
+    \[g(x) = \int_n^xf(t)dt \]
+    \[\left|\int_n^{n + 1}f(t)dt - f(n)\right| \le \underbrace{\int_n^{n + 1}|f'(t)|dt}_{\text{член сходящегося ряда}}\]
+    \(\alpha_k = \int_k^{k + 1}f(t)dt - f(k)\) --- член сходящегося ряда.
+    \[S_n = \sum_{k = 1}^n \alpha_k = \int_1^{n + 1}f(t)dt - \sum_{k = 1}^nf(k) \text{ --- сходится}\]
+\end{proof}

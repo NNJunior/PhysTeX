@@ -4,28 +4,31 @@
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгем/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Лекции/Семестр 2/Алгем/setting"  date="05.02.25"/>
       <lecture name="Лекция 2" path="Лекции/Семестр 2/Алгем/lecture_2" description="Скоро здесь будет описание" setting="Лекции/Семестр 2/Алгем/setting"  date="12.02.25"/>
       <lecture name="Лекция 3" path="Лекции/Семестр 2/Алгем/lecture_3" description="По техническим причинам, инвариантные пространства затеханы очень плохо (простите)" setting="Лекции/Семестр 2/Алгем/setting"  date="19.02.25"/>
+      <lecture name="Лекция 4 ☠️" path="Лекции/Семестр 2/Алгем/lecture_4" description="я сдаюсь..." setting="Лекции/Семестр 2/Алгем/setting"  date="26.02.25"/>
     </subject>
     <subject name="Алгоритмы и Структуры данных" description="Конспекты техает Иван, так что не обессудьте"  setting="Лекции/Семестр 2/Алгосы/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгосы/lecture_1" description="Динамическое программирование. &lt;a href=&quot;https://youtu.be/Cy7M4WnFFUY?si=Y39VDoNYy2Mt5Y87&quot;&gt;Запись лекции&lt;/a&gt;" setting="Лекции/Семестр 2/Алгосы/setting"  date="05.02.25" />
-      <lecture name="Лекция 2" path="Лекции/Семестр 2/Алгосы/lecture_2" description="Динамическое программирование. Метод матриц" setting="Лекции/Семестр 2/Алгосы/setting" date="12.02.25" />
+      <lecture name="Лекция 2" path="Лекции/Семестр 2/Алгосы/lecture_2" description="Динамическое программирование. Метод матриц. &lt;a href=&quot;https://youtu.be/hal4MYN9CIk?si=4e-YQuVvi3Y0fMSl&quot;&gt;Запись лекции&lt;/a&gt;" setting="Лекции/Семестр 2/Алгосы/setting" date="12.02.25" />
       <lecture name="Лекция 3" path="Лекции/Семестр 2/Алгосы/lecture_3" description="Динамическое программирование. Маски" setting="Лекции/Семестр 2/Алгосы/setting" date="19.02.25" />
     </subject>
     <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 2/Матлог/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матлог/lecture_1" description="ВУМы и Фундированные множества" setting="Лекции/Семестр 2/Матлог/setting"  date="05.02.25" />
       <lecture name="Лекция 2" path="Лекции/Семестр 2/Матлог/lecture_2" description="Теорема о сравнимости ВУМов. Ординалы" setting="Лекции/Семестр 2/Матлог/setting"  date="12.02.25" />
     </subject>
-    <subject name="Многомерный анализ" description="Коллега рассказывает про матан" setting="Лекции/Семестр 2/Матан/setting">
+    <subject name="Многомерный анализ, интегралы и ряды" description="Коллега рассказывает про матан" setting="Лекции/Семестр 2/Матан/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Лекции/Семестр 2/Матан/setting" date="04.02.25"/>
       <lecture name="Лекция 2" path="Лекции/Семестр 2/Матан/lecture_2" description="Продолжаем свойства несобственных интегралов" setting="Лекции/Семестр 2/Матан/setting" date="07.02.25"/>
       <lecture name="Лекция 3" path="Лекции/Семестр 2/Матан/lecture_3" description="Абсолютная сходимость, лемма Дирихле, Абеля" setting="Лекции/Семестр 2/Матан/setting" date="11.02.25"/>
       <lecture name="Лекция 4" path="Лекции/Семестр 2/Матан/lecture_4" description="Числовые ряды и их свойства" setting="Лекции/Семестр 2/Матан/setting" date="14.02.25"/>
       <lecture name="Лекция 5" path="Лекции/Семестр 2/Матан/lecture_5" description="Признаки сходимости рядов. Числовые ряды с произвольными членами" setting="Лекции/Семестр 2/Матан/setting" date="18.02.25"/>
+      <lecture name="Лекция 6" path="Лекции/Семестр 2/Матан/lecture_6" description="Еще признаки сходмости рядов. Группировки и перестановки." setting="Лекции/Семестр 2/Матан/setting" date="21.02.25"/>
+      <lecture name="Лекция 7" path="Лекции/Семестр 2/Матан/lecture_7" description="Теорема Римана, Теорема Мертенса" setting="Лекции/Семестр 2/Матан/setting" date="25.02.25"/>
     </subject>
     <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Лекции/Семестр 2/ОКТЧ/setting">
-      <lecture name="Доп Лекция" path="Лекции/Семестр 2/ОКТЧ/lecture_extra" description="ОТА, лемма Евклида" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="19.02.25"/>
+      <lecture name="Лекция (дополнитальная)" path="Лекции/Семестр 2/ОКТЧ/lecture_extra" description="ОТА, лемма Евклида" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="19.02.25"/>
       <lecture name="Лекция 1" path="Лекции/Семестр 2/ОКТЧ/lecture_1" description="Квадратичные вычеты. Начало" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="06.02.25"/>
       <lecture name="Лекция 2" path="Лекции/Семестр 2/ОКТЧ/lecture_2" description="Матрицы Адамара. Коды, исправляющие ошибки (начало)." setting="Лекции/Семестр 2/ОКТЧ/setting"  date="13.02.25"/>
-       
+      <lecture name="Лекция 3" path="Лекции/Семестр 2/ОКТЧ/lecture_3" description="Матрицы Адамара (продолжение)" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="13.02.25"/>
     </subject>
     <subject name="Технологии программирования" description="
 Основные ссылки по курсу:&#xA;
@@ -36,6 +39,7 @@
       <lecture name="Лекция 1" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1DfpqFcF3h-oRZz1AVyQBDWUygNWfihk0hnckn1mNT1o/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="05.02.25"/>
       <lecture name="Лекция 2" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1uB9vzsJRM24gPfP60dp9FIg3wDB0QjlRoTIpSbkcVt8/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="12.02.25"/>
       <lecture name="Лекция 3" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="19.02.25"/>
+      <lecture name="Лекция 4" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="26.02.25"/>
     </subject>
     <subject name="Python" description="">
       <lecture name="Лекция 1" description="Кодстайл + идеалогия языка. Не техалась." date="08.02.25"/>
@@ -53,6 +57,7 @@
       <lecture name="Лекция 1" description="&lt;a href=&quot;https://t.me/c/2150836650/6813&quot;&gt;Запись лекции&lt;/a&gt;" date="08.02.25" />
       <lecture name="Лекция 2" description="&lt;a href=&quot;https://t.me/c/2150836650/6957&quot;&gt;Запись лекции&lt;/a&gt;" date="11.02.25" />
       <lecture name="Лекция 3" description="Скоро здесь появится ссылка на запись лекции" date="18.02.25" />
+      <lecture name="Лекция 3" description="Скоро здесь появится ссылка на запись лекции" date="25.02.25" />
     </subject>
   </semester>
 </all>

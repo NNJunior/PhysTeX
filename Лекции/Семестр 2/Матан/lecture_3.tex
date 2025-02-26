@@ -78,8 +78,8 @@
 \[\frac{\sin x}{\sqrt{x} - \sin x} \sim_{x \ra +\infty} \frac{\sin x}{\sqrt{x}}\]
 Так делать нельзя, т.к. свойство, котоыре мы использовали выше, рабоатет только для неотрициательных функций. Как правильно:
 
-\[g(x) = \frac{\sin x }{\sqrt{x}} = \frac{\sin x(\sqrt{x} - (\sqrt{x} - \sin x))}{\sqrt{x}(\sqrt{x} - \sin x)}\]
-\[g(x) = \frac{\sin^2 x}{x(1 - \frac{\sin x}{\sqrt{x}})} \sim \frac{\sin^2 x}{x} = \frac{1}{2} \left(\frac{1}{x} - \frac{\cos x}{x}\right) \ge 0 \Ra \int_1^{+\infty} g(x)dx \text{ --- расходится}\]
+\[g(x) = \frac{\sin x}{\sqrt{x} - \sin x} - \frac{\sin x }{\sqrt{x}} = \frac{\sin x(\sqrt{x} - (\sqrt{x} - \sin x))}{\sqrt{x}(\sqrt{x} - \sin x)}\]
+\[g(x) = \frac{\sin^2 x}{x(1 - \frac{\sin x}{\sqrt{x}})} \sim \frac{\sin^2 x}{x} = \frac{1}{2} \left(\frac{1}{x} - \frac{\cos 2x}{x}\right) \ge 0 \Ra \int_1^{+\infty} g(x)dx \text{ --- расходится}\]
 \end{example}
 
 \begin{center}

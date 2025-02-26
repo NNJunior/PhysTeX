@@ -1,11 +1,35 @@
 % !TEX root = ../../../main.tex
 
-\section{Продолжим теорию с кодами}
-
-\begin{theorem}[Граница Плоткина]
-  Пусть дан \((n, M, d)\)-код, где \(2d > n\). Тогда \(M  \le \frac{2d}{2d - n}\).
+\begin{theorem}
+  Пусть \(\mathcal{R}_n = \{1, 2, \dots n\}\). Пусть  \(\{M_1, M_2, \dots M_n\} \subseteq \mathcal{R}\). Тогда \(\exists\) раскраска множества \(\mathcal{R}_n\) в красный и синий цвета, при которой \(\forall i\) в \(M_i\) разность между количеством чисел элементов по модулю \(\le 6\sqrt{n}\)
 \end{theorem}
-
 \begin{proof}
-  Рассмотрим $(n, M, d)$-код, $a_{ij} \in \{\}
+  Доказательство нас будет ожидать в 4 семестре и будет использовать энтропию. Не бойтесь никакой физики там не будет.
+\end{proof}
+\begin{theorem}
+  Пусть \(\chi\) --- раскраска \(\mathcal{R}_n\) в красный и синий цвета. Введем \(\chi: 2^{\mathcal{R}_n} \ra \Z: \chi(A) = \#(\text{красных элементов } A) - \#(\text{синих элементов } A)\). Пусть существует матрица Адамара порядка \(n\). Тогда \(\exists M_1, M_2, \dots M_n: \forall \chi: \exists i |\chi(M_i)| \ge \frac{\sqrt{n}}{2}\)
+\end{theorem}
+\begin{proof}
+  Рассмотрим матрицу Адамара нормального вида 
+  \[H = \left(\begin{array}{cccc}
+    1 & 1 & \dots &  1 \\
+    1 & \pm 1 & \dots & \pm 1 \\
+    \vdots & \vdots & \ddots & \vdots\\
+    1 & \pm 1 & \dots & \pm 1 \\
+\end{array}\right)\]
+Возьмем каждую строку \(H\). Это элементы \(\{+1, -1\}^n\). Пусть \(J: [J]_{ik} = 1\). Докажем, что \(\forall v \in \{+1, -1\}^n\) у вектора \(\left(\frac{H + J}{2}\right)v\) существует координата, модуль которой \(\ge \frac{\sqrt{n}}{2}\). Заметим, что 
+\[(Hv, Hv) = (vh_1 + vh_2 + vh_3 + \dots, vh_1 + vh_2 + vh_3 + \dots)\]
+\[(v_1h_1 + v_2h_2 + v_3h_3 + \dots, v_1h_1 + v_2h_2 + v_3h_3 + \dots) = v_1^2(h_1, h_1) + v_2^2(h_2, h_2) + \dots v_n^2(h_n, h_n) = \]
+\[ = \underbrace{(h_1, h_1)}_{n}  + \underbrace{(h_2, h_2)}_{n}  + \dots  + \underbrace{(h_n, h_n)}_{n} = n^2\]
+Пусть \(Hv = (L_1, L_2, \dots L_n)\). Тогда \((Hv, Hv) = L_1^2 + L_2^2 + \dots + L_n^2 = n^2 \Ra \exists i : |L_i| \ge \sqrt{n}\). Пусть теперь \((H + J)v = (L_1 + \lambda, L_2 + \lambda, dots L_n + \lambda)\). 
+\[((H + J)v, (H + J)v) = \underbrace{L_1^2 + L_2^2 + \dots + L_n^2}_{n^2} + 2\lambda(L_1 + L_2 + \dots + L_n) + \lambda^2n\]
+Причем, \(\sum_{i = 1}^nL_i = \sum_{j = 1}v_j\underbrace{\left(\sum_{i = 1}^nh_{ij}\right)}_{= 0 \text{при} i \ne 1} = v_1n\). Но тогда:
+\[((H + J)v, (H + J)v) = n^2 + 2\lambda n + \lambda^2n\]
+Эта парабола принмиает минимум в \(\lambda \pm 1, \lambda\) --- четное \(\Ra\) реальный минимум в \(\lambda = 0, 2\) или \(0, -2\). Значит в \(0\) точно принимается минимум \(\Ra \min \ge n^2\). Поэтому у этого вектора есть координата \(\ge \sqrt{n}\). Но тогда у \(\left(\frac{H + J}{2}\right)v \ge \frac{\sqrt{n}}{2}\). Но заметим, что \(\left(\frac{H + J}{2}\right)v\) элементы \(\in \{0, 1\}\). Но тогда координаты \(\left(\frac{H + J}{2}\right)v\) --- значения \(\chi(H_i)\), где \(H_i\) --- это множество, состоящее из элементов, которые удовлетворяют маске \(i\)-ой строки \(H\). Но тогда мы получили желаемое
+\end{proof}
+\begin{corollary}
+  При \(n \ra +\infty\;\;\exists M_1, M_2, \dots M_n \forall \chi \exists i |\chi(M_i)| \ge \frac{\sqrt{n}}{2}(1 - o(1))\)
+\end{corollary}
+\begin{proof}[Доказательство неулучшаемости оценки]
+
 \end{proof}

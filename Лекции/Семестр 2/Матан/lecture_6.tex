@@ -1,0 +1,107 @@
+% !TEX root = ../../../main.tex
+
+\begin{example}[Применение признака Лейбница]
+    \(\sum_{n = 1}^\infty \frac{(-1)^n}{n^\alpha}\) сходится при \(\Lra \alpha > 0\), причем сходится условно при \(\alpha \in (0, 1]\).
+\end{example}
+\begin{theorem}[Признак Дирихле]
+    Пусть \(\{a_n\}, \{b_n\}\) такие, что 
+    \begin{enumerate}
+        \item \(A_N = \sum_{n = 1}^Na_n\) ограничена
+        \item \(b_n\) монотонна
+        \item \(\lim_{n \ra \infty} b_n = 0\)
+    \end{enumerate}
+    Тогда \(\sum_{n = 1}^\infty a_nb_n\) сходится.
+\end{theorem}
+\begin{proof}
+    Можно доказать переходом к интегралу
+\end{proof}
+
+\begin{corollary}[Признак Абеля]
+    Пусть \(\{a_n\}, \{b_n\}\) такие, что 
+    \begin{enumerate}
+        \item \(\sum_{n = 1}^\infty a_n\) сходится
+        \item \(b_n\) монотонна
+        \item \(b_n\) ограничена
+    \end{enumerate}
+    Тогда \(\sum_{n = 1}^\infty a_nb_n\) сходится.
+\end{corollary}
+\begin{proof}
+    (Можно доказать переходом к интегралу)
+
+    \(b_n \ra c \in \R\). Но \(\sum_{n = 1}^\infty a_n(b_n - c)\) сходится по признаку Дирихле. Но тогда \(\sum_{n = 1}^\infty a_nb_n = \sum_{n = 1}^\infty a_n(b_n - c) + c\sum_{n = 1}^\infty a_n\). Но тогда последний интеграл тоже сходится.
+\end{proof}
+
+\begin{corollary}
+    Если \(\{\alpha_n\}\) --- монотонна и \(\alpha_n \ra 0\), то \(\sum_{n = 1}^\infty \alpha_n \cos nx\) и \(\sum_{n = 1}^\infty \alpha_n \sin nx\) --- сходятся, если \(x \ne 2\pi m, m \in \Z\).
+\end{corollary}
+\begin{proof}
+    \(S_N = \sum_{n = 1}^Ne^{inx}\) --- геометрическая прогрессия с коэффициентом \(q = e^{ix}\). По формуле Эйлера, \(S_N = A_N + iB_N\), где \(A_N = \sum_{n = 1}^N\cos nx, B_N = \sum_{n = 1}^N\sin nx\). Имеем: \(S_N = e^{ix}\frac{1 - e^{iNx}}{1 - e^{ix}}\). Т.к. \(|e^{ikx}| = 1\), то \(|S_N| \le \frac{2}{|1 - e^{ix}|} = \frac{2}{|1 - \cos x - i\sin x|} = \frac{2}{\sqrt{(1 - \cos x)^2 + (\sin x)^2}} = \frac{2}{\sqrt{1 - 2\cos x + \cos^2 x + (\sin x)^2}} = \frac{2}{\sqrt{2 - 2\cos x}} = \frac{1}{\sin \frac{x}{2}}\)
+\end{proof}
+\begin{example}
+    \(a_n = (-1)^n, b_n = (-1)^n\left(\frac{1}{\sqrt{n}} + \frac{(-1)^n}{n}\right)\).
+    \[\sum_{n = 1}^\infty \frac{(-1)^n}{\sqrt{n}} \text{ сходится }\]
+    \[\sum_{n = 1}^\infty b_n \text{ расходится, т.к. } b_n = a_n + \frac{1}{n}\]
+    Но \(b_n \sim a_n\left(1 + \frac{(-1)^n}{\sqrt{n}}\right)\)
+\end{example}
+\subsection{Группировки и перестановки}
+Пусть дана строго возрастающая последовательность \(\sum_{n = 1}^\infty a_n\)
+\begin{definition}
+    Пусть дана строго возрастающая последовательность целых чисел  \(0 = n_1 < n_2 < \dots\). Ряд \(\sum_{k = 1}^\infty b_k = a_{n_{k - 1} + 1} + \dots + a_{n_{k}}\) называется группировкой \(\sum_{n = 1}^\infty a_n\).
+\end{definition}
+
+\begin{lemma}
+    \begin{enumerate}
+        \item Если \(\sum_{n = 1}^\infty a_n\) сходится, то и любая группировка \(a_n\) сходится к той же сумме.
+        \item Пусть \(\exists L > 0: n_{k} - n_{k - 1} < L \forall k\). Если \(a_n \ra 0\) и группировка \(b_n\) --- сходится, то \(\sum_{n = 1}^\infty a_n\) сходится к той же сумме.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Пусть \(S_n\) --- частичные суммы \(a_n\), \(S^*_n\) --- частичные суммы группировки.
+    \begin{enumerate}
+        \item Пусть \(S_n \ra S\). Т.к. \(S_n^*\) --- подпослежовательность \(S_n\), то она тоже сходится, причем их пределы совпадают.
+        \item Пусть \(\epsilon > 0\). Выберем \(K, M \in \N\) так, что \(|S_k^* - S| = |S_{n_k} - S| < \frac{\epsilon}{2} \forall k \ge K, |a_n| \le \frac{\epsilon}{2L}, \forall n \ge M\). Положим \(N = \max\{K, M + L\}\). Тогда для любого \(n \ge N \exists k (n_k \le n < n_{k + 1})\), а значит, \(S_n = S_{n_k} + a_{n_k + 1} + \dots + a_n\). Поэтому \(|S_n - S| \le |S_{n_k} - S| + |a_{n_k + 1}| + \dots + |a_{n}| < \frac{\epsilon}{2} + L\frac{2\epsilon}{2L} = \epsilon\).
+    \end{enumerate} 
+\end{proof}
+
+\begin{problem}
+    Пусть все \(a_n \in \R\) и одного знака внутри группы. Доказать, что сходимость группировки влечет сходимость \(\sum_{n = 1}^\infty a_n\), причем к той же сумме.
+\end{problem}
+
+\begin{proof}
+    Ряд \(\sum_{n = 1}^\infty a_{\phi(n)}\), где \(\phi: \N \ra \N\) --- биекция, называется перестановкой.
+\end{proof}
+\begin{theorem}
+    Пусть \(\sum_{n = 1}^{\infty} a_n\) сходится абсолютно. Тогда любая его перестановка \(\sum_{n = 1}^\infty a_{\phi(n)}\) сходится абсолютно к той же сумме.
+\end{theorem}
+\begin{proof}
+    Покажем, что частичные суммы ряда \(\sum_{n = 1}^\infty a_{\phi(n)}\) ограничены.
+    \[\sum_{n = 1}^N|a_{\phi(n)}| \le \sum_{n = 1}^{\max_{k \in {1, 2, \dots N}}\phi(k)} \le \sum_{n = 1}^\infty |a_n|\]
+    Зафиксируем \(\epsilon > 0\) и выберем \(m\) так, что \(\left|\sum_{n = m + 1}^\infty a_n\right| < \epsilon\). Выберем \(M\) так, что \(\{1, 2, \dots m\} \subset \{\phi(1), \phi(2), \dots \phi(M)\}\). Положим \(N = \max \{m, M\}\). Тогда \(\forall n \ge N\;\;\{1, 2, \dots m\} \subset \{\phi(1), \phi(2), \dots \phi(N)\}\), поэтому 
+    \[\left|\sum_{n = 1}^\infty a_n - \sum_{n = 1}^N a_{\phi(n)}\right| \le \sum_{n = m + 1}^\infty |a_n| < \epsilon\]
+\end{proof}
+\begin{example}
+    \(\sum_{n = 1}^\infty \frac{(-1)^n}{n}\).
+    \[S_{2m} = 1 - \frac{1}{2} + \frac{1}{3} \dots - \frac{1}{2m} = 1 + \frac{1}{2} + \frac{1}{3} \dots + \frac{1}{2m} - 2\left(\frac{1}{2} + \dots + \frac{1}{2m}\right) = H_{2m} - H_m = \ln 2 + o(1)\]
+\end{example}
+\begin{example}[Как не надо делать]
+    \[S_\Pi = 1 - \frac{1}{2} - \frac{1}{4} + \frac{1}{3} - \frac{1}{6} - \frac{1}{8} + \dots = \frac{1}{2} - \frac{1}{4} + \frac{1}{6} + \dots = \frac{1}{2\left(\ln 2\right)}\]
+    Получилась фигня, т.к. ряд не сходился абсолютно. Для условно сходящихся рядов при перестановке может получиться что угодно
+\end{example}
+
+\begin{lemma}
+    Пусть даны два расходящихся ряда \(\sum_{k = 1}^\infty b_k, \sum_{k = 1}^\infty c_k\), где \(b_k > 0, c_k < 0,\;\;\;b_k, c_k \ra 0\). Тогда для любого \(L \in \R\) найдется \(\sum_{n = 1}^\infty d_k\) с суммой \(L\), так что \(\{d_k\}\) содержит все \(b_k, c_k\), причем по одному разу.
+\end{lemma}
+\begin{proof}
+    Идея: так как ряды расходятся, будем добавлять члены из них, чтобы переваливать через \(L\) туда-сюда. % Нормальное доказательство в следующий раз
+
+    Построим по индукции последовательность \(D_i = (d_i, n_i, m_i)\) следующим образом (oбозначим \(S_n = \sum_{k = 1}^n d_k\)):
+    \begin{enumerate}
+        \item[] \(D_0 = (0, 0, 0)\)
+        \item[] \(D_{i + 1} = \left\{\begin{array}{l}
+            (b_{n_i + 1}, n_i + 1, m_i), \text{ если }S_i \le L \\
+            (c_{m_i + 1}, n_i, m_i + 1), \text{ если }S_i > L \\
+        \end{array}\right.\)
+    \end{enumerate}
+    Иными словами, будем брать \(b_i\), если сумма на данный момент меньше, чем нам надо и \(c_i\) иначе.
+    Заметим, что, так как \(\sum_{i = 1}^\infty b_i, \sum_{i = 1}^\infty c_i\) расходятся, то неверно, что с какого-то момента \(d_i = b_i\) или \(d_i = c_i\). Также заметим, что если \(n, m > 0\), то \(|b_{n_i}| + |c_{m_i}| \ge \left|L - S_i\right|\), т.к. если \( S_i \le L\), то рассмотрим максимальный \(j:\), такой, что \(S_j > L, S_{j + 1} \le L\). Но тогда \(S_j \le S_i \le L \Ra |c_{m_j}| \ge \left|L - S_i\right|\), но \(m_i = m_j\), т.к. \(j\) --- максимальный, получили, что \(|c_{m_i}| \ge \left|L - S_i\right|\). В другом случае аналогично получаем, что \(|b_{n_i}| \ge \left|L - S_i\right|\). Но тогда \(|b_{n_i}| + |c_{m_i}| \ge \left|L - S_i\right|\) и т.к. \(|b_{n_i}| + |c_{m_i}| \ra 0\), то и \(\left|L - S_i\right| \ra 0 \Ra S_i \ra L\).
+\end{proof}
