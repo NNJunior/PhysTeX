@@ -1,0 +1,97 @@
+% !TEX root = ../../../main.tex
+
+\section{Распределение простых чисел}
+\begin{definition}
+    \(\pi(x) = \left|\{p \le x | p\text{ --- простое}\}\right|\)
+\end{definition}
+\begin{definition}
+    \(\theta(x) = \sum_{p \le x} \ln p\)
+\end{definition}
+\begin{definition}
+    \(\psi(x) = \sum_{(p, \alpha), p^\alpha \le x} \ln p = \sum_{p \le x} \ln p [\log_p x] = \sum_{p \le x}\left[\frac{\ln x}{\ln p}\right] \le \sum_{p \le x} \ln p\)
+\end{definition}
+
+Также введем:
+\[\lambda_1 = \limsup_{x \ra \infty} \frac{\theta(x)}{x}, \lambda_2 = \limsup_{x \ra \infty} \frac{\psi(x)}{x}, \lambda_3 = \limsup_{x \ra \infty} \frac{\pi(x)}{x / \ln x}\]
+\[\mu_1 = \liminf_{x \ra \infty} \frac{\theta(x)}{x}, \mu_2 = \liminf_{x \ra \infty} \frac{\psi(x)}{x}, \mu_3 = \liminf_{x \ra \infty} \frac{\pi(x)}{x / \ln x}\]
+
+\begin{lemma}
+    \(\lambda_1 = \lambda_2 = \lambda_3, \mu_1 = \mu_2 = \mu_3\)
+\end{lemma}
+\begin{proof}
+    \[\frac{\theta(x)}{x} = \frac{\sum_{p \le x}\ln p}{x} \le \frac{\psi(x)}{x} \le \frac{\sum_{p \le x} \ln x}{x} = \frac{\ln x}{x}\sum_{p \le x} 1 = \frac{\ln x}{x}\pi(x) = \frac{\pi(x)}{x/\ln x}\]
+    \[\lambda_1 \le \lambda_2 \le \lambda_3\]
+    При \(\beta \in [0, 1)\):
+    \[\theta(x) = \sum_{p \le x} \ln p \ge \sum_{x^\beta < p \le x} \ln p \ge \sum_{x^\beta < p \le x} \ln x^\beta = \beta \ln x \sum_{x^\beta < p \le x} 1 = \beta\ln x\left(\pi(x) - \pi\left(x^\beta\right)\right)\]
+    Заметим, что \(x > \pi(x)\):
+    \[\beta\ln x\left(\pi(x) - \pi\left(x^\beta\right)\right) \ge \beta\ln x\left(\pi(x) - x^\beta\right)\]
+    \[\frac{\theta(x)}{x} \ge \frac{\beta\pi(x)}{x / \ln x} - \frac{\beta x^\beta \ln x}{x}\]
+    \[\limsup_{x \ra \infty} \frac{\theta(x)}{x} \ge \limsup_{x \ra \infty} \left(\frac{\beta\pi(x)}{x / \ln x} - \frac{\beta x^\beta \ln x}{x}\right) = \limsup_{x \ra \infty} \frac{\beta \pi(x)}{x/\ln x} \;\;\forall \beta \in [0, 1)\]
+    Теперь, если взять супремум по \(\beta\), получится 
+    \[\limsup_{x \ra \infty} \frac{\theta(x)}{x} \ge \limsup_{x \ra \infty} \frac{\pi(x)}{x/\ln x} \Ra \lambda_1 \ge \lambda_3\]
+    Итого, \(\lambda_1 \le \lambda_2 \le \lambda_3 \le \lambda_1 \Ra\) они все равны
+\end{proof}
+
+\begin{theorem}
+    \[\pi(x) \sim \frac{x}{\ln x}\]
+\end{theorem}
+\begin{theorem}[Чебышев]
+    \(\forall \epsilon > 0 \exists x_0 \forall x > x_0:\)
+    \[(1 - \epsilon)\frac{x}{\ln x}\cdot \ln 2 \le \pi(x) \le (1 + \epsilon) \frac{x}{\ln x} \cdot 4\ln 2\]
+\end{theorem}
+\begin{proof}
+    Рассмотрим \(C_{2n}^n\). Заметим, что \(C_{2n}^n < 2^{2n}\). \(\ln C_{2n}^n < 2n \ln 2\)
+    \[C_{2n}^n = \frac{(2n)!}{n!n!} \ge \prod_{n < p \le 2n} p \Ra \ln C_{2n}^n \ge \sum_{n < p \le 2n} \ln p = \theta(2n) - \theta(n)\]
+    Рассмотрим \(n = 1, 2, \dots 2^k\).
+    \[2n \ln 2 > \ln C_{2n}^n \ge \theta(2n) - \theta(n)\]
+    \[2n \ln 2 > \theta(2n) - \theta(n)\]
+    \[2(1 + 2 + \dots + 2^k)\ln 2 > \theta\left(2^{k + 1}\right)\]
+    \[2^{k + 1}\ln 2 > \theta\left(2^{k + 1}\right)\]
+    Расмотрим \(2^k \le x \le 2^{k + 1}\)
+    \[\theta(x) \le \theta(2^{k + 1}) < 2^{k + 2}\ln 2 < 4x\ln 2 \Ra \frac{\theta(x)}{x} < 4\ln 2\]
+    Получили правое неравенство. Теперь получим левое:
+    \[C_{2n}^0 + C_{2n}^1 + \dots + C_{2n}^{2n} = 2^{2n} \Ra C_{2n}^n > \frac{2^{2n}}{2n + 1}\]
+    \[\ln C_{2n}^n > 2n \ln 2 - \ln(2n + 1)\]
+    \[C_{2n}^n = \frac{(2n)!}{n!n!} = \frac{\prod_{p \le 2n}p^{\left[\frac{2n}{p}\right] + \left[\frac{2n}{p^2}\right] + \dots}}{\left(\prod_{p \le 2n}p^{\left[\frac{n}{p}\right] + \left[\frac{n}{p^2}\right] + \dots}\right)^2} =\]
+    \[= \prod_{p \le 2n}p^{\left(\left[\frac{2n}{p}\right] - \left[\frac{n}{p}\right]\right) + \left(\left[\frac{2n}{p^2}\right] - \left[\frac{n}{p^2}\right]\right) + \dots} \le \prod_{p \le 2n} P^{[\log_p(2n)]} = e^{\psi(2n)} \Ra \ln C_{2n} \le \psi(2n)\]
+    \[\psi(2n) \ge 2n\ln 2 - \ln(2n + 1) > (x - 2) - \ln(x + 1)\]
+    Если  \(x \in [2n, 2n + 2)\), то \(\psi(x) \ge \psi(2n) \ge (x - 2)\ln2 - \ln(x + 1)\). Итого:
+    \[\frac{\psi(x)}{x} \ge \frac{x - 2}{x}\ln 2 - \frac{\ln (x + 1)}{x} \Ra \mu_2 \ge \ln 2, \mu_3 \ge \ln 2\]
+    И тогда:
+    \[\lim_{x \ra \infty} \frac{\pi(x)}{x/\ln x} \ge \ln 2\]
+    Но тогда, с какого-то момента:
+    \[(1 - \epsilon x)\frac{x}{\ln x} \ln 2 \le \pi(x)\]
+\end{proof}
+
+\textbf{Анекдот:} Райгор учился на кафедре мехмата в девяностые годы и интересовался теорией чисел. Один раз он сидел со своим руководителем на кафедре, и вдруг туда заходит калоритный иностранец с сильным акцентом. Зашел и говорит: ''А не расскажите лы вы мнэ, сколко нулэй на концэ числа \(100!\)''. Они с научруком ему объяснини, что надо посчитать степень вхождения 5 и 2, в общем он понял и ушел. Приходит через неделю и говорит: ''Я понял, как пощитать колычество нулэй на концэ числа \(100!\), а тэпэрь скажытэ мнэ, как пащитать калычество нулэй на концэ числа \(1000!\)''
+
+\begin{proposition}[Постулат Бертрана]
+    \(\forall x \ge 2 \exists p \in [x, 2x] = [x, x + x]\)
+\end{proposition}
+Но это сложно, мы займемся другим вопросом: При каких \(f(x)\) можно рассчитывать на существование \(p \in [x, x + f(x)]\) хотя бы при \(x \ge x_0\).
+
+\begin{proposition}[Асимптотический Закон Распределения Простых Чисел]
+    \(f(x) = o(x)\)
+\end{proposition}
+\begin{proposition}[Гипотеза]
+    \(f(x) = O(\ln^2x)\)
+\end{proposition}
+
+\section{Первообразный Корень}
+\begin{definition}
+    Пусть \((a, m) = 1\). Показатель числа \(a \mod m\) --- это минимальное \(\delta\), такое, что \(a^\delta \equiv_m 1\).
+\end{definition}
+
+\begin{proposition}
+    \(\delta | \phi(m)\)
+\end{proposition}
+\begin{definition}
+    Пусть \((a, m) = 1\). Если показатель \(a \mod m = \phi(m)\), то \(a\) называется первообразным корнем и обозначается \(g\).
+\end{definition}
+\begin{note}
+    Если по \(\mod m \exists\) первообразный корень, то \(1, g, g^2 \dots g^{\phi(m) - 1}\) --- все взаимно простые с \(m\) остатки.
+\end{note}
+
+\begin{definition}
+    \(ind_g a\) --- такое число, что \(g^{ind_ga} = a\)
+\end{definition}
