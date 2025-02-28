@@ -1,0 +1,3 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Ряд и Интеграл}{3}{section.1}%
+\contentsline {section}{\numberline {2}Функциональные последовательности и ряды}{4}{section.2}%
