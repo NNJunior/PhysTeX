@@ -55,11 +55,23 @@
 \section{Ряд и Интеграл}
 \[g(b) = \sum_{k = 0}^m \frac{g^{(k)}(a)}{k!}(b - a)^k + \frac{1}{m!}\int_a^b(b - t)^mg^{(m + 1)}(t)dt\]
 
-Пусть \(f \in C^1[1, +\infty]\) и \(\int_1^\infty|f'(t)|dt\) сходится. Тогда \(\sum_{k = 1}^\infty f(k)\) сходится одновременно с \(\left\{\int_1^n f(t)dt\right\}\)
-
+\begin{proposition}\indent
+    \begin{enumerate}
+        \item Пусть \(f \in C^1[1, +\infty]\) и \(\int_1^\infty|f'(t)|dt\) сходится. Тогда \(\sum_{k = 1}^\infty f(k)\) сходится одновременно с \(\left\{\int_1^n f(t)dt\right\}\)
+        \item Пусть \(f \int C^2[1, +\infty), \int_1^+\infty|f''(t)|dt\) сходится. Тогда сходится ряд
+        \[\left\{\int_1^{n + 1}f(t)dt - \sum_{k = 1}^n f(k) - \frac{1}{2}\sum_{k = 1}^nf'(k)\right\}\]
+    \end{enumerate}
+\end{proposition}
 \begin{proof}
-    \[g(x) = \int_n^xf(t)dt \]
-    \[\left|\int_n^{n + 1}f(t)dt - f(n)\right| \le \underbrace{\int_n^{n + 1}|f'(t)|dt}_{\text{член сходящегося ряда}}\]
-    \(\alpha_k = \int_k^{k + 1}f(t)dt - f(k)\) --- член сходящегося ряда.
-    \[S_n = \sum_{k = 1}^n \alpha_k = \int_1^{n + 1}f(t)dt - \sum_{k = 1}^nf(k) \text{ --- сходится}\]
+    \begin{enumerate}
+        \item \[g(x) = \int_n^xf(t)dt \]
+        \[\left|\int_n^{n + 1}f(t)dt - f(n)\right| \le \underbrace{\int_n^{n + 1}|f'(t)|dt}_{\text{член сходящегося ряда}}\]
+        \(\alpha_k = \int_k^{k + 1}f(t)dt - f(k)\) --- член сходящегося ряда.
+        \[S_n = \sum_{k = 1}^n \alpha_k = \int_1^{n + 1}f(t)dt - \sum_{k = 1}^nf(k) \text{ --- сходится}\]
+        \item \[\int_n^{n + 1}f(t)dt = f(n) + \frac{1}{2}f'(n) + \frac{1}{2}\int_n^{n + 1}(n + 1 - t)^2f'(t)dt\]
+        \[\left|\int_n^{n + 1}f(t)dt - f(n) - \frac{1}{2}f'(n)\right| \le \underbrace{\frac{1}{2}\int_n^{n + 1}|f''(n)|dt}_{\text{Член сх. ряда}}\]
+        Но тогда 
+        \[\int_1^{n + 1}f(t)dt - \sum_{k = 1}^nf(k) - \frac{1}{2}\sum_{k = 1}^nf'(k)\]
+        Тоже сходится
+    \end{enumerate}
 \end{proof}
