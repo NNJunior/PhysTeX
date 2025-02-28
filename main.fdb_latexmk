@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1740589627.8438 "/home/ivan/PhysTeX/main.tex" "main.pdf" "main" 1740589630.59912 0
+["pdflatex"] 1740598715.51247 "/home/ivan/PhysTeX/main.tex" "main.pdf" "main" 1740598717.09857 0
   "/etc/texmf/web2c/texmf.cnf" 1738875920.66514 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/ivan/.texlive2023/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm" 1738932499.57979 3308 eee81981029f67083258db36df06e523 ""
   "/home/ivan/.texlive2023/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm" 1738933118.71455 3304 6a543c07045572737981351171e0505e ""
@@ -11,7 +11,7 @@
   "/home/ivan/.texlive2023/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm" 1738932509.54375 3252 92d08740ce00199d6cf9ff4aaada81d1 ""
   "/home/ivan/.texlive2023/texmf-var/fonts/tfm/lh/lh-t2a/lati1200.tfm" 1738932503.93477 3512 f3a56cfe95a159371df20f73d1eb107d ""
   "/home/ivan/.texlive2023/texmf-var/fonts/tfm/lh/lh-t2a/latt1200.tfm" 1739377571.47719 1272 bf3bb5cc29880b269c8bcb412a1ac6e2 ""
-  "/home/ivan/PhysTeX/main.tex" 1740589624.58006 2080 32ba9b9f67d0a46cdc5089c42f58cffa ""
+  "/home/ivan/PhysTeX/main.tex" 1740598715.28503 2010 8dcdf20dabe609beaa080d60d37f5242 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -322,10 +322,10 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1738875951.04369 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1738876030 8213218 76d3576193ddce951bced9bf1b20e2a3 ""
   "images/logo_ltc.png" 1738876864.09482 216873 78594e56c342d9369c63ab4bfdf6abbb ""
-  "main.aux" 1740589630.40698 677 e8b8e8d8570e560c77f05fbbb40aa206 "pdflatex"
-  "main.out" 1740589630.40798 574 d65d17c59aa112eea40daf7c6155435f "pdflatex"
-  "main.tex" 1740589624.58006 2080 32ba9b9f67d0a46cdc5089c42f58cffa ""
-  "main.toc" 1740589630.40798 322 7958cff216b8f627afb8a44dc8c9a045 "pdflatex"
+  "main.aux" 1740598716.991 677 e8b8e8d8570e560c77f05fbbb40aa206 "pdflatex"
+  "main.out" 1740598716.992 574 d65d17c59aa112eea40daf7c6155435f "pdflatex"
+  "main.tex" 1740598715.28503 2010 8dcdf20dabe609beaa080d60d37f5242 ""
+  "main.toc" 1740598716.992 322 7958cff216b8f627afb8a44dc8c9a045 "pdflatex"
   "preamble/preamble.tex" 1740584725.52868 8437 788267173177cf24b605b4c5e2bb9bfc ""
   "preamble/title_page.tex" 1738876864.10282 687 07133d93d1239ab725c2d8bb8fc63273 ""
   "Лекции/Семестр 2/Алгосы/lecture_4.tex" 1740589187.32538 8336 55bfb30a2c2ff754b03b0e8466ee90e7 ""
