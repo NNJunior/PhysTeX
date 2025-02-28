@@ -2,7 +2,114 @@
 
 Рассмотрим \(f(t) = \ln t\).
 \[\int_1^{n + 1} \ln tdt = t\ln t|_{1}^{n + 1} - \int_1^{n + 1}dt = (n + 1)\ln(n + 1) - n\]
-Следовательно, сходится последовательность \(\sum_{k = 1}^n\)
+Следовательно, сходится последовательность 
+\[(n + 1)\ln(n  + 1)- n - \sum_{k = 1}^n\ln k - \frac{1}{2}\ln n = (n + 1)\left(\ln n + \ln \left(1 + \frac{1}{n}\right)\right) - \ln n! - \frac{1}{2}\ln n - n\]
 
 
 \section{Функциональные последовательности и ряды}
+
+Пусть \(f_n, f: E \ra \R\) или \(\Cm\) (все утверждения тоже верны для \(\R\) или \(\Cm\)).
+
+\begin{definition}
+  Говорят, что \(f_n\) поточечно сходится к \(f\) на \(E\), если \(\forall x \in E f(x) = \lim_{n \ra \infty}f_n(x)\). Пишут \(f_n \ra f\) на \(E\), и \(f\) называют пределом функциональной последовательности \(f_n\)
+\end{definition}
+\begin{example}
+  \(f_n: [0, 1) \ra \R, f_n(x) = x^n\). Тогда \(f_n \ra f\), при \(f(x) = \left\{\begin{array}{l}
+    0, x \in [0, 1) \\
+    1, x = 1
+  \end{array}\right.\)
+  Функция оказалась разрывна!
+\end{example}
+
+Распишем определение поточечной сходимост ипо по определению. 
+\[f_n \ra f \text{ на } E \Lra \forall x \forall \epsilon > 0 \exists N: 
+\forall n > N (|f_n(x) - f(x)| < \epsilon)\]
+
+\begin{definition}
+  Говорят, что \(\{f_n\}\) равномерно сходится к \(f\) на множестве \(E\), если 
+  \[\epsilon > 0 \forall x \forall  \exists N: \forall n > N (|f_n(x) - f(x)| < \epsilon)\]
+  Пишут \(f_n \rightrightarrows f\) на \(E\), или \(f_n \rightrightarrows_E f\)
+\end{definition}
+\begin{note}
+  Равномерная сходимость влечет поточечную
+\end{note}
+\begin{note}
+  Если \(f_n \rightrightarrows f\) на \(E\), то \(f\) определена на \(E\) однозначно
+\end{note}
+
+\begin{lemma}[Супремум критерий]
+  \(f_n \rightrightarrows_E f \Lra \lim_{n \ra \infty}\rho_n = 0\), где \(\rho_n = \sup_{x \in E}|f_n(x) - f(x)|\)  
+\end{lemma}
+\begin{proof}
+  \[\forall x \in E (|f_n(x) - f(x)| < \epsilon), \sup_{x \in E}|f_n(x) - f(x)| \le \epsilon\]
+  Эти условия равносильны, поэтому лемма верна
+\end{proof}
+
+\begin{problem}
+  \(f_n \rightrightarrows f \Lra \forall \{x\} \subset E\;\; \lim_{n \ra \infty} |f_n(x_n) - f(x_n)| = 0\)
+\end{problem}
+
+\begin{definition}
+  Функциональная последовательность поточечно (равномерно) сходится на множестве \(E\), если найдется такая определенная на \(E\) функция, к которой последовательность поточечно (равномерно) сходится
+\end{definition}
+
+Пусть задан функциональный ряд \(\sum_{n = 1}^\infty u_n\), где \(u_n: E \ra \R\)
+\begin{definition}
+  Говорят, что \(\sum_{n = 1}^\infty u_n\) сходится на \(E\), если \(\forall x \in E \left(\sum_{n = 1}^\infty u_n(x)\right)\) сходится. При этом, функция \(S: E \ra \R, S(x) = \sum_{n = 1}^\infty u_n(x)\) называется суммой ряда \(\sum_{n = 1}^\infty u_n\)
+\end{definition}
+
+\begin{definition}
+  Функциональный ряд поточечно (равномерно) сходится на \(E\), если последовательность частичных сумм \(S_N = \sum_{n = 1}^N u_n\) поточечно (равномерно) сходится на \(E\)
+\end{definition}
+
+\begin{proposition}
+  Пусть \(g: E \rightrightarrows \R\) ограничена
+  \begin{enumerate}
+    \item Если  \(f_n \rightrightarrows f\) на \(E\), то \(gf_n \rightrightarrows gf\) на \(E\)
+    \item Если \(\sum_{n = 1}^\infty u_n\) равномерно сходится на \(E\), то \(\sum_{n = 1}^\infty gu_n\) также равномерно сходится на \(E\), причем 
+    \[\sum_{n = 1}^\infty gu_n = g\sum_{n = 1}^\infty u_n\]
+  \end{enumerate}
+\end{proposition}
+\begin{proof}\indent
+  \begin{enumerate}
+    \item Пусть \(|g| \le M\). Для любого \(x \in E\) имеем
+    \[|g(x)f_n(x) - g(x)f(x)| \le M|f_n(x) - f(x)|\]
+    \[\sup_{x \in E}|g(x)f_n(x) - g(x)f(x)| \le M\sup_{x \in E}|f_n(x) - f(x)|\]
+    \item Очевидно
+  \end{enumerate}
+\end{proof}
+\begin{proposition}\indent
+  \begin{enumerate}
+    \item Если \(f_n \rightrightarrows f\) на \(E\), \(g_n \rightrightarrows g\) на \(E\), то \(\lambda f_n + 
+    mu g_n \rightrightarrows \lambda f + \mu g\) на \(E\).
+    \item Если \(\sum_{n = 1}^\infty u_n, \sum_{n = 1}^\infty v_n\) равномерно сходится на \(E\), и \(\lambda, \mu \in \R\), то \(\sum_{n = 1}^\infty (\lambda u_n + \mu v_n)\) равномерно сходится на \(E\), причем \(\sum_{n = 1}^\infty (\lambda u_n + \mu v_n) = \lambda \sum_{n = 1}^\infty u_n + \mu \sum_{n = 1}^\infty v_n\)
+  \end{enumerate}  
+\end{proposition}
+\begin{proof}\indent
+  \begin{enumerate}
+    \item \(f_n + g_n \rightrightarrows f\) на \(E\).
+    \[\forall x \in E |(f_n(x) + g_n(x)) - (f(x) + g(x))| \le |f_n(x) - f(x)| + |g_n(x) - g(x)|\]
+    \[\sup_{x \in E} |(f_n(x) + g_n(x)) - (f(x) + g(x))| \le \sup_{x \in E}|f_n(x) - f(x)| + \sup_{x \in E}|g_n(x) - g(x)|\]
+  \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+  Если \(\sum_{n = 1}^\infty u_n\) равномерно сходится на \(E\), то \(u_n \rightrightarrows 0\) на \(E\)
+\end{corollary}
+\begin{proof}
+  Если \(S_n\) --- \(n\)-ая частичная сумма \(sum_{n = 1}^\infty u_n\), то \(u_n = S_n - S_{n - 1} \rightrightarrows S - S = 0\)
+\end{proof}
+
+\begin{problem}
+  Пусть \(f_n \rightrightarrows f\) на \(E\), \(g: D \ra E\), тогда \(f_n \circ g \rightrightarrows f \circ g\) на \(D\)
+\end{problem}
+
+\begin{theorem}[Критерий Коши]
+  \(\{f_n\}\) равномерно сходится на \(E \Lra \forall \epsilon > 0 \exists N \forall m, n > N \forall x \in E (|f_n(x) - f(x)| \le \epsilon)\)
+\end{theorem}
+\begin{proof}
+  \begin{enumerate}
+    \item[\(\Ra\)] Пусть \(f_n \rightrightarrows f\) на \(E\). Зафиксируем \(\epsilon > 0, n \ge N\). Тогда \(\forall x \forall n, m \ge N |f_n(x) -f(x)| \le |f_n(x) - f(x)| + |f_m(x) - f(x)| < \epsilon\)
+    \item[\(\La\)] Пусть \(\{f_n\}\) удовлетворяет \(\forall \epsilon > 0 \exists N \forall m, n > N \forall x \in E (|f_n(x) - f(x)| \le \epsilon)\). Тогда \(\forall x \in E \{f_n(x)\}\) фундаментальна. Положим \(f(x) = \lim_{n \ra \infty}f_n(x)\), зафиксируем \(\epsilon > 0\) и выберем 
+  \end{enumerate}
+\end{proof}
