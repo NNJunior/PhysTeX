@@ -3,8 +3,17 @@
 Рассмотрим \(f(t) = \ln t\).
 \[\int_1^{n + 1} \ln tdt = t\ln t|_{1}^{n + 1} - \int_1^{n + 1}dt = (n + 1)\ln(n + 1) - n\]
 Следовательно, сходится последовательность 
-\[(n + 1)\ln(n  + 1)- n - \sum_{k = 1}^n\ln k - \frac{1}{2}\ln n = (n + 1)\left(\ln n + \ln \left(1 + \frac{1}{n}\right)\right) - \ln n! - \frac{1}{2}\ln n - n\]
+\[(n + 1)\ln(n  + 1)- n - \sum_{k = 1}^n\ln k - \frac{1}{2}\ln n = (n + 1)\left(\ln n + \ln \left(1 + \frac{1}{n}\right)\right) - \ln n! - \frac{1}{2}\ln n - n = \]
+\[ = \left(n + \frac{1}{2}\right)\ln n + (n + 1)\left(\frac{1}{n} + o\left(\frac{1}{n}\right)\right) - \ln n! - \ln e^n\]
+Следовательно, сходится \(\underbrace{\left\{\left(n + \frac{1}{2}\right) \ln n + \ln n! + n\right\}}_{\ln\frac{n!e^n}{n^{n + \frac{1}{2}}}}\)
 
+Поэтому, \(\ln\frac{n!e^n}{n^{n + \frac{1}{2}}} \ra C > 0\) и \(n! \sim C\frac{n^{n  + \frac{1}{2}}}{e^n}\). Найдем \(C\), пользуясь формулой Валлиса
+\[\pi = \lim_{n \ra \infty} \frac{1}{n}\left(\frac{(2n)!!}{(2n - 1)!!}\right)^2\]
+Имеем 
+\[\frac{1}{n}\left(\frac{(2n)(2n - 2)\dots2}{(2n - 1)(2n - 3)\dots 1}\right) = \frac{1}{n}\left(\frac{2^{2n}(n!)^2}{(2n)!}\right)^2 \sim \frac{2^{4n}}{n}\frac{C^4n^{4n + 2}e^{4n}}{e^{4n}C^2(2n)^{4n + 1}} = \frac{C^2}{2} \Ra C = \sqrt{2\pi}\]
+
+Но тогда
+\[n! \sim \sqrt{2\pi}\left(\frac{n}{e}\right)^n, n \ra \infty\]
 
 \section{Функциональные последовательности и ряды}
 
@@ -105,11 +114,17 @@
 \end{problem}
 
 \begin{theorem}[Критерий Коши]
-  \(\{f_n\}\) равномерно сходится на \(E \Lra \forall \epsilon > 0 \exists N \forall m, n > N \forall x \in E (|f_n(x) - f(x)| \le \epsilon)\)
+  \(\{f_n\}\) равномерно сходится на \(E \Lra \forall \epsilon > 0 \exists N \forall m, n > N \forall x \in E (|f_n(x) - f(x)| \le \epsilon) (1)\)
 \end{theorem}
-\begin{proof}
+\begin{proof}\indent
   \begin{enumerate}
     \item[\(\Ra\)] Пусть \(f_n \rightrightarrows f\) на \(E\). Зафиксируем \(\epsilon > 0, n \ge N\). Тогда \(\forall x \forall n, m \ge N |f_n(x) -f(x)| \le |f_n(x) - f(x)| + |f_m(x) - f(x)| < \epsilon\)
-    \item[\(\La\)] Пусть \(\{f_n\}\) удовлетворяет \(\forall \epsilon > 0 \exists N \forall m, n > N \forall x \in E (|f_n(x) - f(x)| \le \epsilon)\). Тогда \(\forall x \in E \{f_n(x)\}\) фундаментальна. Положим \(f(x) = \lim_{n \ra \infty}f_n(x)\), зафиксируем \(\epsilon > 0\) и выберем 
+    \item[\(\La\)] Пусть \(\{f_n\}\) удовлетворяет \((1)\). Тогда \(\forall x \in E \{f_n(x)\}\) фундаментальна. Положим \(f(x) = \lim_{n \ra \infty}f_n(x)\), зафиксируем \(\epsilon > 0\) и выберем \(N\) из условия \((1)\). Тогда 
+    \[|f_n(x) - f(x)| \le \epsilon \forall x \in E \forall n \ge N\]
+    Это означает, что \(f_n \rightrightarrows f\) на \(E\).
   \end{enumerate}
 \end{proof}
+
+\begin{corollary}[Критерий Коши]
+  \(\sum_{n = 1}^\infty u_n \text{ равномерно сходится на }E \Lra \forall \epsilon > 0 \exists N \forall m, n \ge N \forall x \in E \left(\left|\sum_{k = m + 1}^n u_k(x)\right| < \epsilon\right)\)
+\end{corollary}
