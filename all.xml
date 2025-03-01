@@ -47,7 +47,7 @@
     </subject>
     <subject name="Python" description="">
       <lecture name="Лекция 1" description="Кодстайл + идеалогия языка. Не техалась." date="08.02.25"/>
-      <lecture name="Лекция 2" description="Планы на семестр. Dunder methods (magic methods).&#xA;Скоро здесь появится ссылка на лекцию" date="01.03.25"/>
+      <lecture name="Лекция 2" description="Планы на семестр. Dunder methods (magic methods).&#xA;Скоро здесь появится ссылка на запись леции (наверное)" date="01.03.25"/>
     </subject>
     <subject name="C++" description="Заходят как-то программисты на Python, C# и C++ в бар.
 Программист на Python говорит:&#xA;
