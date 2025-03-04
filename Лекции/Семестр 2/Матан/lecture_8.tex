@@ -128,3 +128,17 @@
 \begin{corollary}[Критерий Коши]
   \(\sum_{n = 1}^\infty u_n \text{ равномерно сходится на }E \Lra \forall \epsilon > 0 \exists N \forall m, n \ge N \forall x \in E \left(\left|\sum_{k = m + 1}^n u_k(x)\right| < \epsilon\right)\)
 \end{corollary}
+
+\begin{corollary}
+  Пусть  \(E \subset \R\), все функции \(f_n\) непрерывны на \(\overline{E}\). Если \(\{f_n\}\) равномерно сходится на \(E\), то \(\{f_n\}\) равномерно сходится на \(\overline{E}\)
+\end{corollary}
+\begin{proof}
+  Зафиксируем \(\epsilon > 0\). Тогда по Критерию Коши, \(\exists N \forall n, m > N \forall x \in E (|f_n(x) - f_m(x)| \le \epsilon)\). Пусть \(y \in \overline{E} \Ra \exists \{x_n\} \subset E: (x_k \ra y)\). В неравенстве \(|f_n(x_k) - f_m(x_k)| \le \epsilon\) переходим к прелельному переходу, получаем, что \(|f_n(y) - f_m(y)| \le \epsilon\). Тогда \(\{f_n\}\) равномерно сходится на \(\overline{E}\)
+\end{proof}
+
+\begin{example}
+  \(\sum_{n = 1}^\infty \frac{1}{n^x}\) --- сходится  на \((1, \infty)\) неравеномерно.
+\end{example}
+\begin{proof}
+  Предположим противное. Но тогда, по следствию 2, \(\sum_{n = 1}^\infty \frac{1}{n^x}\) равномерно сходтися на \([1, \infty)\), противоречие
+\end{proof}

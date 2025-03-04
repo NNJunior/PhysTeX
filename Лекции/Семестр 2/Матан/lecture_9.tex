@@ -1,0 +1,30 @@
+\begin{theorem}[О непрерывности предельной функции]
+    Пусть \(E \subset \R\). Если \(f_n \rightrightarrows f\) на \(E\), и все функции \(f_n\) непрерывны на \(E\), то \(f\) --- непрерывна на \(E\)
+\end{theorem}
+\begin{proof}
+    Зафиксируем \(\epsilon > 0\). Тогда \(exists N \forall n \ge N \forall x \in E \left(|f_n(x) - f(x)| \le \frac{\epsilon}{3}\right)\). Для любого \(x \in E\)
+    \[|f(x) - f(a)| \le |f(x) - f_N(x)| + |f_N(x) - f_N(a)| + |f_N(a) - f(a)| \le |f_N(x) - f_N(a)| + \frac{2\epsilon}{3}\]
+    Т.к. \(f_N\) непрерывна в \(a\), то \(\exists \delta > 0 \forall x \in B_\delta(a) \cap E \left(|f_N(x) - f_N(a)| < \frac{\epsilon}{3}\right)\). Но тогда \(\forall x \in B_\delta(a) \cap E (|f(x) - f(a)| < \epsilon)\). Значит \(f\) непрерывна в \(\forall a \in E\).
+\end{proof}
+
+\begin{note}
+    В условиях предыдущей теоремы, если \(a\) --- предельная точка \(E\), то \(\lim_{x \ra a}\lim_{n \ra \infty}f_n(x) = \lim_{n \ra \infty}\lim_{x \ra a}f_n(x)\)
+\end{note}
+
+\begin{corollary}[О непрерывности суммы ряда]
+    Если \(\sum_{n = 1}^\infty u_n\) равномерно сходится на \(E\) и все функции \(u_n\) непрерывны на \(E\), то сумма ряда также непрерывна на \(E\).
+\end{corollary}
+
+\begin{example}
+    \(f_n(x) = n^\alpha x^n, x \in [0, 1], f_0 \equiv 0\)
+    \[\rho_n = \sup_{[0, 1]}|f_n(x)| = n^\alpha \Ra (f_n \rightrightarrows_{[0, 1]} f_0 \Lra \alpha < 0)\]
+    \[\lim_{n \ra \infty} \int_0^1 f(x)dx = \lim_{n \ra \infty} \frac{n^\alpha}{n + 1} = \int_0^1 f_0(x)dx = 0 \Lra \alpha < 1\]
+\end{example}
+
+\begin{theorem}[Об интегрируемости предельной функции]
+    Если \(f_n \rightrightarrows_{[a, b]} f, f_n \in R[a, b] \Ra f \in R[a, b]\), причем \(\lim_{n \ra \infty} \int_a^b f_n(x) dx = \int_a^b f(x)dx\)
+\end{theorem}
+\begin{proof}
+    Докажем, что \(f \in R[a, b]\). Зафиксируем \(\epsilon > 0\). По определению равномерной сходимости, \(\exists N \forall n > N \forall x \in [a, b]\left(|f_n(x) - f(x)| < \frac{\epsilon}{b - a}\right)\). Оценим колебание \(f\) на \(E \subset [a, b]\), то есть оценим  \(\omega(f, E) = \sup_{x, y \in E}|f(y) - f(x)|\). Т.к. \(f = (f - f_N) + f_N \Ra |f(y) - f(x)| \le |f - f_N|(y) - |f - f_N|(x)| + |f_N(y) - f_N(x)| \Ra \omega(f, E) \le \omega (f - f_N, E) + \omega (f_N, E), \frac{\epsilon}{2(b - a)}\). По критерию Дарбу, \(\exists T\) --- разбиение \([a, b]\), такое, что \(\Omega_T(f_N) < \frac{\epsilon}{2}\). Тогда для разбиения \(T\) имеем \(\Omega_T(f) \le \sum \omega(f, E)\Delta x_i < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon\). Но тогда \(f \in R[a, b]\). При этом,
+    \[\left|\int_a^b f_n(x)fx - \int_a^b f(x)dx\right| \le \int_a^b |f_n(x) - f(x)|dx < \epsilon\]
+\end{proof}
