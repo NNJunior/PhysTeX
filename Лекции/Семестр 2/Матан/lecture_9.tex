@@ -28,3 +28,60 @@
     Докажем, что \(f \in R[a, b]\). Зафиксируем \(\epsilon > 0\). По определению равномерной сходимости, \(\exists N \forall n > N \forall x \in [a, b]\left(|f_n(x) - f(x)| < \frac{\epsilon}{b - a}\right)\). Оценим колебание \(f\) на \(E \subset [a, b]\), то есть оценим  \(\omega(f, E) = \sup_{x, y \in E}|f(y) - f(x)|\). Т.к. \(f = (f - f_N) + f_N \Ra |f(y) - f(x)| \le |f - f_N|(y) - |f - f_N|(x)| + |f_N(y) - f_N(x)| \Ra \omega(f, E) \le \omega (f - f_N, E) + \omega (f_N, E), \frac{\epsilon}{2(b - a)}\). По критерию Дарбу, \(\exists T\) --- разбиение \([a, b]\), такое, что \(\Omega_T(f_N) < \frac{\epsilon}{2}\). Тогда для разбиения \(T\) имеем \(\Omega_T(f) \le \sum \omega(f, E)\Delta x_i < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon\). Но тогда \(f \in R[a, b]\). При этом,
     \[\left|\int_a^b f_n(x)fx - \int_a^b f(x)dx\right| \le \int_a^b |f_n(x) - f(x)|dx < \epsilon\]
 \end{proof}
+
+\begin{corollary}[О почленном интегрировании ряда]
+    Если \(\sum_{n = 1}^\infty u_n\) равномерно сходится на \([a, b]\) и все \(u_n \in R[a, b]\), то сумма ряда также \(\in R[a, b]\)
+\end{corollary}
+\begin{proof}
+    \[\int_a^b\left(\sum_{n = 1}^\infty u_n(x)\right)dx = \sum_{n = 1}^\infty \left(\int_a^b u_n(x) dx\right)\]
+\end{proof}
+
+\begin{note}
+    В условиях предыдущей теоремы, \(\lim_{n \ra \infty}\int_a^b f_n(x)dx = \int_a^b f(x)dx\)
+\end{note}
+
+\begin{theorem}[О дифференцируемости предельной функции]
+    Пусть \(I\) --- некоторый промежуток и заданы функции \(f_n: I \ra \R\), такие, что:
+    \begin{enumerate}
+        \item \(f_n \ra f\) на \(I\)
+        \item Все \(f_n\) дифференцируемы на \(I\)
+        \item \(f_n' \rightrightarrows g\) на \(I\)
+    \end{enumerate}
+    Тогда \(f\) дифференцируема на \(I\), причем \(f' = g\) на \(I\).
+\end{theorem}
+\begin{proof}
+    Пусть \(x \in I\). Рассмотрим \(\phi_n(t) = \left\{\begin{array}{l}
+        \frac{f_n(t) - f_n(x)}{t - x} , t \ne x \\
+        f_n'(x), t = x
+    \end{array}\right.\)
+    \(\phi_n \ra \phi\) на \(I\), где \(\phi(t) = \left\{\begin{array}{l}
+        \frac{f(t) - f(x)}{t - x}, t \ne x \\
+        g(x), t = x
+    \end{array}\right.\). Покажем, что сходимость равномерная. Действительно, при \(t \ne x\)
+    \[\phi_n(t) - \phi_m(t) = \frac{(f_n(t) - f_m(t)) - (f_n(x) - f_m(x))}{t - x} = f_n'(c) - f_m'(c)\]
+    Для некоторой \(c\), лежащей между \(t, x\). Т.к. \(\{f_n'\}\) равномерно сходится на \(I\), то \(\{f_n'\}\) удовлетворяет условию Коши. Тогда условию Коши удовлетворяет и \(\{\phi_n\}\). По критерию Коши, \(\phi_n \rightrightarrows \phi\) на \(I\), все \(\phi_n\) непрерывны в \(x \Ra \phi\) непрерывна в точке \(x\), т.е. \(\lim_{t \ra x} \phi(t) = \phi(x)\), или \(f'(x) = g(x)\).
+\end{proof}
+
+\begin{note}
+    В условиях предыдущей теоремы,  \(\frac{d}{dx}\lim_{n \ra \infty} f_n(x) = \lim_{n \ra \infty}\frac{d}{dx}f_n(x)\)
+\end{note}
+
+\begin{corollary}[О почленном дифференцировании ряда]
+    Пусть \(I\) --- невырожденный промежуток, и \(u_n: I \ra \R\), т.ч.
+    \begin{enumerate}
+        \item \(\sum_{n = 1}^\infty u_n\) почленно сходится на \(I\)
+        \item все \(u_n\) дифференцируемы на \(I\)
+        \item \(\sum_{n = 1}^\infty u_n\) равномерно сходится на \(I\)
+    \end{enumerate}
+    Тогда сумма ряда дифференцируема на \(I\).
+\end{corollary}
+\begin{proof}
+    \[\left(\sum_{n = 1}^\infty u_n(x)\right)' = \sum_{n = 1}^\infty u_n'(x)\]
+\end{proof}
+
+\begin{note}
+    В предыдущей теореме равномерную сходимость производных нельзя заменить равномерной сходимостью функций.
+\end{note}
+\begin{example}
+    \(f_n(x) = \sqrt{x^2 + \frac{1}{n}} \Ra \forall x \in \R f_n(x) \ra f(x) = |x|\). Предельная функция не дифференцируема в \(0\).
+\end{example}
