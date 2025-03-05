@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1741193910.15139 "/home/ivan/PhysTeX/main.tex" "main.pdf" "main" 1741193912.76047 0
+["pdflatex"] 1741194457.5309 "/home/ivan/PhysTeX/main.tex" "main.pdf" "main" 1741194460.28682 0
   "/etc/texmf/web2c/texmf.cnf" 1738875920.66514 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/ivan/.texlive2023/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm" 1738932499.57979 3308 eee81981029f67083258db36df06e523 ""
   "/home/ivan/.texlive2023/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm" 1738933118.71455 3304 6a543c07045572737981351171e0505e ""
@@ -322,13 +322,13 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1738875951.04369 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1738876030 8213218 76d3576193ddce951bced9bf1b20e2a3 ""
   "images/logo_ltc.png" 1738876864.09482 216873 78594e56c342d9369c63ab4bfdf6abbb ""
-  "main.aux" 1741193912.58569 797 1f68b3cb2146f3c9661a35f054bc9a30 "pdflatex"
-  "main.out" 1741193912.58569 703 ecfbaf2132a5af50e4c026dc572799ec "pdflatex"
+  "main.aux" 1741194460.1194 797 1f68b3cb2146f3c9661a35f054bc9a30 "pdflatex"
+  "main.out" 1741194460.1204 703 ecfbaf2132a5af50e4c026dc572799ec "pdflatex"
   "main.tex" 1741188305.70461 2201 f172a1b841e68947c520f1de2788efea ""
-  "main.toc" 1741193912.58669 401 f312b8fed7cbfa6ab2737809b3d9312b "pdflatex"
+  "main.toc" 1741194460.1204 401 f312b8fed7cbfa6ab2737809b3d9312b "pdflatex"
   "preamble/preamble.tex" 1740584725.52868 8437 788267173177cf24b605b4c5e2bb9bfc ""
   "preamble/title_page.tex" 1738876864.10282 687 07133d93d1239ab725c2d8bb8fc63273 ""
-  "Лекции/Семестр 2/Алгосы/lecture_5.tex" 1741193907.29474 6987 642d314fb4eac535a53c664844d1a56a ""
+  "Лекции/Семестр 2/Алгосы/lecture_5.tex" 1741194457.25143 7008 0ec14d668799d54b3c996152ecc5b7f5 ""
   "Лекции/Семестр 2/ОКТЧ/setting.tex" 1739992081.87597 448 d411c4aaabff43826620e773379a8540 ""
   (generated)
   "main.aux"
