@@ -1,0 +1,99 @@
+\subsection{Аннулирующие многочлены}
+\begin{definition}
+    Пусть \(V\) --- линейное пространство над полем \(F\), \(\phi: V \ra V\) --- линейный оператор. Многочлен \(P\) называется аннулирующим для оператора \(\phi\), если \(P(\phi) = 0\)
+\end{definition}
+
+Существование такого многочлена можно обосновать по Теореме Гамильтона-Кэли, а можно и другим способом:
+Заметим, что размерность пространства линейных операторов \(\phi: V \ra V = (\dim V)^2\). Поэтому, операторы \(E, \phi, \phi^2 \dots \phi^{n^2}\) линейно зависимы. Но тогда \(\exists \lambda_i: E\lambda_0 + \phi\lambda_1 + \dots + \phi^{n^2}\lambda_{n^2}\)
+
+\begin{definition}
+    Минимальным многочленом линейного оператора называется аннулирующий многочлен минимальной степени.
+\end{definition}
+
+
+\begin{proposition}
+    \(\mu_\phi\) --- минимальный многолчен линейного оператора \(\phi\). Тогда \(P\) --- аннулирующий многлчен \(phi \Ra P \vdots \phi\)
+\end{proposition}
+\begin{proof}
+    Разделим \(P\) на \(\mu_\phi\) с остатком 
+    \(Ra P = Q\mu_\phi + R\). Тогда \(P(\phi) = Q(\phi)\mu_\phi(\phi) + R(\phi) = 0 \Ra R(\phi) = 0\). Получили противоречие, т.к. \(\deg R < \deg \mu_\phi\)
+\end{proof}
+
+\begin{corollary}
+    Минимальный многочлен определен с точностью до умножения на константу
+\end{corollary}
+
+\begin{proposition}
+    \(\chi_\phi \vdots \mu_\phi\)
+\end{proposition}
+
+\begin{corollary}
+    Корни \(\mu_\phi\) являются корнями \(\chi_\phi\)
+\end{corollary}
+
+\begin{theorem}[О взаимно простых делителях аннулирующих многолченов]
+    Пусть \(\phi: V \ra V\) --- линейный оператор, \(f\) --- аннулирующий многочлен, причем \(f = f_1\cdot f_2\), где \((f_1, f_2) = 1\). Тогда, если \(V_i = \ker f_i(\phi)\), то \(V = V_1 \oplus V_2\), причем \(V_i\) инвариантно относительно \(\phi\)
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Докажем, что \(V_i\) --- инвариантно относительно \(f_i(\phi)\). Заметим, что \(f_i(\phi)\phi = \phi f_i(\phi) \Ra V_i\) --- инвариантно
+        \item Докажем, что \(V_1 + V_2 = V\). Заметим, что \(\exists u_1, u_2: u_1f_1 + u_2f_2 = 1\). Но тогда \(x = Ex = u_1(\phi)f_1(\phi)x + u_2(\phi)f_2(\phi) = f_1(\phi)u_1(\phi)x + f_2(\phi)u_2(\phi) = \underbrace{f_1(\phi)x'}_{\in V_2} + \underbrace{f_2(\phi)x''}_{\in V_1}\).
+        \item Докажем, что \(V_1 \cap V_2 = \{0\}\). Действительно, если \(a \in V_1, V_2\), то \(\text{НОД}(f_1, f_2)(a) = 0 \Ra Ea = 0 \Ra a = 0\)
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    \(\phi: V \ra V, f\) аннулирует \(\phi\). Тогда, если \(f = f_1f_2\dots f_s\), где \((f_i, f_j) = 1 \Ra V = \bigoplus_{i = 1}^s V_i\), причем \(V_i\) --- инвариантно относительно \(\phi\)
+\end{corollary}
+\begin{proof}
+    Тут должно быть очевидное доказательство по индукции.
+\end{proof}
+
+\subsection{Корневые подпространства}
+\begin{definition}
+    \(\phi: V \ra V\) --- линейный оператор. Вектор \(x\) называется корневым, если \(\exists k \in \N: (\phi - Ex)^k = 0\). Наименьшее \(k\), удовлетворяющее такому уравнению называется высотой корневого вектора \(x\)
+\end{definition}
+
+\begin{note}
+    Будем считать, что \(0\) --- корневой вектор высоты \(0\), отвечающий любому \(\lambda \in F\)
+\end{note}
+
+\begin{proposition}
+    Множество всех корневых векторов для оператора \(\phi\), отвечающих \(\lambda\) ялвяется подпространством пространства \(V\)
+\end{proposition}
+\begin{proof}
+    \(x_1, x_2\) --- корневые векторы, отвечающие числу \(\lambda\) высоты \(n, m\) соответственно. Заметим, что \((\phi - \lambda E)^{n + m}(x_1 + x_2) = 0 \Ra\) он тоже является корневым вектором, отвечающим тому же числу.
+\end{proof}
+\begin{definition}
+    Будем обозначать за \(V^\lambda\) корневое подпространство для \(\phi\), отвечающее числу \(\lambda\)
+\end{definition}
+
+\subsection{Корневые подпространства}
+\begin{proposition}
+    \(V^\lambda \ne \{0\} \Lra \lambda\) --- собственное значение.
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\Ra\)] Если \(V^\lambda \ne \{0\} \Ra \exists y \ne 0, y \in V^\lambda\). Пусть его высота --- \(k\). Тогда \(x = (\phi - \lambda E)^{k - 1} \ne 0, (\phi - \lambda E)x = 0 \Ra \lambda\) --- собственное значение \(\phi\)
+        \item[\(\La\)] Тогда существует ненулевой собственный вектор, который \(\in V^\lambda\).
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[О свойствах корневых подпространств]
+    \(\phi: V \ra V\) --- линейный оператор. Тогда
+    \begin{enumerate}
+        \item \(V^\lambda\) --- инвариантно относительно \(\phi\)
+        \item На \(V^\lambda\) оператор \(\phi\) имеет единственное собственное значение, равное \(\lambda\)
+        \item Если \(W\) таково, что \(V^\lambda \oplus W = V\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Пусть \(m\) --- максимальная высота векторов из \(V^\lambda\). \(V^\lambda = \ker (\phi - \lambda E)^m \Ra \phi(\phi - \lambda E)^m = (\phi - \lambda E)^m\phi \Ra\) по теореме о коммутирующих операторах, \(V^\lambda\) инвариантно относительно \(\phi\)
+        \item От противного, пусть существует собственное значение, равное \(\mu \ne \lambda\). Тогда 
+        \[\exists x \in V: \phi(x) \Ra (\phi - \lambda E)(x) = \mu x - \lambda x = (\mu - \lambda)x\]
+        \[(\phi - \lambda E)^m(x) = (\mu - \lambda)^mx\]
+    \end{enumerate}
+\end{proof}
+
+ОН ОКОНЧАТЕЛЬНО ПОБЕДИЛ...
