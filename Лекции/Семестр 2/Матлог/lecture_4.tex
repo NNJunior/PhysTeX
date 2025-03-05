@@ -1,0 +1,91 @@
+\subsection{Приложения Леммы Цорна и Теоремы Цермело}
+
+\begin{theorem}
+    Любой порядок монжо дополнить до линейного
+\end{theorem}
+\begin{proof}
+    Пусть \(R\) --- порядок на множестве \(X\). Рассмотрим \(A\) --- множество всех порядков на \(X\), и упорядочим \(A\) по вложению. Цепь в \(A\) --- набор порядков, где следующий продолжает предыдущий.
+    \begin{proposition}
+        Объединение порядков цепи --- порядок.
+    \end{proposition}
+    \begin{proof}
+        Пусть \(\{\le_i\}_{i \in I}\) --- цепь. Обозначим \(a \le b \Lra \exists i: a\le_i b\). Докажем, что \(\le\) --- порядок
+        \begin{enumerate}
+            \item[] \textbf{Рефлексивность:} \(\forall i a \le_i a \Ra a \le a\)
+            \item[] \textbf{Антисимметричность:} \(a \le_i b, b \le_j a \Ra a \le_{\max(i, j)} b, a \ge_{\max(i, j)} b \Ra a = b\)
+            \item[] \textbf{Транзитивность:} \(a \le_i b, b \le_j c \Ra a \le_{\max(i, j)} b, b \le_{\max(i, j)} c \Ra a \le_{\max(i, j)} c \Ra a \le c\)
+        \end{enumerate}
+    \end{proof}
+    Заметим, что тогда в нашем множестве у любой цепи есть верхняя грань (обьединение всех элементов цепи). Тогда существует максимальный порядок \(\le\), такой, что \("\le" \ge "R"\). Докажем, что \(\le\) --- линейный. Предположим противное. Тогда существуют несравнимые \(a, b\). Положим \(x \le' y \Lra \left[ \begin{array}{l}
+        x \le y \\
+        x \le a, b \le y \\
+    \end{array}\right.\).
+    Докажем, что тогда \(\le'\) --- порядок.
+    \begin{enumerate}
+        \item[] \textbf{Рефлексивность:} \(a \le a\) --- выполнено
+        \item[] \textbf{Антисимметричность:} \(x \le a, b \le y, y \le a, b \le x \Ra b \le a\) --- противоречие.
+        \item[] \textbf{Транзитивность:} \(x \le' y, y \le' z\). Несколько случаев разбираются достаточно просто
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    \(A\) --- конечно, \(B\) бесконечно, тогда \(B \cong A \cup B\).
+\end{theorem}
+
+\begin{theorem}
+    \(A\) --- бесконечно \(\Ra A \cong A \times \N\).
+\end{theorem}
+\begin{proof}
+    По теореме Цермело, \(\exists S\) --- ВУМ, такой, что \(S \cong A\). Но \(S = \omega L + R\) для некоторых \(L\) и конечного \(R\). Но тогда \(S\) равномощно \(\omega L \cong L \times \N \Ra A \cong L \times \N \cong L \times (\N \times \N) \cong A \times \N\).
+\end{proof}
+
+\begin{theorem}
+    \(A, B\) --- бесконечны, тогда \(A \cup B \cong \max\{A, B\}\)
+\end{theorem}
+\begin{proof}
+    Б.О.О, \(A \ge B\). Тогда \(A \cup B \lesssim A \times \{0, 1\} \lesssim  A \times \N \cong A \lesssim A \cup B\). Тогда по Теореме Кантора-Бернштейна, \(A \cong A \cup B\)
+\end{proof}
+
+\begin{theorem}
+    \(A\) --- бесконечно \(\Ra A \cong A^2\)
+\end{theorem}
+\begin{proof}
+    Построим ЧУМ из пар \((X, f)\), таких, что \(f\) --- биекция из \(X \ra X^2\), \(X \subset A\). Определим \((X, f) \le (Y, g) \Lra \left\{\begin{array}{l}
+        X \subset Y \\
+        g|_x \equiv f
+    \end{array}\right.\).
+    Докажем, что выполнено условие Леммы Цорна. Цепь \(\{(X_i, f_i)\}_{i \in I}\). Рассмотрим \(\left(X, f\right)\), где \(X = \bigcup_{i \in I} X_i, f(x) = f_i(x) \Lra x \in X_i\). Заметим, что \(\bigcup_{i \in I} X_i \subset A\), и \(x \in X_i \cap X_j \Ra \) Б.О.О. \(X_i \subset X_j \Ra f_j|_{X_i} = f_i \Ra f_i(x) = f_j(x)\). Тогда эта пара корректна. Проверим, что \(f\) --- биекция \(X \ra X^2\).
+    \begin{enumerate}
+        \item[] \textbf{Инъективность:} Пусть \(f(x) = f(y), x \ne y\). При этом, \(x \in X_i, y \in X_j\), Б.О.О. \(X_i \subset X_j \Ra f_j(x) = f_j(y)\) --- не инъективно, противоречие.
+        \item[] \textbf{Сюрьективность:} Пусть \((x, y) \in X^2, x \in X_i, y \in X_j\). Б.О.О. \(X_i \subset X_j \Ra (x, y) \in X_j^2 \Ra \exists z: f_j(z) = (x, y) \Ra f(z) = (x, y)\).
+    \end{enumerate}
+    Теперь, пусть \((M, h)\) --- какой-то максимальный элемент, такой, что \(M\) бесконечно.
+    \begin{enumerate}
+        \item \(M \cong A \Ra A \cong M \cong M^2 \cong A\)
+        \item \(M \lesssim A \Ra A \setminus M \cong A \Ra M \lesssim A \setminus M \ra \exists Q \subset A \setminus M, Q \cong M\). Но тогда \(Q \cong Q^2 \cong Q^2 \times \{0, 1, 2\} \cong \Q^2 \cup (Q\times M) \cup (M \times Q)\). Обозначим за \(b\) биекцию между множествами \(Q, \Q^2 \cup (Q\times M) \cup (M \times Q)\). Положим \(f' = \left\{\begin{array}{l}
+            f(x), x \in M \\
+            b(x), x \in Q
+        \end{array}\right.\). Заметим, что \(f': (M \cup Q) \ra (M \cup Q)^2\) --- биекция, противоречие, т.к. \((M, f)\) --- не максимальный элемент
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Базис Гамеля в пространстве  \(\R\) над \(\Q\) --- такое множество \(H\), что 
+    \begin{enumerate}
+        \item \(\alpha_1h_1 + \dots + \alpha_nh_n = 0, \alpha_i \in Q, h_i \in H \Ra \alpha_i = 0\)
+        \item \(\forall x \in \R \exists n \exists \{h_1,\dots h_n\} \subset H, \exists \{\alpha_1 \dots \alpha_n\} \subset \Q\)
+    \end{enumerate}
+\end{definition}
+\begin{theorem}
+    Базис Гамеля существует.
+\end{theorem}
+\begin{proof}
+    По Лемме Цорна, рассмотрим линейно независимые над \(\Q\) системы с отношением подмножества. Рассмотрим объединение элементов некоторой цепи. Оно тоже будет линейно независимо, т.к. любое конечное подмножество этого множества будет линейно независимо. Тогда в любой цепи есть максимум. Выберем его, он будет базисом Гамеля
+\end{proof}
+
+\begin{theorem}
+    Существует такая функция \(f: \R \ra \R\), такая, что верно следующее: \(f(x + y) = f(x) + f(y)\), но \(\nexists \alpha: \forall x f(x) = \alpha x\).
+\end{theorem}
+\begin{proof}
+    Рассмотрим функцию, которая меняет местами две координаты в базисе Гамиля при числах \(a, b\). Заметим, что \(f(0) = 0\). При этом \(f(a) = b, f(b) = a\). Но тогда \(\alpha = \frac{a}{b} = \frac{b}{a}\), противоречие, т.к. \(b \ne a\).
+\end{proof}
