@@ -1,7 +1,89 @@
 % !TEX root = ../../../main.tex
 
-Теорема о первообразном корне существует по молулю $m$ тогда и только тогда, когда $m \in \{2, 4, p^{\alpha}, 2p^{\alpha}\}
+\begin{theorem}
+    Первообразный корень существует по модулю \(m \Lra m \in \{2, 4, p^\alpha, 2p^\alpha\}\), где \(p\) --- нечетное простое
+\end{theorem}
 
-\begin{note}
-Не существует "быстрого" алгоритма для нахождения $ind_g a$ = $min x g^x = a mod p, шде g - первообразный корень, p - простое
-\end{note}
+При этом, на данный момент человечество не умеет быстро решать задачу дискретного логарифмирования: по заданному \(a\) найти \(b\), такое, что \(g^b \equiv a\) (то есть быстрее, чем экспоненциально).
+
+\subsection{Алгортим шифрования}
+У нас есть Алиса, Боб и Ева. Алиса и боб хотят установить некоторый секрет, про который будут знать только они, а все остальные --- нет, используя канал связи, который прослушивает Ева. Для этого алиса и боб выбирают \(p, g\) --- простое число и его первообразный корень и эта информация открыта для всех. После этого, каждый из них придумывает числа \(a, b\) посылают друг другу \(g^a, g^b\) соответственно. Каждый из них, получив \(g^b, g^a\) возводит его в свою степень, оба получают \(g^{ab}, g^{ab}\).
+
+\[\begin{array}{ccc}
+    \text{Алиса} & \text{Открытый канал} & \text{Боб} \\
+    \hline
+    a & p, g & b \\
+    \downarrow & \downarrow & \downarrow\\
+    a, g^a & g^a, p, g, g^b & b, g^b \\
+    \downarrow & \downarrow & \downarrow\\
+    a, g^a, (g^b)^a & g^a, p, g, g^b & b, g^b, (g^a)^b \\
+    \downarrow &  & \downarrow\\
+    g^{ab} & & g^{ab} \\
+
+\end{array}\]
+
+\href{https://ru.wikipedia.org/wiki/Протокол_Диффи_—_Хеллмана}{Подробнее про этот протокол}
+
+\subsection{Существование первообразного корня}
+\begin{proposition}
+    Не существует первообразного корня \(\mod 2^\alpha, \alpha \ge 3\)
+\end{proposition}
+\begin{proof}
+    Предположим противное. Тогда \((a, 2^\alpha) = 1 \Lra a \equiv_2 1, \phi(2^\alpha) = 2^{\alpha - 1}, a = 2t + 1\). Тогда 
+    \[a^2 = 4t^2 + 4t + 1 = 4t(t + 1) + 1 = 8t_1 + 1\]
+    \[a^4 = 64t^2 + 16t + 1 = 16t_2 + 1\]
+    \[\vdots\]
+    \[a^{2k} = 2^{k + 2}t_k + 1, a^{2^{\alpha - 2}} = 2^{\alpha}t_{\alpha - 2} + 1 \equiv_{2^\alpha} 1\]
+\end{proof}
+
+\begin{proposition}
+    Существует первообразный корень \(mod p\)
+\end{proposition}
+\begin{proof}
+    Пусть \(\delta_i\) --- показатель числа \(i \mod p, \tau = \text{НОК}(\delta_1, \delta_2, \dots \delta_{p - 1})\). Заметим, что сравнению \(x^\tau \equiv_p 1\) удовлетворяют все \(x \in \{1, 2, 3, \dots p - 1\}\). Тогда \(\tau \ge p - 1\). Пусть \(\tau = q_1^{\alpha_1}q_2^{\alpha_2}\dots q_k^{\alpha_k}\). Тогда \(\forall i \in \{1, \dots k\} \exists \delta \in \{\delta_1, \dots \delta_k\}: \delta = a_i \cdot q_i^{\alpha_i}\) (т.к. иначе НОК бы делился на меньшую степень \(q_i\)). Возьмем за \(x_i\), показателем котрого является \(\delta\) для данного \(i\). Тогда \(x_i^{a_i}\) имеет показаель \(q_i^{\alpha_i}\). Теперь рассмотрим \(g = x_1^{a_1}x_2^{a_2}\dots x_k^{a_k}\).
+\end{proof}
+\begin{exercise}
+    Довести доказательство
+\end{exercise}
+
+\begin{lemma}
+    Пусть  \(g\) --- первообразный корень \(mod p \Ra \exists t: (g + pt)^{p - 1} = 1 + pu\), где \((u, p) = 1\)
+\end{lemma}
+\begin{proof}
+    \[(g + pt)^{p - 1} = g^{p - 1} + (p - 1)g^{p - 2}pt + p^2(\dots) = 1 + pv + p\left((p - 1)g^{p - 2}t + p(\dots)\right) =\]
+    \[1 + p\left(v + (p - 1)g^{p - 2}t + p(\dots)\right)\]
+    Итого, такое \(t\) можно подобрать, т.к.  \(v, p-1, g^{p - 2}\) --- константы
+\end{proof}
+\begin{proof}
+    Существует первообразный корень \(mod p^\alpha\)
+\end{proof}
+\begin{proof}
+    \(m = p^\alpha, \alpha \ge 2. \phi(p^\alpha) = p^\alpha - p^{\alpha - 1} = p^{\alpha - 1}(p - 1)\). Пусть \(\delta\) --- порядок \((g + pt)\), тогда \((g + pt)^\delta \equiv_{p^\alpha} = 1 \Ra (g + pt)^\delta \equiv_{p} = 1\). При этом, \(g + pt\) --- первообразный корень  \(\mod p \Ra (p - 1) | \delta\). С другой стороны, \(\delta | \phi(p - 1) \Ra \delta = p^k(p - 1)\). Рассмотрим числа вида \((g + pt)^{p^k(p - 1)}\).
+    \[(g + pt)^{p(p - 1)} = (1 + pk)^p = 1 + p^2u + p^3v = 1 + p^2(u + pv) = 1 + p^2u_1, (u_1, p) = 1\]
+    \[(g + pt)^{p^2(p - 1)} = (1 + p^2u_1)^p = 1 + p^3u_2, (u_2, p) = 1\]
+    \[\vdots\]
+    \[(g + pt)^{p^{\alpha - 2}(p - 1)} = 1 + p^{\alpha - 1}u_{alpha - 2}, (u_{alpha - 2}, p) = 1\]
+    Таким образом, получили, что \(g + pt\) --- первообразный корень \(\mod p\)
+\end{proof}
+\begin{proposition}
+    Существует первообразный корень \(mod 2p^\alpha\)
+\end{proposition}
+\begin{proof}
+    Заметим, что \(\phi(2p^{\alpha}) = \phi(p^\alpha)\). Но тогда одно из чисел \(g, g + p^\alpha\) является первообразным корнем, в зависимости от честности числа \(g\)
+\end{proof}
+
+\begin{theorem}[Шевалле]
+    Пусть \(F(x_1, \dots x_n)\) --- многочлен, такой, что \(\deg F < n\). Тогда количество решений \(F(x_1, \dots x_n) \equiv_p 0\) делится на \(p\).
+\end{theorem}
+\begin{proof}
+    \[N = \sum_{x_1 = 1}^p\sum_{x_2 = 1}^p\dots \sum_{x_n = 1}^p \left(1 - F^{p - 1}(x_1, x_2, \dots x_n)\right)\]
+    \[N \equiv_p 0 \Lra \sum_{x_1 = 1}^p\sum_{x_2 = 1}^p\dots \sum_{x_n = 1}^p F^{p - 1}(x_1, x_2, \dots x_n) \equiv_p 0\]
+    Докажем, что \(\sum_{x_1 = 1}^p\sum_{x_2 = 1}^p\dots \sum_{x_n = 1}^p x_1^{\alpha_1}x_2^{\alpha_2}\dots x_n^{\alpha_n} \equiv_p 0, 0 \le \alpha_i, \sum \alpha_i \le (n - 1)(p - 1)\)
+    \[\sum_{x_1 = 1}^p\sum_{x_2 = 1}^p\dots \sum_{x_n = 1}^p x_1^{\alpha_1}x_2^{\alpha_2}\dots x_n^{\alpha_n} \equiv_p \left(\sum_{x_1 = 1}^p x_1^{\alpha_1}\right)\left(\sum_{x_2 = 1}^p x_2^{\alpha_2}\right)\dots \left(\sum_{x_n = 1}^p x_n^{\alpha_n}\right)\]
+    \begin{enumerate}
+        \item \(\exists i: \alpha_i = 0 \Ra \sum_{x_i = 1}^p x_i^{\alpha_i} \equiv_p 0\)
+        \item \(p = 2\). Тогда \(\alpha_1 + \alpha_2 + \dots + \alpha_n \le 1 \Ra\) аналогично случаю 1.
+        \item Пусть \(p \ge 3, \forall i\;\;\alpha_i \ge 1 \Ra \exists i: 1 \le \alpha_i \le p - 2\)
+        \[S = \sum_{x_i = 1}^p x_i^{\alpha_i}, g^{\alpha_i}S \equiv_p \sum_{x_i = 1}^p (gx_i)^{\alpha_i} \equiv_p S \Ra S \equiv 0\]
+    \end{enumerate}
+\end{proof}
