@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.2.7)  5 MAR 2025 20:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.2.7)  6 MAR 2025 10:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1390,12 +1390,11 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 8.
-(./main.out) (./main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
- (./preamble/title_page.tex
-<images/logo_ltc.png, id=28, 1371.2028pt x 770.88pt>
+(./preamble/title_page.tex
+<images/logo_ltc.png, id=12, 1371.2028pt x 770.88pt>
 File: images/logo_ltc.png Graphic file (type png)
 <use images/logo_ltc.png>
 Package pdftex.def Info: images/logo_ltc.png  used on input line 15.
@@ -1403,7 +1402,8 @@ Package pdftex.def Info: images/logo_ltc.png  used on input line 15.
  [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc} <./images/logo_ltc.png>]) (./main.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc} <./images/logo_ltc.png>])
+No file main.toc.
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
@@ -1412,11 +1412,179 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.17     \newpage
-                  [1] (./Лекции/Семестр 2/Алгосы/lecture_5.tex <xymatrix 2x2 86>
-LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 69.
- (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
-File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-) [2] <xymatrix 4x3 225> [3]) [4] (./main.aux)
+                  [1] (./Лекции/Семестр 2/ОКТЧ/lecture_5.tex
+./Лекции/Семестр 2/ОКТЧ/lecture_5.tex:4: Missing $ inserted.
+<inserted text> 
+                $
+l.4 
+    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+LaTeX Warning: Command \cyrsh invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrd invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyre invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrp invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyre invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrr invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrv invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyro invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyro invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrb invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrr invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyra invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrz invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrn invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrery invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrishrt invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrk invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyro invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrr invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyre invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrn invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrsftsn invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrp invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrr invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyro invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrs invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyrt invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyro invalid in math mode on input line 6.
+
+
+LaTeX Warning: Command \cyre invalid in math mode on input line 6.
+
+
+./Лекции/Семестр 2/ОКТЧ/lecture_5.tex:7: LaTeX Error: Command \end{note} invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \end{note}
+              
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./Лекции/Семестр 2/ОКТЧ/lecture_5.tex:7: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \end{note}
+              
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./Лекции/Семестр 2/ОКТЧ/lecture_5.tex:7: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \end{note}
+              
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./Лекции/Семестр 2/ОКТЧ/lecture_5.tex:7: Missing $ inserted.
+<inserted text> 
+                $
+l.7 \end{note}
+              
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+) [2] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1425,22 +1593,28 @@ L3 programming layer <2020/03/25>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: ECFBAF2132A5AF50E4C026DC572799EC;703.
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 35328 strings out of 474222
- 676880 string characters out of 5748734
- 1938975 words of memory out of 5000000
- 56715 multiletter control sequences out of 15000+600000
- 575022 words of font info for 82 fonts, out of 8000000 for 9000
+ 35175 strings out of 474222
+ 674217 string characters out of 5748734
+ 1927975 words of memory out of 5000000
+ 56617 multiletter control sequences out of 15000+600000
+ 571134 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,13n,100p,1481b,827s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
-Output written on main.pdf (5 pages, 459362 bytes).
+ 89i,7n,100p,1481b,523s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb>
+Output written on main.pdf (3 pages, 351230 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 70 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 70 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
+ 4 named destinations out of 1000 (max. 500000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
