@@ -1,0 +1,97 @@
+% !TEX root = ../../../main.tex
+
+\begin{theorem}[Признак Вейерштрасса]
+    Пусть задан функциональный ряд \(\sum_{n = 1}^\infty u_n\) на \(E\), и числовая последовательность \(\{a_n\}\), причем
+    \begin{enumerate}
+        \item \(\forall x \in E \forall n \in \N (|u_n(x)| \le a_n)\)
+        \item \(\sum_{n = 1}^\infty a_n\) сходится
+    \end{enumerate}
+    Тогда \(\sum_{n = 1}^\infty u_n\) сходится равномерно и абсолютно на \(E\)
+\end{theorem}
+\begin{proof}
+    Т.к. \(\sum_{n = 1}^\infty a_n\) сходится, то \(\forall \epsilon > 0 \exists N \forall n > m \ge N \left(\sum_{k = m + 1}^n a_n < \epsilon\right)\). Тогда \(\forall n > m \ge N\) и \(\forall x \in E\):
+    \[\left|\sum_{k = m + 1}^n u_n(x)\right| \le \sum_{k = m + 1}^n |u_n(x)| < \sum_{k = m + 1}^n a_n < \epsilon\]
+    Таким образом, \(\sum_{n = 1}^\infty |u_n(x)|\) удовлетворяет условию Коши на \(E\). Тогда эти ряды равномерно сходятся на \(E\)
+\end{proof}
+
+\begin{note}
+    \(\sum_{n = 1}^\infty a_n\) называется мажорантным рядом для ряда \(\sum_{n = 1}^\infty u_n(x)\).
+\end{note}
+
+\begin{definition}
+    Пусть задана \(g_n: E \ra \R(\Cm)\). последовательность \(\{a_n\}\) называется равномерно ограниченной на множестве \(E\), если \(\exists C > 0 \forall n \in \N \forall x \in E (|g_n(x)| \le C)\)
+\end{definition}
+\begin{theorem}[Признак Дирихле]
+    Пусть \(a_n, b_n: E \ra \R (\Cm)\) --- такие функциональные последовательности, что
+    \begin{enumerate}
+        \item \(A_n = \sum_{n = 1}^N a_n\) равномено ограничены на \(E\)
+        \item \(\forall x \in E \{b_n(x)\}\) монотонна
+        \item \(b_n \rightrightarrows 0\) на \(E\)
+    \end{enumerate}
+    Тогда \(\sum_{n = 1}^\infty a_nb_n\) сходится равномерно на \(E\)
+\end{theorem}
+\begin{proof}
+    Так как \(\{A_N\}\) равномерно ограничена \(E \Ra \exists C > 0 \forall n \in \N \forall x \in E (|A_n(x)| \le C)\). Тогда \(\forall n, m (n > m)\)
+    \[\left|\sum_{k = m + 1}^n a_k(x)\right| = \left|A_n(x) - A_m(x)\right| \le 2C\]
+    Зафиксируем \(\epsilon > 0\). Так как \(b_n \rightrightarrows_E 0\), то \(\exists N \forall n \ge N \forall x \in E \left(\left|b_n(x) < \frac{\epsilon}{8C}\right|\right)\). Тогда по лемме Абеля, \(\forall n > m \ge N \forall x \in E\)
+    \[\left|\sum_{k = m + 1}^n a_k(x)b_k(x)\right| \le 2\cdot2C \left(|b_n(x)| + |b_{m + 1}(x)|\right) < \epsilon\]
+\end{proof}
+
+\begin{corollary}[Принцип Лейбница]
+    Если для каждого \(x \in E\) последовательность \(\{\alpha_n(x)\}\) монотонна и \(\alpha_n \rightrightarrows 0\) на \(E\), то \(\sum_{n = 1}^\infty (-1)^{n - 1}\alpha_n\) равномерно сходится на \(E\)
+\end{corollary}
+\begin{corollary}
+    Пусть отрезок \(I \ni 2\pi m, m \in \Z\). Если \(\forall x \in I \{\alpha_n(x)\}\) монотонна и \(\alpha_n \rightrightarrows_I 0\), то \(\sum_{n = 1}^\infty \alpha_n\cos nx\) равномерно сходится на \(I\)
+\end{corollary}
+\begin{proof}
+    Докажем, что \(\left|\sum_{n = 1}^N \sin nx\right| \le \frac{1}{\left|\sin \frac{x}{2}\right|} \forall x \in I\). Т.к. \(\inf_I \left|\sin \frac{x}{2}\right| = c > 0 \Ra \left|\sum_{n = 1}^N \sin nx\right| \le \frac{1}{c}\). По принципу Дирихле заключаем, что \(\sum_{n = 1}^\infty \alpha_n \sin nx\) равномено сходится на \(I\)
+\end{proof}
+
+\begin{theorem}[Признак Абеля]
+    Пусть \(a_n, b_n: E \ra \R (\Cm)\), такие, что
+    \begin{enumerate}
+        \item Ряд \(\sum_{n = 1}^\infty a_n\) равномерно сходится на \(E\)
+        \item \(\forall x \in E \{b_n(x)\}\) монотонна
+        \item \(\{b_n\}\) равмномерно ограничена на \(E\)
+    \end{enumerate}
+    Тогда \(\sum_{n = 1}^\infty a_nb_n\) сходится равномерно на \(E\)
+\end{theorem}
+\begin{proof}
+    Т.к. \(\{b_n\}\) равномерно ограничена на \(E \Ra \exists C > 0 \forall n \forall x \in E (|b_n(x)| \le C)\). Зафиксируем \(\epsilon > 0\). Тогда в силу сходимости ряда \(\sum_{n = 1}^\infty a_n\) на \(E\), по Критерию Коши, \(\exists N \forall n > m \ge N \forall x \in E \left(\left|\sum_{k = m + 1}^n a_k(x)\right| < \frac{\epsilon}{c}\right)\). По Лемме Абеля, \(\forall x \in E \forall n > m \ge N\) имеем 
+    \[\left|\sum_{k = m + 1}^n a_k(x)b_k(x)\right| \le 2\frac{\epsilon}{4C}\left(|b_{m + 1}(x)| + |b_n(x)|\right) \le \epsilon\]
+    По Критерию Коши, ряд \(\sum_{n = 1}^\infty a_nb_n\) равномерно сходится на \(E\).
+\end{proof}
+
+\begin{example}
+    Исследуем сходимость и равномерную сходимость \(\sum_{n = 1}^\infty \frac{\sin nx}{x^\alpha}\) на \(E_1 = (0, 2\pi), E_2 = [\delta, 2\pi - \delta], \delta \in (0, \pi)\)
+    \begin{enumerate}
+        \item Исслудуем поточечную сходимость.
+        \begin{enumerate}
+            \item \(\alpha > 0\). \(\forall x \in E\) ряд \(\sum_{n = 1}^\infty \frac{\sin nx}{x^\alpha}\) сходится по следствию из признака Дирихле
+            \item \(\alpha \le 0\). Покажем, что при \(x \in E \setminus \{\pi\}\) ряд расходится по необходимому условию. Достаточно показать, что \(\sin nx \not\ra 0\). Действительно, \(\sin nx \ra 0 \Ra \sin (n + 1)x \ra 0\). Но \(\sin (n + 1)x = \sin nx \cos x + \cos nx + \sin x \Ra \cos nx \ra 0\). Противоречие, т.к. \(\sin^2 nx + \cos^2 nx = 1\).
+        \end{enumerate}
+        \item Исслудуем равномерную сходимость. На \(E_2\) ряд равномерно сходится \(forall \alpha > 0\). 
+        \begin{enumerate}
+            \item \(\alpha > 1\).
+            \[\left|\frac{\sin nx}{n^\alpha}\right| \le \frac{1}{n^\alpha}\]
+            Следовательно, \(\sum_{n = 1}^\infty \frac{\sin nx}{x^\alpha}\) --- равномерно сходится по признаку Вейерштрасса
+            \item \(0 < \alpha \le 1\). Покажем, что равмномерной сходимости нет. Рассмотрим \(x_n = \frac{\pi}{4n}\). Рассмотрим \(k \in [n, 2n]\Ra kx_n \in \left[\frac{\pi}{4}, \frac{\pi}{2}\right]\). Тогда 
+            \[\left|\sum_{k = n + 1}^{2n} \frac{\sin kx_n}{k^\alpha}\right| = \sum_{n = 1}^{2n}\frac{\sin kx_n}{k^\alpha} > \frac{1}{\sqrt{2}}\frac{n}{(2n)^\alpha} \ge \frac{1}{2\sqrt{2}}\]
+            Получили, что  
+            \[\exists \epsilon_0 = \frac{1}{2\sqrt{2}} \forall N \exists m = 2, n \ge N \exists x_n = \frac{\pi}{4n} \left|\sum_{k = n + 1}^{2n} \frac{\sin kx_n}{k^\alpha}\right| < \epsilon\]
+        \end{enumerate}
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}[Признак Дини]
+    Пусть \(\{f_n\}\) поточечно сходтися к \(f\) на \([a, b]\), причем \(\forall x \in [a, b], \{f_n(x) - f(x)\}\) нестрого убывает. Если \(f, f_n\) непрерывны на \([a, b]\), то \(f_n \rightrightarrows f\) на \([a, b]\)
+\end{theorem}
+\begin{proof}
+    \(\forall x \in [a, b] \forall \epsilon > 0 \exists N_{\epsilon, x} \forall j \ge N (0 \le f_j(x) - f(x) < \epsilon)\). В силу непрерывности \(f, f_n\) имеем \(\exists \delta_x \forall t \in B_{\delta_x}(x) \cap [a, b] (0 \le f_i(t) - f(t) < \epsilon)\).
+    \[\bigcup_{x \in [a, b]}B_{\delta_x}(x) \supset [a, b] \Ra \text{По Лемме Гейне-Бореля} \Ra \exists x_1, x_2 \dots x_n: [a, b] \subset \bigcup B_{\delta_{x_i}}(x_i)\]
+    Положим \(N = \max_{1 \le i \le m}\{N_{x_i, \epsilon}\}\). Тогда \(\forall j \ge N \forall t \in [a, b] (0 \le f_j(t) - f(t) < \epsilon)\). Это означает что \(f_n \rightrightarrows f\) на \([a, b]\)
+\end{proof}
+
+\begin{note}
+    \(g_n(x) = |f_n(x) - f(x)|\)
+\end{note}
