@@ -1,0 +1,79 @@
+% !TEX root = ../../../main.tex
+
+\begin{example}[Непрерывная нигде не дифференцируемая функция \(f: \R \ra \R\)]
+    \[\phi(x) = |x|, x \in [-1, 1], \phi(x) = \phi(x \pm 2)\]
+    Заметим, что если \((x, y)\) не содержит целых точек, то \(|\phi(x) - \phi(y)| = |x - y|\). Построим функцию \(f = \sum_{n = 1}^\infty f_n(x)\), где \(f_n(x) = \frac{1}{4^n}\phi(4^nx) \Ra |f_n(x)| \le \frac{1}{4^n} \Ra f_n \rightrightarrows_{\R} f\). Т.к. \(f_n\) непрерывна на \(\R \Ra f\) --- тоже. Докажем, что \(f\) не дифференцируема ни в какой точке \(\R\).
+    \[\frac{f(a + h) - f(a)}{h}\]
+    Среди интервалов \(\left(4^ka, 4^ka + \frac{1}{2}\right), \left(4^ka - \frac{1}{2}, 4^ka\right)\) хотя бы один не содержит целых точек. Поэтому, \(\exists h_k = \pm \frac{1}{2}4^{-k}\) (\(h_k\) всегда одного знака), что на интервале с концами \(4^k(a + h_k), 4^ka\) нет целых точек. Более того, интервалы с концами \(4^na, 4^n(a + h_k), n < k\) тоже не имеют целых точек, т.к. в противном случае можно домножить на \(4^{k - n}\) и получим, что существует целая точка из \(4^k(a + h_k), 4^ka\). Следовательно,  \(|\phi(4^n(a + h_k)) - \phi(4^na)| = 4^n|h_k|, n \le k\), \(|\phi(4^n(a + h_k)) - \phi(4^na)| = 0, n > k\), т.к. \(4^nh_k\) будет целым, а наша функция \(2\)-периодична. Тогда \(|f_n(a + h_k) - f_n(a)| = \left\{\begin{array}{l}
+        |h_k|, n \le k \\
+        0, n > k
+    \end{array}\right.\)
+    Поэтому \(\frac{f(a + h_k) - f(a)}{h_k} = \sum_{n = 1}^k \pm 1 = \left[\begin{array}{l}
+        +\infty \\
+        -\infty
+    \end{array}\right.\)
+\end{example}
+
+\section{Степеннные ряды}
+\subsection{Радиус сходимости}
+
+\begin{definition}
+    Степенным рядом с центром в точке \(x_0\) и коэффициентами \(a_n\) называется функциональный ряд следующего вида 
+    \[\sum_{n = 0}^\infty a_n(x - x_0)^n\]
+    Где \(a_n, x_0, x\) --- либо \(\in \R\), либо \(\in \Cm\)
+\end{definition}
+
+\begin{theorem}[Коши-Адамара]
+    Пусть \(R = \frac{1}{\limsup_{n \ra \infty} \sqrt[n]{|a_n|}}\) (\(\frac{1}{0} = +\infty, \frac{1}{+\infty} = 0\))
+    \begin{enumerate}
+        \item Если \(|x - x_0| < R\), то степенной ряд \(\sum_{n = 0}^\infty a_n(x - x_0)^n\) абсолютно сходится
+        \item Если \(|x - x_0| > R\), то степенной ряд \(\sum_{n = 0}^\infty a_n(x - x_0)^n\) расходится
+        \item Если \(r \in (0, R)\), то степенной ряд \(\sum_{n = 0}^\infty a_n(x - x_0)^n\) равномерно сходится на \(\overline{B_r(x_0)} = \{x: |x - x_0| \le r\}\).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    При \(x \ne x_0\) имеем \(q = \limsup_{n \ra \infty} \sqrt[n]{|a_n(x - x_0)^n|} = |x - x_0|\sqrt[n]{|a_n|} = \frac{|x - x_0}{R}\).
+    \begin{enumerate}
+        \item \(|x - x_0| > R \Ra q < 1\) --- тогда ряд абсолютно сходится по признаку Коши
+        \item \(|x - x_0| > R \Ra q > 1\) --- тогда \(n\)-ый член не стремится к \(0\).
+        \item Пусть \(r in (0, R)\). Но тогда по пункту \(1\), ряд сходится абсолютно в \(x = x_0 + r\), т.е. \(\sum_{n = 0}^\infty |a_n|r^n\) сходится, при этом \(\forall x: |x - x_0| \le r \Ra |a_n(x - x_0)^n| \le |a_n|r^n\) --- член сходищегося ряда. Поэтому ряд равномерно сходтися на \(\overline{B_r(x_0)}\) по признаку Вейерштрасса.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Величина \(R\) из предыдущей теоремы называется радиусом сходимости ряда. Множество \(B_R(x_0) = \{x: |x - x_0| < R\}\) называется интевалом сходимости (кругом сходимости для комплексного степенного ряда)
+\end{definition}
+
+\begin{corollary}
+    Пусть \(R \in [0, +\infty]\) удовлетворяет условиям
+    \begin{enumerate}
+        \item Если \(\forall x: |x - x_0| < R \Ra \) ряд абсолютно сходится
+        \item Если \(\forall x: |x - x_0| > R \Ra \) ряд расходится
+    \end{enumerate}
+    Тогда \(R\) --- радиус сходимости.
+\end{corollary}
+\begin{proof}
+    Предположим противное, тогда \(R \le R'\), где \(R'\) --- радиус сходимости, т.к. \(\forall x: |x - x_0| < R \Ra \) ряд абсолютно сходится. При этом \(R \ge R'\), т.к. \(\forall x: |x - x_0| > R \Ra \) ряд расходится. Но тогда \(R = R'\)
+\end{proof}
+
+\begin{example}
+    \[\sum_{n = 1}^\infty \frac{n!}{n^n}x^{2n}\]
+    \[\frac{|u_{n + 1}(x)|}{|u_n(x)|} = \frac{|x|^2}{\left(1 + \frac{1}{n}\right)^n} \ra \frac{|x|^2}{e}\]
+    По признаку Даламбера, \(\frac{|x|^2}{e} < 1 \Lra |x| < \sqrt{e} \Ra\) ряд абсолютно сходится
+    \(\frac{|x|^2}{e} > 1 \Lra |x| > \sqrt{e} \Ra\) ряд расходится  \(\Ra \sqrt{e}\) --- радиус сходимости 
+\end{example}
+
+\begin{theorem}[Абеля]
+    Если степенной ряд имеет радиус сходимости \(R \in (0, +\infty)\) и сходится в \(x = x_0 + R\), то он равомерно сходится на \([x_0, x_0 + R]\).
+\end{theorem}
+\begin{proof}
+    Сделаем замену \(y = \frac{x - x_0}{R}\). Получим, \(\sum_{n = 0}^\infty a_ny^n\), с радиусом \(R = 1\). Введем обозначения \(A_{n, m} = \sum_{k = m}^n a_k, A_{m, m} = 0, S_n(x) = \sum_{k = 0}^n a_kx^k\)
+    Тогда 
+    \[S_n(x) - S_m(x) = \sum_{k = m + 1}^n a_kx^k = \sum_{k = m + 1}^n (A_{k, m} - A_{k-1, ms})x^k = \sum_{k = m + 1}A_{k, m}x^k - \sum_{k = m + 1}^{n - 1}A_{k, m} x^{k + 1}= \]
+    \[ = \sum_{k = m + 1}^{n - 1}A_{k, m}(x^k - x^{k + 1}) - A_{n, m}x^n\]
+    Зафиксируем \(\epsilon > 0\). По условию \(\sum_{n = 1}^\infty a_n\) сходится \(\Ra \exists N \forall n > m \ge N \left|\sum_{k = m + 1}^n a_k\right| < \epsilon\). Но тогда на \([0, 1]\)
+    \[\left|S_n(x) - S_m(x)\right| \le \sum_{k = m + 1}^n \left|A_{k, m}\right||x^k - x^{k + 1}| + |A_{n, m}||x^n| < \epsilon \sum_{k = m + 1}^n(x^k - x^{k + 1}) + \epsilon \le 2\epsilon\]
+\end{proof}
+\begin{problem}
+    Пусть даны ряды \(\sum_{n = 1}^\infty a_n, \sum_{n = 1}^\infty b_n\). Пусть \(\sum_{n = 1}^\infty c_n\) --- произведение по Коши \(a_n, b_n\). Доказать, что \(AB = C\), где \(A = \sum_{n = 1}^\infty a_n, B = \sum_{n = 1}^\infty b_n, C = \sum_{n = 1}^\infty c_n\)
+\end{problem}
