@@ -6,6 +6,7 @@
       <lecture name="Лекция 3" path="Лекции/Семестр 2/Алгем/lecture_3" description="По техническим причинам, инвариантные пространства затеханы очень плохо (простите)" setting="Лекции/Семестр 2/Алгем/setting"  date="19.02.25"/>
       <lecture name="Лекция 4 ☠️" path="Лекции/Семестр 2/Алгем/lecture_4" description="я сдаюсь..." setting="Лекции/Семестр 2/Алгем/setting"  date="26.02.25"/>
       <lecture name="Лекция 5 ☠️☠️" path="Лекции/Семестр 2/Алгем/lecture_5" description="он победил..." setting="Лекции/Семестр 2/Алгем/setting"  date="05.03.25"/>
+      <lecture name="Лекция 6 ❌" description="я умер" date="12.03.25"/>
     </subject>
     <subject name="Алгоритмы и Структуры данных" description="Конспекты техает Иван, так что не обессудьте"  setting="Лекции/Семестр 2/Алгосы/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгосы/lecture_1" description="Динамическое программирование. &lt;a href=&quot;https://youtu.be/Cy7M4WnFFUY?si=Y39VDoNYy2Mt5Y87&quot;&gt;Запись лекции&lt;/a&gt;" setting="Лекции/Семестр 2/Алгосы/setting"  date="05.02.25" />
@@ -19,6 +20,7 @@
       <lecture name="Лекция 2" path="Лекции/Семестр 2/Матлог/lecture_2" description="Теорема о сравнимости ВУМов. Ординалы" setting="Лекции/Семестр 2/Матлог/setting"  date="12.02.25" />
       <lecture name="Лекция 3" path="Лекции/Семестр 2/Матлог/lecture_3" description="Теорема Цермело. Лемма Цорна." setting="Лекции/Семестр 2/Матлог/setting"  date="26.02.25" />
       <lecture name="Лекция 4" path="Лекции/Семестр 2/Матлог/lecture_4" description="Приложения Теоремы Цермело и Леммы Цорна" setting="Лекции/Семестр 2/Матлог/setting"  date="05.03.25" />
+      <lecture name="Лекция 5" path="Лекции/Семестр 2/Матлог/lecture_5" description="Теория вычислимости" setting="Лекции/Семестр 2/Матлог/setting"  date="12.03.25" />
     </subject>
     <subject name="Многомерный анализ, интегралы и ряды" description="Коллега рассказывает про матан" setting="Лекции/Семестр 2/Матан/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Лекции/Семестр 2/Матан/setting" date="04.02.25"/>
@@ -52,6 +54,7 @@
       <lecture name="Лекция 3" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="19.02.25"/>
       <lecture name="Лекция 4" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="26.02.25"/>
       <lecture name="Лекция 5" description="&lt;a href=&quot;https://docs.google.com/presentation/d/19vf8ldcpw5vwF06hvd5LAdj3fGJK8S1rblPOOpIP2Og/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="05.03.25"/>
+      <lecture name="Лекция 6" description="&lt;a href=&quot;https://docs.google.com/presentation/d/19vf8ldcpw5vwF06hvd5LAdj3fGJK8S1rblPOOpIP2Og/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="12.03.25"/>
     </subject>
     <subject name="Python" description="">
       <lecture name="Лекция 1" description="Кодстайл + идеалогия языка. Не техалась." date="08.02.25"/>
@@ -71,6 +74,8 @@
       <lecture name="Лекция 2" description="&lt;a href=&quot;https://t.me/c/2150836650/6957&quot;&gt;Запись лекции&lt;/a&gt;" date="11.02.25" />
       <lecture name="Лекция 3" description="&lt;a href=&quot;https://t.me/c/2150836650/7726&quot;&gt;Запись лекции&lt;/a&gt;" date="18.02.25" />
       <lecture name="Лекция 4" description="&lt;a href=&quot;https://t.me/c/2150836650/7738&quot;&gt;Запись лекции&lt;/a&gt;" date="25.02.25" />
+      <lecture name="Лекция 5" description="Скоро тут будет ссылка на запись лекции" date="04.03.25" />
+      <lecture name="Лекция 6" description="Скоро тут будет ссылка на запись лекции" date="11.03.25" />
     </subject>
   </semester>
 </all>
