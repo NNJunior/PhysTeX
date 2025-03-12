@@ -5,3 +5,6 @@
 \contentsline {subsection}{\numberline {2.2}0-k BFS}{3}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Двусторонний BFS}{4}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Алгоритм Дейкстры}{4}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Теория вычислимости}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Алгоритм}{5}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Однолетночная машина Тьюринга}{5}{section.4}%
