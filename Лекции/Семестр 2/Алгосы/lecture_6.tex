@@ -1,0 +1,156 @@
+% !TEX root = ../../../main.tex
+
+\section{И снова графы}
+
+\begin{definition}
+  Пусть $G$ - неориентированный граф. $v$ - точка сочленения (ТС), если после ее удаления количество компонент связности увеличивается хотя бы на 1.
+\end{definition}
+
+\begin{proposition}
+  \text{}
+
+  \begin{enumerate}
+    \item Если $v$ - корень, то $v$ - точка сочленения $\Longleftrightarrow$ у $v$ в дереве dfs хотя бы 2 ребенка
+    \item Если $v$ - не корень, то $v$ - точка сочленения $\Longleftrightarrow \exists$ деревесное ребро $(v, to)$ $ret[v] \ge tin[v]$
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  \text{}
+
+  \begin{enumerate}
+    \item Корень либо является листом - тогда после его удаления количество компонент не изменится, либо у него есть 2 сына, которые образуют 2 компоненты связности, что удовлетворяет определению ТС.
+  
+\textit{Подграфы сыновей не связаны, иначе по dfs это была бы 1 общая компонента.}
+    \item Если есть сын $to$, что $ret[to] \ge tin[v]$, то после удаления $v$ заведомо пропадает путь между $to$ и $p$, родителем $v$.
+    
+    Если же, напротив, для всех сыновей $ret[to] < tin[v]$, то после удаления $v$ сохраняется путь между $p$ и поддеревьями $v$. 
+  \end{enumerate}
+\end{proof}
+\section{Кратчайшие пути. BFS}
+
+\begin{definition}
+  Взвешенным графом называется $(V, E, w)$, где $(V, E)$ - граф, $w: E \to \R$ Иначе говоря, просто граф с весами на каждом ребре.
+\end{definition}
+
+\begin{definition}
+  Весом (стоимостью) пути назовем сумму весов рёбер в нем. $dist(s, t)$ определим, как минимальное значение среди весов путей от $s$ до $t$.
+\end{definition}
+\textbf{Важное уточнение!}
+
+\begin{note}
+\begin{enumerate}
+  \text{}
+
+  \item Если пути от $s$ до $t$ нет, то $dist(s, t) = +\infty$
+  \item Если есть отрицательный цикл, то считаем, что $dist(s, t) = -\infty$
+\end{enumerate}
+\end{note}
+
+\textit{Далее временно считаем, что $\forall e \ w(e) \ge 0$, $w$ = 1}
+
+\subsection{BFS (breadth first search)}
+\textbf{Цель:} по фиксированной вершине $s$ найти $dist(s, v) \forall v$
+
+
+Понятно, что $dist (s, s) = 0, dist (s, x) = 1, \forall \ \text{смежных с $s$ вершин.}$ Продолжим цепочку\dots
+
+\begin{enumerate}
+  \item Заведем массив $d[v]$ - найденная длина пути от $s$ до $v$.
+  \item Введем функцию $expand(int\ v)$ - раскрытие $v$:
+  \begin{verbatim}
+    for (edge e : g[v]) {
+      обновляем d[e.to] через
+      d[v] + e.w
+      если нужно, кладем e.to в структуру
+    }
+  \end{verbatim}
+
+  \item $d[0\dots n - 1] = +\infty$, $d[s] = 0$, $queue \ q;\  q.push(s)$
+  \item \begin{verbatim}
+    while (q непусто) {
+      v = q.front(); q.pop();
+      for (edge e: g[v]) {
+        if (d[e.to] == +infty) {
+          d[e.to] = d[v] + 1;
+          q.push(e.to);
+        }
+      }
+    }
+  \end{verbatim} 
+\end{enumerate}
+
+\begin{proposition}
+  К моменту рассмотрения последней вершины очереди с $d[v] = k$:
+  \begin{enumerate}
+    \item До всех вершин $u: dist(s, u) \leq k + 1$ найден правильный ответ ($d[u] = dist(s, u)$)
+    \item В очереди лежат все вершины с $dist(s, u) = k + 1$ (и только они)
+  \end{enumerate}
+\end{proposition}
+
+\textit{Проводится по индукции. Оставим в качестве упражнения для читателей:)}
+
+\subsection{0-k BFS}
+\underline{Асимптотика O(V + E)}
+
+\textbf{Похожая задача. Цель:} $\forall v$ найти длину минимального найденного пути от $s$ до $v$, но теперь веса $w \in \{0, 1, 2, \dots, k\}$
+
+\begin{enumerate}
+  \item Храним в $dp[v]$ длину минимального найденного пути от $s$ до $v$
+  \item $d = +\infty$, $d[s] = 0$, $q[x]$ - очередь вершин с $d = x$
+  \newpage
+  \item
+  \begin{center}
+ \begin{verbatim}
+    expand(v):
+      if (expanded[v]) return;
+      expanded[v] = true;
+      for (e: g[v]) {
+        y = d[v] + e.w
+        if (d[e.to] > g) {
+          d[e.to] = y;
+          q[y] push(e.to);
+        }
+      } 
+  \end{verbatim}
+\end{center}
+  \item Заведем $q[0], q[1], \dots, q[nk]$, $expanded = false, \ q[0].push(s)$
+  
+  \item \begin{verbatim}
+    for (x = 0 ... nk) {
+      while (q[x] непусто):
+        достаем из нее вершину u и раскрываем
+    }
+  \end{verbatim}  
+\end{enumerate}
+
+\underline{Асимптотика: O(E + kV)}
+
+\begin{exercise}
+К моменту завершения рассмотрения очереди $q[x]$ обработаны и раскрыты все вершины, для которых расстояние не больше $x$.
+\end{exercise}
+
+\subsection{Двусторонний BFS}
+\textbf{Цель:} найти $dist(s, t)$. \textbf{Общая идея:} Наращиваем слои по глубине $k$ от двух вершин, пока области не пересекутся.
+
+\textbf{Решение:}
+
+\begin{enumerate}
+  \item Запускаем $BFS$ параллельно. Назовем слоем $k$ множество вершин, до которых можно добраться за $k$ или меньше ребер.
+  
+  \item Заметим, что $dist(s, t) = min_m(d_s[m] + d_t[m])$. Так что когда найдется такое $k$, что слои от $s$ и $t$ пересекутся, мы получим эту вершину $m$ и, соответсвенно, путь между $s$ и $t$.
+\end{enumerate}
+
+\textit{Проверять пересечение слоев можно проверять быстро через хеш-таблицы.}
+
+\subsection{Алгоритм Дейкстры}
+\textbf{Цель: }$w \ge 0, fix s$ Найти $dist(s, v) \ \forall v$. 
+\begin{enumerate}
+  \item $d = +\infty, \ expanded[v] = false \forall v, \ d[s] = 0$
+  \item \begin{verbatim}
+    for i = 0 ... n-1:
+      пусть v - вершина с min d[v] среди всех нераскрытых
+      Йййййеессслииии d[v] = +\infty: break
+  \end{verbatim}
+\end{enumerate}
+\textit{Асимптотика $O(n + n\log{n})$ через Фиб кучу и $O(m \log{n})$ через бин кучу}
