@@ -7,4 +7,4 @@
 \contentsline {subsection}{\numberline {2.4}Алгоритм Дейкстры}{4}{subsection.2.4}%
 \contentsline {section}{\numberline {3}Теория вычислимости}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Алгоритм}{5}{subsection.3.1}%
-\contentsline {section}{\numberline {4}Однолетночная машина Тьюринга}{5}{section.4}%
+\contentsline {subsection}{\numberline {3.2}Однолетночная машина Тьюринга}{5}{subsection.3.2}%
