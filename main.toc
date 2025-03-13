@@ -1,4 +1,0 @@
-\babel@toc {russian}{}\relax 
-\contentsline {section}{\numberline {1}Теория вычислимости}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Алгоритм}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Однолетночная машина Тьюринга}{2}{subsection.1.2}%
