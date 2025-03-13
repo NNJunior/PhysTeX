@@ -1,0 +1,102 @@
+% !TEX root = ../../../main.tex
+
+\section{Тесты на простоту чисел}
+Хотелось бы чтобы тест на простоту работал за \(O(poly(\log n))\). Они делятся на вероятностные и детерминированные. Вероятностные тесты определяют простоту с некоторой вероятностью, при этом, если они ломаются, то искомое число ''почти простое''. Детерминированные тесты, в основном, придуманы для простых чисел особого вида, например, для чисел Мерсенна: \(2^p - 1, p\) --- простое. Существует один алгоритм \href{https://ru.wikipedia.org/wiki/Тест_Агравала_—_Каяла_—_Саксены}{Агравала — Каяла — Саксены}, но константа там настолько большая, что данный тест непригоден для использования.
+
+\subsection{Тест Ферма на Простоту}
+Пусть требуется проверить, является ли число \(N\) простым.
+\begin{enumerate}
+    \item Проверяем, что \(N\) не делится на первые простые числа
+    \item Выбираем произвольное \(a\). Если \((a, N) \ne 1 \Ra N\) точно не простое.
+    \item Считаем \(a^{N - 1}\). Если \(\equiv_N 1\), то переходим к пункту 2, иначе \(N\) --- не простое
+\end{enumerate}
+\begin{definition}
+    Пусть \(B_F \{a \in \Z^*_N| a^{N - 1} \equiv_N 1\}\). Тогда \(B_F \ne \Z_N^* \Ra |B_F| \le \frac{1}{2}|\Z_N^*|\)
+\end{definition}
+\begin{proof}[Первое доказательство]
+    \(B_F\) --- подгруппа в \(Z_n^*\). Тогда по теореме Лагранжа, \(|\Z_N^*|\vdots|B_F| \Ra |B_F|\le\frac{1}{2}|\Z_N^*|\)
+\end{proof}
+\begin{proof}[Второе доказательство]
+    Домножим \(B_F\) на остаток \(a\), не лежащий в \(B_F\). Получится число не из \(B_F\). Но Тогда \(|B_F|\le\frac{1}{2}|\Z_N^*|\)
+\end{proof}
+\begin{definition}
+    \(N\) называется числом Кармайкла, если \(B_F = \Z_N^*\)
+\end{definition}
+\begin{proposition}
+    Если \(N\) --- не простое и не Число Кармайкла, то после \(k\) независимых проверок теста Ферма, \(P(N\text{ --- псевдопростое}) = \frac{1}{2^k}\)
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+\begin{theorem}
+    \(N\) --- число Кармайкла тогда и только тогда, когда 
+    \begin{enumerate}
+        \item \(N\) свободно от квадратов
+        \item \(N = p_1p_2\dots p_s \Ra p_i - 1\;|\;N - 1\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\La\)] Хотим проверить, что \(a^{N - 1} \equiv_N 1\), если \((a, N) = 1\) Заметим, что \(a^{p_i - 1} \equiv_{p_i} 1 \Ra a^{N - 1} \equiv_{p_i} 1\). Но тогда по КТО, \(a^{N - 1} \equiv_N 1\).
+        \item[\(\Ra\)]
+        Докажем от противного. Пусть \(n = p^ks, k \ge 2\). Тогда \(a^{N - 1} \equiv_N 1 \Ra a^{N - 1} \equiv_{p^k} 1 \Ra a^{N - 1} \equiv_{p^2} 1\). Пусть \(g\) --- первообразный корень \(\mod p^2 \Ra ord(g) = p(p - 1)\). Найдем \(a: \left\{\begin{array}{l}
+            a \equiv_{p^k} g \\
+            a \equiv_s 1
+        \end{array}\right.\). Такое существует по КТО. Тогда \(a^{N - 1} \equiv_{p^2} g^{N - 1} \equiv_{p^2} 1 \Ra N \vdots p\), но проиворечие с тем, что \(N - 1 \vdots p\), а \((N, N - 1) = 1\).
+        
+        Пусть \(N = p_1p_2\dots p_s, g_i\) --- первообразный корень \(\mod p_i\). Найдем \(a\), такой, что \(\left\{\begin{array}{l}
+            a \equiv_{p_i} g_i \\
+            a \equiv_{p_j} 1
+        \end{array}\right.\). \(a^{N - 1} \equiv_N 1 \Ra g_i^{N - 1} \equiv_{p_i} 1 \Ra N - 1 \vdots p_1 - 1\).
+    \end{enumerate}
+\end{proof}
+
+\subsubsection{Свойства чисел Кармайкла}
+\begin{enumerate}
+    \item Числа Кармайкла нечетны
+    \item Числа Кармайкла представимы в виде \(p_1\dots p_s, s \ge 3, p_i\) --- простое
+    \item Если для некотрого \(k\), верно, что \(6k + 1, 12k + 1, 18k + 1\) --- простые, то \((6k + 1)(12k + 1)(18k + 1)\) --- число Кармайкла, например \(7\cdot13\cdot19\) --- число Кармайкла
+\end{enumerate}
+
+\subsection{Символ Якоби}
+Как улучшить Тест Ферма? Большие простые числа нечетные, поэтому можно проверять \(a^{\frac{N - 1}{2}} \equiv_N \pm1\). Заметим, что для \(p\) --- простого верно \(a^{\frac{p - 1}{2}} \equiv_p 1 \Lra a\) --- вычет \(\mod p\)
+
+\begin{definition}
+    Пусть \(N\) --- нечетное свободное от квадратов число.Символ Якоби:
+    \[\left(\frac{a}{N}\right) = \left(\frac{a}{p_1}\right)\left(\frac{a}{p_2}\right)\dots\left(\frac{a}{p_s}\right)\]
+    Где \(\left(\frac{a}{p_i}\right)\) --- символы Лежандра
+\end{definition}
+
+\subsubsection{Свойства Символа Якоби}
+\begin{enumerate}
+    \item \(\left(\frac{a}{N}\right) \equiv_N a^{\frac{N - 1}{2}}\)
+    \item \(\left(\frac{-1}{N}\right) = (-1)^{\frac{N - 1}{2}}\)
+    \item \(\left(\frac{2}{N}\right) = (-1)^{\frac{N^2 - 1}{8}}\)
+    \item \(\left(\frac{ab}{N}\right) = \left(\frac{a}{N}\right)\left(\frac{b}{N}\right)\)
+    \item \(\left(\frac{M}{N}\right)\left(\frac{N}{M}\right) = (-1)^{\frac{N - 1}{2}\frac{M - 1}{2}}\), если \((M, N) = 1\)
+\end{enumerate}
+
+\subsection{Тест Соловея - Штрассена}
+Алгортим такой же, как и в тесте Ферма, только здесь мы проверяем равенство \(\left(\frac{a}{N}\right) \equiv_N a^{\frac{N - 1}{2}}\) для каждого \(a\).
+\begin{theorem}
+    Обозначим за \(B_{SS} = \{a \in \Z_N^* | a^{\frac{N - 1}{2}} \equiv_N \left(\frac{a}{N}\right)\}\). Тогда
+    \begin{enumerate}
+        \item \(B_{SS} = \Z_N^* \Lra N\) --- простое
+        \item \(N\) --- составное \(\Lra |B_{SS}| \le \frac{1}{2}|\Z_N^*|\)
+        \item \(B_{SS} \subset B_F\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \begin{enumerate}
+            \item[\(\La\)] по свойству символа Лежандра 
+            \item[\(\Ra\)] \(B_{SS} = \Z_N^* \Ra B_F = \Z_N^*\). Пусть \(N\) --- не простое, тогда \(N\) --- число Кармайкла, \(N = p_1p_2\dots p_s\). Пусть \(b\) --- квадратичный невычет \(\mod p_1\). Возьмем \(\left\{\begin{array}{l}
+                a \equiv_{p_1} b \\
+                a \equiv_{p_i} 1
+            \end{array}\right.\)
+            \[a^{\frac{N - 1}{2}} \equiv_N \left(\frac{a}{N}\right) \equiv_N -1\]
+            Противоречие, т.к. \(1 \equiv_{p_2} -1\)
+        \end{enumerate}
+        \item \(B_{SS}\) --- подгруппа в \(\Z_N^* \Ra |\Z_N^*|\vdots|B_{SS}|\) по теореме Лагранжа
+    \end{enumerate}
+\end{proof}
