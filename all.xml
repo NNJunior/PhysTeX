@@ -35,6 +35,7 @@
       <lecture name="Лекция 9" path="Лекции/Семестр 2/Матан/lecture_9" description="Свойства равномерной сходимости" setting="Лекции/Семестр 2/Матан/setting" date="04.03.25"/>
       <lecture name="Лекция 10" path="Лекции/Семестр 2/Матан/lecture_10" description="Признаки равномерной сходимости рядов" setting="Лекции/Семестр 2/Матан/setting" date="07.03.25"/>
       <lecture name="Лекция 11" path="Лекции/Семестр 2/Матан/lecture_11" description="Пример непрерывной, но нигде не дифференцируемой функции. Степенные ряды" setting="Лекции/Семестр 2/Матан/setting" date="11.03.25"/>
+      <lecture name="Лекция 12" path="Лекции/Семестр 2/Матан/lecture_12" description="Дифференцирование степенных рядов. Ряды Тейлора" setting="Лекции/Семестр 2/Матан/setting" date="14.03.25"/>
     </subject>
     <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Лекции/Семестр 2/ОКТЧ/setting">
       <lecture name="Лекция (дополнитальная)" path="Лекции/Семестр 2/ОКТЧ/lecture_extra" description="ОТА, лемма Евклида" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="19.02.25"/>

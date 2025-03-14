@@ -1,0 +1,82 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Операции с числовыми рядами}
+\[f(x) = \sum_{n = 0}^\infty a_n(x - x_0)^n, \text{ радиус сходимости: }R_1\]
+\[g(x) = \sum_{n = 0}^\infty b_n(x - x_0)^n, \text{ радиус сходимости: }R_2\]
+\begin{enumerate}
+    \item \(\lambda f: \sum_{n = 0}^\infty \lambda a_n(x - x_0)^n\)
+    \item \(f + g: \sum_{n = 0}^\infty \lambda (a_n + b_n)(x - x_0)^n, R \ge \min\{R_1, R_2\}\)
+    \item \(fg: \sum_{n = 0}^\infty\left(\sum_{k = 0}^n a_{n - k}b_k(x - x_0)^n\right), R \ge \min\{R_1, R_2\}\) (произведение по Коши)
+    \item \(f': \sum_{n = 0}^\infty na_n(x - x_0)^{n - 1}\)
+\end{enumerate}
+
+\begin{note}
+    Пусть \(x: |x - x_0| < \min\{R_1, R_2\}\). Тогда \(f(x) + g(x), f(x)g(x)\) также абсолютно сходятся
+\end{note}
+\begin{note}
+    Пусть \(R_1 \ne R_2\, R\) --- радуис сходимости \(f + g \Ra R = \min\{R_1, R_2\}\)
+\end{note}
+\begin{note}
+    \[f(x) = \sum_{n = 0}^\infty x^n, \text{ радиус сходимости: }1\]
+    \[g(x) = 1 - x, \text{ радиус сходимости: }+\infty\]
+    Тогда \(f(x)g(x) = 1 + 0 + 0 + \dots \Ra\) радиус сходимости: \(+\infty\)
+\end{note}
+Ключевым здесь является факт, что степенной ряд можно почленно дифферецировать
+\begin{lemma}
+    Если степенной ряд \(f(x) = \sum_{n = 0}^\infty a_n(x - x_0)^n\) имеет радиус сходмости \(R\), то почленно продифференцированный ряд \(f'(x) = \sum_{n = 0}^\infty a_nn(x - x_0)^{n - 1}\) имеет тот же радиус сходимости
+\end{lemma}
+\begin{proof}
+    Т.к. \(\lim_{n \ra \infty}\sqrt[n]{n} = 1\), то \(\{\sqrt[n]{na_n}\}\) и \(\sqrt[n]{a_n}\) имеют одинаковые множества частичных пределов \(\Ra\) у них совпадают верхние пределы \(\Ra\) по формуле Коши-Адамара, радиусы сходимости у рядов \(\sum_{n = 0}^\infty a_n(x - x_0)^n, \sum_{n = 0}^\infty na_n(x - x_0)^n\) одинаковые. Ряды \(\sum_{n = 0}^\infty na_n(x - x_0)^n, \sum_{n = 0}^\infty na_n(x - x_0)^{n - 1}\) сходятся в \(x = x_0\), а при \(x \ne x_0\) отличаются домножением на \(x - x_0\). Тогда они тоже имеют одинаковые радиусы сходимости.
+\end{proof}
+
+\begin{theorem}
+    Если \(f(x) = \sum_{n = 0}^\infty a_n(x - x_0)^n\) --- ряд с радуисом \(R > 0\), то \(f\) бесконечно дифференцируема на интервале сходимости, причем \(f^{(m)}(x) = \sum_{n = m}^\infty n(n-1)\dots(n - m + 1)a_n(x - x_0)^{n - m}\) при \(|x - x_0| < R\)
+\end{theorem}
+\begin{proof}[Первое доказательство]
+    Пусть \(0 < r < R\), тогда по почленно продифференцированный ряд \(\sum_{n = 1}^\infty na_n(x - x_0)^{n - 1}\) сходится абсолютно на \([x_0 - r, x_0 + r]\). Обозначим сумму этого ряда через \(g\). Тогда \(f' = g\) на \([x_0 - r, x_0 + r]\). Т.к. \(r \in (0, R)\) --- любое, то верно и равенство на \(x_0 - R, x_0 + R\).
+\end{proof}
+\begin{proof}[Второе доказательство]
+    Заменой \(w = x - x_0\) можно свести все к случаю, когда \(x_0 = 0\). Пусть \(t \in B_R(0)\). Покажем, что производящие функции \(f(x) = \sum_{n = 0}^\infty a_nx^n\) в точке \(t\) равна \(l = \sum_{n = 1}^\infty na_n t^{n - 1}\). Зафиксируем \(r: |t| < r < R\). При \(x \ne t, |x| \le r\). Рассмотрим \(\frac{f(x) - f(t)}{x - t} - l = \sum_{n = 1}^\infty a_n\left(\frac{x^n - t^n}{x - t} - nt^{n - 1}\right)\). Причем \(\frac{x^n - t^n}{x - t} - nt^{n - 1} = x^{n - 1} + x^{n - 2}t + \dots + xt^{n - 2} + t^{n - 1} - nt^{n - 2} = (x^{n - 1} - t^{n - 1}) + t(x^{n - 2} - t^{n - 2}) + \dots + (x - t)t^{n - 2} = (x - t)((x^{n - 2} + x^{n - 3}t + \dots + t^{n - 2}) + t(\dots) + \dots + t^{n - 2}) \le r^{n - 2}\)
+\end{proof}
+\begin{corollary}[Теорема Единственности]
+    Если \(f(x) = \sum_{n = 0}^\infty a_n(x - x_0)^n\) --- сумма степенного ряда, то \(a_n = \frac{f^{n}(x_0)}{n!}\)
+\end{corollary}
+\begin{proof}
+    \(f^{(m)}(x_0) = \sum_{n = m}^\infty n(n-1)\dots(n - m + 1)a_n(x_0 - x_0)^{n - m} = m(m-1)\dots 1 a_m \Ra a_m = \frac{f^{(m)}}{m!}\)
+\end{proof}
+
+\begin{corollary}
+    Сумма \(f(x) = \sum_{n = 0}^\infty a_n(x - x_0)^n\) имеет первообразную на \((x_0 - R, x_0 + R)\)
+\end{corollary}
+\begin{proof}
+    \[F(x) = C + \sum_{n = 0}^\infty \frac{a_n}{n + 1}(x - x_0)^{n + 1}\]
+\end{proof}
+
+\section{Ряды Тейлора}
+\begin{definition}
+    Пусть функция \(f\) определена на интервале, содержащем точку \(x_0\) и в точке \(x_0\) имеет производные любого порядка, тогда \(\sum_{n = 0}^\infty \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n\) называется рядом Тейлора функции \(f\) в точке \(x_0\). Если \(x_0 = 0\), то ряд называется рядом Маклорена
+\end{definition}
+\begin{example}[Бесконечно дифференцируемая функция, не являющаяся суммой своего ряда Тейлора]
+    \(f(x) = \left\{\begin{array}{l}
+        e^{-\frac{1}{x}}, x > 0 \\
+        0, x \le 0
+    \end{array}\right.\)
+    \(f^{(n)}(x) = 0\) при \(x < 0, f^{(n)}(x) = p_n\left(\frac{1}{x}\right)e^\frac{1}{x}\), при \(x > 0\), где \(p_n\) --- многочлен степени \(2n\). Действительно,
+    \[f^{(n + 1)}(x) = p'_{n}\left(\frac{1}{x}\right)\left(-\frac{1}{x^2}\right)e^{-\frac{1}{x}} + p_{n}\left(\frac{1}{x}\right)\frac{1}{x^2}e^{-\frac{1}{x}} = p_{n + 1}\left(\frac{1}{x}\right) e^{-\frac{1}{x}}\]
+    Покажем, что \(f^{(n)}(0) = 0\) по индукции по \(n\)
+    \begin{enumerate}
+        \item[] \textbf{База:} \(n = 0\) очевидно.
+        \item[] \textbf{Переход:} 
+        \[(f^{(n)})_+'(0) = \lim_{x \ra +0} \frac{f^{(n)}(x) - f^{(n)}(0)}{x - 0} = \lim_{x \ra +0} \frac{1}{x}p_n\left(\frac{1}{x}\right)e^{-\frac{1}{x}} = \lim_{t \ra +\infty} \frac{tp_n(t)}{e^t} = 0\]
+    \end{enumerate}
+\end{example}
+
+\begin{lemma}
+    Пусть \(f\) бесконечно дифференцируема на некотором интервале, содержащем \(x_0\). Если \(\exists M, r > 0: \forall k (|f(x)| \le M^kk! \forall x \in (x_0 - r, x_0 + r))\), то \(\exists \delta \in (0, r] \forall x \in (x_0 - \delta, x_0 + \delta): f(x) = \sum_{n = 0}^\infty \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n\)
+\end{lemma}
+\begin{proof}
+    \[f(x) = \sum_{k = 0}^n \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k + \frac{f^{(n + 1)}(c(n, x))}{(n + 1)!}(x - x_0)^{n + 1}, c(n, x) \text{ лежит между }x, x_0\]
+    Можно выбрать \(\delta: M\delta < 1\)
+    \[|R_n(x)| \le M^{n + 1}|x - x_0|^{n + 1} < (M\delta)^{n + 1} \ra 0\]
+    Тогда \(f(x) = \sum_{k = 0}^\infty \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k\)
+\end{proof}
