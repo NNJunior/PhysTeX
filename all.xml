@@ -22,6 +22,7 @@
       <lecture name="Лекция 3" path="Лекции/Семестр 2/Матлог/lecture_3" description="Теорема Цермело. Лемма Цорна." setting="Лекции/Семестр 2/Матлог/setting"  date="26.02.25" />
       <lecture name="Лекция 4" path="Лекции/Семестр 2/Матлог/lecture_4" description="Приложения Теоремы Цермело и Леммы Цорна" setting="Лекции/Семестр 2/Матлог/setting"  date="05.03.25" />
       <lecture name="Лекция 5" path="Лекции/Семестр 2/Матлог/lecture_5" description="Теория вычислимости" setting="Лекции/Семестр 2/Матлог/setting"  date="12.03.25" />
+      <lecture name="Лекция 6" path="Лекции/Семестр 2/Матлог/lecture_6" description="Свойства, эквивалентные вычислимости" setting="Лекции/Семестр 2/Матлог/setting"  date="19.03.25" />
     </subject>
     <subject name="Многомерный анализ, интегралы и ряды" description="Коллега рассказывает про матан" setting="Лекции/Семестр 2/Матан/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Лекции/Семестр 2/Матан/setting" date="04.02.25"/>

@@ -1,0 +1,97 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Свойства, эквивалентные перечислимости}
+Далее будем считать, что наш алфавит --- \(\{0, 1\}\).
+\begin{enumerate}
+    \item Можно выводить все элементы, но без повторов
+    \item Вычислима полухарактеристическая функция \(\overline{\chi_A}(x) = \left\{\begin{array}{l}
+        1, x \in A \\
+        \text{не определено, }x \notin A
+    \end{array}\right.\)
+    \item \(A\) --- область определения некоторой вычислимой функции
+    \item \(A\) --- область значений некоторой вычислимой функции
+    \item \(A = \emptyset\) или \(A\) --- область значений всюду вычислимой функции.
+    \item \(A\) --- проекция разрешимого множества пар \(A = \{x | \exists y (x, y) \in B\}\), где \(B \subset \{0, 1\}^*\times \{0, 1\}^*\)
+\end{enumerate}
+
+\begin{proposition}
+    \(A\) вычислимо \(\Ra\) 2)
+\end{proposition}
+\begin{proof}\indent
+    \begin{verbatim}
+    chi_A(x) {
+        fot i in A {
+            if i == x { // если встретим x, то вернем 1
+                return 1;
+            }
+        }
+    } 
+    \end{verbatim}
+\end{proof}
+\begin{proposition}
+    2) \(\Ra\) 3)
+\end{proposition}
+\begin{proof}
+    \(A = Dom\;\overline{\chi_A(x)}\)
+\end{proof}
+\begin{proposition}
+    3) \(\Ra\) 4)
+\end{proposition}
+\begin{proof}
+    Рассмотрим \texttt{f'(x)}:
+    \begin{verbatim}
+    f'(x) {
+        f(x);
+        return x;
+    }
+    \end{verbatim}
+    Тогда \(f'(x) = \left\{\begin{array}{l}
+        x, x \in Dom\;f \\
+        \text{не определено, иначе}
+    \end{array}\right.\)
+    Заметим, что \(Rad\;f' = Dom\;f\).
+\end{proof}
+% \begin{proposition}
+%     1) \(\Ra\) 5)
+% \end{proposition}
+% \begin{proof}
+    
+% \end{proof}
+\begin{proposition}
+    4) \(\Ra\) 5)
+\end{proposition}
+\begin{proof}
+    Пусть \(A = Ran\;f\). Если \(A \ne \emptyset\), то положим \(a_0\) --- произвольный элемент в \(a_0\). Положим \(f': \{0, 1\}^*\times\N \ra \{0, 1\}^*\), так, что 
+    \[f'(x, t) = \left\{\begin{array}{l}
+        f(x), \text{ если }f(x)\text{ остановится за }t\text{ шагов} \\
+        a_0, \text{ иначе}
+    \end{array}\right.\]
+    Заметим, что \(Ran\;f = Ran\;f'\), а \(f'\) --- вычислима.
+\end{proof}
+\begin{proposition}
+    5) \(\Ra\) 6)
+\end{proposition}
+\begin{proof}
+    Пусть \(A = Ran\;f\). Положим \(B = \{(y, (x, t)): f(x) = y\text{ за \(t\) шагов}\}\).
+\end{proof}
+\begin{proposition}
+    6) \(\Ra A\) вычислимо
+\end{proposition}
+\begin{proof}
+    Обойдем все пары \((x, y)\), и, если \((x, y) \in B \Ra \) печатаем \(x\).
+\end{proof}
+
+\subsection{Универсальная машина Тьюринга}
+Гарвардская архитектура машины --- когда есть фиксированная программа и данные, с которыми она работает.
+
+Принстонская архитектура машины --- когда есть некоторый процессор, который может запускать различные программы, которые, в свою очередь, будут взаимодействовать с данными
+\begin{definition}
+    Универсальная Машина Тьюринга --- такая функция \(U(M, x) = M(x)\) --- по сути, машина, которая запускает машину \(M\) с вводом \(x\).
+\end{definition}
+\begin{definition}
+    Будем считать, что код Машины Тьюринга записан (как-то) последовательностью \(0, 1\). Фунуция \(U: \{0, 1\}^*\times\{0, 1\}^* \ra \{0, 1\}^*\) называется универсальной вычислимой функцией, если
+    \begin{enumerate}
+        \item \(U\) вычислима как функция от двух аргументов
+        \item \(\forall f: \{0, 1\}^* \ra \{0, 1\}^*\), где \(f\) --- вычислима, верно \(\exists p \forall x\;U(p, x) = f(x)\)
+    \end{enumerate}
+\end{definition}
