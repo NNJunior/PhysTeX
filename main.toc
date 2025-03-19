@@ -1,10 +1,4 @@
 \babel@toc {russian}{}\relax 
-\contentsline {section}{\numberline {1}И снова графы}{2}{section.1}%
-\contentsline {section}{\numberline {2}Кратчайшие пути. BFS}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}BFS (breadth first search)}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}0-k BFS}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Двусторонний BFS}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Алгоритм Дейкстры}{4}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Теория вычислимости}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Алгоритм}{5}{subsection.3.1}%
-\contentsline {section}{\numberline {4}Однолетночная машина Тьюринга}{5}{section.4}%
+\contentsline {subsection}{\numberline {0.1}Двусторонний алгоритм Дейкстры}{2}{subsection.0.1}%
+\contentsline {section}{\numberline {1}Алгоритм $A^*$}{2}{section.1}%
+\contentsline {section}{\numberline {2}Алгоритм Форда-Беллмана}{3}{section.2}%
