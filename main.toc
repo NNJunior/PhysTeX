@@ -1,4 +1,0 @@
-\babel@toc {russian}{}\relax 
-\contentsline {subsection}{\numberline {0.1}Двусторонний алгоритм Дейкстры}{2}{subsection.0.1}%
-\contentsline {section}{\numberline {1}Алгоритм $A^*$}{2}{section.1}%
-\contentsline {section}{\numberline {2}Алгоритм Форда-Беллмана}{3}{section.2}%
