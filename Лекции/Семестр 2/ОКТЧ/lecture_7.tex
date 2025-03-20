@@ -1,0 +1,125 @@
+% !TEX root = ../../../main.tex
+
+\section{Диофантовы приближения, теорема Дирихле}
+
+Рассмотрим число $\pi = 3.1415926...$.
+
+$$\left|\pi - \frac{314}{100}\right| = 0.0015926... \ \ \left|\pi - \frac{22}{7}\right| = 0.0012... $$
+
+\begin{theorem}{(Дирихле)}
+  Пусть $\alpha \not \in Q$. Тогда $\exists$ \underline{бесконечно много} дробей $\frac{p}{q}$, что $$\left|\alpha - \frac{p}{q}\right| \le \frac{1}{q^2}$$
+\end{theorem}
+
+\begin{proof}
+  $Q \in \N$. Рассмотрим деление отрезка $[0, 1]$ на отрезки длины $\frac{1}{Q}$.
+  
+  Рассмотрим $\{\alpha x \}$, где $x = 0, 1,\dots, Q$. $\exists x_1, x_2: \ x_1 > x_2$ и $\left|\{\alpha x_1 - \alpha x_2 \}\right| \le \frac{1}{Q}$
+
+  $$\left|\alpha x_1 - [\alpha x_1] - \alpha x_2 + [\alpha x_2]\right| \le \frac{1}{Q}$$
+
+  $$\left|\alpha \underbrace{(x_1 - x_2)}_{q} - \underbrace{([\alpha x_1] - [\alpha x_2])}_{p}\right| \le \frac{1}{Q}$$
+Если $q \le Q$
+  $$\left|\alpha - \frac{p}{q}\right| \leq \frac{1}{qQ} \le \frac{1}{q^2}$$ 
+\end{proof}
+
+\begin{note}
+Покажем, как получать новые дроби:
+
+Пусть $\alpha$ = $\left|\alpha - \frac{p}{q}\right|, \alpha \le \frac{1}{q^2}, a > 0$
+
+Возьмем $Q_1 \in \N : \frac{1}{Q_1} \le a$. По $Q_1$ найдем соответствующие ей $\frac{p_1}{q_1}$.
+
+\textbf{Почему полученные $p_1, q_1$ не совпадают с $p, q$?}
+
+Как мы доказали, верно следующее:
+
+$$\left|\alpha - \frac{p_1}{q_1}\right| \le \frac{1}{\underbrace{q_1 Q_1}_{< \alpha}} \le \frac{1}{q_1^2}.$$
+
+$$\left|\alpha - \frac{p_1}{q_1}\right| \le \frac{1}{q_1 Q_1} \le \frac{\alpha}{q_1} \leq \left|\alpha - \frac{p}{q}\right| \then \frac{p_1}{q_1} \ne \frac{p}{q}$$
+\end{note}
+
+\subsection{Теорема Минковского. Еще одно доказательство теоремы Дирихле}
+\begin{theorem}{(Минковского)}
+  Пусть $\Omega \subset \R^2: \Omega$ выпукло, симметрично относительно $0, S(\Omega) > 4$. Тогда $(\Omega \cap \Z^2)\setminus{0} \ne \varnothing$ 
+  
+\end{theorem}
+
+\begin{proof}
+  Рассмотрим $N_p$ - все координаты в $\Z^2 \cap \Omega$, имеющие вид $(\frac{a}{p}, \frac{b}{p})$, $a,b,p \in \N$.
+
+
+$$\frac{N_p}{p^2} \to S(\Omega) > 4, \text{при $p \to \infty$}$$
+
+\textit{Этот факт оставляется без доказательства. Обещали не спрашивать его на экзамене}.
+
+$\exists P: \forall p \ge O \ \frac{N_p}{p^2} > 4$
+
+$$N_p > (2p)^2 \then \exists a = \left(\frac{a_1}{p}, \frac{a_2}{p}\right), b = \left(\frac{b_1}{p}, \frac{b_2}{p}\right) : a \ne b, a_1 \equiv b_1 (2p), a_2 \equiv b_2 (2p)$$
+
+Рассмотрим $\frac{a - b}{2} = \left(\frac{a_1 - b_1}{2p}, \frac{a_2 - b_2}{2p}\right) \in Z^2$
+
+\begin{enumerate}
+  \item $-b \in \Omega$, так как $\Omega$ - центрально смметричная.
+  \item $\frac{a - b}{2} \in \Omega$, так как $\Omega$ выпукло.
+\end{enumerate}
+\end{proof}
+
+\begin{note}
+  Есть еще усиление теоремы Минковского - в случае замкнутого множества оценка становится нестрогой $(\ge 4)$.
+\end{note}
+
+\textbf{Приведем еще одно доказательство теоремы Дирихле}
+
+\begin{proof}
+  $\Omega = \{(x, y): \left| y - \alpha x \right| \le \frac{1}{Q}, \left| x\right| \le Q\}$. Если нарисовать на плоскости фигуру, то получится параллелограмм. По формуле площади:
+
+  $$S(\Omega) = 4 \then \text{по теореме} \exists (q, p) \in \Omega, q > 0$$
+
+  $$\left|p - \alpha q\right| \le  \frac{1}{Q} \then \left| \alpha - \frac{p}{q}\right| \le \frac{1}{qQ} \le \frac{1}{q^2}$$
+\end{proof}
+
+\section{Цепные дроби}
+
+\subsection{Конечная цепная дробь}
+
+$$a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + ...}}}$$
+
+$a_0 \in \Z, a_i \in \N \ \forall i \ge 1$.
+
+Раскрыв скобки, получим $\alpha := [a_0; a_1, a_2, a_3, \dots, a_n] \in Q$
+
+\textbf{Определим теперь цепную дробь индуктивно:}
+
+\begin{enumerate}
+  \item $[a_0] = \frac{a_0}{1}$
+  \item $[a_0; a_1, \dots, a_n] = a_0 + \frac{1}{[a_1; a_2, \dots, a_n]} = a_0 + \frac{1}{\frac{p}{q}} = a_0 + \frac{q}{p} = \frac{a_0 p + q}{p}$
+\end{enumerate}
+
+\begin{definition}
+  Подходящая дробь к $\alpha$ - дробь $\frac{p_k}{q_k} = [a_0; a_1, a_2, ..., a_k]$.
+\end{definition}
+
+\begin{theorem}
+  $$p_{k + 2} = a_{k + 2} p_{k + 1} + p_k$$
+  $$q_{k + 2} = a_{k + 2} q_{k 1} + q_k$$
+\end{theorem}
+
+\begin{proof}
+  Успеем проверить только переход :(
+
+ $$ \frac{p_0}{q_0} = [a_0] = \frac{a_0}{1}$$
+$$\frac{p_1}{q_1} = [a_0; a_1] = a_0 + \frac{1}{a_1} = \frac{a_0 a_1 + 1}{a_1}$$
+$$\frac{p_2}{q_2} = [a_0; a_1, a_2] = a_0 + \frac{1}{a_1 + \frac{1}{a_2}} = a_0 + \frac{a_2}{a_1 a_2 + 1} = \frac{a_0 a_1 a_2 + a_0 + a_2}{a_1 a_2 + 1}$$
+
+Теперь проверяем утверждение:
+
+$$p_2 =^{?} a_2 p_1 + p_0 = a_2 a_0 a_1 + a_2 + a_0$$
+$$q_2 = a_2 q_1 + q_0 = a_2 a_1 + 1$$
+
+\textit{Пытаемся успеть сделать переход:}
+$[a_0; a_1, ..., a_m] = a_0 + \frac{1}{[a_1; a_2, ..., a_m]}$
+
+
+Не успели...
+\end{proof}
+
