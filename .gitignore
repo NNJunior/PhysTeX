@@ -1,2 +1,6 @@
+*.synctex(busy)
+*.gz
 *.toc
 *.log
+*.out
+*.aux
