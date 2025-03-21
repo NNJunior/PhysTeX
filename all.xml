@@ -15,6 +15,7 @@
       <lecture name="Лекция 4" path="Лекции/Семестр 2/Алгосы/lecture_4" description="Графы. Алгоритм dfs" setting="Лекции/Семестр 2/Алгосы/setting" date="26.02.25" />
       <lecture name="Лекция 5" path="Лекции/Семестр 2/Алгосы/lecture_5" description="Графы (продолжение). Эйлеровы циклы и пу-пу-пути" setting="Лекции/Семестр 2/Алгосы/setting" date="05.03.25" />
       <lecture name="Лекция 6" path="Лекции/Семестр 2/Алгосы/lecture_6" description="Графы. BFS" setting="Лекции/Семестр 2/Алгосы/setting" date="12.03.25" />
+      <lecture name="Лекция 7" path="Лекции/Семестр 2/Алгосы/lecture_7" description="Алгоритмы A* и Форда-Беллмана" setting="Лекции/Семестр 2/Алгосы/setting" date="19.03.25" />
     </subject>
     <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 2/Матлог/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матлог/lecture_1" description="ВУМы и Фундированные множества" setting="Лекции/Семестр 2/Матлог/setting"  date="05.02.25" />
@@ -47,7 +48,8 @@
       <lecture name="Лекция 3" path="Лекции/Семестр 2/ОКТЧ/lecture_3" description="Матрицы Адамара (продолжение)" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="20.02.25"/>
       <lecture name="Лекция 4" path="Лекции/Семестр 2/ОКТЧ/lecture_4" description="Распределение простых чисел. Первообразные корни (начало)" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="27.02.25"/>
       <lecture name="Лекция 5" path="Лекции/Семестр 2/ОКТЧ/lecture_5" description="Первообразные корни (продолжение). Теорема Шевалле" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="06.03.25"/>
-      <lecture name="Лекция 5" path="Лекции/Семестр 2/ОКТЧ/lecture_6" description="Тесты Ферма и Соловея-Штрассена натуральных чисел на простоту. Числа Кармайкла" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="13.03.25"/>
+      <lecture name="Лекция 6" path="Лекции/Семестр 2/ОКТЧ/lecture_6" description="Тесты Ферма и Соловея-Штрассена натуральных чисел на простоту. Числа Кармайкла" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="13.03.25"/>
+      <lecture name="Лекция 7" path="Лекции/Семестр 2/ОКТЧ/lecture_7" description="Теорема Дирихле, Минковского. Цепные дроби" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="20.03.25"/>    
     </subject>
     <subject name="Технологии программирования" description="
 Основные ссылки по курсу:&#xA;
