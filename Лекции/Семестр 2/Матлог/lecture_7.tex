@@ -1,0 +1,139 @@
+% !TEX root = ../../../main.tex
+
+\begin{theorem}
+    Универсальная Машина Тьюринга существует.
+\end{theorem}
+
+\subsection{Тезис Черча-Тьюринга}
+\href{https://ru.wikipedia.org/wiki/Тезис_Чёрча_—_Тьюринга}{\textit{Подробнее...}}
+
+\subsection{Проблема самоприменимости}
+Пусть нам дана УМТ \(U\). Рассмотрим \(S = \{p | U(p, p) \text{ остановится}\}\)
+
+\begin{theorem}[Тьюринга]
+    \(S\) --- перечислимо, неразрешимо
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[] \textbf{Перечислимость:} \(S\) перечислимо, т.к. \(S = Dom\;d(p) = U(p, p)\) --- область определения вычислимой функции
+        \item[] \textbf{Нерезрешимость:} от противного. Пусть \(S\) разрешимо \(\Lra \chi_S\) вычислимо. Рассмотрим 
+        \[f(x) = \left\{\begin{array}{l}
+            0, \chi_S(x) = 0 \\
+            \ne U(x, x), \chi_S(x) = 1\\
+        \end{array}\right.\]
+        Т.к. \(U(p, p)\) --- УВФ, то \(\exists q \forall x U(q, x) = f(x)\). 
+        \begin{enumerate}
+            \item \(q \in S \Ra U(q, q) = f(q) \ne U(q, q)\)
+            \item \(q \notin S \Ra f(q) = 0\), но \(U(q, q)\) не определено
+        \end{enumerate}
+        Получили противоречие.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Проблема остановки}
+\(H = \{(p, x) | U(p, x) \text{ остановится}\}\)
+\begin{theorem}
+    \(H\) --- перечислимо, неразрешимо
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[] \textbf{Перечислимость:} \(H\) перечислимо, т.к. \(S = Dom\;U(p, x)\) --- область определения вычислимой функции
+        \item[] \textbf{Нерезрешимость:} от противного. Пусть \(H\) разрешимо, но тогда и \(S = H \cap D\) тоже разрешимо, где \(D = \{(p, p) | p\text{ проивольное}\}\), противоречие, т.к. \(S\) неразрешимо.
+    \end{enumerate}
+\end{proof}
+
+Рассмотрим множества:
+\begin{enumerate}
+    \item \(C = \{p| \forall x, y (U(p, x), U(p, y) \text{ определены }\Ra U(p, x) = U(p, y))\}\)
+    \item \(T = \{p | \forall x  (U(p, x)\text{ определено})\}\)
+    \item \(FD = \{p | \{x | U(p, x)\text{ определено}\}\text{ конечно}\}\)
+\end{enumerate}
+
+\begin{definition}
+    Множество \(X\) называется коперечислимым, если \(\overline{X}\) перечислимо
+\end{definition}
+
+\begin{proposition}
+    \(C\) --- коперечислимо, неразрешимо
+\end{proposition}
+\begin{proof}
+    \(\overline{C} =\{p | \exists (x, y, t, s)\;\;U(p, x) \text{ ост. за \(t\) шагов}, U(p, y) \text{ ост. за \(s\) шагов}, U(p, x) \ne U(p, y)\}\), а оно перечислимо
+\end{proof}
+
+\begin{proposition}
+    \(T, FD\) --- коперечислимо, некоперечислимо
+\end{proposition}
+
+\subsection{\(m\)-сводимость}
+\begin{definition}
+    \(A \le_m B\), если \(\exists\) вычислимая всюду определенная функция \(f: \{0, 1\}^* \ra \{0, 1\}^*\), такая, что \(\forall x (x \in A \Lra f(x) \in B)\).
+\end{definition}
+\subsubsection{Свойства \(m\)-сводимости}
+\begin{proposition}
+    \(A \le_m B, B\) разрешимо \(\Ra A\) --- разрешимо
+\end{proposition}
+\begin{proof}
+    \(\chi_A(x) = \chi_B(f(x))\)
+\end{proof}
+\begin{proposition}
+    \(A \le_m B \Lra \overline{A} \le_m \overline{B}\)
+\end{proposition}
+\begin{proposition}
+    \(A \le_m B, B \le_m C \Lra A \le_m C\)
+\end{proposition}
+
+\begin{note}
+    Т.к. \(A \le_m A\), получили, что \(\le_m\) --- предпорядок
+\end{note}
+
+\begin{proposition}
+    \(A \le_m B, B\) перечислимо \(\Ra A\) --- перечислимо
+\end{proposition}
+
+\begin{corollary}
+    \(A \le_m B, A\) неперечислимо \(\Ra B\) неперечислимо
+\end{corollary}
+
+\subsection{Как получать новые неперечислимые множества?}
+Заметим, что \(\overline{H}\) --- неперечислимое множество. Если мы покажем, что 
+\[\left\{\begin{array}{l}
+    \overline{H} \le_m T \\
+    \overline{H} \le_m \overline{T} \\
+\end{array}\right.\]
+То мы получим, что \(T\) --- неперечислимо, некоперечислимо. Однако, удобнее доказывать, что 
+\[\left\{\begin{array}{l}
+    H \le_m T \\
+    H \le_m \overline{T} \\
+\end{array}\right.\]
+Для этого
+\begin{enumerate}
+    \item \((p, x)\)
+\end{enumerate}
+Получили \(T\), неперечислимое и некоперечислимое.
+
+\subsection{Существует ли универасальная тотально вычислимая функция?}
+Что мы хотим: \(U_T: \{0, 1\}^* \times \{0, 1\}^* \ra \{0, 1\}^*\), такую, что
+\begin{enumerate}
+    \item \(\forall p, x\;U_T(p, x)\) определена
+    \item \(U_T\) вычислима
+    \item \(\forall f: \{0, 1\}^* \ra \{0, 1\}^*\), такая, что \(f\) --- вычислима, всюду определена и \(\exists p \forall x f(x) = U_T(p, x)\)
+\end{enumerate}
+
+\begin{proposition}
+    \(\nexists U_T\)
+\end{proposition}
+\begin{proof}
+    Иначе рассмотрим \(d'(x) = U_T(x, x) + 1\). Тогда \(\exists p \forall x\;d'(x) = U_T(p, x) = d'(p) \Ra U_T(p, p) + 1 = U_T(p, p)\)
+\end{proof}
+
+Рассмотрим множество \(NED = \{p | \exists x U(p, x)\text{ определено}\}\). Оно перечислимо (можно добавить квантор, указывающий, за какое число шагов). 
+\begin{proposition}
+    \(\overline{NED}\) неперечислимо
+\end{proposition}
+\begin{proof}
+    Покажем, что \(H \le_m NED\). Сопостивим \((p, x) \mapsto q\), так, что \(U(q, y) = \left\{\begin{array}{l}
+        \text{не определено}, U(p, x) \text{ не остановится} \\
+       1, \text{ иначе} \\
+    \end{array}\right.\)
+    Пусть \(p_1, p_2, \dots \) --- перечисление \(\overline{NED}\).
+\end{proof}

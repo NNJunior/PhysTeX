@@ -1,2 +1,8 @@
+*.synctex(busy)
+*.gz
 *.toc
 *.log
+*.out
+*.aux
+*.fls
+*.fdb_latexmk

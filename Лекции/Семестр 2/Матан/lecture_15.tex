@@ -1,0 +1,81 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Компакты}
+
+Пусть \((X, \rho)\) --- метрические пространства, \(K \subset X\) --- подпространство.
+
+\begin{definition}
+    Семейство \(\{G_\lambda\}_{\lambda\in\Lambda}\), где \(G_\lambda \subset X\) называется покрытием \(K\), если \(K \subset \bigcup_{\lambda\in\Lambda}G_\lambda\)
+\end{definition}
+\begin{definition}
+    Если \(\forall \lambda G_\lambda\) --- открытое множество, то \(\{G_\lambda\}_{\lambda\in\Lambda}\) называется открытым покрытием
+\end{definition}
+
+\begin{definition}
+    \(K\) называется компактом в \(X\), если \(\forall\) открытого покрытия \(\{G_\lambda\}_{\lambda\in\Lambda}\), существует конечное подпокрытие, т.е. \(\exists m \in \N, \lambda_1, \lambda_2, \dots \lambda_m \in \Lambda: K \subset \bigcup G_{\lambda_i}\)
+\end{definition}
+
+\begin{example}
+    Замкнутый брус \(B = [a_1, b_1]\times [a_2, b_2] \times \dots \times [a_n, b_n]\) является компактом в \(\R^n\)
+\end{example}
+\begin{proof}
+    Пусть это не так. Поделим ребра изначального бруса пополам и рассмотрим брусья, которые получаются произведением отрезков, каждый из которых ялвяется половиной изначального отрезка соответственно. Один из таких брусьев не покрывается конечным числом \(G_\lambda\), полученный брус назовем \(B^2\) Разделим его на \(2^n\) частей и будем продолжать процесс --- получатся брусья \(B^k \forall k\). Заметим, что \(|b_n^k - a_n^k| \ra 0\) при \(k \ra \infty\) (каждый отрезок делится пополам). Тогда последовательность отрезков \(u_k = [a_n^k, b_n^k]\) будет стягивающейся. Тогда \(\forall n \exists c_n: c_n \in [a_n^k, b_n^k]\). Тогда \(\exists C \in \R^n: C = (c_1, c_2, \dots c_n) \in B^k \forall k\), при этом \(\exists G_\lambda: C \in G_\lambda \Ra \exists \epsilon: B_\epsilon(C) \subset G_\lambda\). Выберем \(k\) так, чтобы \(\sum_{i = 1}^n (b_i^k - a_i^k) < \epsilon\). Так можно сделать, т.к. \([a_n^k, b_n^k]\) --- стягивающаяся по \(k\). Но тогда \(\forall T \in B^k\;\;\;\rho(T, C) \le \sum_{i = 1}^n (b_i^k - a_i^k) < \epsilon \Ra B^k \subset B_\epsilon(C) \subset G_\lambda \Ra\) противоречие, т.к. \(B^k\) не должно покрываться конечнм числом \(G_\lambda\)
+\end{proof}
+
+\begin{note}
+    \(K\) --- компакт в \((X, \rho) \Lra K\) компакт в \((K, \rho)\).
+\end{note}
+\begin{proof}
+    Следует из определения компактности и структуры подпространств
+\end{proof}
+
+\begin{lemma}
+    Пусть \((X, \rho)\) --- метрическое пространство, \(K \subset X\). Если \(K\) --- компакт, то \(K\) ограничено и замкнуто в \(X\)
+\end{lemma}
+\begin{proof}
+    Пусть \(a \in X\). Т.к \(\{B_n(a)\}_{n \in \N}\) --- открытое покрытие \(K \Ra \exists\) конечное подпокрытие, т.е. \(\exists N: K \subset \{B_n(a)\}_{n \le N}\). Но тогда \(K \subset B_N(a)\).
+    Теперь, пусть \(a \in X \setminus K\). Рассмотрим \(\{X \setminus \overline{B}_\frac{1}{n}(a)\}_{n \in \N}\). Это тоже покрытие \(K\). Но тогда \(\exists N: K \subset \{X \setminus \overline{B}_{\frac{1}{n}}(a)\}_{n \le N}\). Но тогда \(K \in X \setminus \overline{B}_{\frac{1}{N}}(a) \Ra \overline{B}_{\frac{1}{n}}(a) \cap K = \emptyset\).
+\end{proof}
+
+\begin{lemma}
+    Пусть \((X, \rho)\) --- метрическое пространство, \(K\) --- компакт в \(X\). Если \(F \subset K\), \(F\) замкнуто в \(X\), то \(F\) --- компакт.
+\end{lemma}
+\begin{proof}
+    Рассмотрим произвольное покрытие \(\{G_\lambda\}_{\lambda \in \Lambda}\) для \(F\). Тогда \(\{G_\lambda\}_{\lambda \in \Lambda} \cup \{X \setminus F\}\) --- открытое покрытие \(K\), т.к. \(\bigcup G_\lambda \cup (X \setminus F) = X\). Поскольку \(K\) --- компакт, то \(K \subset \bigcup_{i \le N} G_{\lambda_i} \cup (X \setminus F) \Ra F \subset \bigcup_{i \le N} G_{\lambda_i}\)
+\end{proof}
+
+\begin{lemma}[Лебега о покрытии]
+    Пусть \((X, \rho)\) --- метрическое пространство, \(K \subset X\) --- такое, что любая последовательность элементов из \(K\) имеет сходящуюся в \(K\) подпоследовательность. Пусть \(\{G_\lambda\}_{\lambda \in \Lambda}\) --- открытое покрытие \(K\), тогда \(\exists \epsilon > 0 \forall x \in K \exists \lambda \in \Lambda (B_\epsilon(x) \subset G_\lambda)\)
+\end{lemma}
+\begin{proof}
+    От противного. Пусть \(\forall n \in \N \exists x_n \in K \forall \lambda \in \Lambda \left(B_{\frac{1}{n}}(x_n) \not\subset G_\lambda\right)\). По условию, \(\exists \{x_{n_k}\}: x_{n_k} \ra x \in K\). \(x \in \bigcup_{\lambda \in \Lambda} G_\lambda \exists \lambda_0 \in \Lambda (x \in G_{\lambda_0}) \Ra \exists \alpha > 0 B_{\alpha}(x) \subset G_{\lambda_0}\)
+    Начиная с какого-то момента, \(x_{n_k} \in B_{\frac{\alpha}{2}}(x), \frac{1}{n_k} < \frac{\alpha}{2}\). Рассмотрим \(z \in B_{\frac{1}{n_k}}(x_{n_k})\). Тогда \(\rho(z, x) \le \rho(z, x_{n_k}) + \rho(x, x_{n_k}) < \alpha\), т.е. \(B_{\frac{1}{n_k}}(x_{n_k}) \subset B_\alpha(x) \subset G_{\lambda_0}\). Получили противоречие, т.к. \(B_{\frac{1}{n_k}}(x_{n_k}) \subset G_{\lambda_0}\)
+\end{proof}
+
+\begin{theorem}
+    Пусть \((X, \rho)\) --- метрическое пространство, \(K \subset X\). Следующие условия эквивалентны:
+    \begin{enumerate}
+        \item \(K\) --- компакт
+        \item Любая полследовательность элементов из \(K\) имеет сходящуюся в \(K\) подпоследовательность.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\((1) \Ra (2)\)] Предположим, что из последовательности \(\{x_n\}\) нельзя выделить сходящуюся последовательность, т.е. 
+        \[\forall a \in K \exists \delta_a > 0 \exists N_a \forall n \ge N_{a} (x_n \notin B_{\delta_a}(a))\]
+        Заметим, что \(\{B_{\delta_a}(a)\}_{a \in K}\) --- открытое покрытие \(K\). Тогда \(K = \bigcup_{i \le N} B_{\delta_{a_i}}(a_i)\). Но тогда в каком-то из множеств \(B_{\delta_{a_i}}(a_i)\) бесконечно много точек, противоречие, т.к. \(\exists N_{a_i} \forall n \ge N_{a_i} (x_n \notin B_{\delta_{a_i}}(a_i)) \Ra\) их должно быть конечно.
+        \item[\((2) \Ra (1)\)] Пусть любая полследовательность элементов из \(K\) имеет сходящуюся в \(K\). Тогда 
+        \[\forall \epsilon > 0 \exists x_1, x_2 \dots x_n \subset K (K \subset \bigcup B_\epsilon(x_i))\]
+        Пусть \(\{G_\lambda\}_{\lambda \in \Lambda}\) --- открытое покрытие \(K\) по Лемме, \(\exists \epsilon > 0 \forall x \in K \exists \lambda \in \Lambda (B_\epsilon(x)) \subset G_\lambda\). Но тогда рассмотрим \(\lambda_1, \lambda_2 \dots \lambda_n\) такие, что \(B_\epsilon(x_i) \subset G_{\lambda_i} \Ra K \subset \bigcup G_{\lambda_i}\)
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}[Критерий компактности в \(\R^n\)]
+    \(K \subset \R^n\) --- компакт \(\Lra K\) замкнуто и ограничено
+\end{corollary}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\Ra\)] Лемма
+        \item[\(\La\)] \(K\) ограничено \(\Ra \exists x \in \R^n, r > 0: K \subset B_r(x)\). Рассмотрим \(B = [x_1 - r_1, x_1 + r_1] \times[x_2 - r_2, x_2 + r_2]\times\dots\times[x_n - r_n, x_n + r_n]\). \(B\) --- компакт, \(K \subset B\) --- замкнуто, тогда \(K\) --- компакт.
+    \end{enumerate}
+\end{proof}
