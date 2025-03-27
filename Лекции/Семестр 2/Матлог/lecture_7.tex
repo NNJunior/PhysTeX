@@ -61,7 +61,7 @@
 \end{proof}
 
 \begin{proposition}
-    \(T, FD\) --- коперечислимо, некоперечислимо
+    \(T, FD\) --- некоперечислимо, некоперечислимо
 \end{proposition}
 
 \subsection{\(m\)-сводимость}
@@ -95,19 +95,26 @@
 \end{corollary}
 
 \subsection{Как получать новые неперечислимые множества?}
-Заметим, что \(\overline{H}\) --- неперечислимое множество. Если мы покажем, что 
+Докажем, что \(T\) неперечислимо и некоперечислимо. Заметим, что \(\overline{H}\) --- неперечислимое множество. Если мы покажем, что 
 \[\left\{\begin{array}{l}
     \overline{H} \le_m T \\
     \overline{H} \le_m \overline{T} \\
 \end{array}\right.\]
 То мы получим, что \(T\) --- неперечислимо, некоперечислимо. Однако, удобнее доказывать, что 
 \[\left\{\begin{array}{l}
-    H \le_m T \\
-    H \le_m \overline{T} \\
+    H \le_m T (1)\\
+    H \le_m \overline{T} (2)\\
 \end{array}\right.\]
 Для этого
 \begin{enumerate}
-    \item \((p, x)\)
+    \item \((p, x) \mapsto q\), так, что \(\forall y U(q, y) = U(p, x)\). Тогда \(q \in H \Lra q \in T\)
+    \item \((p, x) \mapsto q\), так, что
+    \[U(q, y) = \left\{\begin{array}{l}
+        1, \text{ если }U(p, x)\text{ не оставновится за \(y\) шагов} \\
+        \text{не определено, иначе} \\
+    \end{array}\right.\]
+    \[(p, x) \in H \Ra \exists t \forall y \ge t U(q, y)\text{ не определено }\Ra q \notin T\]
+    \[(p, x) \notin H \Ra \forall y U(q, y) = 1\Ra q \in T\]
 \end{enumerate}
 Получили \(T\), неперечислимое и некоперечислимое.
 
@@ -131,9 +138,15 @@
     \(\overline{NED}\) неперечислимо
 \end{proposition}
 \begin{proof}
-    Покажем, что \(H \le_m NED\). Сопостивим \((p, x) \mapsto q\), так, что \(U(q, y) = \left\{\begin{array}{l}
-        \text{не определено}, U(p, x) \text{ не остановится} \\
+    Покажем, что \(H \le_m NED \Lra \overline{H} \le_m \overline{NED}\). Сопостивим \((p, x) \mapsto q\), так, что
+    \[U(q, y) = \left\{\begin{array}{l}
+        \text{не определено}, U(p, x) \text{ не остановится за }y\text{ шагов} \\
        1, \text{ иначе} \\
-    \end{array}\right.\)
-    Пусть \(p_1, p_2, \dots \) --- перечисление \(\overline{NED}\).
+    \end{array}\right., (p, x) \in H \Lra q \in NED\]
+    Пусть \(p_1, p_2, \dots \) --- перечисление \(\overline{NED}\). Рассмотрим
+    \[U'(n, x) = \left\{\begin{array}{l}
+        \text{не определено, если }n = 0 \\
+        U(p_n, x), n > 0 \\
+    \end{array}\right.\]
+    Заметим, что \(NED_{U'} = \{n | \exists x U'(n, x) \text{ определено}\} = \N \setminus \{0\}\) --- разрешимо
 \end{proof}
