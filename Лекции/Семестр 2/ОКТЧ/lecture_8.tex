@@ -70,8 +70,44 @@ $$[a_0;a_1, \dots, a_n,\dots] = \lim_{n \to \infty}\frac{p_n}{q_n}$$
 \end{theorem}
 
 \begin{theorem}
-    \(\forall \psi: \psi(q) \ra +\infty \exists \alpha > 0:\) неравенство \(\left|\alpha - \frac{p}{q}\right| \le \frac{1}{\psi(q)}\) имеет бесконечно много решений в дробях \(\frac{p}{q}\).
+    \(\forall \psi: \psi(q) \ra +\infty \ \exists \alpha > 0:\) неравенство \(\left|\alpha - \frac{p}{q}\right| \le \frac{1}{\psi(q)}\) имеет бесконечно много решений в дробях \(\frac{p}{q}\).
 \end{theorem}
 \begin{proof}
-    \(\alpha = [a_0; a_1, \dots ]\)
+   Пусть построили дробь \(\alpha = [a_0; a_1, \dots ]\) . Найдем теперь $a_{n + 1}$ из соображений:
+   
+   $\alpha - \frac{p}{q} \le \frac{1}{q_n q_{n + 1}} <  \frac{1}{\frac{1}{q_n} \psi(q_n) q_n} < \frac{1}{\psi(q_n)}$, тесли выбрать $a_{n + 1}$ $q_{n + 1} = a_{n + 1}q_n + q_{n - 1} > \psi(q_n) \cdot \frac{1}{q_n}$ 
 \end{proof}
+
+\begin{definition}
+  $\alpha \in A \Longleftrightarrow \alpha$ является корнем какого-то многочлена с целыми коэффициентами.
+
+  \textit{Говорят, $A$ - множество трансцедентных чисел}
+\end{definition}
+
+\begin{note}
+  Так как $\R$ - континум, а $A$ - не больше множества всех многочленов, которых счетно, то есть числа не в $A$.
+\end{note}
+
+\begin{theorem}{(Лиувилля)} Пусть $\alpha \in A, deg \alpha = d$, тогда $\exists c(\alpha): \forall \frac{p}{q} \left|\alpha - \frac{p}{q}\right| \ge \frac{c(\alpha)}{q^d} $
+  
+\end{theorem}
+
+\begin{definition}
+  $\alpha \in A$ называется алгебраическим числом степени $d$, если min степень многочлена, корнем которого является $\alpha$, равна $d$.
+\end{definition}
+
+$\alpha \in A, deg \alpha = d$. $f(x) = a_d x^d + \dots + a_1x + a_0$
+
+\begin{enumerate}
+  \item $\left|\alpha - \frac{p}{q}\right| \ge 1 \then \left|\alpha - \frac{p}{q}\right|  \ge \frac{1}{q^d} \then c_1(\alpha) = 1$
+  \item $\left| \alpha - \frac{p}{q}\right|$
+\end{enumerate}
+$\frac{p}{q} \ne 0, f(\frac{p}{q}) = \frac{a_d p^d + \dots + a_0 q^d}{q^d}$. $\left|f(\frac{p}{q})\right|\ge \frac{1}{q^d}$
+
+Положим $c(\alpha) = min\{c_1(\alpha), c_2(\alpha)\}$
+
+$$\left|f\left(\frac{p}{q}\right)\right| = \left|\alpha - \frac{p}{q}\right| \cdot \left|\alpha_1 - \frac{p}{q}\right| \cdot \dots \cdot \left|\alpha_{d-1} - \frac{p}{q}\right| \cdot a_d$$ 
+
+$\left|\alpha_i - \frac{p}{q}\right| = \left| \alpha_i - \alpha + \alpha - \frac{p}{q}\right| \le \left|\alpha_i - \alpha \right| + \left|\alpha - \frac{p}{q}\right| \le \underbrace{\left|\alpha_i - \alpha \right|}_{\overline{c_i}(\alpha)}$
+
+$$\left|\alpha - \frac{p}{q}\right| \ge \frac{1}{q^d} \cdot \frac{1}{a_d \prod_{i = 1}^{d - 1} \overline{c_i}(\alpha)}$$
