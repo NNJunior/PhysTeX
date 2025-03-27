@@ -3,16 +3,16 @@
 \textit{Проделаем переход индукции с прошлой лекции, напомним, что хотим доказать:}
 
 \begin{theorem}
-  $$p_{k + 2} = a_{k + 2} p_{k + 1} + p_k$$
-  $$q_{k + 2} = a_{k + 2} q_{k 1} + q_k$$
+    $$p_{k + 2} = a_{k + 2} p_{k + 1} + p_k$$
+    $$q_{k + 2} = a_{k + 2} q_{k 1} + q_k$$
 \end{theorem}
 
 \begin{proof}
-  Пусть $[a_0; a_1,\dots, a_n] = \frac{p_n}{q_n}, [a_1; a_2, \dots, a_k] = \frac{p'_k}{q'_k}$
+    Пусть $[a_0; a_1,\dots, a_n] = \frac{p_n}{q_n}, [a_1; a_2, \dots, a_k] = \frac{p'_k}{q'_k}$
 
-  $$a_0 + \frac{1}{[a_1; a_2, \dots, a_n]} = a_0 + \frac{1}{\frac{p'_n}{q'_n}} = a_o + \frac{q'_n}{p'_n} = \frac{a_0 p'_n + q'_n}{p'_n}$$
+    $$a_0 + \frac{1}{[a_1; a_2, \dots, a_n]} = a_0 + \frac{1}{\frac{p'_n}{q'_n}} = a_o + \frac{q'_n}{p'_n} = \frac{a_0 p'_n + q'_n}{p'_n}$$
 
-  $$p_n = a_0 p'_n + q'_n = a_0 (a_n p'_{n - 1} + p'_{n - 2}) + a_n q'_{n - 1 } + q'_{n - 2} = a_n \underbrace{(a_0 p'_{n - 1} + q'_{n  - 1}) }_{p_{n-1}}+ \underbrace{a_0 p'_{n - 2} + q'_{n - 2}}_{p_{n-2}}$$
+    $$p_n = a_0 p'_n + q'_n = a_0 (a_n p'_{n - 1} + p'_{n - 2}) + a_n q'_{n - 1 } + q'_{n - 2} = a_n \underbrace{(a_0 p'_{n - 1} + q'_{n    - 1}) }_{p_{n-1}}+ \underbrace{a_0 p'_{n - 2} + q'_{n - 2}}_{p_{n-2}}$$
 \end{proof}
 
 \begin{note}
@@ -28,12 +28,12 @@ $$p_{n + 2}q_n - q_{n + 2}p_n = a_{n + 2}\underbrace{(p_{n + 1}q_n - q_{n + 1}p_
 \end{note}
 
 \begin{proposition}
-  Из первого замечания можно понять очень выжный факт:
-  \begin{enumerate}
-    \item Дроби с нечетным $n$ убывают
-    \item Дроби с четным $n$ возрастают
-    \item Но все они отличаются друг от друга на небольшое число - $\frac{(-1)^n}{q_n q_{n + 1}}$
-  \end{enumerate}
+    Из первого замечания можно понять очень выжный факт:
+    \begin{enumerate}
+        \item Дроби с нечетным $n$ убывают
+        \item Дроби с четным $n$ возрастают
+        \item Но все они отличаются друг от друга на небольшое число - $\frac{(-1)^n}{q_n q_{n + 1}}$
+    \end{enumerate}
 \end{proposition}
 
 \subsection{Бесконечная цепная дробь}
@@ -42,29 +42,36 @@ $$p_{n + 2}q_n - q_{n + 2}p_n = a_{n + 2}\underbrace{(p_{n + 1}q_n - q_{n + 1}p_
 $$[a_0;a_1, \dots, a_n,\dots] = \lim_{n \to \infty}\frac{p_n}{q_n}$$
 \begin{theorem}{(Докажут на семинаре)}
 
-  Предел всегда существует.
+    Предел всегда существует.
 \end{theorem}
 
 \begin{example} $[1; 1, 1, \dots, 1] = ?$
 
-  Пусть $[1; 1, 1, \dots, 1] = \alpha$. $1 + \frac{1}{\alpha} = \alpha \then \alpha = \frac{1 + \sqrt{5}}{2}$
+    Пусть $[1; 1, 1, \dots, 1] = \alpha$. $1 + \frac{1}{\alpha} = \alpha \then \alpha = \frac{1 + \sqrt{5}}{2}$
 \end{example}
 
 \begin{theorem}
-  Если цепная дробь периодична, то ее значение будет являться квадратичной иррациональностью (решением квадратного уравнения c иррациональными коэффицеинтами)
+    Если цепная дробь периодична, то ее значение будет являться квадратичной иррациональностью (решением квадратного уравнения c иррациональными коэффицеинтами)
 \end{theorem}
 
 \begin{proof}
-  $\alpha = [a_0;a_1, \dots, a_k, \overline{b_1, b_2, \dots, b_m}].$
+    $\alpha = [a_0;a_1, \dots, a_k, \overline{b_1, b_2, \dots, b_m}].$
 
 
-  Аналогично с примером обозначаем дробь $[b_1; b_2, \dots, b_m]$ за $\beta$. Тогда:
-  $$b_m + \frac{1}{\beta} = \frac{\beta b_m + 1}{\beta}$$
-  $$\frac{\beta}{\beta b_m + 1} + b_{m - 1} = \frac{\beta + \beta b_{m - 1} b_m + b_{m - 1}}{\beta b_m + 1}$$
+    Аналогично с примером обозначаем дробь $[b_1; b_2, \dots, b_m]$ за $\beta$. Тогда:
+    $$b_m + \frac{1}{\beta} = \frac{\beta b_m + 1}{\beta}$$
+    $$\frac{\beta}{\beta b_m + 1} + b_{m - 1} = \frac{\beta + \beta b_{m - 1} b_m + b_{m - 1}}{\beta b_m + 1}$$
 
-  Понятно, что если выражать дальше $\beta$, то в числителе и знаменателе будет получаться линейная функция от $\beta$. $\beta = \frac{c_1 \beta + c_2}{c_3 \beta + c_4} \then \beta$ - квадратичная иррациональность.
+    Понятно, что если выражать дальше $\beta$, то в числителе и знаменателе будет получаться линейная функция от $\beta$. $\beta = \frac{c_1 \beta + c_2}{c_3 \beta + c_4} \then \beta$ - квадратичная иррациональность.
 \end{proof}
 
 \begin{theorem} {(б/д)}
-  Верно и обратное.
+    Верно и обратное.
 \end{theorem}
+
+\begin{theorem}
+    \(\forall \psi: \psi(q) \ra +\infty \exists \alpha > 0:\) неравенство \(\left|\alpha - \frac{p}{q}\right| \le \frac{1}{\psi(q)}\) имеет бесконечно много решений в дробях \(\frac{p}{q}\).
+\end{theorem}
+\begin{proof}
+    \(\alpha = [a_0; a_1, \dots ]\)
+\end{proof}
