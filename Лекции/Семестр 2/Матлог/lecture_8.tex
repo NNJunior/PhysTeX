@@ -1,0 +1,59 @@
+% !TEX root = ../../../main.tex
+
+\begin{definition}
+    \(U: \N\times\N \ra \N\) --- главная универсальная вычислимая функция, если 
+    \begin{enumerate}
+        \item \(U\) вычислима как функция от двух аргументов
+        \item \(\forall f: \N\ra\N\) --- вычислимой \(\exists p: U(p, x) = f(x)\).
+        \item \(\forall V: \N\times\N \ra \N\) --- вычислимой \(\exists\) вычислимая и всюду определенная \(s: \N \ra \N\), такая, что \(\forall p \forall x V(p, x) = U(s(p), x)\).
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    Главная Универсальная Вычислимая Функция существует
+\end{theorem}
+\begin{proof}[Первое доказательство]
+    УМТ задает ГУВФ. \(V\) вычислима \(\Ra V\) вычисляется некоторой машиной \(M\). Пусть \(p\) --- программа для \(V\). Тогда если мы положим \(s(p)\) --- машина \(M\) с фиксированным первым аргументом, то получим желаемое
+\end{proof}
+\begin{proof}[Второе доказательство]
+    Рассмотрим вычислимую \(W: \N\times\N\times\N \ra \N\), универсальную для вычислимых функций от двух аргументов, то есть 
+    \[\forall V: \N \times \N \ra \N \exists q \forall p \forall x W(q, p, x) = V(p, x)\]
+\end{proof}
+
+\begin{theorem}[Райса-Успенского]
+    \(\mathcal{A}\) --- множество вычислимых функций, причем \(\mathcal{A}, \overline{\mathcal{A}} \ne \emptyset\). Пусть \(U\) --- ГУВФ, \(A = \{p| U(p, \cdot) \in \mathcal{A}\} \). Тогда \(A\) неразрешимо
+\end{theorem}
+\begin{proof}
+    Рассмотрим \(\zeta(x)\) --- нигде не определенную функцию. Т.к. \(\overline{\mathcal{A}} \ne \emptyset \Ra \exists \xi \in \mathcal{A}\). Рассотрим \(K\) --- перечислимое, но не разрешимое множество. Положим:
+    \[V(p, x) = \left\{\begin{array}{l}
+        \xi(x), p \in K \\
+        \zeta(x), p \notin K
+    \end{array}\right.\]
+    \(\exists s \forall p \forall x V(p, x) = U(s(p), x)\).
+    \begin{enumerate}
+        \item \(p \in K \Ra U(s(p), x) = \xi(x)\ \Ra s(p)\notin A\)
+        \item \(p \notin K \Ra U(s(p), x) = \zeta(x) \Ra s(p)\in A\)
+    \end{enumerate}
+    Тогда \(p \in K \Lra s(p) \notin A \Ra K \le_m \overline{A} \Ra A\) --- нерзрешимо
+\end{proof}
+
+\begin{theorem}[Фридберга]
+    \[\exists V: \forall f\text{ --- вычислимой } \exists ! p: \forall x V(p, x) = f(x)\]
+\end{theorem}
+
+\begin{definition}
+    Куайн --- программа, печатающая свой текст. Например:
+    \begin{verbatim}
+        Напечатать дважды, взяв вторую копию в кавычки:"Напечатать дважды, взяв вторую копию в кавычки"
+    \end{verbatim}
+\end{definition}
+
+\begin{theorem}[Клини о неподвижной точке]
+    Пусть \(U\) --- ГУВФ, \(h: \N \times \N\) --- вычислимая всюду определенная функция. Тогда \(\exists p \forall x U(p, x) = U(h(p), x)\)
+\end{theorem}
+
+\begin{corollary}
+    Существует Куайн.
+\end{corollary}
+
+Доделаю потом

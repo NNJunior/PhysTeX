@@ -1,0 +1,140 @@
+% !TEX root = ../../../main.tex
+
+\begin{definition}
+    Пусть \(X, Y\) --- метрические пространства, \(x_0, y_0\) --- предельные точки \(X, Y\) соответственно и задана функция \(f: (X \setminus \{x_0\})\times(Y \setminus \{y_0\}) \ra \R\). Пусть \(\forall x \in X \setminus \{x_0\} \exists \) конечный \(\lim_{y \ra y_0} f(x, y)\). Предел \(\lim_{x \ra x_0}\phi(x)\) называется повторным пределом функции \(f\) и обозначается \(\lim_{x \ra x_0}\lim_{y \ra y_0} f(x, y)\). Аналогично определяется \(\lim_{y \ra y_0}\lim_{x \ra x_0}\).
+\end{definition}
+
+\begin{lemma}
+    Пусть задана \(f: (X \setminus \{x_0\})\times(Y \setminus \{y_0\}) \ra \R\), такая, что
+    \begin{enumerate}
+        \item \(\lim_{(x, y) \ra (x_0, y_0)}f(x, y) = b\)
+        \item \(\forall x \in X \setminus \{x_0\}\) определена \(\phi(x) = \lim_{y \ra y_0} f(x, y)\)
+    \end{enumerate}
+    Тогда \(\exists \lim_{x \ra x_0}\lim_{y \ra y_0}f(x, y) = b\)
+\end{lemma}
+\begin{proof}
+    Зафиксируем \(\epsilon > 0\). Тогда по определению предела
+    \[\exists \delta > 0 \forall (x, y) \in B_\delta(x_0, y_0) |f(x, y) - b| < \frac{\epsilon}{2}\]
+    Рассмотрим \((x, y) \in \stackrel{\circ}{B}_\frac{\delta}{\sqrt{2}}(x_0)\times \stackrel{\circ}{B}_\frac{\delta}{\sqrt{2}}(x_0) \subset \stackrel{\circ}{B}_\delta(x_0, y_0)\). Перейдем к пределу при \(y \ra y_0\) в \(|f(x, y) - b| < \frac{\epsilon}{2}\). Получим, что \(|\phi(x) - b| \le \frac{\epsilon}{2} < \epsilon \Ra \lim_{x\ ra x_0} \phi(x) = b\)
+\end{proof}
+
+\begin{theorem}[Критерий Коши]
+    Пусть \(X, Y\) --- метрические пространства, причем \(Y\) --- полное, \(a\) --- предельная точка \(X\) и задана функция \(f: (X \setminus \{a\}) \ra Y\). Доказать, что \(\exists \lim_{x \ra a} f(x) \Lra \forall \epsilon > 0 \exists \delta > 0 \forall x, x' \in X (x, x' \in \stackrel{\circ}{B}\delta(a) \Ra \rho_Y(f(x), f(x')) < \epsilon)\)
+\end{theorem}
+
+\subsection{Непрерывные функции}
+\begin{definition}
+    Функция \(f\) непрерывна в \(a \in X\), если 
+    \[\forall \epsilon > 0 \exists \delta > 0 \forall x \in X (\rho_X(x, a) < \delta \Ra \rho_Y(f(x), f(a)) < \epsilon)\]
+\end{definition}
+
+\begin{definition}
+    Функция \(f\) непрерывна на \(X\), если она непрерывна \(\forall x \in X\).
+\end{definition}
+
+\begin{example}
+    Коориднатная функция \(p_i: \R^n \ra \R: p_i(x_1, x_1, \dots x_n) = x_i\) непрерывна.
+\end{example}
+\begin{proof}
+    Это следует из оценки \(|x_i - a_i| \le \rho_2(x, a)\)
+\end{proof}
+
+\begin{example}
+    \(A \subset X, d_A: X \ra \R, d_A(x) = \inf_{a \in A} \rho(x, a)\) непрерывна.
+\end{example}
+\begin{proof}
+    Пусть \(x, x_0 \in X \Ra \forall a \in A\) имеем:
+    \[\rho(x_0, a) \ge \rho(x, a) + \rho(x, x_0) \ge d_A(x) - \rho(x, x_0) \Ra d_A(x_0) \ge d_A(x) - \rho(x, x_0) \Ra |d_A(x) - d_A(x_0)| \le \rho(x, x_0)\]
+\end{proof}
+
+\begin{lemma}
+    Пусть \(f: X \ra Y\) и \(a \in X\). Тогда следующие утверждения эквивалентны: 
+    \begin{enumerate}
+        \item \(f\) --- непрерывна в \(a\)
+        \item \(\forall \{x_n\} \subset X (x_n \ra a \Ra f(x_n) \ra f(a))\)
+        \item \(a\) --- изолированная точка \(X\) или \(a\) --- предельная точка \(X\) и \(\lim_{x \ra a}f(x) = f(a)\).
+    \end{enumerate}
+\end{lemma}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\((1) \Ra (2)\)] Зафиксируем \(\epsilon > 0\) и найдем \(\delta > 0\) из определения непрерывности \(f\) в \(a\). Пусть \(x_n \ra a\). Тогда \(\exists N \forall n \ge N (\rho_X(x_n, a) < \delta \Ra \rho_y(f(x), f(a)) < \epsilon)\). Следовательно, \(f(x_n) \ra f(a)\)
+        \item[\((2) \Ra (3)\)] Если \(a\) --- изолированная, то \(\exists N: \forall n > N x_n = a\). Иначе, \(\lim_{x \ra a}f(x) = f(a)\) по Гейне
+        \item[\((3) \Ra (2)\)] Если \(a\) --- изолированная точка \(X\), то \(\exists \delta > 0: \in B_\delta(a) \cap X = \{a\}\). Тогда определение непрерывности выполнено. Если \(a\) --- предельная точка \(X\), то 
+        \[\forall \epsilon > 0 \exists \delta > 0 (0 < \rho_X(x, a) < \delta \Ra \rho_Y(f(x), f(a)) < \epsilon)\]
+        Заметим, что \(\rho_X(x, a) = 0 \Ra f(x) = f(a) \Ra \rho_Y(f(x), f(a)) < \epsilon\). Но тогда 
+        \[\forall \epsilon > 0 \exists \delta > 0 (\rho_X(x, a) < \delta \Ra \rho_Y(f(x), f(a)) < \epsilon)\].
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    Пусть \(f, g: X \ra \R\) непрерывны в \(a\) тогда \(f \pm g, fg: X \ra \R\) также непрерывны в \(a\).
+\end{corollary}
+
+\begin{definition}
+    Многочленом называется функция \(P: \R^n \ra \R\), такая, что
+    \[P(x_1, x_2, \dots x_n) = \sum_{k_1, k_2, \dots k_m} a_{k_1, k_2, \dots k_n}x_1^{k_1}x_2^{k_2}\dots x_n^{k_n}\]
+\end{definition}
+
+\begin{example}
+    Любой многочлен непрерывен
+\end{example}
+\begin{proof}
+    Верно, т.к. он является линейной комбинацией мономов, кажый из которых является произведений непрерывных функций
+\end{proof}
+
+\begin{theorem}[О непрерывности композиции]
+    Пусть \((X, \rho_X), (Y, \rho_Y), (Z, \rho_Z)\) --- метрические пространства. Если \(f: X \ra Y, g: Y \ra Z\) --- непрерывные функции, то \(g \circ f: X \ra Z\) --- тоже непрерывная.
+\end{theorem}
+\begin{proof}
+    Пусть \(x_n \ra a \Ra f(x_n) \ra f(a) \Ra g(f(x_n)) \ra g(f(a))\). Тогда \(g\circ f\) непрерывна в \(a\).
+\end{proof}
+
+\begin{theorem}[Критерий непрерывности]
+    \(f: X \ra Y\) непрерывна на \(X \Lra \forall V \subset Y\), где \(V\) --- открыто, верно \(f^{-1}(V)\) открыто в \(X\), где \(f^{-1}(U) = \{x | f(x) \in U\}\).
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\Ra\)] Пусть \(V \subset Y, V\) --- открыто. Рассмотрим \(f^{-1}(V), x \in f^{-1}(V)\), т.е. \(f(x) \in V\), т.е. \(\exists \epsilon > 0: B_\epsilon(f(x)) \subset V\). Т.к. \(f\) непрерывна в \(x\), то \(\exists \delta > 0: f(B_\delta(x)) \subset B_\epsilon(f(x)) \subset V \Ra \exists \delta > 0: B_\delta(x) \subset f^{-1}(V)\).
+        \item[\(\La\)] Пусть \(x \in X, \epsilon > 0\). Шар \(B_\epsilon(f(x))\) открыт в \(Y \Ra f^{-1}(B_\epsilon(f(x)))\) открыто в \(X\) и содержит \(x \Ra \exists \delta > 0: B_\delta(x) \subset f^{-1}(B_\epsilon(f(x)))\) или \(f(B_\delta(x)) \subset B_\epsilon(f(x))\). Это означает, что \(f\) непрерывна в \(x\).
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    \(f: X \ra Y\) непрерывна \(\Lra \forall F \subset Y\), где \(F\) --- замкнуто, \(f^{-1}(F)\) замкнуто  в \(X\)
+\end{corollary}
+\begin{proof}
+    \(\forall F \subset Y: X \setminus f^{-1}(F) = f^{-1}(Y \setminus F)\)
+\end{proof}
+
+\begin{problem}
+    Приведите пример разрывной функции \(f\), где \(\forall U \subset X: f(U)\) открыто, где \(U\) --- открыто.
+\end{problem}
+
+\subsection{Непрерывные функции на компактах}
+\begin{theorem}
+    Если \(f: K \ra Y\) непрерывна и \(K\) --- компакт, то \(f(K)\) --- компакт в \(Y\)
+\end{theorem}
+\begin{proof}
+    Рассмотрим \(\{G_\lambda\}_{\lambda \in \Lambda}\) --- октрытое покрытие \(f(K)\). Если \(x \in K \Ra f(x) \in f(K) \ra f(x) \in G_{\lambda_0}\) для некоторого \(\lambda_0\), или \(x \in f^{-1}(G_{\lambda_0})\). Тогда \(\{f^{-1}(G_{\lambda})\}_{\lambda \in \Lambda}\) --- открытое покрытие \(K\). Тогда \(\exists \lambda_1, \lambda_2 \dots \lambda_m\) --- конечное подпокрытие \(K\). Но тогда \(y \in f(K) \Lra y = f(x), x \in K\). Но \(x \in f^{-1}(G_{\lambda_i}) \Ra y = f(x) \in G_{\lambda_i}\)
+\end{proof}
+
+\begin{theorem}[Вейерштрасса]
+    Если \(f: K \ra \R\) --- непрерывна и \(K\) --- компакт, то \(\exists x_m, x_M \in K: f(x_m) = \inf_{x \in K}f(x), f(x_M) = \sup_{x \in K}f(x)\)
+\end{theorem}
+\begin{proof}
+    Положим \(M = \sup_{x \in K}f(x)\). Заметим, что \(f(K)\) --- компакт в \(R \Ra f(K)\) --- замкнутое и ограниченное множество. Имеем \(f(K) \le M \Ra \forall \epsilon > 0: M + \epsilon \notin f(K)\) и \(\forall \epsilon > 0 \exists x: M - \epsilon < f(x)\) по определению \(\sup \Ra M\) --- граничная точка \(\Ra M \in f(K)\). Доказательство для \(\inf\) аналогично
+\end{proof}
+
+\begin{definition}
+    Пусть \(V\) --- метрическое пространство, \(\|x\|, \|x\|_*\) --- нормы на \(V\). Данные нормы называются эквивалентными, если \(\exists c_1, c_2 > 0 \forall x \in V (c_1\|x\| \le \|x\|_* \le c_2\|x\|)\)
+\end{definition}
+
+\begin{corollary}
+    На арифметическом \(n\)-мерном пространстве все нормы эквивалентны.
+\end{corollary}
+\begin{proof}
+    Достаточно показать, что произвольная норма эквивалентна Евклидовой.
+    
+    Имеем: \(x = x_1e_1 + x_2e_2 + \dots + x_ne_n\) --- разложение по стандартному базису \(\R^n\), тогда \(\|x\| \le \sum_{i = 1}^n |x_i|\|e_i\|\). По КБШ, можем записать неравенство:
+    \[\sum_{i = 1}^n |x_i|\|e_i\| \le \left(\sum_{i = 1}\|e_i\|^2\right)\left(\sum_{i = 1}|x_i|^2\right) = \beta \|x\|\]
+\end{proof}

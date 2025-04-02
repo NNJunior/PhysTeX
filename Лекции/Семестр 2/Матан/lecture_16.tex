@@ -1,0 +1,145 @@
+% !TEX root = ../../../main.tex
+
+\begin{corollary}[Больцано-Вейерштрасса]
+    Любая ограниченная последовательность в \(\R^n\) имеет сходящуюся подпоследовательность
+\end{corollary}
+
+
+\begin{example}
+    \(X = \R\) с дискретной метрикой, \(K = [0, 1] \Ra K\) ограничено и замкнуто. Однако, из отрытого покрытия \(\{B_\frac{1}{2}(x), x \in K\}\) нельзя выбрать конечное подпокрытие, т.к. \(B_\frac{1}{2}(x) = \{x\}\)
+\end{example}
+
+\subsubsection{Полные метрические пространства}
+Пусть \((X, \rho)\) --- метрической пространство
+\begin{definition}
+    Последовательность \(\{x_n\}\) называется фундаментальной в \(X\), если \(\forall \epsilon > 0 \exists N: \forall n, m (\rho(x_n, x_m) < \epsilon)\)
+\end{definition}
+
+\begin{lemma}
+    Любая сходящаяся последовательность фундаментальна.
+\end{lemma}
+\begin{proof}
+    Пусть \(x_n \ra a, \epsilon > 0\). Тогда \(\exists N: \forall n > N \rho(x_n, a) < \frac{\epsilon}{2} \Ra \forall n > N \rho(x_n, x_m) \le \rho(x_n, a) + \rho(x_m, a) < \epsilon\)
+\end{proof}
+
+\begin{note}
+    Обратное утвеждение неверно
+\end{note}
+\begin{example}
+    \(X = (0, 1], \rho(x, y) = |x - y|\). Тогда \(\left\{\frac{1}{n}\right\}\) --- фундаментальна, но не имеет предела в \(X\).
+\end{example}
+
+\begin{definition}
+    Метрическое пространство называется полным, если всякая фундаментальная сходится к некоторой точке этого пространства
+\end{definition}
+
+\begin{lemma}
+    Евклидово пространство \(\R^n\) полно.
+\end{lemma}
+\begin{proof}
+    Пусть дана фундаментальная последовательность \(\{x_k = (x_{1k}, x_{2k}, \dots x_{nk})\} \subset \R^n, \epsilon > 0\). Т.к. \(\forall i = 1, 2,\dots n |x_{ik} - x_{im}| \le \rho(x_k, x_m) \Ra \{x_n\}\) тоже фундаментальна. Положим \(a_i = \lim_{k \ra \infty} x_{ik}, a = (a_1, a_2, \dots a_n)\). Заметим, что \(\rho(a, x_n) = \sum_{i = 1}^n |a_i - x_{in}|^2 \ra 0 \Ra x_n \ra a\).
+\end{proof}
+
+\begin{definition}
+    Пусть \(E \ne \emptyset\). Рассмотрим \(B(E)\) --- линейное пространство ограниченных функций \(f: E \ra \R\) (или \(Cm\)).
+\end{definition}
+
+\begin{note}
+    \(B(E)\) является нормированным пространством, относительно нормы \(\|f\||_\infty = \sup_{x \in E} |f(x)|\)
+\end{note}
+Но тогда \(f_n \ra f\) в \(B(E) \Lra \|f_n - f\| \ra 0 \Lra \sup_{x \in E} |f_n(x) - f(x)| \ra 0 \Lra f_n \rightrightarrows f\) на \(E\)
+
+\begin{lemma}
+    Пространство \(B(E)\) полное
+\end{lemma}
+\begin{proof}
+    Пусть \(\{f_n\}\) фундаментальна в \(B(E)\), и \(\epsilon > 0\). Тогда \(\exists N \forall n, m > \ge N (\sup_{x \in E} |f_n(x) - f_m(x)| < \epsilon)\). По Критерию Коши равномерной сходимости, \(\exists f: f_n \rightrightarrows f\) на \(E\). Покажем, что \(f\) ограничена в определении равномерной сходимости. Положим \(\epsilon = 1 \Ra \exists N \forall x \in E (|f_n(x) - f(x)| < 1) \Ra |f(x) < 1 + |f_n(x)||\)
+\end{proof}
+
+\begin{note}
+    \(C[a, b]\) полное относительно (\(\|f\|_\infty\))
+\end{note}
+
+\section{Непрерывные функции}
+\subsection{Предел функции в точке}
+Пусть \((X, \rho_X), (Y, \rho_Y)\) --- метрические пространства, \(a\) --- предельная точка \(X\), и задана функция \(f: X \setminus \{a\} \ra Y\).
+
+\begin{definition}[Коши]
+    Точка \(b \in Y\) называется пределом функции \(f\) в \(a\), если
+    \[\forall \epsilon > 0 \exists \delta > 0 \forall x \in X (0 < \rho_X(x, a) < \delta \Ra \rho_Y(f(x), b) < \epsilon)\]
+\end{definition}
+
+\begin{definition}[Гейне]
+    Точка \(b \in Y\) называется пределом функции \(f\) в \(a\), если
+    \[\forall \{x_n\} \ra \subset X\setminus \{a\} (x_n \ra a \Ra f(x_n) \ra b)\]
+\end{definition}
+Пишут \(\lim_{x \ra a} f(x) = b\) или \(f(x) \ra b\) при \(x \ra a\)
+
+\begin{proposition}
+    \(\lim_{x \ra a} f(x) = b, \lim_{x \ra a} f(x) = c \Ra b = c\).
+\end{proposition}
+\begin{proof}
+    Пусть \(x_n \ra a, x_n \ne a\). Тогда по определению Гейне, \(f(x_n) \ra b, f(x_n) \ra c\). В силу единственности предела последовательности в \((Y, \rho_Y)\), получаем, что \(b = c\)
+\end{proof}
+
+Рассмотрим \(f: X \setminus\{a\} \Ra \R^m\). Если \(x \in X \setminus \{a\}\), то \(f(x) = (y_1, \dots y_m) \Ra f_i: X\setminus\{a\} \ra \R, f_i(x) = y_i\) (\(i\)-ая координата \(f(x)\)), \(f = (f_1, f_2, \dots f_m)\)
+
+\begin{lemma}
+    Пусть \(f: X \setminus \{a\} \ra \R^m, f = (f_1, f_2, \dots f_m)\). Тогда \(\lim_{x \ra a} f(x) = b \Lra \lim_{x \ra a}f_i(x) = b_i \forall i = 1, \dots m\)
+\end{lemma}
+\begin{proof}
+    Следует из \(|y_i - b_i| \le \rho_2(y, b) \le \sum_{i = 1}^m |y_i - b_i|\)
+\end{proof}
+
+\begin{example}
+    \(f: \R^2 \setminus\{(0, 0)\}, f(x, y) = \frac{x^3 + y^3}{x^2 + y^2}, \lim_{x \ra 0, y \ra 0} f(x, y) =^? 0\)
+    Зафиксируем \(\epsilon > 0\).
+    \[\left|\frac{x^3 + y^3}{x^2 + y^2} - 0\right| \le \frac{|x|^3 + |y|^3}{x^2 + y^2} \le \frac{2(\sqrt{x^2 + y^2})^3}{x^2 + y^2} = 2\sqrt{x^2 + y^2}\]
+\end{example}
+
+\begin{proposition}
+    Если \(a\) --- предельная точка множества \(E \subset X\) и \(\lim_{x \ra a} f(x) = b\), то \(\lim_{x \ra a} (f|_E)(x) = b\)
+\end{proposition}
+\begin{proof}
+    \(E \ni x \ra a, x_n \ne a \Ra (f|_E)(x_n) = f(x_n) \ra b \Ra\) по Гейне \(b = \lim_{x \ra a} (f|_E)(x)\)
+\end{proof}
+
+\begin{definition}
+    \(f: D\setminus \{a\} \ra \R, D \subset \R^n, a \in \R^n, u \in \R^n, |u| = 1\). Если \(\{a + tu | t \in (0, \Delta)\} \subset D \setminus \{a\}\) для некоторго \(\Delta > 0\) и существует конечный предел \(\lim_{t \ra +0} f(a + tu)\), то этот предел называется пределом \(f\) в точке \(a\) по направлению \(u\).
+\end{definition}
+
+\begin{corollary}
+    \[\left.\begin{array}{l}
+    \exists b = \lim_{x \ra a}f(x) \\
+    \{a + tu | t \in (0, \Delta)\} \subset D \setminus \{a\}
+    \end{array}\right\} \Ra b = \lim_{t \ra +0} f(a + tu)\]
+\end{corollary}
+\begin{example}
+    \[f: \R^2 \ra \R, f(x, y) = \left\{\begin{array}{l}
+        1, y = x^2, x > 0 \\
+        0, \text{ иначе}
+    \end{array}\right., u = (\alpha, \beta), |u| = 1\]
+    \[\exists \delta > 0 \forall t \in (0, \delta) f(t\alpha, t\beta) = 0 \Ra \lim_{t \ra +0} f(t\alpha, t\beta) = 0\]
+\end{example}
+
+\begin{proposition}
+    Если \(f, g: X \setminus \{a\} \ra \R: \lim_{x \ra a} f(x) = b, \lim_{x \ra a} g(x) = c\), то 
+    \begin{enumerate}
+        \item \(\lim_{x \ra a} f(x) + g(x) = b + c\)
+        \item \(\lim_{x \ra a} f(x)g(x) = bc\)
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Возьмем \(x_n \ra a, x_n \ne a \Ra f(x_n) \ra b, g(x_n) \ra c\). Тогда по свойству пределов числовых последовательностей, \((f \pm g) \ra b \pm c, (fg) \ra bc\). Тогда по определению Гейне, получаем желаемое
+\end{proof}
+
+\begin{proposition}[Локальная ограниченность]
+    Если \(\exists \lim_{x \ra a}f(x)\), то \(f\) ограничено в некоторой проколотой окрестности \(a\), т.е. \(\exists \delta > 0 f(\stackrel{\circ}{B}_\delta(a))\) ограничено
+\end{proposition}
+\begin{proof}
+    Достаточно в определении  Коши положить \(\epsilon = 1\)
+\end{proof}
+
+\begin{note}
+    Пусть \(Z = X \times Y \Ra \rho_Z((x, a), (y, b)) = \sqrt{\rho_X(x, y)^2 + \rho_Y(a, b)^2}\) --- метрика на \(Z\)
+\end{note}
