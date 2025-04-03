@@ -1,0 +1,68 @@
+% !TEX root = ../../../main.tex
+
+\begin{theorem}[Roth]
+    Пусть \(\alpha \notin \Q, \alpha \in \mathbb{A}\). Тогда \(\forall \epsilon > 0 \exists c(\alpha):\)
+    \[\forall p, q\;\;\left|\alpha - \frac{p}{q}\right| \ge \frac{c(\alpha)}{q^{2 + \epsilon}}\]
+\end{theorem}
+
+\begin{theorem}
+    Пусть \(\alpha \notin \Q \Ra \exists\) бесконечно много различных \(\frac{p}{q}\), таких, что \(\left|\alpha - \frac{p}{q}\right| \le \frac{1}{\sqrt{5}q^2}\)
+\end{theorem}
+
+\begin{theorem}
+    \(\forall \epsilon > 0 \exists\) лишь конечное число различных \(\frac{p}{q}: \left|\frac{1 + \sqrt{5}}{2} - \frac{p}{q}\right| < \frac{1}{(\sqrt{5} + \epsilon)q^2}\)
+\end{theorem}
+
+\begin{theorem}
+    Если выкинуть числа, которые ведут себя так же, как и \(\frac{1 + \sqrt{5}}{2}\), то любое из оставшихся чисел удовлетворяют \(\left|\alpha - \frac{p}{q}\right| \le \frac{1}{\sqrt{8}q^2}\) для бесконечно многих 
+\end{theorem}
+
+\begin{proposition}[Гипотеза Заремба, Коробова, Бахвалова]
+    \(\forall p\) --- простое \(\exists a \in \{1, 2 \dots p - 1\}\), такое, что все ненулевые частные в разложении \(\frac{a}{p}\) в цепную дробь не превосходят 5.
+\end{proposition}
+
+\begin{theorem}
+    \(e \notin \Q\).
+\end{theorem}
+\begin{proof}
+    Предположим противное, тогда \(e = \frac{m}{n} \Ra e\cdot n! \in \Z\)
+    \[e = \sum_{k = 0}^\infty \frac{1}{k!}\]
+    \[en! = \sum_{k = 0}^\infty \frac{n!}{k!} = A + \frac{1}{n + 1} + \frac{1}{(n + 1)(n + 2)} + \dots = A + \frac{1}{n + 1}\underbrace{\left(1 + \frac{1}{n + 2} + \dots \right)}_{B}\]
+    \[B < 1 + \frac{1}{n + 2} + \frac{1}{(n + 2)^2} + \dots \le \frac{1}{1 - \frac{1}{n + 2}} = \frac{n + 2}{n + 1}\]
+    \[0 < B \frac{1}{n + 1} < \frac{n + 2}{n + 1}^2 < 1, n \ge 1\]
+    Получили противоречие
+\end{proof}
+
+\begin{proposition}[Тождество Эрмита]
+    Пусть \(f(x)\) --- многочлен степени \(d\).
+    Рассмотрим
+    \[\int_0^x f(t)e^{-t}dt = F(0) - e^{-x}F(x), F(x) = f(x) + f'(x) + \dots + f^{(d)}(x)\]
+\end{proposition}
+\begin{proof}
+    \[\int_0^x f(t)e^{-t}dt = -f(t)e^{-t}|_0^x + \int_0^x f'(t)e^{-t}dt = f(0) - f(x)e^{-x} + \int_0^x f'(t)e^{-t}dt = \dots = \]
+    \[= f(0) + f'(0) + \dots + f^{(d)}(0) - e^x(f(x) + f'(x) + \dots + f^{(d)}(x))\]
+\end{proof}
+
+\begin{proposition}
+    Пусть \(g(x)\) --- многочлен с целыми коэффициентами. Тогда все коэффициенты \(k\)-ой производной этого многочлена делятся на \(k!\)
+\end{proposition}
+\begin{proof}
+    Рассмотрим произвольный моном \(a_nx^n\). Если \(n \le k - 1\), то после дифференцирования, \(a_n \ra 0\). Иначе, \(a_n \ra a_nn(n - 1)\dots(n - k + 1)x^{n - k} \Ra\) т.к. произведение \(k\) последовательных чисел делится на \(k!\), то \(a_nn(n - 1)\dots(n - k + 1) \vdots k!\)
+\end{proof}
+
+\begin{theorem}
+    \(e \notin \mathbb{A}\)
+\end{theorem}
+\begin{proof}
+    Предположим противное, тогда \(e\) является корнем \(a_mx^m + a_{m - 1}x^{m - 1} + \dots + a_0\), причем \(a_0 \ne 0\).
+    Рассмотрим 
+    \[\sum_{x = 0}^m a_x(F(0)e^x - F(x)) = \sum_{x = 0}^m\left(a_xe^x\int_0^x f(t)e^{-t}dt\right)\]
+    \[\sum_{x = 0}^ma_xF(0)e^x = F(0)\sum_{x = 0}a_xe^x = 0\]
+    \[\Ra -\sum_{x = 0}^m a_xF(x) = \sum_{x = 0}^m\left(a_xe^x\int_0^xf(t)e^{-t}dt\right)\]
+    Рассмотрим многочлен \(f(x) = \frac{1}{(n - 1)!}x^{n - 1}((x - 1)(x - 2)\dots(x - m))^n\). \(\deg f = nm + n - 1\). Посмотрим на \(a_0F(0) = a_0\left(f(0) + f'(0) + \dots + f^{(d)}(0)\right) = a_0\left(f^{n-1}(0) + \dots + f^{(d)}(0)\right)\), т.к. \(f^{(i)}(0) = 0\) при \(i \le n - 2\). При этом, \(f^{(n - 1)}(0) = ((-1)(-2)\dots(-m))^n = a_0((-1)^{mn} (m!)^n)\) (остальные слагаемые будут содержать \(x\) в ненулевой степени). Но тогда \(a_0F(0) = a_0((-1)^{mn} (m!)^n) + nA, A \in \Z\), т.к. коэффициенты оставшихся производных делятся на \(n\).
+    Теперь рассотрим \(-(a_1F(1) + a_2F(2) + \dots + a_mF(m)) = Bn\) по аналогичным рассуждениям. \(\Ra -\sum_{x = 0}^m a_xF(x) = a_0((-1)^{mn} (m!)^n) + Cn\). Существует бесконечно много \(n\), таких, что \(a_0((-1)^{mn} (m!)^n)\) не делится на \(n\). Выберем такое \(n\) и получим, что \(-\sum_{x = 0}^m a_xF(x) \in \Z \setminus \{0\}\). 
+    \[\left|\sum_{x = 0}^m a_xe^x\int_0^xf(t)e^{-t}dt\right| \le \sum_{x = 0}^m |a_x|e^x\int_0^x|f(t)|e^{-t}dt = (*)\]
+    \[t \in \{0, \dots m\} \Ra |f(t)| \le \frac{1}{(n - 1)!}m^{mn + n - 1}\]
+    \[(*) \le \frac{1}{(n - 1)!}m^{nm + n - 1}\sum_{x = 0}^m|a_x|e^x\int_0^xe^{-t}dt \le \frac{1}{(n - 1)!}m^{nm + n - 1}\sum_{x = 0}^m|a_x|e^x = \]
+    \[ = \frac{1}{(n - 1)!}\frac{\left(m^{m + 1}\right)^n \cdot c(e)}{m} \ra 0, n \ra \infty\]
+\end{proof}
