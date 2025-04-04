@@ -1,0 +1,92 @@
+% !TEX root = ../../../main.tex
+
+\begin{problem}
+    Доказать, что все нормы над конечномерным пространством над \(\R\) эквивалентны
+\end{problem}
+
+\begin{definition}
+    Функция \(f: X \ra Y\) называется равномерно непрерывной на \(X\), если
+    \[\forall \epsilon > 0 \exists \delta > 0 \forall x, x' \in X (\rho_X(x, x') < \delta \Ra \rho_Y(f(x), f(x')) < \epsilon)\]
+\end{definition}
+
+\begin{theorem}[Кантор]
+    Если функция непрерывна \(f: K \ra Y\) непрерывна и \(K\) --- компакт, то \(f\) равномерно непрерывна.
+\end{theorem}
+\begin{proof}
+    Пусть \(\epsilon > 0\). По определению непрерывности
+    \[\forall a \in K \exists \delta_a > 0 \forall x \in K (\rho_K(x, a) < \delta_a \Ra \rho_Y(f(x), f(a)) < \frac{\epsilon}{2})\]
+    Семейство \(\left\{B_\frac{\delta_a}{2}(a)\right\}_{a \in K}\) образует открытое покрытие \(K\). Т.к. \(K\) --- компакт \(\Ra K \subset B_{\frac{\delta_{a_1}}{2}}(a_1) \cup B_{\frac{\delta_{a_2}}{2}}(a_2) \cup \dots \cup B_{\frac{\delta_{a_m}}{2}}(a_m)\). Покажем, что \(\delta = \min_{1 \le i \le m}\{\frac{\delta_{a_i}}{2}\}\) --- искомое. Пусть \(x, x' \in K\), с \(\rho_K(x, x') < \delta\). \(\exists i: x \in B_{\frac{\delta_{a_i}}{2}}(a_i) \Ra\) т.к. \(\rho_K(x', a) \le \rho_K(x', x) + \rho_K(x, a_i) < \frac{\delta_{a_i}}{2} + \frac{\delta_{a_i}}{2} = \delta_{a_i}\), т.е. \(x, x' \in B_{\delta_{a_i}}(a_i) \Ra \rho_Y(f(x), f(x')) \le \rho_Y(f(x), f(a)) + \rho_Y(f(a), f(x')) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon\)
+\end{proof}
+
+\begin{definition}
+    Пусть \(X, Y\) --- метрические пространства. Функция \(f: X \ra Y\) называется гомеоморфизмом, если \(f\) --- биекция, а \(f, f^{-1}\) непрерывны
+\end{definition}
+
+\begin{theorem}
+    Если \(f: K \ra Y\) --- непрерывная биекция и \(K\) --- компакт, то \(f\) --- гомеоморфизм.
+\end{theorem}
+\begin{proof}
+    По критерию непрерывности, \(\forall F \subset K (f^{-1})^{-1}(F)\) замкнуто (т.к. \((f^{-1})^{-1}(F) = f(F)\)), если \(K\) --- компакт \(\Ra f^{-1}\) непрерывна
+\end{proof}
+
+\begin{definition}
+    Метрическое пространство \(X\) называется несвязным, если \(\exists U, V \subset X: X = U \cup V, U \cap V = \emptyset\), где \(U, V\) --- непустые открытые множества
+\end{definition}
+
+\begin{definition}
+    Множество \(E \subset X\) называется несвязным, если \(E\) несвязно как подпространство \(X\)
+\end{definition}
+
+\begin{note}
+    \(E\) несвязно \(\Lra \exists U, V \subset X\) --- открытые, такие, что \(E \subset U \cup V, E \cap U \ne \emptyset, E \cap V \ne \emptyset, U \cap V \cap E \ne \emptyset\) 
+\end{note}
+
+\begin{problem}
+    \(\{E_i\}_{i \in I}\) --- семейство связных множеств, \(\bigcap_{i \in I}E_i \ne \emptyset \Ra \bigcup_{i \in I}E_i\) связно
+\end{problem}
+
+\begin{theorem}
+    \(I\) связно в \(\R \Lra I\) --- промежуток
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[\(\Ra\)] Если \(I\) не является промежутком, то \(\exists x, y \in I, z \in \R: x < z < y, z \notin I\). Рассмотрим \(I \cap (-\infty, z), I \cap (z, +\infty)\). Получаем, что \(I\) несвязно
+        \item[\(\La\)] Предположим, что промежуток \(I\) несвязен. Тогда \(\exists U, V \subset \R: I \subset U \cap V, I \cap U \ne \emptyset, I \cap V \ne \emptyset, U \cap V \cap I = \emptyset\). Пусть \(x \in I \cap U, y \in I \cap V\). Рассмотрим \(S = [x, y] \cap U\). \(S \ne \emptyset\) и ограничено \(\Ra \exists c = \sup S\). В силу замкнутости \([x, y]\), имеем \(c \in [x, y], [x, y] \subset I \subset U \cup V\). Следовательно, \(c \in U\) или \(c \in V\). Если \(c \in U\), то \(c \ne y \Ra \exists \epsilon > 0: [c, c + \epsilon) \subset U \cap [x, y] \Ra [c, c + \epsilon) \subset S\). Если \(c \in V\), то \(c \ne x \Ra \exists \epsilon > 0 (c - \epsilon, c] \subset V \cap [x, y] \Ra \left[c - \frac{\epsilon}{2}, c\right] \not\subset S\)
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Если \(f: S \ra Y\) непрерывна и \(S\) связно, то \(f(S)\) связно в \(Y\).
+\end{theorem}
+\begin{proof}
+    Предположим, что \(f(S)\) несвязно \(\Ra \exists U, V \subset Y\) --- открытые, причем \(f(S) \subset V \cup U, f(S) \cap U \ne \emptyset, f(S) \cap V \ne \emptyset, U \cap V \cap f(S) = \emptyset\). Но тогда \(f^{-1}(U) \cup f^{-1}(V) = S\), причем данные множества открыты и непересекающиеся, получили противоречие, т.к. \(S\) связно.
+\end{proof}
+
+\begin{example}
+    \(E = \{(x, y, z) : e^{x^2 + y^2} < 1 + z^2\}\)
+\end{example}
+\begin{proof}
+    \(f(x, y, z) = e^{x^2 + y^2} - 1 - z^2\) --- непрерывно в \(\R^3\)
+\end{proof}
+
+\begin{corollary}[Теорема о промежуточных значениях]
+    Если \(f: S \ra \R\) непрерывна и \(S\) связно, то \(u, v \in f(S), u < v \Ra [u, v] \subset f(S)\)
+\end{corollary}
+
+\begin{definition}
+    Метричесткое пространство \(X\) назывется линейно связным, если \(\forall x, y \in X \exists \gamma: [0, 1] \ra X\) --- непрерывная, такая, что \(\gamma(0) = x, \gamma(1) = y\)
+\end{definition}
+
+\begin{example}
+    \(B_r(a)\) в любом нормированном метрическом пространстве всегда линейно связен
+\end{example}
+\begin{proof}
+    Пусть \(x, y \in B_r(a)\). Рассмотрим \(\gamma(t) = (1-t)x + ty, t \in [0, 1]\). \(\forall t \gamma(t) \in B_r(a)\), т.к. \(\|\gamma(t) - a\| = \|(1 - t)(x - a) + t(y - a)\| \le (1 - t)\|x - a\| < (1 - t)r + tr = r\)
+\end{proof}
+
+\begin{theorem}
+    Любое линейно связное пространство связно
+\end{theorem}
+\begin{proof}
+    Продположим, что линейно связное пространство \(X\) несвязно. Тогда \(\exists U, V \subset X, X = U \cup V, U \cap V = \emptyset, x \in U, y \in V \Ra \exists [0, 1] \ra X: \gamma(0) = x, \gamma(1) = y\). Рассмотрим \(\gamma^{-1}(U) \cap \gamma^{-1}(V) = [0, 1]\), противоречие, т.к. \([0, 1]\) --- связное множество
+\end{proof}
