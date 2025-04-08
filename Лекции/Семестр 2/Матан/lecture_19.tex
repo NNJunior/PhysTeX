@@ -1,0 +1,108 @@
+% !TEX root = ../../../main.tex
+
+\section{Линейные отображения евклидовых пространств}
+Пусть \(x, y \in \R^n\). Обозначим \((x, y) = \sum_{i = 1}^n x_iy_i\), \(|x| = \sqrt{(x, x)}\)
+
+\begin{definition}
+    Отображение \(L: \R^n \ra \R^m\) называется линейным, если \(\forall x, y \in \R^n, \forall \alpha, \beta \in \R\) верно, что \(L(\alpha x + \beta y) + \alpha L(x) + \beta L(y)\)
+\end{definition}
+
+\begin{note}
+    Множество всех линейных отображений \(\R^n \ra \R^m\) образует линейное пространство и обозначается \(\mathcal{L}(\R^n, \R^m)\)
+\end{note}
+
+Будем мыслить векторы из \(\R^n\) как наборы координат. Тогда в стандартном базисе, вектор из \(\R^n\) совпадает со своим набором координат. В связи с этим, будем писать (пусть \(L \in \mathcal{L}(\R^n, \R^m)\)):
+\[L(x) = Ax\]
+Где \(A\) --- матрица линейного преобразования \(L\). Положим \(w_i = (a_{i1}, a_{i2} \dots a_{in})\)
+\[|L(x)|^2 = \sum_{i = 1}^m (w_i, x)^2 \le \sum_{i = 1}^m|w_i|^2|x|^2 = |x|^2\sum_{i = 1}^m\sum_{j = 1}^n a_{ij}^2 \le C|x|, C = \sum_{i = 1}^m\sum_{j = 1}^n a_{ij}^2\]
+
+\begin{definition}
+    \(\|L\| = \sup_{x \ne 0} \frac{|L(x)|}{|x|}\) --- норма оператора \(L\)
+\end{definition}
+
+\begin{note}
+    Из оценки выше, следует, что \(\|L\| \in \R\), а из определения супремума, \(|L(x)| \le \|L\||x|\). Таким образом, \(\|L\|\) --- наименьшая константа из \(\R_+\), такая, что \(C|x| \ge |L(x)|\)
+\end{note}
+
+\begin{corollary}
+    \(\mathcal{L}(\R^n, \R^m)\) --- нормированное линейное пространство
+\end{corollary}
+
+\begin{note}
+    Заметим, что \(\|L_1 \circ L_2\| \le \|L_1\|\cdot\|L_2\|\)
+\end{note}
+\begin{proof}
+    \[|L_1(L_2(x))| \le \|L_1\|\|L_2\||x|\]
+\end{proof}
+
+\section{Частные производные}
+Пусть \(U \subset \R^n, a \in U, U\) --- открыто и задана функция \(f: U \ra \R\).
+
+\begin{definition}
+    Частная производная функции \(f\) по переменной \(x_k\) в точке \(a\) называется
+    \[\lim_{t \ra 0} \frac{f(a + te_k) - f(a)}{t}\]
+    Где \(e_k\) --- \(k\)-ый элемент стандартного базиса.
+    \[\text{Обозначения }\frac{\delta f}{\delta x_k}(a),\;\;f'_{x_k}(a),\;\;\delta f_k(a)\text{ --- эквивалентны}\]
+\end{definition}
+
+\begin{note}
+    По определению, \(\frac{\delta f}{\delta x_k}(a)\) --- \(g'(a_k)\), где \(g(u) = f(a_1, \dots a_{k - 1}, u, a_{k + 1}, \dots a_n)\).
+\end{note}
+
+\begin{example}
+    \(f: \R^n \ra \R, f(x) = |x|\), тогда при \(x \ne 0\)
+    \[\frac{1}{t}(|x + te_k| - |x|) = \frac{1}{t} \frac{|x + te_k|^2 - |x|^2}{|x + te_k| + |x|} = \frac{2x_k + t}{|x + te_k| + |x|} \ra \frac{x_k}{|x|}\]
+    Следовательно, существует \(f'(x), x \ne 0\). Отметим, что в \(0\) частной производной ни по какой переменной нет.
+\end{example}
+
+\begin{theorem}[О приращении]
+    Если частные производные функции \(f\) по всем переменным ограничены в \(B_r(a)\), то \(\forall h = (h_1, h_2, \dots h_n)\) с \(|h| < r\) имеем место равенство
+    \[f(a + h) - f(a) = \sum_{k = 1}^n \frac{\delta f}{\delta x_k}(c_k)h_k\]
+    Где \(c_k = a + v_k\) с \(|v_k| \le |h_k|\)
+\end{theorem}
+\begin{proof}
+    Обозначим \(x_0 = a, \dots x_k = x_{k - 1} + h_ke_k\). Рассмотрим \(t \mapsto g_k(t) = f(x_{k - 1} + te_k)\) на отрезке с концами \(0, h_k\). Тогда \(f(x_k) - f(x_{k + 1}) = g_k(h_k) - g_k(0)\) и по теореме Лагранжа \(g_k(h) - g_k(0) = g'_k(\xi_k)h_k\). Положим \(c_k = x_{k - 1} + \xi_ke_k\), тогда \(f(x_k) - f(x_{k - 1}) = \frac{\delta f}{\delta x_k}(c_k)h_k \Ra f(a + h) - f(a) = \sum_{k = 1}^n \frac{\delta f}{\delta x_k}(c_k)h_k\)
+\end{proof}
+
+\begin{corollary}[Критерий постоянства функции]
+    Пусть функция \(f\) имеет в области \(G\) частные производные. Тогда \(f\) постоянна на \(G \Lra \frac{\delta f}{\delta x_1} = \dots = \frac{\delta f}{\delta x_n} = 0\) на \(G\).
+\end{corollary}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\Ra\)] по определнию
+        \item[\(\La\)] Предположим противное, тогда \(\exists x, y \in G: f(x) \ne f(y)\)
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Пусть \(v \in \R^n \setminus \{0\}\). Тогда производной функции \(f\) в точке \(a\) называется 
+    \[\lim_{t \ra 0} \frac{f(a + tv) - f(a)}{t}\]
+    \[\text{Обозначения }\frac{\delta f}{\delta v}(a),\;\;f'_v(a),\;\;\delta f_v(a)\text{ --- эквивалентны}\]
+\end{definition}
+
+\subsection{Дифференцируемость функции в точке}
+\begin{definition}
+    Пусть \(U \subset \R, a \in U, f: U \ra \R, U\) --- открыто. Тогда \(f\) называетя дифференцируемой в точке \(a\), если \(\exists A = (A_1, \dots A_n) \subset \R^n\), т.ч. \(f(a + h) = f(a) + (A, h) + \alpha(h)|h|\) для некоторой \(\alpha(h) \ra 0\), при \(h \ra 0\)
+\end{definition}
+
+\begin{definition}
+    Линейная функция \(h \mapsto (A, h)\) называется дифференциалом функции \(f\) в точке \(a\) и обозначается \(df_a\)
+\end{definition}
+
+\begin{note}
+    Определение производной не определяет \(\alpha(0)\). Будем считать, что \(\alpha(0) = 0\) (т.е. \(\alpha\) --- непрерывна в \(0\)). Также, определение производной можно переписать в виде:
+    \[f(a + h) = f(a) + df_a(h) + o_{h \ra 0}(|h|)\]
+\end{note}
+
+\begin{theorem}
+    Если \(f\) дифференцируема в \(a\) и \(v \in \R^n \setminus \{0\}\), то \(\exists \frac{\delta f}{\delta v}(a) = df_a(v)\)
+\end{theorem}
+\begin{proof}
+    Рассмотрим \(B_\delta(a) \subset U\). Положим \(h = tv, |t| < \frac{\delta}{|v|}\).
+    \[f(a + tv) - f(a) = df_a(tv) + \alpha(tv)|tv|\]
+    По линейности \(df_a(tv) = tdf_a(v)\), тогда \(\frac{f(a + tv) - f(a)}{t} = df_a(v) \pm \alpha(tv)|v|\). В силу непрерывности \(\alpha(tv) \ra 0\) при \(t \ra 0 \Ra \exists \frac{\delta f}{\delta v}(a) = df_a(v)\)
+\end{proof}
+
+\begin{corollary}
+    Дифференциал функции определен однозначно.
+\end{corollary}
