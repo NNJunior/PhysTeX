@@ -1,0 +1,130 @@
+% !TEX root = ../../../main.tex
+
+\section{Связь этого бреда с языками первого порядка}
+\subsection{Арифметическая иерархия}
+В прошлом мы рассматривали свойства \textit{Перечислимость}, \textit{Коперечислимость}, а их пересечение давало нам \textit{Разрешимость}. Также мы рассматривали множества:
+\[H = \{(p, x) | U(p, x)\text{ определено}\}\]
+\[ED\text{ (Empty Domain) } = \{p|\forall x U(p, x)\text{ не определено}\}\]
+\[T = \{p| \forall x U(p, x)\text{ определено}\}\]
+\[FD\text{ (Finite Domain) } = \{p| \{x |U(p, x)\text{ определено}\}\text{ конечно}\}\]
+Заметим, что эти определения этих множеств можно записать так:
+\[(p, x) \in H \Lra \exists t(U(p, x)\text{ остановится за }\le t\text{ шагов})\]
+\[p \in ED \Lra \forall (t, x)(U(p, x)\text{ не остановится за }t\text{ шагов})\]
+\[p \in T \Lra \forall x \exists t(U(p, x)\text{  остановится за }\le t\text{ шагов})\]
+\[p \in FD \Lra \exists N \forall (t, x)(x > N \ra U(p, x)\text{ не остановится за }t\text{ шагов})\]
+
+\begin{definition}
+    \(A \in \Sigma_k\), если существует разрешимый предикат \(R\), такой, что
+    \[\forall x (x \in A \Lra \exists y_1 \forall y_2 \exists y_3 \dots y_k R(x, y_1, y_2, \dots^\forall_\exists y_k))\]
+\end{definition}
+\begin{definition}
+    \(B \in \Pi_k\), если существует разрешимый предикат \(R\), такой, что
+    \[\forall x (x \in A \Lra \forall y_1 \exists y_2 \forall y_3 \dots y_k R(x, y_1, y_2, \dots^\exists_\forall y_k))\]
+\end{definition}
+
+Итак, по определениям выше:
+\begin{enumerate}
+    \item Разрешимые множества \(= \Sigma_0 = \Pi_0\)
+    \item Перечислимые множества \(= \Sigma_1\)
+    \item Коперечислимые множества \(= \Pi_1\)
+\end{enumerate}
+
+\begin{theorem}
+    \(\Sigma_i \subset \Sigma_{i + 1}, \Sigma_i \subset \Pi_{i + 1}, \Pi_i \subset \Sigma_{i + 1}, \Pi_i \subset \Pi_{i + 1}\)
+\end{theorem}
+\begin{proof}
+    В предикате \(R\) добавим фиктивный аргумент --- тогда квантор, сооветствующий ему можно поставить в любое место формулы. Если поставить его в начало и в конец, получим желаемое.
+\end{proof}
+
+\begin{theorem}[б/д]
+    \(\Sigma_i \subsetneq \Sigma_{i + 1}, \Sigma_i \subsetneq \Pi_{i + 1}, \Pi_i \subsetneq \Sigma_{i + 1}, \Pi_i \subsetneq \Pi_{i + 1}\)
+\end{theorem}
+
+\begin{proposition}
+    \(A \in \Sigma_k \Lra \overline{A} \in \Pi_k\)
+\end{proposition}
+\begin{proposition}
+    \(x \in \overline{A} \Lra \neg \exists y_1 \forall y_2 \dots \exists y_k R(x, y_1, \dots y_k) \Lra \forall y_1 \exists y_2 \dots \forall y_k \neg R(x, y_1, \dots y_k)\)
+\end{proposition}
+
+\begin{proposition}
+    \(A, B \in \Sigma_k \Ra A \cap B \in \Sigma_k\)
+\end{proposition}
+\begin{proof}\indent
+    \[x \in A \cap B \Lra (x \in A \wedge x \in B) \Lra (\exists y_1 \forall y_2 \dots \exists y_k R(x, y_1, \dots y_k) \wedge \exists z_1 \forall z_2 \dots \exists z_k Q(x, z_1, \dots z_k)) \Lra \]
+    \[\Lra \exists y_1\exists z_1 \forall y_2 \forall z_2 \dots \exists y_k \exists z_k (R(x, y_1, \dots y_k) \wedge Q(x, z_1, \dots z_k)) \Lra\]
+    \[\exists (y_1, z_1) \forall (y_2, z_2) \dots \exists (y_k, z_k) (R(x, y_1, \dots y_k) \wedge Q(x, z_1, \dots z_k))\]
+\end{proof}
+
+Рассмотрим следующий язык:
+\begin{definition}
+    Язык арифметики: \(\langle0, S, =, +, \cdot\rangle\)
+\end{definition}
+
+\begin{definition}
+    Предикат \(P: \N^k \ra \{0, 1\}\) называется выразимым в арифметики (или арифметичным), если существует формула \(\phi\) c \(k\) параметрами, такая, что \(P(x_1, \dots x_k) = 1 \Lra \phi(x_1, \dots x_k)\) истинно
+\end{definition}
+
+\begin{example}\indent
+    \begin{enumerate}
+        \item \(x \ge y \Lra \exists z\;x = y + z\)
+        
+        \item \(x \vdots y \Lra \exists z\;x = y \cdot z\)
+        
+        \item \(p\text{ --- простое }\Lra(p > 1 \wedge (\forall q (p \vdots q \ra (q = p \vee q = 1))))\)
+        \item \(d = \text{НОД}(x, y) \Lra (x \vdots d \wedge y \vdots d \wedge \forall t((x\vdots t \wedge y \vdots t) \ra d \vdots t))\)
+        \item \(S\text{ --- степень }2 \Lra \forall d(s \vdots d \ra d = 1 \vee d \vdots 2)\)
+        \item \(S\text{ --- степень }4 \Lra \exists q:(q \text{ степень }2 \wedge s = q^2)\)
+        \item \(S\text{ --- степень }6 \Lra \exists k \exists (s_0, \dots s_k)(s_0 = 1 \wedge s_k = s \wedge \forall i \in [0, k - 1] s_{i + 1} = 6 \cdot s_i)\), но это не формула первого порядка, проблема
+    \end{enumerate}
+\end{example}
+
+Чтобы понять, как действовать в последнем пункте, надо научиться как-то кодировать такие кортежи произвольной длины. Традиционно сущесвует два способа:
+\begin{enumerate}
+    \item \(\beta\)-функция Геделя
+    \item Кодирование Смаллиана
+\end{enumerate}
+
+\subsection{Построение \(\beta\)-функции}
+\begin{lemma}
+    \(\forall k \forall B \exists b > B: b + 1, 2b + 1, \dots (k + 1)b + 1\) --- попарно взаимно просты
+\end{lemma}
+\begin{proof}
+    Возьмем \(b = k!\cdot c\), где у \(c\) нет простых делителей \(> k\). Положим \(d = ((i + 1)b + 1, (j + 1)b + 1)\) --- делитель \((j - i)b = (j - i)k!c \Ra\) все простые делители \(d < k \Ra (i + 1)b\) делится на простой делитель \(d\), но и \((i + 1)b\) не них делится, противоречие при \(d > 1\).
+\end{proof}
+\begin{lemma}
+    \(\forall (s_0, s_1, \dots s_k) \exists a \exists b \forall i \in [0, k]\; s_i = a \mod((i + 1)b + 1)\) --- попарно взаимно просты
+\end{lemma}
+\begin{proof}
+    Следует из КТО и предыдущей леммы
+\end{proof}
+\begin{theorem}[О \(\beta\)-функции]
+    Существует \(\beta(a, b, i)\), задаваемая арифметической формулой, т.ч. \(\forall (s_0, s_1 \dots s_k) \exists (a, b): \forall i \in [0, k] s_i = \beta(a, b, i)\)
+\end{theorem}
+\begin{proof}
+    Положим \(\beta(a, b, i) = a \mod (i + 1)b + 1\)
+\end{proof}
+
+\subsection{Кодирование Смаллиана}
+\(n \mapsto \widehat{n} = bin(n + 1)\text{ без ведущей единицы}\).
+Тогда \((n, m) \mapsto \widehat{k}\), такое, что \(\widehat{k} = \widehat{n}\cdot\widehat{m}\), где \(\cdot\) --- конкатенация
+
+\subsection{Кодирование Смаллиана}
+
+\begin{definition}
+    \(Ar\) --- множество арифметических предикатов
+\end{definition}
+\begin{definition}
+    \(AH = \bigcup_{k = 0}^\infty \Sigma_k\) --- арифметическая иерархия
+\end{definition}
+
+\begin{theorem}
+    \(Ar = AH\) (в том смысле, что прекдикаты из \(Ar\) --- это те и только те, которые формируют \(AH\))
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[] \(Ar \subset AH\). \(\phi\) --- выражает \(P \Ra\) приведем к предварительной нормальной форме. Получилось нечто следующее:
+        \[\dots \forall \dots \exists \dots P(\dots)\]
+        Причем \(P\) --- предикат, полученный композицией \(S, +, \cdot, =\;\;\Ra\) вычислим ариметически.
+    \end{enumerate}
+\end{proof}
