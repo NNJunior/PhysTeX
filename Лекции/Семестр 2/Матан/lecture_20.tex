@@ -1,0 +1,85 @@
+% !TEX root = ../../../main.tex
+
+\begin{corollary}[Необходимое условие дифференцируемости]
+    Если \(f\) дифференцируема в точке \(a\), то \(f\) непрерывна в точке \(a\) и имеет частные производные \(\frac{\delta f}{\delta x_k}(a)\) по всем переменным. Кроме того
+    \[df_a(h) = \sum_{k = 1}^n \frac{\delta f}{\delta x_k}(a)h_k \forall h \in \R^n, h = (h_1, h_2, \dots h_k)\]
+\end{corollary}
+\begin{proof}
+    Положим \(h = x - a\), получаем \(f(x) = f(a) + df_a(x - a) + o(|x - a|), x \ra a\). Откуда \(\lim_{x \ra a}f(x) = f(a) \Ra f\) непрерывна в \(a\). По теореме 2, \(\exists \frac{\delta f}{\delta f_k}(a) = \frac{\delta f}{\delta e_k}(a) = df_a(e_k), k = 1, \dots n\). Кроме того:
+    \[df_a(h) = df_a\left(\sum_{k = 1}^n h_k e_k\right) = \sum_{k = 1}^n h_kdf_a(e_k) = \sum_{k = 1}^n \frac{\delta f}{\delta x_k}(a)h_k\]
+\end{proof}
+
+Координатная функция \(p_k(x_1, \dots x_k) = x_k\) дифференцируема в каждой точке и ее дифференциал \(dx_k, dx_k(h) = h_k\) не зависит от выбора точки. Функции \(dx_1, \dots dx_n\) образуют базис в \(\R^n\), двойственный к базису \(e_1, \dots e_k\)
+
+\begin{definition}
+    Вектор \(\left(\frac{\delta f}{\delta x_1}(a), \dots, \frac{\delta f}{\delta x_n}(a)\right)\) называется градиентом функции \(f\) в точке \(a\) и обозначается \(grad\;f(a)\) или \(\nabla f(a)\) 
+\end{definition}
+
+\begin{note}
+    Если \(f\) дифференцирема в \(a\), то \(f(a + h) = f(a) + (\nabla f(a), h) + o(|h|), h \ra 0\)
+\end{note}
+
+\begin{lemma}
+    Если функция \(f\) дифференцируема в точке \(a\) и \(\nabla f(a) \ne 0\), то \(\forall v \in \R^n, |v| = 1\) выполнено
+    \[\left|\frac{\delta f}{\delta v}(a)\right| \le |\nabla f(a)|\]
+\end{lemma}
+\begin{proof}
+    По теореме 2 \(\frac{\delta f}{\delta v}(a) = df_a(v) = (\nabla f(a), v)\), тогда по КБШ: 
+    \(\left|\frac{\delta f}{\delta v}(a)\right| \le |\nabla f(a)||v| = |\nabla f(a)|\), причем равенство имеет место лишь в случае, когда \(v \parallel \nabla f(a)\), то есть \(v = \pm \frac{\nabla f(a)}{|\nabla f(a)|}\)
+\end{proof}
+
+\begin{note}
+    Т.к. \(\frac{\delta f}{\delta v}(a) = \left.\frac{d}{dt}\right|_{t = 0}f(a + tv)\)
+\end{note}
+
+\begin{definition}
+    Плоскость \(\Pi: y = f(a) + \sum_{k = 1}^n \frac{\delta f}{\delta x_k}(a)(x_k - a_k)\) называется касательной плоскостью к графику \(f\) в точке \(a\) (\(f\) дифференцируема в точке \(a\))
+\end{definition}
+
+\begin{theorem}[Достаточное условие дифференцируемости]
+    Если \(f\) имеет в некоторой окрестности \(a\) частные производные и они непрерывны в \(a\), то \(f\) дифференцируема в этой точке.
+\end{theorem}
+\begin{proof}
+    Пусть частные производные определены в \(B_r(a) \subset U\). Тогда \(\forall (h_1, \dots h_k): |h| < r\ \exists c_k = a_k + v_k\), где \(|v_k| < |h|\), что
+    \[f(a + h) - f(a) = \sum_{k = 1}^n \frac{\delta f}{\delta x_k}(c_k)h_k\]
+    \[f(a + h) - f(a) - \sum_{k = 1}^n \frac{\delta f}{\delta x_k}(a)h_k = \sum_{k = 1}^n \left(\frac{\delta f}{\delta x_k}(c_k) - \frac{\delta f}{\delta x_k}(a)\right)h_k =\]
+    \[\sum_{k = 1}^n\left(\frac{\delta f}{\delta x_k}(c_k) - \frac{\delta f}{\delta x_k}(a)\right) \frac{h_k}{|h|}|h| = \alpha(h)|h|\]
+    Поскольку \(c_k \ra a, \frac{\delta f}{\delta x_k}(c_k) \ra \frac{\delta f}{\delta x_k}(a)\), то \(
+    \alpha(h) \ra 0\) при \(h \ra 0\). (почему??)
+\end{proof}
+
+Пусть \(U \subset \R^n, a \in U, f: U \ra \R^m\).
+
+\begin{definition}
+    Функция \(f\) называется дифференцируемой в точке \(a\), если существует такое линейное отображение \(L_a: \R^n \ra \R^m\), что \(f(a + h) = f(a) = L_a(h) + \alpha(h)|h|, \alpha(h) \ra 0\) при \(h \ra 0\). Линейное отображение \(L_a\) называется дифференциалом \(f\) в точке \(a\) и обозначается \(df_a\) или \(d_af\). 
+\end{definition}
+
+\begin{note}
+    Будем говорить, что \(\alpha(0) = 0\), т.е. \(\alpha\) непрерывна в \(0\), тогда
+    \[f(a + h) = df_a(h) + o(|h|), h \ra 0\]
+\end{note}
+
+\begin{lemma}
+    Функция \(f = (f_1, \dots f_n)\) дифференцируема в точке \(a \Lra \) каждая функция \(f_i\) дифференцируема в точке \(a\).
+\end{lemma}
+
+\begin{example}
+    \(L: \R^n \ra \R^m\) --- линейное отображение, тогда \(L\) дифференцирема в любой точке \(a \in \R^n\) и \(dL_a = L\)
+\end{example}
+\begin{proof}
+    \(L(a + h) - L(a) = L(h) + 0\)
+\end{proof}
+
+Рассмотрим матрицу преобразования стандартных в стандартных базисах в \(\R^n, \R^m\). Приходим к следующему определению:
+\begin{definition}
+    Матрица \(Df(a)\) размера \(m\times n\) определяемая равенством \(df_a(h) = Df(a)h\) называется матрицей Якоби функции \(f\) в точке \(a\).
+\end{definition}
+
+\begin{note}
+    По предыдущему утверждению, \(df_a = (d_af_1, d_af_2\dots d_af_m)\) и \(d_af_i(e_j) = \frac{\delta f_1}{\delta x_j}(a)\), поэтому 
+    \[Df(a) = \left(\begin{array}{lll}
+        \dots & \dots & \dots \\
+        \frac{\delta f_i}{\delta x_1}(a) & \dots & \frac{\delta f_i}{\delta x_n}(a) \\
+        \dots & \dots & \dots \\
+    \end{array}\right)\]
+\end{note}
