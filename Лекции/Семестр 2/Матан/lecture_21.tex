@@ -1,0 +1,75 @@
+% !TEX root = ../../../main.tex
+
+% \begin{example}[Случай функции \(\R \ra \R^m, m \ge 1\)]
+%     Пусть \(\gamma: (\alpha, \beta) \ra \R^m\), \(a \in (\alpha, \beta)\).
+% \end{example}
+
+\begin{definition}
+    Пусть \(\gamma: (\alpha, \beta) \ra \R^m\), \(a \in (\alpha, \beta)\). Если существует \(\lim_{t \ra 0}\frac{\gamma(a + t) - \gamma(a)}{t} \in \R^m\), то этот предел называется производной \(\gamma\) в точке \(a\) и обозначается \(\gamma'(a)\)
+\end{definition}
+
+Имеем: \(\gamma'(a) = \lim_{t \ra 0}\frac{\gamma(a + t) - \gamma(a)}{t} \ra \gamma(a + t) - \gamma(a) = \gamma'(a) + t\sigma(t)\), где \(\sigma(t) = o(t), t \ra 0\). Тогда \(\gamma\) дифференцируема в \(a \Lra \exists\) производная, причем \(d\gamma_a(t) = t\gamma'(a)\).
+
+\subsection{Правила дифференцирования}
+
+Непосредственно из определения вытекает следующее наблюдение:
+Если \(f, g: U \ra \R^m\), где \(U\) --- открыто в \(\R^n\) дифференцируемы в точке \(a, \lambda \) --- константа, то \(f + g: U \ra \R^m\) дифференцируема в \(a\) и \(d(f + g)_a = df_a + dg_a, d(\lambda f)_a = \lambda df_a\)
+
+\begin{theorem}
+    Пусть \(U \subset \R^m, V \subset \R^n\) --- открыты.
+    Если \(f: U \ra \R^m\) дифференцируема в \(a\), \(g: V \ra \R^k\) дифференцируема в \(f(a)\), то \(g \circ f\) дифференцируема в \(a\), то \(d(g\circ f)_a = dg_a \circ df_a\).
+\end{theorem}
+\begin{proof}
+    По определению дифференцируемости,
+    \[f(a + h) = f(a) + df_a(h) + \alpha(h)|h|, \alpha(h) \ra 0, h \ra 0\].
+    \[g(b + u) = g(b) + dg_b(u) + \beta(u)|u|, \beta(u) \ra 0, u \ra 0\].
+    Подставим вместо \(u = \kappa(h) = df_a(h) + \alpha(h)|h|\), получим
+    \[g(f(a + h)) = g(b + \kappa(h)) = g(b) + dg_b(df_a(h) + \alpha(h)|h|) + \beta(\kappa(h))|\kappa(h)| =\]
+    \[= g(b) + dg_b(df_a(h)) + |h|dg_b(\alpha(h)) + \beta (\kappa(h))|\kappa(h)| = g(f(a)) + dg_b \circ df_a(h) + \gamma(h)|h|\]
+    Где \(\gamma(h) = dg_b(\alpha(h)) + \beta(\kappa(h)) \frac{\kappa(h)}{|h|}\). Покажем, что \(\gamma(h)\) бесконечно мала при \(h \ra 0\). Функции \(h \mapsto dg_b(\alpha(h)), h \mapsto \beta(\kappa(h))\) непрерывна в нуле со значением \(0\).
+    \[\exists C > 0 \forall h |df_a(h)| \le C|h| \Ra \frac{|\kappa(h)|}{|h|} \text{ ограничена}\]
+\end{proof}
+
+\begin{corollary}
+    Для матрицы Якоби функции \(f, g\) справедливо равенство:
+    \[D(g \circ f)(a) = Dg(f(a)) \cdot Df(a)\]
+\end{corollary}
+
+Рассотрим случай, когда \(k = 1\).
+\[\left(\frac{\delta (g \circ f)}{\delta x_1}(a), \dots \frac{\delta (g \circ f)}{\delta x_n}(a)\right) = \left(\frac{\delta g}{\delta y_1}(a), \dots \frac{\delta g}{\delta y_n}(a)\right)\cdot\left(\begin{array}{ccc}
+    \frac{\delta f_1}{\delta x_1}(a) & \dots & \frac{\delta f_1}{\delta x_n}(a) \\ 
+    \vdots & \ddots & \vdots \\ 
+    \frac{\delta f_n}{\delta x_1}(a) & \dots & \frac{\delta f_n}{\delta x_n}(a) \\ 
+\end{array}\right)\]
+Тогда \(\frac{\delta (g \circ f)}{\delta x_j}(a) = \sum_{i = 1}^m \frac{\delta g}{\delta x_i} (b) \cdot \frac{\delta f_i}{\delta x_j}(a)\)
+
+\begin{corollary}
+    Если \(f, g: U \ra \R\) дифференцируемы в точке \(a\), то в точке \(a\) дифференцируемы и функции \(fg, \frac{f}{g}, g \ne 0\), причем справедливы формулы \(df(fg)_a = fdg_a + gdf_a, d\left(\frac{f}{g}\right) = \frac{g(a)df_a - f(a)dg_a}{g^2(a)}\)
+\end{corollary}
+\begin{proof}
+    Рассмотрим \(h: U \ra \R^2, h(x) = (f(x), g(x))\) --- дифференцируема в \(a, dh_a = (df_a, dg_a)\). Рассмотрим \(\phi(x, y) = xy \Ra d\phi = ydx + xdy\). Функция \(\phi \circ h\) дифференцируема в \(a\), получаем \(df(fg)_a = fdg_a + gdf_a, d\left(\frac{f}{g}\right) = \frac{g(a)df_a - f(a)dg_a}{g^2(a)}\)
+\end{proof}
+
+\begin{theorem}[Лагранжа о конечных приращениях]
+    Если \(f: U \ra \R^n\), \(U \subset \R^n\) --- открыто, и \(f\) дифференцируема в каждой точке. Обозначим \([a, b] = \{(1 - t)a + tb | t \in [0, 1]\}\). Пусть \([a, b] \subset U\). Если \(\|df_c\| \le M \forall c \in [a, b]\), то \(|f(b) - f(a)| \le M|b - a|\)
+\end{theorem}
+\begin{proof}
+    Рассмотрим функцию \(g: [0, 1] \ra \R^m, g(t) = f(a + t(b - a))\). Тогда \(g'(t) = df_{a + t(b - a)}(b - a) \Ra |g'(t)| \le \|df_{a + t(b - a)}\|\cdot|b - a| \le M|b - a|\). Причем \(f(b) - f(a) = g(1) - g(0)\). По теореме Лагранжа, \(|g(1) - g(0)| \le |g'(c)|, c \in (0, 1)\). \(|f(b) - f(a)| \le M|b - a|\)
+\end{proof}
+
+Пусть \(f: U \ra \R, a \in U\), \(U \subset \R^n\) --- открыто
+\begin{definition}
+    Если частные производная \(\frac{\delta^{k - 1} f}{\delta x_{i_1}\delta x_{i_2}\dots\delta x_{i_{k-1}}}\) порядка \(k - 1\) определена в окрестности точки \(a\) и имеет частную производную в точке \(a\) по переменной \(x_{i_k}\), то 
+    \[\frac{\delta^k f}{\delta x_{i_1}\delta x_{i_2}\dots\delta x_{i_k}} = \frac{\delta }{\delta x_{i_k}}\left(\frac{\delta^{k - 1} f}{\delta x_{i_1}\delta x_{i_2}\dots\delta x_{i_{k-1}}}\right)\]
+    Называется частичной производной \(f\) \(k\)-ого порядка в точке \(a\).
+\end{definition}
+
+\begin{theorem}[Шварц]
+    Если смешанное произведение \(\frac{\delta^2 f}{\delta x \delta y}, \frac{\delta^2 f}{\delta y \delta x}\) определены в некоторой окрестности \((x_0, y_0)\) и непрерывны в самой точке, то \(\frac{\delta^2 f}{\delta x \delta y}(x_0, y_0) = \frac{\delta^2 f}{\delta y \delta x}(x_0, y_0)\)
+\end{theorem}
+\begin{proof}
+    \[\exists \delta > 0 \frac{\delta^2 f}{\delta x \delta y}\text{ ограничены в квадрате }\{(x, y) | |x - x_0| < \delta, |y - y_0| < \delta\}\]
+    Рассмотрим функцию \(\Delta(t) = f(x_0 + t, y_0 + t) - f(x_0 + t, y_0) - f(x_0, y_0 + t) + f(x_0, y_0), |t| < \delta\)
+    Применим к функции \(\phi(x) = f(x, y_0 + t) - f(x, y_0)\). По теореме Лагранжа о среднем значении на отрезке с \(x_0 + t, x_0\) верно \(\phi'(x) = \frac{\delta f}{\delta x}(x, y_0 + t) - \frac{\delta f}{\delta x}(x, y_0)\). \(\exists \theta_1 = \theta_2(t) \in (0, 1)\;\; \phi(x_0 + t) - \phi(x_0) = \phi'(x_0 + \theta_1t)t\). Т.к. \(\Delta(t) = \phi(x_0 + t) - \phi(x_0)\), то \(\Delta(t)  \frac{\delta f}{\delta x}(x_0 + \theta_1 t, y_0 + t) - \frac{\delta f}{\delta x}(x_0 + \theta_1t, y_0)\). Применим к функции \(\psi(y) = \frac{\delta f}{\delta x}(x_0 + \theta_1 t, y)\) теорему Лагранжа о среднем на отрезке с концами \(y_0 + t, y_0\). 
+    \(\phi(y) = \frac{\delta^2 f}{\delta y \delta x}(x_0 + \theta_1 t, y)\). \(\exists \theta_2 = \theta_2(t) \in (0, 1) \psi(y_0 + t) - \psi(y_0) = \psi'(y_0 + \theta_2t)t\). Т.к. \(\Delta(t) = (\psi(y_0 + t) - \psi(y_0))t\), то \(\frac{\Delta(t)}{t^2} = \frac{\delta^2 f}{\delta y \delta x}(x_0 + \theta_1 t, y_0 + \theta_2t)\). \(\Ra \exists \lim_{t \ra 0} \frac{\Delta(t)}{t^2} = \frac{\delta^2 f}{\delta y\delta x}(x_0, y_0)\)
+\end{proof}
