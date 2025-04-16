@@ -1,0 +1,154 @@
+% !TEX root = ../../../main.tex
+
+
+\section{Потоки}
+
+\begin{definition}
+  Сеть (транспортная сеть) - кортеж $(G, s, t, c)$, где 
+  \begin{enumerate}
+    \item $G$ - ориентированный граф
+    \item $s, t$ - вершины графа, $s$ называется истоком, $t$ - стоком.
+    \item $c$ : $E \to \Z \ge 0$ - ограничение на ребро ($capacity$) 
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Поток в сети $f: V \times V \to \Z$ удовлетворяет свойствам:
+  \begin{enumerate}
+    \item $\forall(u, v) f(u, v) \le c(u, v)$
+    \item $\forall (u, v): f(u, v) = -f(v, u)$ - \textit{антисимметричность потока}
+    \item $\forall v \in V \setminus \{s, t\}: \sum_{u \in V} f(v, u) = 0$ 
+  \end{enumerate} 
+\end{definition}
+
+\textit{Последнее условие можно понимать, как правило "сумма втекающего потока равна сумме вытекающего"}
+
+\begin{note}
+По умолчанию считаем, что для всех пар вершин без ребер пропускная способность $c$ равна 0.
+\end{note}
+
+\begin{definition}
+  Величина потока $f$: $$ |f| = \sum_{v \in V} f(s, v)$$
+\end{definition}
+
+\begin{definition}
+  Пусть $G$ - сеть, $f$ - поток в ней. Остаточная сеть $$G_f: \forall(u, v) c_f(u, v) = c(u, v) - f(u, v)$$
+  
+  \textit{$c_f$ - остаточная пропускная способность ребра.}
+
+  \textit{Если появляется ребро с $c = 0$, то его в граф удобно не добавлять.}
+\end{definition}
+
+\begin{lemma}
+  $|f| = max \Longleftrightarrow$ в $G_f$ нет пути из $s$ в $t$. 
+\end{lemma}
+
+\begin{definition}
+Пусть $G$ - сеть, $(S, T)$ - разрез, если $s \in S, t \in T$; $S \sqcup = V(G)$.  
+
+\textbf{Величина разреза:} $$c(S, T) = \sum_{u \in S, v \in T} c(u, v)$$
+
+\textbf{Величина потока через разрез:}$$f(S, T) = \sum_{u \in S, v\in T}$$
+\end{definition}
+
+\begin{proposition}
+  Если $(S, T) - $разрез, а $f$ - поток, то $f(S, T) = |f|$
+\end{proposition}
+
+\begin{proof}
+\text{}
+
+
+  $f(S, T) = f(S, V) - f(S, S) = f(S, V) = f(\{s\}, V) + f(S\setminus \{s\}, V) = |f| + 0 = |f|$
+\end{proof}
+
+\begin{theorem}{(Форда-Фалкерсона)} Следующие условия эквивалентны:
+  \begin{enumerate}
+    \item $|f| - max$
+    \item в $ G_f$ нет пути из s в $t$
+    \item $\exists (S, T): c(S, T) = |f|$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \text{}
+
+
+  \begin{enumerate}
+    \item[$1 \then 2$] Если поток максимален, но в $G_f$ есть путь, то пустим по нему еще поток, увеличивая размер $|f|$
+    \item[$2 \then 3$] $S$ - все вершины, достижимые из $s$ в $G_f$ $T = V \setminus S$, то есть недостижимые 
+    $$c(S, T) = \sum_{u \in S, v \in T} c(u, v) = \sum_{u \in S, v \in T} f(u, v) = |f|$$
+    \item[$3 \then 1$] Раз любой поток меньше любого разреза $|f|_{max} = c_{min}(S, T) $
+  \end{enumerate}
+\end{proof}
+
+\subsection{Алгоритм Форда-Фалкерсона}
+
+Пока в $G_f$ есть путь из $s$ в $t$. Вдоль этого пути пускает $min_e c_f(e)$ потока, насыщая какое-то ребро.
+
+\textbf{Асимптотика}: $O(F \cdot E)$
+
+Однако такой алгоритм может работать неоптимально, например, находить много раз путь размера 3, а не 1000. 
+
+\subsection{Алгоритм Эдмондса-Карпа}
+
+\textbf{Основная идея:} $dfs \to bfs$
+
+Мы будем искать всегда кратчайший по количеству ребер путь из в $s$ в $t$
+
+\textbf{Асимптотика:} O$(VE^2)$
+
+\begin{lemma}
+  Пусть $G_f$ и $G_{f'}$ - две последовательных состояния остаточной сети в последнем алгоритме. Обозначим за $d(v) = dist(s, v)$ в $G_f$, аналогично определим $d'(v)$.
+
+  Тогда $\forall v: d(v') \ge d(v)$
+\end{lemma}
+
+\begin{proof}
+  Пусть это не так. Среди всех вершин с $d(v') < d(v)$ возьмем ту, в которой значение $d(v')$ минимально. Тогда
+
+  $d'(u) + 1 = d'(v) \then d'(u) < d'(v) \then d'(u) \ge d(u)$ из минимальности $d'(v)$
+
+  \begin{enumerate}
+    \item[Случай 1] Ребро $(u, v)$ было в $G_f$. 
+    \begin{proof}
+      $d(v) \le d(u) + 1 \le d'(u) + 1 = d'(v)$. Противоречие
+    \end{proof}
+
+    \item[Случай 2] Ребра $(u, v)$ не было в $G_f$. 
+    \begin{proof}
+      Это значит, что при переходе от $G_f$ до $G_{f'}$ пускается поток вдоль обратного ребра.
+
+      $d(v) = d(u) - 1 \le d'(u) - 1 = d'(v) - 2$. Противоречие
+    \end{proof}
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+  Каждое ребро в алгоритме ЭК насыщается не больше $O(V)$. 
+\end{lemma}
+
+\subsection{Техника масштабирования}
+
+\textbf{Основная идея:} ищем поток величины $2^k$
+
+Пусть $C$ - максимальная $capacity$ в исходном графе.
+
+Далее, пишем цикл:
+\begin{center}
+  \begin{verbatim}
+    for k = log C, ..., 0:
+      все c_f -> [c_f / 2^k]
+      находим поток в этом графе
+      разжимаем обратно все ребра, умножая на 2^k
+  \end{verbatim}
+\end{center}
+
+Таким образом, асимптотика можно преобразовать до $O(E^2 \log{C})$
+
+\begin{lemma}
+  Пусть $F - max$ поток в исходной сети. $F_k$ - суммарный найденный поток после итераций $\log{C} ... k$. Тогда $F \le F_k + 2^k \cdot E$
+\end{lemma}
+\begin{lemma}
+  $\forall k$ алгоритм при поиске потока находит не больше $2E$ путей.
+\end{lemma}
