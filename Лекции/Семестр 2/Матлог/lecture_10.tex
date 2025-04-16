@@ -1,0 +1,90 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Важная Теорема}
+
+\begin{definition}
+    \(Ar\) --- множество арифметических предикатов
+\end{definition}
+\begin{definition}
+    \(AH = \bigcup_{k = 0}^\infty \Sigma_k\) --- арифметическая иерархия
+\end{definition}
+
+\begin{theorem}
+    \(Ar = AH\) (в том смысле, что прекдикаты из \(Ar\) --- это те и только те, которые формируют \(AH\))
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[] \(Ar \subset AH\). \(\phi\) --- выражает \(P \Ra\) приведем к предварительной нормальной форме. Получилось нечто следующее:
+        \[\dots \forall \dots \exists \dots P(\dots)\]
+        Причем \(P\) --- предикат, полученный композицией \(S, +, \cdot, =\;\;\Ra\) вычислим ариметически.
+
+        \item[] \(Ar \supset AH\). Покажем, что любой разрешимый предикат можно превратить в арифметическую формулу. Тогда выражение некоторого элемента арифметической иерархии можно будет представить как какое-то количество кванторов + арифметическая формула \(\Ra\) получим желаемое. Пусть \(M\) --- Машина Тьюринга, вычисляющая \(R\), то есть \(R(x, y_1, y_2, \dots y_k) = 1\Lra M\), начав с конфигурации \(C_0 \eqcirc q_1x\#y_1\#\dots\#y_k\), сделав некоторое число ходов, приходит в \(q_a\). Более формально, \(M\) обходила состояния \((C_0, C_1, \dots C_t)\), так, что \(C_i \mapsto C_{i + 1}\) в соответствии с программой. Тогда нам нужно выразить предикат 
+        \[\exists(C_0, C_1, \dots C_k)(C_0 \eqcirc q_1x\#y_1\#\dots\#y_k \wedge \forall i (C_{i} \mapsto C_{i + 1} \text{ корректно}) \wedge C_t \eqcirc q_a)\]
+        Тут у нас возникает несколько проблем:
+        \begin{enumerate}
+            \item Как записать \(\exists (C_0, C_1, \dots C_t)\) --- решается \(\beta\)-функцией
+            \item Как записывать корректные переходы и различные операции со строками, в терминах натуральных чисел --- эту проблему решает кодирование Смаллиана
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\subsection{Доказательства в формальной арифметике}
+\subsubsection{Аксиомы}
+\begin{enumerate}
+    \item[А] Аксиомы исчисления высказываний и исчисления предикатов
+    \item[Б] \textbf{Аксиомы равенства} 
+    \begin{enumerate}
+        \item[Б1] \textbf{Аксиомы отношения эквивалентности}
+        \begin{enumerate}
+            \item \(\forall x\;\;x = x\)
+            \item \(\forall x \forall y (x = y \ra y = x)\) 
+            \item \(\forall x \forall y \forall z ((x = y \wedge y = z) \ra x = z)\)
+        \end{enumerate}
+        \item[Б2] \textbf{Аксиома замены} \(\forall x, y, z, t ((x = y \wedge z = t) \ra x + z = y + t)\)
+    \end{enumerate}
+    \item[В] \textbf{Аксиомы арифметики (Аксиомы Пеано)}
+    \begin{enumerate}
+        \item[В1] \textbf{Аксиомы порядка}
+        \begin{enumerate}
+            \item \(\nexists x: S(x) = 0\)
+            \item \(\nexists x, y: (x \ne y \wedge S(x) \ne S(y))\)
+            \item \textbf{Принцип индукции} \((\phi(0) \wedge \forall n \phi(n) \ra \phi(S(n))) \ra \forall x \phi(x)\).
+            Откуда берем \(\phi\)? Есть несколько вариантов. Принцип первого порядка: \(\phi\) --- произвольная формула с одним параметром. Принцип второго порядка: гласит, что это выполнено \(\forall \phi\)
+        \end{enumerate}
+        \item[В2] \textbf{Аксиомы сложения}
+        \begin{enumerate}
+            \item \(x + 0 = x\)
+            \item \(x + S(y) = S(x + y)\)
+        \end{enumerate}
+        \item[В2] \textbf{Аксиомы умножения}
+        \begin{enumerate}
+            \item \(x \cdot 0 = 0 \)
+            \item \(x \cdot S(y) = x\cdot y + x\)
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Правила вывода}
+Те же самые, что и в формулах первого порядка
+
+Иногда вместо \(S(x)\) пишут просто \(Sx\)
+
+\begin{proposition}
+    \[2 + 2 = 4\]
+\end{proposition}
+\begin{proof}
+    Хотим доказать, что \(SS0 + SS0 = SSSS0\).
+    \[SS0 + SS0 = S(SS0 + S0) = S(S(SS0 + 0)) = SSSS0\]
+\end{proof}
+
+\begin{proposition}
+    \[0 + x = x\]
+\end{proposition}
+\begin{proof}
+    Почему \(0 + x = x\)? Рассмотрим \(\phi(x) = (0 + x = x)\) (как булеву формулу)
+    \begin{enumerate}
+        \item \(\phi(0)\) --- по аксиоме В2.i
+        \item \(0 + x = x \Ra 0 + Sx = S(0 + x) = Sx\). Получили, что \(\phi(x) \ra \phi(x + 1)\)
+    \end{enumerate}
+    Тогда по индукции доказали, что \(\forall x \phi(x)\)
+\end{proof}
