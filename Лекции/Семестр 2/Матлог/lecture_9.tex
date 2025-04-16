@@ -19,7 +19,7 @@
 \end{definition}
 \begin{definition}
     \(B \in \Pi_k\), если существует разрешимый предикат \(R\), такой, что
-    \[\forall x (x \in A \Lra \forall y_1 \exists y_2 \forall y_3 \dots y_k R(x, y_1, y_2, \dots^\exists_\forall y_k))\]
+    \[\forall x (x \in B \Lra \forall y_1 \exists y_2 \forall y_3 \dots y_k R(x, y_1, y_2, \dots^\exists_\forall y_k))\]
 \end{definition}
 
 Итак, по определениям выше:
@@ -105,26 +105,36 @@
     Положим \(\beta(a, b, i) = a \mod (i + 1)b + 1\)
 \end{proof}
 
+\begin{proposition}
+    Через \(\beta\)-функцию можно выразить предикат \(m = 2^n\)
+\end{proposition}
+\begin{proof}
+    \(\exists (m_0, m_1, \dots m_k): m_0 = 1 \wedge m_n = m \wedge \forall i\;m_i = 2m_{i - 1}\).
+\end{proof}
+
+
 \subsection{Кодирование Смаллиана}
 \(n \mapsto \widehat{n} = bin(n + 1)\text{ без ведущей единицы}\).
 Тогда \((n, m) \mapsto \widehat{k}\), такое, что \(\widehat{k} = \widehat{n}\cdot\widehat{m}\), где \(\cdot\) --- конкатенация
 
-\subsection{Кодирование Смаллиана}
+Второе определение: строим биекцию между строками из 0 и 1 и натуральными числами по возрастанию длины, слова одинаковой длины сравниваем лексигографически
+\[\begin{array}{ccccccccccc}
+    0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & \dots \\
+    \epsilon & 0 & 1 & 00 & 01 & 10 & 11 & 000 & 001 & 010 & \dots
+\end{array}\]
 
-\begin{definition}
-    \(Ar\) --- множество арифметических предикатов
-\end{definition}
-\begin{definition}
-    \(AH = \bigcup_{k = 0}^\infty \Sigma_k\) --- арифметическая иерархия
-\end{definition}
-
-\begin{theorem}
-    \(Ar = AH\) (в том смысле, что прекдикаты из \(Ar\) --- это те и только те, которые формируют \(AH\))
-\end{theorem}
-\begin{proof}\indent
+\begin{proposition}
+    \(\exists\) арифметическая формула \(S(a, b, x)\), такое, что
     \begin{enumerate}
-        \item[] \(Ar \subset AH\). \(\phi\) --- выражает \(P \Ra\) приведем к предварительной нормальной форме. Получилось нечто следующее:
-        \[\dots \forall \dots \exists \dots P(\dots)\]
-        Причем \(P\) --- предикат, полученный композицией \(S, +, \cdot, =\;\;\Ra\) вычислим ариметически.
+        \item \(\forall a, b \{x | S(a, b, x) = 1\}\) конечно
+        \item \(S\) конечно \(\Lra \exists (a, b) \{x | S(a, b, x) = 1\} = S\)
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Рассмотрим \(S(a, b, x): axa \sqsupset\sqsubset b \wedge |x| < |a|\) (\(axa\) является подсловом \(b\))
+    \begin{enumerate}
+        \item очевидно, т.к. \(|x| < |a|\)
+        \item рассмотрим a = \(1\underbrace{0 \dots 0}_{L}1, L > \max \{|x_i|\}, b = ax_1ax_2a_3a\dots ax_ka\)
     \end{enumerate}
 \end{proof}
+

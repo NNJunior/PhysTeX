@@ -1,0 +1,89 @@
+% !TEX root = ../../../main.tex
+
+\subsection{7-ая проблема Гильберта}
+\begin{problem}[7-ая проблема Гильберта]
+    Верно ли, что \(\alpha, \beta \in \mathbb{A} \Ra \alpha^\beta \in \mathbb{A}\)?
+\end{problem}
+
+\begin{theorem}
+    Если \(\alpha \notin \{0, 1\}, \alpha \in \mathbb{A}, \beta \in A \setminus \Q \Ra \alpha^\beta \notin \mathbb{A}\)
+\end{theorem}
+Доказана А.О. Гельфандом.
+
+\begin{proposition}
+    \(e^\pi \notin \mathbb{A}\)
+\end{proposition}
+\begin{proof}
+    Предположим противное. Известно, что \((e^\pi)^i = e^{i\pi} = -1 \Ra -1\) должно быть Трансцендентным
+\end{proof}
+
+\section{Геометрия чисел}
+\begin{theorem}[Минковского]
+    Пусть \(\Omega \subset \R^n\), \(\Omega\) --- выпукло, симметрично относительно \(O\), и \(V(\Omega) > 2^n\) (или \(\ge 2^n\) для случая замкнутого \(\Omega\)). Тогда \(\Omega \cap \Z^n \setminus \{0\} \ne \emptyset\)
+\end{theorem}
+\begin{proof}
+    Рассмотрим \(N_p = \left|\frac{1}{p}\Z^n\cap \Omega\right|\). Интуитивно понятно (дается без доказательства), что 
+    \[\frac{N_p}{p^n} \ra V(\Omega)\]
+    Т.к. \(\frac{N_p}{p^n}\) --- количество ''кубиков'' размера \(\frac{1}{p}\) внутри \(\Omega\)
+
+    \[\Ra \exists p_0 \forall p > p_0 \frac{N_p}{p} > 2^n \Ra N_p > (2p)^n\]
+
+    Тогда рассомотрим \(a = \left(\frac{a_1}{p}, \frac{a_2}{p}, \dots \frac{a_n}{p}\right), b = \left(\frac{b_1}{p}, \frac{b_2}{p}, \dots \frac{b_n}{p}\right) \in \Omega\), такие, что \(\forall i\;\;a_i \equiv_{2p} b_i \Ra \frac{a - b}{2} \in \Z^n \setminus \{0\}\)
+\end{proof}
+
+Рассмотрим \(\R^n\) и базис в нем \(a_1, a_2, \dots a_n\). 
+\begin{definition}
+    Решетка --- это множество точек \(\Lambda = \{b_1a_1 + \dots + b_na_n | b_i \in \Z\}\)
+\end{definition}
+\begin{example}
+    В \(\R^2\) и базиса \((0, 1), (1, 0)\) решекой является \(\Z^2\)
+\end{example}
+
+\begin{theorem}
+    \(\Lambda \subset \R^n\) является решеткой \(\Lra \Lambda\) образует группу по сложению, \(\Lambda\) дискретно и ''заполняет все пространство''. То есть, если 
+    \begin{enumerate}
+        \item \textbf{Дискретность:} Каждая точка \(\Lambda\) изолированная
+        \item \textbf{''Заполнение всего \(\R^n\)'':}  \(\exists r > 0 \forall x \in \Lambda \stackrel{\circ}{B}(x) \cap \Lambda \ne \emptyset\)
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+    Определителем \(\Lambda\) (детерминантом \(\Lambda\)) называется величина \(\det \Lambda\), равная модулю определителя матрицы, составленной из векторов произвольного базиса \(\Lambda\).
+\end{definition}
+
+\begin{theorem}[Минковского]
+    Пусть \(\Omega \subset \R^n\) --- выпуклое и симметричное относительно \(O\) множество. Пусть \(\Lambda\) --- решетка, и \(V(\Omega) > 2^n\det \Lambda\). Тогда \((\Omega \cap \Lambda) \setminus \{0\} \ne \emptyset\)
+\end{theorem}
+\begin{proof}
+    Доказательство аналогично доказательству обычной теоремы Минковского.
+\end{proof}
+
+\begin{definition}
+    Критический определитель \(\Omega\) --- \(\Delta(\Omega) = \inf\{x | \exists \Lambda \subset \R^n: \det \Lambda = x, (\Omega \cap \Lambda) \setminus \{0\} \ne \emptyset\}\)
+\end{definition}
+
+\begin{proposition}
+    Из теоремы минковского следует, что \(\forall\Omega\) --- выпуклого и симметрично относительно \(O\)
+    \[\frac{V(\Omega)}{\Delta(\Omega)}\le 2^n\]
+\end{proposition}
+\begin{proof}
+    Предположим, что \(\frac{V(\Omega)}{\Delta(\Omega)} > 2^n\). Тогда \(V(\Omega) > 2^n \Delta(\Omega) \Ra \exists \Lambda: V(\Omega) > 2^n \det \Lambda, (\Omega \cap \Lambda) \setminus \{0\} \ne \emptyset\)
+\end{proof}
+
+Возникает логичный вопрос: \(\frac{V(\Omega)}{\Delta(\Omega)} \ge ?\)
+
+
+\begin{theorem}[1945г. Минковского-Главка]
+    \(\frac{V(\Omega)}{\Delta(\Omega)} \ge 1\)
+\end{theorem}
+\begin{theorem}[1950е годы. Роджерс, Шмидт]
+    \(\frac{V(\Omega)}{\Delta(\Omega)} \ge cn\)
+\end{theorem}
+
+\begin{definition}
+    Октаэдр --- это множество точек \(O^n = \{(x_1, x_2, \dots x_n) | |x_1| + |x_2| + \dots + |x_n| \le 1\}\).
+\end{definition}
+
+\begin{proposition}
+    \(V(O^n) = \frac{2^n}{n!}\)
+\end{proposition}
