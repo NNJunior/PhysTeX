@@ -1,0 +1,45 @@
+% ! TEX root = ../../../main.tex
+
+\begin{theorem}[Минковский-Главка]
+    \(\forall \epsilon > 0 \exists n \ge N \exists \Lambda: (\Omega \cap \Lambda) \setminus \{0\} = \emptyset, \frac{V(\Omega)}{\det \Lambda} \ge 1 - \epsilon\)
+\end{theorem}
+\begin{proof}[Доказательство для Октадра]
+    Помним, что у нас была теорема о том, что \(\exists f: f = O(x^{0,525\dots}) \forall x \exists p \in [x, x + f(x)]\). Из этого следует, что \(\forall \epsilon > 0 \exists x_0: \forall x \ge x_0 \exists p \in [x, (1 + \epsilon)x]\).
+    Зафиксируем \(\epsilon > 0\) и выберем \(N, p > N\) (такое \(N\) существует по утверждению выше) так, что \((1 - \epsilon)\frac{n!}{2^n} \le p \le \left(1 - \frac{\epsilon}{2}\right)\frac{n!}{2^n}\). Рассмотрим 
+    \[\frac{V(O^n)}{\det \Lambda_{\vec{a}}} = \frac{\frac{2^n}{n!}}{\frac{1}{p}} = \frac{2^n}{n!}p \ge (1 - \epsilon) \frac{2^n}{n!} \frac{n!}{2^n} \ge 1 - \epsilon\]
+\end{proof}
+
+\begin{definition}
+    Положим \(\vec{a} = \left(\frac{a_1}{p}, \frac{a_2}{p} \dots \frac{a_n}{p}\right), 1 \le a_i \le p\). Тогда решетка \(\langle\Z^n, \vec{a}\rangle_\Z = \{\vec{a}l + \vec{b}: l \in \Z, \vec{b} \in \Z^n\}\) называется рациональной центрировкой.
+\end{definition}
+\begin{note}
+    Заметим, что \(\Lambda_{\vec{a}} \subset \frac{1}{p}\Z^n, \det \frac{1}{p}\Z^n = \frac{1}{p^n}\)
+\end{note}
+\begin{proposition}
+    \(\det \Lambda_{\vec{a}} = \frac{1}{p}\)
+\end{proposition}
+
+\begin{lemma}
+    \[\left|\Lambda_{\vec{a}} \cap O^n \setminus \underbrace{\{0, \pm \vec{e_1}, \dots , \pm \vec{e_n}\}}_{\epsilon}\right| = \sum_{l = 1}^{p - 1}\sum_{\vec{x} \in \left(\frac{1}{p}\Z^n \cap O^n \setminus \epsilon\right)} \delta(\vec{a}l - \vec{x})\]
+    Где \(\delta(\vec{y}) = \left\{\begin{array}{l}
+        1, y \in \Z^n \\
+        0, \text{ иначе}
+    \end{array}\right.\)
+\end{lemma}
+
+Докажем аналогичное утверждение для Октадра
+\begin{theorem}
+    \(\forall \epsilon > 0 \exists N \forall n > N \exists \vec{a} (\Omega \cap \Lambda_{\vec{a}}) \setminus \{0, \pm \vec{e_1}, \pm \vec{e_2} \dots , \pm \vec{e_n}\} = \emptyset\)
+\end{theorem}
+\begin{proof}
+    Рассомотрим 
+    \[\frac{1}{p^n}\sum_{a_1 = 1}^p\sum_{a_2 = 1}^p\dots \sum_{a_n = 1}^p |\Lambda_{\vec{a}} \cap O^n \setminus \epsilon| = \frac{1}{p^n}\sum_{a_1 = 1}^p\sum_{a_2 = 1}^p\dots \sum_{a_n = 1}^p\sum_{\vec{x}} \delta(\vec{a}l - \vec{x}) = \]
+    \[ = \frac{1}{p^n}\sum_{l = 1}^{p - 1}\sum_{\vec{x}}\left(\sum_{a_1 = 1}^p\sum_{a_2 = 1}^p\dots \sum_{a_n = 1}^p \delta(\vec{a}l - \vec{x})\right) = (*)\]
+    Зафиксируем \(l \in \{1, \dots p - 1\}, \vec{x} \in \frac{1}{p}\Z^n \cap O^n \setminus \epsilon, \vec{x} = \left(\frac{x_1}{p}, \dots \frac{x_n}{p}\right) \Ra \vec{a}l - \vec{x} = \left(\frac{a_1l - x_1}{p}, \dots \frac{a_nl - x_n}{p}\right)\). Обозначим за \(N_p\) количество точек, попавших внутрь Октадра. 
+    Покроем наш октаэдр другим октаэдром побольше, так, чтобы каждый прямоугольничек, пересекающийся с нашим октаэдром, покрылся. Тогда наш октаэдр надо растянуть в \(\le 1 + \frac{n}{p}\) раз. Рассмотрим \(\frac{N_p}{p^n} \le \frac{2^n}{n!} \left(1 + \frac{n}{p}\right)^n\). 
+    \[N_p \le \frac{2^n}{n!}p^n\left(1 + \frac{n}{p}\right)^n\]
+    Заметим, что
+    \[(*) = \frac{1}{p^n}\sum_{l = 1}^{p - 1}\sum_{\vec{x}}1 \le \frac{1}{p^n}\sum_{l = 1}^{p - 1}\frac{2^n}{n!}p^n\left(1 + \frac{n}{p}\right)^n < p \frac{2^n}{n!} \left(1 + \frac{n}{p}\right)^n \le \left(1 - \frac{\epsilon}{2}\right)\frac{n!}{2^n} \frac{2^n}{n!}\left(1 + \frac{n}{\left(1 - \epsilon\right)\frac{n!}{2}}\right)^n\]
+    При некотором \(n \ge N_2\):
+    \[\le \left(1 - \frac{\epsilon}{2}\right)\left(1 + \frac{\epsilon}{2}\right) = 1 - \frac{\epsilon^2}{4} \le 1\]
+\end{proof}

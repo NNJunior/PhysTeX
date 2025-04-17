@@ -68,6 +68,7 @@
       <lecture name="Лекция 8" path="Лекции/Семестр 2/ОКТЧ/lecture_8" description="Цепные дроби. Теорема Лиувилля" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="27.03.25"/>
       <lecture name="Лекция 9" path="Лекции/Семестр 2/ОКТЧ/lecture_9" description="Иррациональность и трансцендентность числа e" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="03.04.25"/>
       <lecture name="Лекция 10" path="Лекции/Семестр 2/ОКТЧ/lecture_10" description="Решетки" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="10.04.25"/>
+      <lecture name="Лекция 10" path="Лекции/Семестр 2/ОКТЧ/lecture_11" description="Теорема Минковского-Главки для октаэдра" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="17.04.25"/>
     </subject>
     <subject name="Технологии программирования" description="
 Основные ссылки по курсу:&#xA;
