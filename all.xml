@@ -55,6 +55,8 @@
       <lecture name="Лекция 19" path="Лекции/Семестр 2/Матан/lecture_19" description="Частные производные. Дифференцируемые функции в R^n" setting="Лекции/Семестр 2/Матан/setting" date="08.04.25"/>
       <lecture name="Лекция 20" path="Лекции/Семестр 2/Матан/lecture_20" description="Еще какие-то результаты (мама спаси)" setting="Лекции/Семестр 2/Матан/setting" date="11.04.25"/>
       <lecture name="Лекция 21" path="Лекции/Семестр 2/Матан/lecture_21" description="Спасите" setting="Лекции/Семестр 2/Матан/setting" date="15.04.25"/>
+      <lecture name="Лекция 22" description="Спасите" date="18.04.25"/>
+      <lecture name="Лекция 23" path="Лекции/Семестр 2/Матан/lecture_23" description="Алгебры множеств и внешняя мера" setting="Лекции/Семестр 2/Матан/setting" date="22.04.25"/>
     </subject>
     <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Лекции/Семестр 2/ОКТЧ/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/ОКТЧ/lecture_1" description="Квадратичные вычеты. Начало" setting="Лекции/Семестр 2/ОКТЧ/setting"  date="06.02.25"/>

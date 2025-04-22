@@ -1,0 +1,115 @@
+% !TEX root = ../../../main.tex
+
+\begin{proposition}
+    Если \(B, B_1, \dots B_k\) --- брусы и \(B \in \bigcup B_i \Ra |B| \le \sum|B_i|\)
+\end{proposition}
+
+\begin{proposition}
+    Для любого бруса \(B\) и любого \(\epsilon > 0\) найдутся \(B' \subset B \subset B^\circ\), т.ч. 
+    \(B'\) --- замкнутый, \(B^\circ\) --- открытый, и \(|B'| > |B| - \epsilon, |B^\circ| < |B| + \epsilon\).
+\end{proposition}
+\begin{proof}
+    Если \(B = \emptyset \Ra B' = B^\circ = \emptyset\). Пусть \(|B| > 0 \Ra B = I_1\times \dots \times I_n, \delta I_k = \{a_k, b_k\}\). Положим \(B'_\delta = [a_1 - \delta, b_1 + \delta] \times \dots \times [a_n - \delta, b_n + \delta], B'_\delta = [a_1 + \delta, b_1 - \delta] \times \dots \times [a_n + \delta, b_n - \delta]\). Заметим, что \(|B'_\delta|, |B''_\delta| \ra |B|\) при \(\delta \ra 0\). В этом случае \(B'_\delta, B''_\delta\) будут искомыми. Если же \(|B| = 0\), то полоижм \(B^\circ = \emptyset, B' = B'_\delta\) для некоторого \(\delta\).
+\end{proof}
+
+\begin{lemma}
+    Каждое непустное открытое множество \(U \subset \R^n\) представимо в виде счетного объединения попарно непересекающихся кубов.
+\end{lemma}
+\begin{proof}
+    Рассмотрим сетку размера 1. Добавим все кубы, которые полностью лежат в нашем множестве. Рассморим решетку размера \(\frac{1}{2}\), сделаем то же самое. Получили счетное объединение не более чем счетных множеств  \(\Ra\) получили, что хотели.
+
+    Формально:
+
+    Куб \(\left[\frac{k_1}{2^m}\right) \times \left[\frac{k_n}{2^m}\right)\) назовем двоичным кубом ранга \(m\). Рассмотрим \(A_0\) --- множество кубов ранга \(0\), лежащих в \(U\). Определим: \(A_m\) --- множество кубов ранга \(m\), лежащих в \(U\), но не содержащихся в \(A_0, \dots A_m\). Положим \(A = \bigcup A_i\) --- счетное множество кубов. Покажем, что \(U = \bigcup_{Q \in A} Q\). Пусть \(x \in U \Ra \overline{B}_r(x) \subset U\). Найдем такое \(m\), что \(\frac{\sqrt{n}}{2^m} \le r\). Тогда \(Q_m(x) \subset \overline{B}_r(x)\). Положим \(m_0 = \min\{m \in \N_0: Q_m(x) \subset U\}\). Тогда \(Q_m(x) \not\subset U, m < m_0, Q_{m_0}(x) \subset U \Ra Q_{m_0}(x) \in A_{m_0} \Ra x \in \bigcup_{Q \in A} Q\)
+\end{proof}
+
+\subsection{Алгебра Множеств}
+\begin{definition}
+    Семейство \(\mathcal{A} \subset 2^{\R^n}\) называеся алгеброй, если выполнены следующие условия:
+    \begin{enumerate}
+        \item \(\emptyset \in \mathcal{A}\)
+        \item \(E \in \mathcal{A} \Ra E^c = \R^n \setminus E \in \mathcal{A}\)
+        \item \(E_1, E_2, \dots E_k \in \mathcal{A}, E = \bigcup^k_{n = 1} E_n \Ra E \in \mathcal{A}\).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Алгебра \(\mathcal{A} \subset 2^{\R^n}\) называеся \(\sigma\)-алгеброй, если выполнено:
+    \[E_1, E_2, \dots \in \mathcal{A}, E = \bigcup^\infty_{k = 1} E_k \Ra E \in \mathcal{A}\]
+\end{definition}
+
+\begin{note}
+    \begin{enumerate}
+        \item \(\R^n \subset \mathcal{A}\)
+        \item \(\bigcup^\infty_{k = 1} E_k \in \mathcal{A} \Ra \bigcap^\infty_{k = 1} E_k\)
+        \item \(A, B \in \mathcal{A} \Ra A \setminus B \in \mathcal{A}\)
+    \end{enumerate}
+\end{note}
+
+\begin{note}
+    Если \(\mathcal{A}_i\) --- \(\sigma\)-алгербы (\(i \in I\)), то \(\bigcap_{i \in I} A_i\) --- \(\sigma\)-алгебра
+\end{note}
+
+\begin{definition}
+    Пусть \(\mathcal{F} \subset 2^{\R^n}\). Тогда \(\sigma(\mathcal{F})\) --- наименьшая по включению \(\sigma\)-алгебра, содержащая \(\mathcal{F}\)
+\end{definition}
+
+\begin{example}
+    \(A \subset \R^n \Ra \sigma(A) = \{\emptyset, \R^n, A, A^c\}\)
+\end{example}
+\begin{example}
+    \(A = \{X | X \text{ --- конечное объединение промежутков}\}\) --- алегбра, но не \(\sigma\)-алгебра
+\end{example}
+\begin{example}
+    Пусть \(\mathcal{F}\) --- все одноэлементные множества. Тогда 
+    \(\sigma(\mathcal{F}) = \{A | A \text{ не более чем счетное } \vee A^c \text{ не более чем счетное}\}\)
+\end{example}
+
+\begin{definition}
+    Борелевская \(\sigma\)-алгебра --- \(\mathcal{B}(\R^n)\) --- наименьшая \(\sigma\)-алгебра, содержащая все открытые множества \(\R^n\)
+\end{definition}
+
+\begin{lemma}
+    \(C = \{(-\infty, b): b \in \R\}\). Тогда \(\sigma(C) = \mathcal{B}(\R)\)
+\end{lemma}
+\begin{proof}
+    \(\forall a \in \R [a, +\infty) \subset \sigma(C)\). \((a, +\infty) = \bigcup_{k = 1}^\infty \left[a + \frac{1}{k}, +\infty\right) \in \sigma(C) \Ra (a, b) \in \sigma(C)\). Т.к. в \(\R\) любое открытое множество представимо в виде счетного объединения открытых промежутков, то \(\sigma(C) = \mathcal{B}(\R^n)\)
+\end{proof}
+
+\subsection{Внешняя Мера}
+\begin{definition}
+    Внешней мерой Лебега множества \(E \subset \R^n\) называется 
+    \[\mu^*(E) = \inf \left\{\sum_{i = 1}^\infty |B_i|\;\;|\;\;E \subset \bigcup_{i = 1}^\infty B_i\right\}\]
+    Где \(\inf\) берется по всем счетным наборам брусьев
+\end{definition}
+
+\begin{theorem}
+    Для внешней меры выполнено:
+    \begin{enumerate}
+        \item \(E \subset F \Ra \mu^*(E) \le \mu^*(F)\)
+        \item \(E = \bigcup_{i = 1}^\infty E_i \Ra \mu^*(E) \le \sum_{i = 1}^\infty \mu^*(E_i)\)
+        \item если \(R\) --- брус, то \(\mu^*(R) = |R|\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Любое покрытие \(F\) является покрытием \(E \Ra \mu^*(E) \le \mu^*(F)\)
+        \item Можно считать, что \(\sum_{k = 1}^\infty E_k < \infty\). Зафиксируем \(\epsilon > 0\). \(\forall E_k \exists \{B_{i_k}\}_{i = 1}^\infty: \sum_{i = 1}^\infty |B_{i_k}| < \mu^*(E_k) + \frac{\epsilon}{2^k}\). Тогда \(\{B_{i_k}: i, k \in \N\}\) образует покрытие \(E = \bigcup_{k = 1}^\infty E_k\). Рассмотрим перестановку \((i, k)\) ''по квадратам'' и соответствующую сумму обозначим \(\sum_{(i, k)} B_{i_k}\). 
+        \[\mu^*(E) \le \sum_{(i, k)} B_{i_k} \le \sum_{k = 1}\sum_{i = 1}|B_{i_k}| = \sum_{k = 1}\left(\sum_{i = 1}|B_{i_k}|\right) \le \sum_{k = 1}^\infty \left(\mu^*(E_k) + \frac{\epsilon}{2^k}\right) = \sum_{k = 1}^\infty \mu^*(E_k) + \epsilon\]
+        Т.к. \(\epsilon\) --- любое, то \(E = \bigcup_{i = 1}^\infty E_i \Ra \mu^*(E) \le \sum_{i = 1}^\infty \mu^*(E_i)\)
+
+        \item Т.к. \(\{R\}\) --- покрытие брусами \(R\), то \(\mu^*(R) \le |R|\)
+        \begin{enumerate}
+            \item \(R\) --- замкнутый. Рассмотрим произвольное покрытие \(\{B_i\}_{i = 1}^\infty\) множества \(R\). Зафиксируем \(\epsilon > 0\) и рассмотрим \(B_k^\circ \supset B_k, |B_k^\circ| < |B_k| + \frac{\epsilon}{2^k}\). \(R \subset \bigcup_{k = 1}^\infty B_k^\circ \Ra R \subset \bigcup_{k = 1}^N B_k^\circ \Ra |R| \le \sum_{k = 1}^N |B_k^\circ| \Ra |R| \le \sum_{k = 1}^\infty\left(|B_k| + \frac{\epsilon}{2^k}\right) \le \sum_{k = 1}^\infty |B_k| + \epsilon \Ra |R| \le \sum_{k = 1}^\infty |B_k| \Ra |R| \le \mu^*(R)\)
+            \item \(R\) --- не замкнутый. \(\Ra \exists R' \supset R: |R'| > |R| - \epsilon\). Имеем \(\mu^*(R) \ge \mu^*(R') = |R'| > |R| - \epsilon\) Т.к. \(\epsilon\) --- произвольное, получаем, что \(\mu^*(R) = |R|\)
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\subsection{Мера Лебега}
+Построим \(\sigma\)-алгебру \(\mathcal{M}(\R^n)\), включающую \(\mathcal{B}(\R^n)\) и функцию \(\mu: \mathcal{M}(\R^n) \ra [0, +\infty]\), удовлетворяющую следующим условиям:
+\begin{enumerate}
+    \item \(\mu(R) = |R|\), где \(|R|\) --- брус
+    \item \(E = \bigsqcup_{k = 1}^\infty E_k \Ra \mu(E) = \sum_{k = 1}^\infty \mu(E_k)\)
+    \item \(E \in \mathcal{M}(\R^n) \Ra \mu(x + E) = \mu(E)\)
+\end{enumerate}
