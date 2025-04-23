@@ -1,0 +1,103 @@
+% !TEX root = ../../../main.tex
+
+\begin{corollary}
+    \(x + 0 = 0 + x\)
+\end{corollary}
+
+\begin{lemma}
+    \(\forall x \forall y (Sx + y = S(x + y))\)
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item \(\forall t\;\;t + 0 = t\) --- В2.i
+        \item \(Sx + 0 = Sx\) --- подставили \(t = Sx\)
+        \item \(x + 0 = x\) --- подстановка \(t = x\)
+        \item \(x + 0 = x \ra S(x + 0) = S(x)\) --- Б1.iii
+        \item \(S(x + 0) = Sx\) --- m.p. 3, 4
+        \item \(Sx = S(x + 0)\) --- Б1.ii
+        \item \(Sx + 0 = S(x + 0)\) --- Б1.iii 2, 6
+        \item \(\forall x Sx + 0 = S(x + 0)\) --- обобщение. Далее:
+        \(\forall y((\forall x Sx + y = S(x + y)) \ra (\forall x Sx + Sy = S(x + Sy)))\)
+        \item \(Sx + Sy = S(Sx + y)\)
+        \item \(x + Sy = S(x + y)\)
+        \item \(Sx + y = S(x + y) \ra S(Sx + y) = SS(x + y)\)
+        \item \(x + Sy = S(x + y) \ra S(x + Sy) = SS(x + y)\)
+        \item \(S(x + Sy) = SS(x + y)\)
+        Получили, что \(Sx + Sy = S(Sx + y) = SS(x + y) = S(x + Sy)\)
+        Тогда по индукции \(\forall x \forall y Sx + y = S(x + y)\)
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}[Коммутативность сложения]
+    \(\forall x \forall y x + y = y + x\).
+\end{proposition}
+\begin{proof}
+    Доказываем по индукции, что \(\phi(y) = \forall x x = y = y + x\). \(\phi(0)\) уже есть. Докажем \(\forall n \phi(n) \ra \phi(S(n))\). Следует из того, что \(S(x + y) = x + S(y) = S(y) + x = S(y + x)\)
+\end{proof}
+
+\section{Теорема Геделя}
+\begin{theorem}
+    Множества истинных и доказуемых формул не совпадают
+\end{theorem}
+\subsection{Первое доказательство}
+\begin{definition}
+    Замкнутая формула \(\phi\) нащывается доказуемой в формальной арифметике, если \(\exists\) вывод, содержащий \(\phi\)
+\end{definition}
+
+\begin{proposition}
+    Множество доказуемых формул перечислимо (не только в арифметике, но и в любой теории с разрешимым множеством аксиом)
+\end{proposition}
+\begin{proof}
+    Оно является проекцией разрешимного множества пар \((\phi, \text{ доказательство }\phi)\).
+\end{proof}
+
+\begin{theorem}
+    Все \(\Sigma_k\) различны
+\end{theorem}
+
+\begin{theorem}
+    Все \(\Sigma_k \cup \Pi_k \subsetneq \Sigma_{k + 1} \cup \Pi_{k + 1}\) различны
+\end{theorem}
+
+\begin{theorem}[Тарского]
+    Предикат ''истинна ли формула в стандартной модели'' неарифметичен (т.е. не выражается арифметической формулой, т.е не лежит в арифметической иерархии)
+\end{theorem}
+\begin{proof}
+    Пусть \(True(\phi)\) --- такой предикат. Он выражается формулой \(\Ra\) он лежит на конкретном уровне \(\Sigma_n\). Пусть \(\psi(x) \in \Sigma_{n + 1} \setminus \Sigma_n\). Положим \(\underline{m} = \underbrace{S\dots S}_m0\). Тогда \(\forall m \phi(m) \lra True(\phi(\underline{m}))\). Получили, что \(\phi(x)\) выразим как \(True(\phi(\underline{m}))\). Можно выбрать такое кодирование, чтобы \(\phi(\underline{m})\) не требовало бы новых кванторов
+\end{proof}
+\begin{corollary}[Теорема Геделя о неполноте]
+    Получили, что истинные формулы неарифметичны. Но тогда истинные \(\ne\) доказуемые. Тогда в каждой теории есть либо истинная недоказуемая формула, либо существует ложная доказуемая формула.
+\end{corollary}
+
+\subsection{Второе доказательство}
+Положим \(Proof(p, x)\) --- предикат проверки, является ли текст с номером \(p\) доказательством формулы с номером \(x\).  Положим \(\Pr(x) = \exists p\;Proof(p, x)\) --- предикат доказуемости.
+
+Положим \(G(x) \lra \exists y (\neg Pr(y) \wedge Subst(y, x, x))\). Положим \(Subst(q, r, s)\) --- ''\(q\) является номером формулы, полученной подстановкой числа \(s\) в формулу с одним параметром и номером \(r\)''. Заметим, что \(G(G) = \exists y (\neg Pr(y) \wedge Subst(y, G, G))= \bigvee_y(\neg Pr(y) \wedge Subst(y, G, G)) = \neg P(G(G))\) (подходит единственный \(y = G(G)\)). Тогда \(G(G)\) либо истинна и не доказуема, либо ложна и доказуема.
+
+\begin{proof}[Тарского]
+    Рассмотрим \(T(x) \lra \exists y (\neg True(y) \wedge Subst(y, x, x)) =\) аналогично \(= \neg True(T(T))\). Получили, что предикат \(True\) неарифметичен.
+\end{proof}
+
+\begin{theorem}[Геделя-Россера]
+    Любая теория либо непротиворечива, либо неполна
+\end{theorem}
+
+\begin{theorem}[Вторая теорема Геделя]
+    Если арифметика непроиворечива, то факт непротиворечивости нельзя доказать (непротиворечивость = \(\neg Pr(0 = 1)\))
+\end{theorem}
+
+\subsection{Колмогоровская сложность}
+\begin{definition}
+    Колмогоровская сложность слова \(x\) --- \(K(x)\) --- длина кратчайшей программы, печатающей \(x\). 
+\end{definition}
+
+\begin{proposition}
+    \(K(x)\) невычислима
+\end{proposition}
+\begin{proof}
+    Положим \(a_n = \min\{x | K(x) > n\}\). Если \(K\) вычислимо \(\Ra K(a_n) < n + c\)
+\end{proof}
+
+\begin{note}
+    Среди утвеждений вида \(K(x) > t\) есть истинные, но не доказуемые
+\end{note}
