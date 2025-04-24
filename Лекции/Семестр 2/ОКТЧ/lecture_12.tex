@@ -1,0 +1,75 @@
+% !TEX root = ../../../main.tex
+
+\section{Равномерное распределение последовательностей}
+В дальнейшем будем считать, что \(\{x_n\}_{n = 1}^\infty\) --- последовательность дробных долей чисел \(x_n\).
+\begin{definition}
+    Будем говорить, что последовательность \(\{x_n\}_{n = 1}^\infty\) равномерно распределенной на \([0, 1)\), если
+    \[\forall \gamma \in (0, 1) \lim_{N \ra \infty} \frac{|\{n \le N | x_n \in [0, \gamma]\}|}{N} = \gamma\]
+\end{definition}
+
+\begin{example}[Равномерно распределенная последовательность]
+    Рассмотрим \(\{\sqrt{n}\}^\infty_{n = 1}\). Заметим, что если \(\{\sqrt{n}\} \in [0, \gamma] \Ra k^2 \le n \le (n + \gamma)^2\). Приф фиксированном \(k\), таких \(n\) не больше, чем \(2k\gamma + 2\) и не меньше, чем \(2k\gamma - 1\). При фиксированном \(N\), \(k\) можно варьировать от \(1\) до \([\sqrt{N}]\)
+    \[|\{n \le N : \sqrt{n} \in [0, \gamma]\}| = \sum_{k = 1}^{[\sqrt{N}]} (2k\gamma \pm 2) = 2\gamma\frac{[\sqrt{N}]([\sqrt{N}] + 1)}{2} \pm 2 [\sqrt{N}]\]
+    Но тогда \(\lim_{N \ra \infty} \frac{|\{n \le N : \sqrt{n} \in [0, \gamma]\}|}{N} = \gamma\).
+\end{example}
+
+\begin{note}
+    Аналогично можно доказать, что \(\{n^\alpha\}^\infty_{n = 1}\) равномерно распределенна.
+\end{note}
+
+\begin{example}[Неравномерно распределенная последовательность]
+    \(\{\alpha n\}_{n = 1}^\infty, \alpha \in \Q\) очевидно неравномерно распределена
+\end{example}
+
+Какие экспоненциальные последовательности равномерно распределены?
+\begin{enumerate}
+    \item \(a \in (0, 1) \Ra \{a^n\}_{n = 1}^\infty\) нераверномерно распределена
+    \item \(a > 1 \Ra \) есть примеры когда нет, но кроме этого ничего не известно. Например, решения нет в следующем случае: рассмотрим \(x^2 + px + q\), который имеет один корень на \(\lambda_1 \in (0, 1)\), а другой на \(\lambda_2 \in (1, +\infty)\). Тогда последовательность \(\{\lambda_1^n + \lambda_2^n\}\)
+\end{enumerate}
+
+\begin{theorem}
+    Последовательность \(\{x_n\}_{n = 1}^\infty\) равномерно распределена \(\Lra\) \(\forall\) непрерывной функции \(f: [0, 1] \ra [0, 1]\) верно:
+    \[\frac{1}{N}\sum_{n = 1}^N f(x_n) \ra \int_0^1 f(x)dx\]
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\Ra\)] От противного. Пусть существует функция \(f\), которая не удовлетворяет условию выше. Мы знаем, что если взять функцию \(g(x) = I_{x \in [a, b)}\) (\(0 < a, b < 1\)), то \(\frac{1}{N}\sum_{n = 1}^N g(x_n) \ra \int_0^1 g(x)dx\). Зафиксируем \(\epsilon > 0\). Подберем 2 комбинации индикаторов \(g_1(x), g_2(x)\) так, что \(g_1(x) \le f(x) \le g_2(x), \int_0^1 (g_2(x) - g_1(x))dx < \epsilon\). По критерию интегрируемости Римана, \(\frac{1}{N}\sum_{n = 1}f(x_n) \ra \int_0^1 f(x)dx\)
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[О приближении непрерывной функции тригонометрическими многочленами]
+    Пусть \(f: \Cm \ra \Cm\) непрерывна и периодична. Тогда \(\forall \epsilon > 0 \exists\) тригонометрический многочлен \(\psi\), такой, что \(\sup_{x \in [0, 1]} |f(x) - \psi(x)| < \epsilon\).
+\end{theorem}
+
+\begin{theorem}[Критерий Вейля]
+    Последовательность \(\{x_n\}_{n = 1}^\infty\) равномерно распределена \(\Lra \forall m \ne 0 \lim_{N \ra \infty}\frac{1}{N}\sum_{n = 1}^N e^{2\pi i m x_n} = 0\) 
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[\(\Ra\)] \(\int_0^1 e^{2\pi i m x}dx = 0\)/
+        \item[\(\La\)] Возьмем произвольную \(f: \Cm \ra \Cm\) --- непрерывную и периодичную. Зафиксируем \(\epsilon > 0\) и подберем \(\psi: \sup_{x \in [0, 1]} |f(x) - \psi(x)| \le \frac{\epsilon}{3}\)
+        \[\left|\frac{1}{N}\sum_{n = 1}^N f(x_n) - \int_0^1 f(x)dx\right| =\]
+        \[ = \left|\frac{1}{N}\sum_{n = 1}^N f(x_n) - \frac{1}{N}\sum_{n = 1}^N \psi(x_n) + \frac{1}{N}\sum_{n = 1}^N \psi(x_n) - \int_0^1 \psi(x)dx + \int_0^1 \psi(x)dx -\int_0^1 f(x)dx\right|= \]
+        \[= \left|\left(\frac{1}{N}\sum_{n = 1}^N (f(x_n) - \psi(x_n))\right) + \left(\frac{1}{N}\sum_{n = 1}^N \psi(x_n) - \int_0^1 \psi(x)dx\right) + \left(\int_0^1 (\psi(x) - f(x))dx\right)\right| \le\]
+        \[\le \underbrace{\left|\frac{1}{N}\sum_{n = 1}^N (f(x_n) - \psi(x_n))\right|}_{\le \frac{\epsilon}{3}} + \underbrace{\left|\frac{1}{N}\sum_{n = 1}^N \psi(x_n) - \int_0^1 \psi(x)dx\right|}_{\le \frac{\epsilon}{3}} + \underbrace{\left|\int_0^1 (\psi(x) - f(x))dx\right|}_{\le \frac{\epsilon}{3}} \le \epsilon\]
+        Это верно для достаточно больших \(N\)
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    \(\{\alpha n\}_{n = 1}^\infty, \alpha \notin \Q\) --- равномерно распределена
+\end{proposition}
+\begin{proof}
+    \[\forall m \ne 0 \frac{1}{N}\sum_{n = 1}^N e^{2\pi i m \alpha n} = \frac{1}{N} \sum_{n = 1}^N\left(e^{2 \pi i \alpha m}\right)^n = \frac{e^{2\pi i \alpha m N} - 1}{N(e^{2 \pi i \alpha m} - 1)}e^{2 \pi i \alpha m}\]
+    При этом 
+    \[\left|\frac{1}{N}\sum_{n = 1}^N e^{2\pi i \alpha n}\right| \le \left|\frac{e^{2\pi i \alpha m N} - 1}{N(e^{2 \pi i \alpha m} - 1)}e^{2 \pi i \alpha m}\right| \le \frac{2e^{2 \pi i \alpha m}}{N|e^{2\pi i\alpha m} - 1|} \ra 0\]
+    \(\alpha \notin \Q \Ra e^{2\pi i \alpha m} \ne 1\).
+\end{proof}
+
+\begin{theorem}
+    Последовательность \(\{x_n\}_{n = 1}^\infty\) равномерно распределена \(\Lra\) \(\forall f: \Cm \ra \Cm\), таких, что \(f\) периодична с периодом \(1\), 
+    \[\int_0^1\]
+\end{theorem}
+\begin{proof}
+    Доказательство предоставляется читатеялю в качестве нетрудного упражнения
+\end{proof}
