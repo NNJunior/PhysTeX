@@ -1,0 +1,98 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Измеримые множества}
+
+\begin{definition}
+    Множество \(E \subset \R^n\) называется измеримым по Лебегу, если
+    \(\forall A \subset \R^n \mu^*(A) = \mu^*(A \cap E) + \mu^*(A \cap E^c)\)
+\end{definition}
+
+\begin{note}
+    При доказательстве измеримости достаточно проверять условие \(\mu^*(A) \ge \mu^*(A \cap E) + \mu^*(A \cap E^c)\), т.к. противоположное неравенство выполняется в силу полуаддитивности
+\end{note}
+
+\begin{proposition}
+    Если \(\mu^*(E)\), то \(E\) измеримо.
+\end{proposition}
+\begin{proof}
+    \(\mu^*(A) \ge \mu^*(A \cap E^c) + \underbrace{\mu^*(A \cap E)}_{= 0}\)
+\end{proof}
+
+\begin{proposition}
+    Пусть  \(a \in \R, k = \{1, \dots n\}\). Покажем, что \(H = H_{a, k} = \{(x_1, \dots x_k) | x_k > a\}\) измеримо
+\end{proposition}
+\begin{proof}
+    Рассмотрим произвольное измеримое \(A \subset \R^n\) и \(\{B_i\}_{i = 0}^\infty\) --- покрытие \(A\) брусами. Положим \(B_i^1 = \{x \in B_i : x_k > a\}, B_i^2 = \{x \in B_i : x_k \le a\}\). Тогда \(\{B_i^1\}\) --- покрытие \(A \cap H\) брусами, \(\{B_i^2\}\) --- покрытие \(A \cap H^c\) брусами, причем \(|B_i| = |B_i^1| + |B_i^2|\). Тогда \(\sum_{i = 1}^\infty |B_i| = \sum_{i = 1}^\infty |B_i^1| + \sum_{i = 1}^\infty |B_i^2| \ge \mu^*(A \cap H) + \mu^*(A \cap H^c)\). Тогда в силу определения внешней меры, \(\mu^*(A) \ge \mu^*(A \cap H) + \mu^*(A \cap H^c)\).
+\end{proof}
+
+\begin{note}
+    Аналогично устанавливается измеримость подпространств с другимим знаками неравенства
+\end{note}
+
+\begin{theorem}[Каратиодори]
+    Семейство \(\mathcal{M}\) всех измеримых по Лебегу множеств является \(\sigma\)-алгеброй. Функция \(\mu^*|_{\mathcal{M}}\) является счетно аддитивной.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item По определению измеримости, \(\emptyset \in \mathcal{M}\). Также, \(E \in \mathcal{M} \Lra E^c \in \mathcal{M}\).
+        \item что \(E, F \in \mathcal{M} \Ra E \cup F \in \mathcal{M}\). Пусть \(A \subset \R^n\), тогда \(\mu^*(A \cap (E \cup F)) + \mu^*(A \cap (E \cup F)^c)\). Из измеримости \(E\), получаем: 
+        \[\mu^*(A \cap (E \cup F) \cap E) + \mu^*(A \cap (E \cup F) \cap E^c) + \mu^*(A \cap (E \cup F)^c) =\]
+        \[= \mu^*(A \cap E) + \mu^*(A \cap F \cap E^c) + \mu^*(A \cap (E\cup F)^c) + \mu^*(A \cap (E \cup F)^c) = \]
+        \[= \mu^*(A \cap E) + \mu^*(A \cap F \cap E^c) + \mu^*(A \cap E^c\cap F^c)= \mu^*(A \cap E) + \mu^*(A \cap E^c) = \mu^*(A)\]
+        По индукции доказывается, что конечное объединение измеримых множеств измеримо.
+        \item Пусть \(E_k \in \mathcal{M}, k \in \N, F = \bigcup_{k = 1}^\infty E_k\) и \(E_k\) попарно непересекаются. Покажем, что \(F \in \mathcal{M}\). Рассмотрим \(A \subset \R^n\). Если \(F_m = \bigcup_{k = 1}^m E_k\), то \(F_m \in \mathcal{M}\), поэтому 
+        \[\mu^*(A) = \mu^*(A \cap F_m) + \mu^*(A \cap F_m^c) \ge \mu^*(A \cap F_m) + \mu^*(A \cap F^c)\]
+        Имеем \(\mu^*(A \cap F_m) = \mu^*(A \cap F_m \cap E_m) + \mu^*(A \cap F_m \cap E_m^c) = \mu^*(A \cap E_m) + \mu^*(A \cap F_{m - 1})\). Применим рассуждения к \(A \cap F_{m - 1}\), и в итоге получим \(\mu^*(A \cap F_m) = \sum_{k = 1}^m \mu^*(A \cap E_k)\). Тогда \(\mu^*(A) \ge \sum_{k = 1}^m \mu^*(A \cap E_k) + \mu^*(A \cap F^c)\). Переходя в этом неравенстве пределу при \(m \ra \infty\), получим:
+        \[\mu^*(A) \ge \sum_{k = 1}^\infty \mu^*(A \cap E_k) + \mu^*(A \cap F^c)\]
+        В силу счетной полуаддитивности внешней меры, 
+        \[\mu^*(A) \le \mu^*(A \cap F) + \mu^*(A \cap F^c) \le \sum_{k = 1}^\infty\mu^*(A \cap E_k) + \mu^*(A \cap F^c) \le \mu^*(A)\]
+        Получили \(\mu^*(A) = \mu^*(A \cap F) + \mu^*(A \cap F^c)\). При этом, при \(A = F\), получаем \(\mu^*(F) = \sum_{k = 1}^\infty \mu^*(E_k)\).
+        \item Покажем, что \(A_k \in \mathcal{M}, k \in \N, A = \bigcup_{k = 1}^\infty A_k\). Покажем, что \(A \in M\). Определим \(E_1 = A_1, E_k = A_k \setminus \bigcup_{i < k} E_k \in M\). Тогда \(A = \bigsqcup_{k = 1}^\infty E_k \in M\)
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    Всякий брус измерим
+\end{corollary}
+
+\begin{corollary}
+    Всякое борелевское множество измеримо, т.е. \(\mathcal{B} \subset \mathcal{M}\)
+\end{corollary}
+
+\begin{definition}
+    Функция \(\mu = \mu^*|_{\mathcal{M}}\) называется мерой лебега
+\end{definition}
+
+\begin{note}
+    По Теореме Каратиодори, если \(E_k \in \mathcal{M}, E_i \cap E_j = \emptyset \Ra \mu\left(\bigsqcup_{k = 1}^\infty E_k\right) = \sum_{k = 1}^\infty \mu(E_k)\)
+\end{note}
+
+\begin{theorem}
+    Пусть \(A_k \in \mathcal{M}, k \in \N\)
+    \begin{enumerate}
+        \item Если \(A_1 \cap A_2 \cap \dots, A = A = \bigcup_{k = 1}^\infty A_k \Ra \mu(A) = \lim_{k \ra \infty} \mu(A_k)\)
+        \item Если \(A_1 \supset A_2 \supset \dots, \mu(A) < \infty, A = \bigcap_{k = 1}^\infty A_k \Ra \mu(A) = \lim_{k \ra \infty} \mu(A_k)\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Положим \(B_1 = A_1, B_k = A_k \setminus A_{k - 1} \Ra \bigcup_{k = 1}^\infty B_k = \bigcup_{k = 1}^\infty A_k\)
+        \[\mu(A) = \mu\left(\bigsqcup_{k = 1}^\infty B_k\right) = \sum_{k = 1}^\infty \mu(B_k) = \lim_{m \ra \infty} \sum_{k = 1}^m \mu(B_k) = \lim_{m \ra \infty} \mu(A_m)\]
+        \item Заметим, что \(A_1 \setminus A = \bigcup_{k  =1}^\infty (A_1 \setminus A_k)\), поэтому \(\mu(A_1) - \mu(A) = \mu(A_1 \setminus A) = \lim_{k \ra \infty}\mu(A_1 \setminus A_k) = \mu(A_1) - \lim_{k \ra \infty} \mu(A_k)\)
+    \end{enumerate}
+\end{proof}
+
+\begin{exercise}
+    Показать, что во втором пункте условие \(\mu(A) < \infty\) существенно.
+\end{exercise}
+
+\begin{lemma}
+    Если \(E \subset \R^n\) измеримо, то \(\forall \epsilon > 0 \exists G \supset E\) --- открытое, такое, что \(\mu(G \setminus E) < \epsilon\)
+\end{lemma}
+\begin{proof}
+    Пусть \(E\) ограничено, в частности \(\mu(E) < \infty\). Тогда \(\exists  \{B_i\}_{i = 1}^\infty\) --- покрытие \(E\) брусами, что \(\sum_{i = 1}^\infty |B_i| < \mu(E) + \frac{\epsilon}{2}\). \(\forall i \exists B_i^\circ \supset B_i\) --- открытое, такое, что \(|B_i^\circ| < |B_i| + \frac{\epsilon}{2^{i + 1}}\). Тогда
+    \[\mu(G) \le \sum_{i = 1}^\infty |B_i^\circ| = \sum_{i = 1}^\infty \left(|B_i| + \frac{\epsilon}{2^{i + 1}}\right) = \sum_{i = 1}^\infty |B_i| + \frac{\epsilon}{2} < \mu(E) + \epsilon\]
+    Тогда \(\mu(G \setminus E) = \mu(G) - \mu(E) \Ra \mu(G \setminus E) < \epsilon\)
+
+    В случае неограниченности \(E\), представим \(\R^n = \bigsqcup_{k = 1}^\infty A_k, A_k = \{x \in \R^n | k - 1 \le |x| < k\}\). Тогда \(E = \bigcup_{k = 1}^\infty E_k\), где \(E_k = E \cap A_k\). --- ограничены. По доказанному \(\forall k \exists G_k \supset E_k\) --- открытое, так, что \(\mu(G_k \setminus E_k) < \frac{\epsilon}{2^{k}}\). Положим \(G = \bigcup_{k = 1}^\infty G_k\) --- открытое, содержащее \(E\). \(G \setminus E \subset \bigcup_{k = 1}^\infty (G_k \setminus E_k)\). Тогда \(\mu(G \setminus E) \le \sum_{k = 1}^\infty \mu(G_k \setminus E_k) < \sum{k = 1}^\infty \frac{\epsilon}{2^k} = \epsilon\)
+\end{proof}
