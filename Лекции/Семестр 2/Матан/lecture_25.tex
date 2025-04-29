@@ -1,0 +1,126 @@
+% !TEX root = ../../../main.tex
+
+\begin{corollary}
+    \(E\) измеримо в \(\R^n \Ra \forall \epsilon > 0 \exists F \subset E\) --- замкнутое в \(\R^n\), такое, что \(\mu(E \setminus F) < \epsilon\)
+\end{corollary}
+\begin{proof}
+    По лемме, \(\forall \epsilon > 0 \exists G \supset E^c: \mu(FG \setminus E^c) < \epsilon\). Положим \(F = G^c \Ra F\) --- открыто, причем \(F \subset E\). Также \(E \setminus F = G\setminus E^c \Ra \mu(E \setminus F) = \mu(G \setminus E^c) < \epsilon\)
+\end{proof}
+
+\begin{theorem}
+    Пусть \(E \subset \R^n\). Тогда следующие утвеждения эквивалентны:
+    \begin{enumerate}
+        \item \(E\) --- измеримо
+        \item \(\Omega \setminus Z\), где \(\Omega\) --- \(G_\delta\)-множество и \(Z\) --- множество меры нуль
+        \item \(\Delta \cup Z\), где \(\Delta\) --- \(F_\delta\)-множество и \(Z\) --- множество меры нуль
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\((1) \Ra (2)\)] Пусть \(E\) измеримо. Тогда \(\forall k \in \N \exists G \supset E \Ra \mu(G_k \setminus E) < \frac{1}{k}\). Положим \(\Omega = \bigcap_{k = 1}^\infty G_k\). Тогда \(\Omega\) --- \(G_\delta\)-множество, \(\Omega \supset E\) и \(\mu(\Omega \setminus E) \le \mu(G_k \setminus E) < \frac{1}{k} \Ra Z = \Omega \setminus E, \mu(Z) = 0\)
+        \item[\((2) \Ra (1)\)] \(E = \Omega \setminus Z\), где \(\Omega\) --- борелевское, \(Z\) --- измеримо
+        \item[\((3) \Ra (1)\)] доказывается аналогично
+        \item[\((1) \Ra (3)\)] доказывается аналогично
+    \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+    Если \(E \subset \R^n\) измеримо и \(y \in \R^n\), то \(E + y = \{x + y | x \in E\}\) измеримо и \(\mu(E + y) = \mu(E)\)
+\end{lemma}
+\begin{proof}
+    Отметим, что \(B\)-брус \(\Ra B + y\) --- брус с тем же объемом. Поэтому если \(A \subset \bigcup_{i = 1}^\infty B_i \Ra A + y \subset \bigcup_{i = 1}^\infty (B_i + y)\) и по определению \(\mu^*\) имеем: \(\mu^*(A + y) \le \sum_{i = 1}^\infty |B_i + y| = \sum_{i = 1}^\infty |B_i| \Ra \mu^*(A) \le \mu^*(A)\). Противное неравенство следует из того, что \(A = A + y - y\). Докажем, что наше множество ''правильно разрезает любое другое''. Пусть \(A \subset \R^n\), тогда \(\mu^*(A \cap (E + y)) + \mu^*(A \cap (E + y)^c) = \mu^*((A - y) \cap E) + \mu^*((A - y) \cap E^c) = (*)\). Т.к. \(E\) --- измеримое множество, то \((*) = \mu^*(A - y) = \mu^*(A)\). Тогда \(E + y\) измеримо
+\end{proof}
+
+\begin{example}[Неизмеримое множество]
+    Рассмотрим отношение эквивалентности на \([0, 1]\), такое, что \(x \sim y \Ra x - y \in \Q\). Тогда \([0, 1] = \bigsqcup H_\alpha\), где \(H_\alpha\) --- классы эквивалентности. По аксиоме выбора, \(\exists V: x \in V \Lra \exists! \alpha (V \cap H_\alpha) = \{x\}\). Покажем, что \(V\) неизмеримо.
+\end{example}
+\begin{proof}
+    Заметим, что \(\Q \cap [-1, 1] = \{r_n\}_{n = 0}^\infty\) --- неизмеримое множество. Рассомтрим \(V_n = V + r_n\). Тогда \(V_i \cap V_j = \emptyset\), т.к. \(x \in V_i \cap V_j \Ra x = x_i + r_i = x_j + r_j \Ra x_i - x_j \in \Q\). Положим \(S = \bigsqcup_{i = 0}^\infty V_i\). Покажем, что \([0, 1] \subset S \subset [-1, 2]\).
+    \begin{enumerate}
+        \item[] \([0, 1] \subset S\). \(\forall x \in [0, 1] \exists v \in V, r \in \Q \cap [-1, 1]: x = v + r \Ra \forall x \in [0, 1] \Ra x \in S\).
+        \item[] \(S \subset [-1, 2]\). Т.к. \(0 \le V \le 1, \Ra -1 \le S \le 2\).
+    \end{enumerate}
+    Пусть \(V\) измеримо, причем \(\mu(V) = a\). Тогда \(\mu(V_n) = a\) и из вложенностей, \(1 \le \sum_{n = 0}^\infty a \le 3\). Не существует \(a\), для которых это выполнено.
+\end{proof}
+
+\begin{proof}
+    Всякое множество имеет неизмеримое подмножество
+\end{proof}
+
+\section{Интеграл Лебега}
+\subsection{Напоминание}
+\begin{definition}
+    Пусть \(f: X \ra Y, A \subset X\). Тогда \(f^{-1}(A) = \{x \in X | f(x) \in A\}\)
+\end{definition}
+
+\begin{note}
+    Пусть \(f: X \ra Y, A \subset X\). Тогда:
+    \begin{enumerate}
+        \item \(f^{-1}(\bigcup_{i = 1}^\infty A_i) = \bigcup_{i = 1}^\infty f^{-1}(A_i)\)
+        \item \(f^{-1}(Y \setminus A) = X \setminus f^{-1}(A)\).
+    \end{enumerate}    
+\end{note}
+
+\subsection{Измеримые функции}
+Далее \(E \subset \R^n, f: E \ra \overline{\R}\), \(E\) --- измеримо.
+\begin{definition}
+    \(f\) называется измеримой, если \(f^{-1}([-\infty, a))\) измеримо \(\forall a \in \R\).
+\end{definition}
+
+\begin{example}
+    Пусть \(A \subset \R^n\). Определим \(I_A: \R^n \ra \R: I_A(x) = \left\{\begin{array}{l}
+        1, x \in A \\
+        0, x \notin A
+    \end{array}\right.\)
+    Тогда \(I_A^{-1}([-\infty, a)) = \left\{\begin{array}{l}
+        \emptyset, a \le 0 0 \\
+        A^c, 0 < a \le 1 \\
+        \R^n, 1 < a \\
+    \end{array}\right.\).
+    Тогда \(I_A\) измеримо \(\Lra A\) измеримо
+\end{example}
+
+\begin{proposition}
+    Если \(f: E \ra \R\) непрерывна, то \(f\) измерима.
+\end{proposition}
+\begin{proof}
+    \(f^{-1}((-\infty, a))\) --- открыто в \(E\) по критерию непрерывности, т.е. \(\exists G \subset \R: f^{-1}((-\infty, a)) = E \cap G\), где \(G\) --- открытое \(\Ra f\) --- измеримо.
+\end{proof}
+
+\begin{problem}
+    Показать, что если \(f: E \ra \R\) монотонна, то \(f\) измерима.
+\end{problem}
+
+\begin{note}
+    В определении измеримости можно брать промежутки \([-\infty, a], [-\infty, a), [a, +\infty], (a, +\infty]\), получатся эквивалентные определения.
+\end{note}
+\begin{proof}
+    Следует из равенств:
+    \[\begin{array}{c}
+        \{x | f(x) \le a\} = \bigcap_{k = 1}^\infty \left\{x | f(x) < a + \frac{1}{k}\right\} \\
+        \{x | f(x) > a\} = E \setminus \left\{x | f(x) \le a\right\} \\
+        \{x | f(x) \ge a\} = \bigcap_{k = 1}^\infty \left\{x | f(x) < a + \frac{1}{k}\right\} \\
+        \{x | f(x) < a\} = E \setminus \left\{x | f(x) \ge a\right\} \\
+    \end{array}\]
+\end{proof}
+
+\begin{lemma}
+    \(f: E \ra \overline{\R}\) измеримо, т.е. \(\forall \Omega \in \mathcal{B}(\R) f^{-1}(\Omega)\) измеримо, т.к. \(\Lra f^{-1}(-\infty), f^{-1}(+\infty)\) --- измеримы.
+\end{lemma}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\La\)] \(f^{-1}([-\infty, a)) = f^{-1}(-\infty) \cup f^{-1}([-\infty, a))\) --- измеримо
+        \item[\(\Ra\)] \(\mathcal{F} = \{\Omega | f^{-1}(\Omega)\text{ измеримо}\}\) --- \(\sigma\)-алгебра. \(f^{-1}((a, b)) = f^{-1}([-\infty, b)) \cap f^{-1}((a, +\infty])\). \(\mathcal{F}\) содержит интервалы \(\Ra \mathcal{F}\) содержит все 
+    \end{enumerate}    
+\end{proof}
+
+\begin{theorem}
+    Если \(f, g: E \ra \overline{\R}\) измеримы и \(\lambda \in \R\), то \(f + g, \lambda g, fg\) измеримы
+\end{theorem}
+
+\begin{note}
+    \(B = \{x | f(x) = +\infty, g(x) = -\infty\} \cup \{x | f(x) = -\infty, g(x) = +\infty\} \Ra (f + g)(x) = \left\{\begin{array}{l}
+        f(x) + g(x), x \notin B \\
+        a, x \in B
+    \end{array}\right.\)
+\end{note}
