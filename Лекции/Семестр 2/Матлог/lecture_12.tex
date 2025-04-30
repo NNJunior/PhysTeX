@@ -1,0 +1,113 @@
+% !TEX root = ../../../main.tex
+
+\section{\(\lambda\)-исчисление}
+Исторически это один из первых подходов к теории вычислимости. Раньше все рассматриваемые нами объекты являлись множествами (натуральные числа, машины Тьюринга и т.д.). Сейчас все рассматриваемые нами объекты мы будем определять через функции.
+
+\subsection{Синтаксис}
+\subsubsection{Алфавит}
+Алфавит \(\lambda\)-исчисления состоит из переменных, \(\lambda\), ''.'' и скобок
+
+\subsubsection{\(\lambda\)-термы}
+\begin{enumerate}
+    \item[] \textbf{Базовое правило:} Переменная --- терм
+    \item[] \textbf{Конкатенация:} \(P, Q\) --- термы, тогда \((PQ)\) --- тоже
+    \item[] \textbf{\(\lambda\)-абстракция:} \(x\) --- переменная, \(P\) --- терм \(\Ra (\lambda x . P)\) --- тоже
+\end{enumerate}
+
+\begin{example}
+    \[((\lambda x.(\lambda y. ((xy)x)))(\lambda x.x))\]
+\end{example}
+
+\textbf{Соглашения:} 
+\begin{enumerate}
+    \item \(PQRS = (((PQ)R)S)\)
+    \item \(\lambda xyz.P = \lambda x.(\lambda y.(\lambda z.P))\)
+    \item \(\lambda x.PQ = \lambda x.(PQ) \ne ((\lambda x.P)Q)\)
+\end{enumerate}
+
+\subsubsection{\(\alpha\)-конверсия}
+По сути, переименование связной переменной. Формально: \(\lambda x.P \mapsto \lambda x.P(^x/_y)\), т.е. мы заменяем все свободные вхождения \(x\) в \(P\) на \(y\). При этом, 
+\begin{enumerate}
+    \item Свободных вхождений \(y\) в \(P\) не должно 
+    \item области действия квантора \(\lambda y\) не должно быть свободных вхождений \(x\).
+\end{enumerate}
+
+\begin{example}[Плохая конверсия]
+    \[\lambda x.xy \not\mapsto \lambda y.yy\]
+    Нарушается первое правило
+\end{example}
+\begin{example}[Плохая конверсия]
+    \[\lambda x.x(\lambda y.xy) \not\mapsto \lambda y.y(\lambda y.yy)\]
+    Нарушается второе правило
+\end{example}
+
+\begin{proposition}
+    \(\alpha\)-конверсия обратима
+\end{proposition}
+
+\subsubsection{\(\beta\)-редукция}
+По сути, подстановка значения переменной. \((\lambda x.P)Q \mapsto P(^Q/_x)\). Причем, переменная из \(Q\) не должна попасть под действие квантора из \(P\)
+
+\begin{example}[Плохая редукция]
+    \[(\lambda x.y(\lambda y.xy))y \not\mapsto y(\lambda y.yy)\]
+    Правильно:
+    \[(\lambda x.y(\lambda y.xy))y \mapsto_\alpha (\lambda x.y(\lambda z.xz))y \mapsto_\beta y(\lambda z.yz)\]
+\end{example}
+\begin{note}
+    \(\alpha\)-конверсию и \(\beta\)-редукцию можно применять как для формул, так и для их корректных подформул
+\end{note}
+\subsubsection{Равенство термов}
+Введем \(=\), которое является симметричным, транзитивным замыканием, для которго выполнено \(P \ra_\alpha Q \Ra P = Q, P \ra_\beta Q \Ra P = Q\)
+
+\begin{definition}
+    \(P \ra Q\), если существуют \(P = P_0, P_1, \dots P_m = Q\), такие, что \(P_i \ra_\alpha P_{i + 1}\) или \(P_i \ra_\beta P_{i + 1}\).
+\end{definition}
+
+\begin{theorem}[Черча-Россера о ромбическом свойстве]
+    \(P \ra Q, P \ra R \Ra \exists S: Q \ra S, R \ra S\)
+\end{theorem}
+\begin{corollary}
+    \(P = Q \Lra \exists S: (P \ra S, Q \ra S)\)
+\end{corollary}
+\begin{corollary}
+    \(P = Q, P, Q\) в нормальной форме \(\Ra P \ra_\alpha Q\), т.е. нормальная форма единственна с точностью до замены переменных, если она существует.
+\end{corollary}
+
+\begin{definition}
+    \(\lambda\)-терм \(P\) находится в нормальной форме, если нельзя применить \(\beta\)-редукцию после нескольких \(\alpha\)-конверсий.
+\end{definition}
+
+\begin{example}
+    \[\Omega = (\lambda x.xx)(\lambda x.xx)\]
+    Заметим, что \(\Omega \ra_\beta \Omega \Ra \Omega\) --- терм без нормальной формы.
+\end{example}
+
+\subsection{Семантика}
+\begin{definition}
+    Комбинатор --- замкнутые терм
+\end{definition}
+
+\subsubsection{Комбинаторы логических значений:}
+\begin{enumerate}
+    \item \textbf{\(True\):} \(\lambda xy.x\)
+    \item \textbf{\(False\):} \(\lambda xy.y\)
+    \item \textbf{\(And\):} \(\lambda pq.pqp\) или \(\lambda pq.pq\;False\)
+    \item \textbf{\(Or\):} \(\lambda pq.ppq\) или \(\lambda pq.p\;True\;q\)
+    \item \textbf{\(Not\):} \(\lambda p.p\;False\;True\)
+\end{enumerate}
+
+\subsubsection{Операции с парами}
+\[Pair = \lambda xyp.pxy \Ra Pair XY = \lambda p.pXY\]
+\begin{enumerate}
+    \item \textbf{\(Left\):} \(\lambda p.p\;True\)
+    \item \textbf{\(Right\):} \(\lambda p.p\;False\)
+\end{enumerate}
+
+\begin{proof}
+    Дейтсвительно:
+    \[(\lambda p.p\;True)(\lambda p.pXY) = (\lambda p.pXY)True = (\lambda p.pXY)(\lambda xy.x) = \]
+    \[= (\lambda xy.x)XY = ((\lambda xy.x)X)Y = (\lambda y.X)Y = X\]
+    Аналогично:
+    \[(\lambda p.p\;False)(\lambda p.pXY) = (\lambda p.pXY)False = (\lambda p.pXY)(\lambda xy.y) = \]
+    \[= (\lambda xy.y)XY = ((\lambda xy.y)X)Y = (\lambda y.y)Y = Y\]
+\end{proof}
