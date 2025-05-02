@@ -1,0 +1,115 @@
+% !TEX root = ../../../main.tex
+
+\begin{theorem}
+    Если \(f, g: E \ra \overline{\R}\) измеримы и \(\lambda \in \R\), то \(f + g, \lambda g, fg\) измеримы
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \(f+ g\): \((f + g)^{-1}(\pm\infty) = f^{-1}(\pm\infty) \cup g^{-1}(\pm\infty)\) --- измеримо. Теперь рассмотрим \((f + g)^{-1}((-\infty, a)) = \{x \in E | f(x) + g(x) < a\}\). Рассмотрим некоторую нумерацию \(\Q = \{r_k\}_{k=1}^\infty\) и воспользуемся \(\alpha < \beta \Lra \exists r \in \Q (\alpha < r  < \beta)\). Тогда \(\{x \in E | f(x) < a - g(x)\} = \bigcup_{i = 1}^\infty \{x \in E f(x) < r_k < a - g(x)\} = \bigcup_{k = 1}^\infty \{x \in E | f(x) < r_k\} \cap \{x \in E: g(x) < a - r_k\}\) --- измеримо
+        \item \(\lambda f\). При \(\lambda = 0\) очевидно, при других: \(\{x \in E | \lambda f(x) < a\} = \left\{\begin{array}{l}
+            \{x : f(x) < \frac{a}{\lambda}\}, \lambda > 0 \\
+            \{x : f(x) > \frac{a}{\lambda}\}, \lambda < 0
+        \end{array}\right.\)
+        \item \(f^2\): \(x \in E | f^2(x) < a = \left\{\begin{array}{l}
+            \{x : f(x) < \sqrt{a}\} \cap \{x : f(x) > -\sqrt{a}\}, a > 0 \\
+            \emptyset, a \le 0
+        \end{array}\right.\)
+        \item \(fg\): \(fg = \frac{1}{2}\left((f + g)^2 - f^2 - g^2\right)\).
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Пусть задана \(f: E \ra \overline{\R}\). Тогда
+    \begin{enumerate}
+        \item \(f^+ = \max\{f, 0\}\) --- положительная часть функции
+        \item \(f^- = \max\{-f, 0\}\) --- отрицательная часть функции
+    \end{enumerate}
+\end{definition}
+
+
+\begin{note}
+    \(f = f^+ - f^-, |f| = f^+ + f^-\)
+\end{note}
+
+\begin{corollary}
+    Измеримость \(f\) эквивалентна одновременной измеримости \(f^-, f^+\).
+\end{corollary}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\Ra\)] Зафиксируем \(a \in \R\). Заметим, что \(\{x \in E: f^+(x) < a\} = \left\{\begin{array}{l}
+            \{x : f(x) < a\}, a \ge 0 \\
+            \emptyset,  a < 0
+        \end{array}\right.\). Поэтому \(f^+(x)\) измерима, аналогично доказывается, что и \(f^-(x)\) измерима
+        \item[\(\La\)] \(f = f^+ - f^-\)
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Пусть \(f_k, f: E \ra \overline{\R}\). Тогда
+    \begin{enumerate}
+        \item Если \(f_k \ra f\) на \(E\) и \(f_k\) --- измеримы, то и \(f\) --- измерима
+        \item Если \(f_k\) измеримы, то \(\inf f_k, \sup f_k\) --- измеримы
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \(\forall a \in \R \{x\in E: f(x) < a\} = \bigcup_{j = 1}^\infty\bigcup_{m = 1}^\infty \bigcap_{k = m}^\infty \left\{x \in E: f_k(x) < a - \frac{1}{j}\right\}\). \(f(x) < a \Ra \exists j : f(x) < a - \frac{1}{j} \Ra  \exists j \exists m: f_k(x) < a - \frac{1}{j}\) при всех \(k \ge m\). ''\(\subset\)''. Пусть \(x\) лежит в правой части, т.е. \(\exists j, m \forall k \ge m (f_x(x) < a - \frac{1}{j})\), \(k \ra \infty \Ra \exists j: f_k(x) < a - \frac{1}{j} < a\). ''\(\supset\)''
+        \item \(g = \inf f_k \Ra \{x : g(x) < a\} = \bigcup_{k = 1}^\infty \{x : f_k(x) < a\}\) --- измеримо. \(g(x) < a \Lra \exists k (f_k(x) < a)\). \(\sup f_k = -\inf(-f_k)\) --- измеримо.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Пусть \(E \subset \overline{\R}, Q(x)\) --- формула на \(E\). Говоярят, что \(Q(x)\) верно для почти всех \(x \in E \Lra \mu\{x \in E: Q(x)\text{ ложно}\} = 0\)
+\end{definition}
+
+\begin{lemma}
+    Пусть заданы функции \(f, g: E \ra \overline{\R}, f = g\) почти всюду на \(E\). Тогда, если \(f\) измерима, то \(g\) --- тоже.
+\end{lemma}
+\begin{proof}
+    По условию, \(\mu Z = 0, Z = \{x \in E: f(x) \ne g(x)\}\). \(\forall a \in \R \{x \in E: g(x) < a\} = \left(\{x \in E : f(x) < a\} \cap Z^c \right) \cup \underbrace{\left(\{x \in E: g(x) < a\} \cap Z\right)}_{\text{измеримо, т.к }\mu^*(\cdots) = 0}\) --- измеримо.
+\end{proof}
+
+\begin{corollary}
+    \(f_k, f: E \ra \overline{\R}\). Тогда \(f_k \ra f\) почти всюду на \(E\) и \(f_k\) измеримо \(\forall k \Ra f\) --- измеримо
+\end{corollary}
+
+\begin{definition}
+    \(\phi: \R^n \ra \R\) простая, если \(\phi\) --- измерима, а \(\phi(\R^n)\) конечно.
+\end{definition}
+\begin{note}
+    Любая линейная комбинация индикаторов является простой функцией
+\end{note}
+\begin{proposition}
+    Для всякой простой функции существует разбиение \(\R^n\) конечным набором измеримых множеств, на каждом из которых \(\phi\) постоянна (допустимое разбиение).
+\end{proposition}
+\begin{proof}
+    \(\phi(\R^n) = \{a_1, a_2, \dots a_m\} \Ra \phi^{-1}(\{a_i\})\) --- измеримы, причем \(\bigsqcup_{i = 1}^m \phi^{-1}(a_i) = \R^n\). Тогда \(A_i = \phi^{-1}(a_i)\) --- измеримое и \(\bigsqcup_{i = 1}^m A_i = \R^n\), \(\phi = \sum_{i = 1}^m a_iI_{A_i}\).
+\end{proof}
+
+\begin{theorem}
+    Пусть \(f: E \ra [0, +\infty]\) измерима. Тогда \(\exists \{\phi_k\}_{k = 1}^\infty\), где \(\phi\) --- простые неотрицательные функции, что \(\forall x \in E\)
+    \begin{enumerate}
+        \item \(\phi_k(x)\) --- неубывающая последовательность
+        \item \(\lim_{k \ra \infty} \phi_k(x) = f(x)\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \(\forall k \in \N, j = 1, 2, \dots 2^k\) рассмотрим \(E_{kj} = \left\{x \in E: \frac{i - 1}{2^k} \le f(x) \le \frac{j}{2^k}\right\}, F_k = \left\{x \in E: f(x) \ge k\right\} \). Тогда эти множества попарно непересекаются, измеримы и в объединении дают \(\R^n\). Положим \(\phi_k = \sum_{j = 1}^{2^kk} \frac{j - 1}{2^k}I_{E_{kj}} +  kI_{F_k}\), тогда \(\{\phi_k\}\) --- последовательность неотрицательных измеримых простых функций. Зафиксируем \(x\in E\) и проверим условия:
+    \begin{enumerate}
+        \item Пусть \(f(x) \ge k \Ra \phi_{k + 1}(x) \ge k = \phi_k(x)\). Пусть \(f(x) < k \Ra \exists j: \frac{j - 1}{2^k} \le f(x) \le \frac{j}{2^k}\). Возможно 2 варианта
+        \begin{enumerate}
+            \item \(\frac{2j - 2}{2^{k + 1}} \le f(x) \le \frac{2j - 1}{2^{k + 1}}\)
+            \item \(\frac{2j - 1}{2^{k + 1}} \le f(x) \le \frac{2j}{2^{k + 1}}\)
+        \end{enumerate}
+        В обоих случаях, \(\phi_{k + 1} \ge \frac{2j - 2}{2^{k + 1}} = \frac{j - 1}{2^k} = \phi_k(x)\)/.
+    \end{enumerate}
+    \item Если \(f(x) = +\infty\), то \(\forall k \phi_k(x) = k \Ra \phi_k(x) \ra f(x)\) верно. Если \(f(x) \in \R \Ra \exists k = [f(x)] + 1, \exists j: \frac{j - 1}{2^k} \le f(x) < \frac{j}{2^k} \Ra |f(x) - \phi_k(x)| \le \frac{1}{2^k} \Ra \phi_k(x) \ra f(x)\)
+\end{proof}
+
+\begin{note}
+    Если дополнительно к условиям теоремы, \(f\) --- ограничена, то \(\phi_k \rightrightarrows f\) на \(E\).
+\end{note}
+
+\begin{corollary}
+    Пусть \(f: E \ra \overline{\R}\). Тогда \(f\) измерима \(\Lra \exists \{\phi_kz\}\) --- простые функций \(\phi_k \ra f\)
+\end{corollary}

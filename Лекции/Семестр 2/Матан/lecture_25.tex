@@ -50,11 +50,11 @@
 \section{Интеграл Лебега}
 \subsection{Напоминание}
 \begin{definition}
-    Пусть \(f: X \ra Y, A \subset X\). Тогда \(f^{-1}(A) = \{x \in X | f(x) \in A\}\)
+    Пусть \(f: X \ra Y, A \subset Y\). Тогда \(f^{-1}(A) = \{x \in X | f(x) \in A\}\)
 \end{definition}
 
 \begin{note}
-    Пусть \(f: X \ra Y, A \subset X\). Тогда:
+    Пусть \(f: X \ra Y, A \subset Y\). Тогда:
     \begin{enumerate}
         \item \(f^{-1}(\bigcup_{i = 1}^\infty A_i) = \bigcup_{i = 1}^\infty f^{-1}(A_i)\)
         \item \(f^{-1}(Y \setminus A) = X \setminus f^{-1}(A)\).
@@ -113,10 +113,6 @@
         \item[\(\Ra\)] \(\mathcal{F} = \{\Omega | f^{-1}(\Omega)\text{ измеримо}\}\) --- \(\sigma\)-алгебра. \(f^{-1}((a, b)) = f^{-1}([-\infty, b)) \cap f^{-1}((a, +\infty])\). \(\mathcal{F}\) содержит интервалы \(\Ra \mathcal{F}\) содержит все 
     \end{enumerate}    
 \end{proof}
-
-\begin{theorem}
-    Если \(f, g: E \ra \overline{\R}\) измеримы и \(\lambda \in \R\), то \(f + g, \lambda g, fg\) измеримы
-\end{theorem}
 
 \begin{note}
     \(B = \{x | f(x) = +\infty, g(x) = -\infty\} \cup \{x | f(x) = -\infty, g(x) = +\infty\} \Ra (f + g)(x) = \left\{\begin{array}{l}
