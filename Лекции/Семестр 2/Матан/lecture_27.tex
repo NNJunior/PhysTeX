@@ -1,0 +1,132 @@
+% !TEX root = ../../../main.tex
+
+\section{Интеграл Лебега}
+\subsection{Интеграл Лебега для неотрицательных простых функций}
+Пусть \(E \subset \R^n\) измеримо.
+\begin{definition}
+    Пусть \(\phi\) --- неотрицательная протая функция и \(\{A_i\}_{i = 1}^m\) --- допустимое разбиение \(\phi = \sum_{i = 1}^m a_iI_{A_i}\). Интегралом от \(\phi\) по \(E\) называется 
+    \[\int_{E} \phi d\mu = \sum_{i = 1}^m a_i \mu(A_i \cap E)\]
+\end{definition}
+
+
+\subsection{Свойства интеграла Лебега для неотрицательных простых функций}
+\begin{proposition}[Монотонность]
+    Если \(\phi \le \psi \Ra \int_{E} \phi d \mu \le \int_{E} \psi d\mu\)
+\end{proposition}
+\begin{proof}
+    Пусть \(\{A_i\}_{i = 1}^m, \{B_j\}_{j = 1}^k\) --- допустимые разбиения относительно \(\phi, \psi\). Тогда \(C_{ij} = A_i \cap B_j\) образует допустимое разбиение и для \(\phi\), и для \(\psi\). Т.к. \(A_i = A_i \cap \R^n = A_i \cap \bigcup_{j = 1}^k B_j = \bigcup_{j = 1}^k C_{ij}\), то по свойству аддитивности меры, \(\int_E \phi d\mu = \sum_{i = 1}^m a_i \mu(A_i \cap E) = \sum_{i = 1}^m a_i \mu\left(\bigcup_{j = 1}^k (C_{ij} \cap E)\right) - \sum_{i = 1}^m \sum_{j = 1}^k a_i \mu(C_{ij} \cap E)\). Аналогично получаем, что \(\int_E \psi d \mu = \sum_{j = 1}^k \sum_{i = 1}^m b_j \mu(C_{ij} \cap E)\). Если \(x \in C_{ij} \cap E\), то \(a_i = \phi(x) \le \psi(x) = b_j \Ra \int_E \phi d \mu \le \int_E \psi d \mu\)
+\end{proof}
+
+\begin{note}
+    Вместе с монотонностью интеграла, мы доказали корректность его определения
+\end{note}
+\begin{proof}
+    Для двух разных разбиений можем рассмотреть \(\psi = \phi\). Тогда получим, что \(\int_E \phi d \mu \le \int_E \phi d \mu\) для двух разных разбиений. Тогда определение интеграла корректно.
+\end{proof}
+
+\begin{proposition}[Аддитивность]
+    \(\int_E (\phi + \psi) d \mu = \int_E \phi d \mu + \int_E \psi d \mu\)
+\end{proposition}
+\begin{proof}
+    Доказывается аналогично монотонности
+\end{proof}
+
+\begin{proposition}[Однородность]
+    \(\int_E \lambda \phi d \mu = \lambda \int_E \phi d  \mu\)
+\end{proposition}
+\begin{proof}
+    Доказывается аналогично аддитивности
+\end{proof}
+
+\subsection{Интеграл Лебега для неотрицательных функций}
+
+\begin{definition}
+    Пусть \(f: E \ra [0, + \infty]\) --- неотрицательная измеримая функция. Тогда интегралом Лебега \(f\) по множеству \(E\) называется
+    \[\int_E f d \mu = \sup\left\{\int_E \phi d \mu : 0 \le \phi \le f, \phi\text{ --- простая}\right\}\]
+\end{definition}
+
+Будем писать \((s)\int_E \phi d\mu\), если мы будем использовать определение для простой функции
+
+\begin{note}
+    Пусть \(f, \phi\) --- простые функции, \(0 \le \phi \le f\). Тогда 
+    \[(s)\int_E \phi d\mu \le (s)\int_E fd\mu \Ra \sup\left\{\int_E \phi d \mu\right\} = \int_E f d\mu \le (s)\int_E fd\mu\]
+    Таким образом, мы доказали согласованность определений для простых функций и произвольных неотрицательных
+\end{note}
+
+\subsection{Свойства интеграла Лебега для неотрицательных функций}
+\begin{proposition}[Монотонность]
+    Если \(f \le g \Ra \int_{E} f d \mu \le \int_{E} g d\mu\)
+\end{proposition}
+\begin{proof}
+    Заметим, что \(\phi\) --- простая и \(0 \le \phi \le f \Ra 0 \le \phi \le g \Ra \int_{E} f d \mu \le \int_{E} g d\mu\)
+\end{proof}
+
+
+\begin{proposition}[Однородность]
+    \(\int_E \lambda \phi d \mu = \lambda \int_E \phi d  \mu\)
+\end{proposition}
+\begin{proof}
+    При \(\lambda = 0\) верно. При \(\lambda \ne 0\), заметим, что \(\phi\) --- простая и \(0 \le \phi \le f \Lra 0 \le \lambda \phi \le \lambda f\). Тогда \(\int_E \lambda \phi d \mu = \lambda \int_E \phi d  \mu\)
+\end{proof}
+
+\begin{proposition}
+    \(E_0 \subset E\) --- измеримо, тогда \(\int_{E_0} f d \mu = \int_E f I_{E_0}d \mu\)
+\end{proposition}
+\begin{proof}
+    Для простых функций это верно. Пусть \(0 \le \phi \le f \Ra \int_{E_0} \phi d \mu = \int_E \phi I_{E_0} d \mu \le \int_E f I_{E_0} d\mu \Ra \int_{E_0} f d \mu \le \int_E f I_{E_0} d \mu\). Теперь, пусть \(0 \le \psi \le fI_{E_0} \Ra \psi = 0\) на \(E \setminus E_0 \Ra \psi = \psi I_{E_0}\) на \(E\). Тогда \(\int_{E_0} f d \mu \ge \int_E f I_{E_0}d \mu\).
+\end{proof}
+
+\begin{proposition}
+    Если \(E_0 \subset E\) --- измеримо, то 
+    \[\int_{E_0} f d \mu \le \int_E f d \mu\]
+\end{proposition}
+\begin{proof}
+    \[\int_{E_0} f d \mu = \int_E f I_{E_0} d \mu \le \int_E f d \mu\]
+\end{proof}
+
+\begin{theorem}[Беппо Леви]
+    Пусть \(f_k: E \ra [0, +\infty]\) --- неотрицательные измеримые функции, \(f_r \ra f\) на \(E\). Если \(\forall x \in E\) выполнено \(0 \le f_1(x) \le f_2(x) \le \dots\), то 
+    \[\lim_{n \ra \infty} \int_E f_k d \mu = \int_E f d \mu\]
+\end{theorem}
+\begin{proof}
+    Функция \(f\) измерима, как предел измеримых функций. При этом, \(f_k \le f_{k + 1} \le f\) на \(E \Ra \int_E f_k d \mu \le \int_E f_{k + 1} d \mu \le \int_E f d \mu\). Тогда \(\left\{\int_E f_k d \mu\right\}\) нестрого возрастает в\(\overline{\R}\), поэтому \(\exists \lim_{k \ra \infty} \int_E f_k d \mu \le \int_E f d \mu\). Докажем противное неравенство. Достаточно показать, что \(\lim_{n \ra \infty} \int_E f_k d \mu \ge \int_E \phi d \mu\) для любой простой функции \(\phi: 0 \le \phi \le f\). Пусть \(\phi\) --- такая функция. Зафиксируем \(t \in (0, 1)\) и рассмотрим \(E_k = \{x \in E : f_k(x) \ge t \phi(x)\}\). Из восрастания \(f_k\), получаем, что \(E_k \subset E_{k + 1}\). Покажем, что \(E \subset \bigcup_{k = 1}^\infty E_k\). Если \(x \in E\) и \(\phi(x) = 0\), то \(x \in E_k \forall k\). Если \(\phi(x) > 0 \Ra f(x) \ge \phi(x) > t \phi(x) \Ra \exists m \in \N: f_m(x) \ge t \phi(x) \Lra x\ in E_m\). По построению имеем:
+    \[\int_E f_k d \mu \ge \int_{E_k} f_k d \mu \ge t \int_{E_k} \phi d \mu \;\;\;(*)\]
+    Пусть \(\phi = \sum_{i = 1}^m a_i I_{A_i}\), где \(\{A_i\}\) --- допустимое разбиение. Тогда по непрерывности меры
+    \[\int_{E_k} \phi d \mu = \sum_{i = 1}^m a_i \mu(E_k \cap A_i) \ra_{k \ra \infty} \sum_{i = 1}^m a_i \mu(E \cap A_i) = \int_E \phi d \mu\]
+    \[\lim_{k \ra \infty} \int_E f_k d \mu \ge t \int_E \phi d \mu\]
+    При \(t \ra 1 - 0\), получаем обратное неравенство.
+\end{proof}
+
+\begin{problem}[Лемма Фату]
+    Пусть \(f_k: E \ra [0, +\infty]\) --- неотрицательные измеримые функции. Пусть \(f_k \ra f\). Докажите, что если \(\exists C \ge 0: \int_E f_k d \mu \le C \Ra \int_E f d \mu \le C\)
+\end{problem}
+
+\begin{proposition}
+    Если \(f, g: E \ra [0, +\infty]\), то \(\int_E (f + g) d \mu = \int_E f d \mu + \int_E g d \mu\)
+\end{proposition}
+\begin{proof}
+    \(\exists \{\phi_k\}\) --- неотрицательные простые функции, \(0 \le \phi_1(x) \le \phi_2(x) \le \dots\), такие, что \(\phi_k \ra f\) на \(E\), \(\exists \{\psi_k\}\) --- неотрицательные простые функции, \(0 \le \psi_1(x) \le \psi_2(x) \le \dots\), такие, что \(\psi_k \ra g\) на \(E\). Тогда \(\{\phi_k + \psi_k\}: \phi_k + \psi_k \ra f + g\) на \(E\). Тогда по теореме Беппо Леви и по свойству аддитивности:
+    \[\int_E(f + g)d \mu = \lim_{k \ra \infty} (\phi_k + \psi_k) = \lim_{k \ra \infty} \int_E\phi_k d \mu + \lim_{k \ra \infty} \int_E\psi_k d \mu = \int_E f d \mu + \int_E g d \mu\]
+\end{proof}
+
+\begin{corollary}[Теорема Леви для рядов]
+    Если \(f_k: E \ra [0, +\infty]\), то 
+    \[\int_E \sum_{k = 1}^\infty f_k d \mu = \sum_{k = 1}^\infty \int_E f_k d \mu\]
+\end{corollary}
+\begin{proof}
+    Сумма ряда --- измеримая функция, как предел частичных сумм. По свойству линейности, имеем
+    \[\int_E \sum_{k = 1}^m f_k d \mu = \sum_{k = 1}^m \int_E f_k d \mu\]
+    Перейдем к пределу в этом равенстве. 
+    \[\lim_{m \ra \infty} \sum_{k = 1}^m \int_E f_k d \mu = \sum_{k = 1}^\infty \int_E f_k d \mu\]
+    \[\lim_{m \ra \infty} \int_E \sum_{k = 1}^m f_k d \mu  = \int_E \sum_{k = 1}^\infty f_k d \mu\]
+    Получили, что
+    \[\int_E \sum_{k = 1}^\infty f_k d \mu = \sum_{k = 1}^\infty \int_E f_k d \mu\]
+\end{proof}
+
+\begin{theorem}[неравенство Чебышева]
+    Если \(f: E \ra [0, +\infty]\), то \(\forall t \in (0, +\infty)\). \(\mu(x \in E: f(x) \ge t) \le \frac{1}{t}\int_E f d \mu\).
+\end{theorem}
+\begin{proof}
+    Определим \(E_t = \{x \in E: f(x) \ge t\}\) --- измеримое подмножество \(E\). Тогда:
+    \[\int_E f d \mu \ge \int_{E_t}f d \mu = \int_{E_t} t d \mu = t \mu(E_t)\]
+\end{proof}
