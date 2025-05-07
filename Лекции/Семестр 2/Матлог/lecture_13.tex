@@ -1,0 +1,160 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Нумералы Черча}
+\begin{definition}
+    
+    \[\begin{array}{ccl}
+        \underline{0} & = & \lambda fx.x \\
+        \underline{1} & = & \lambda fx.fx \\
+        \underline{2} & = & \lambda fx.f(fx) \\
+        \vdots & \vdots & \vdots\\
+        \underline{n} & = & \lambda fx.\underbrace{f(f(\dots(f}_{n\text{ раз}}x)))
+    \end{array}\]
+\end{definition}
+
+Как определить сложение? Для начала определим \(Inc\; \underline{n} = \underline{n + 1}\). 
+\begin{definition}
+    \[Inc = \lambda nfx.f(nfx)\]
+\end{definition}
+\begin{proof}
+    Действительно, заметим, что 
+    \[\underline{n}fx = (\underline{n}f)x = ((\lambda fx.\underbrace{f(f(\dots(f}_{n\text{ раз}}x)))f)x = (\lambda x.\underbrace{f(f(\dots(f}_{n\text{ раз}}x))))x = \underbrace{f(f(\dots(f}_{n\text{ раз}}x)))\]
+    \[Inc\;\underline{n} = f(\underbrace{f(f(\dots(f}_{n\text{ раз}}x)))) = \underbrace{f(f(\dots(f}_{n + 1\text{ раз}}x))) = \underline{n + 1}\]
+\end{proof}
+
+\subsubsection{Сложение}
+Далее, хотим, чтобы \(Add\;\underline{m}\;\underline{n} = \underline{m + n}\)
+\begin{definition}[Первый способ]
+    \[Add = \lambda mn.m \;Inc\;n\]
+\end{definition}
+\begin{proof}
+    \[Add\;\underline{m}\;\underline{n} = \underbrace{f(f(\dots(f}_{m\text{ раз}}x)))\;Inc\;n = \lambda fx.\underbrace{Inc(Inc(\dots(Inc}_{m\text{ раз}}n))) =  \underline{m + n}\]
+\end{proof}
+
+\begin{definition}[Второй способ]
+    \[Add = \lambda mnfx.mf(nfx)\]
+\end{definition}
+\begin{proof}
+    Воспользуемся двойной \(\beta\)-редукцией: \((\lambda xy.P)QR \ra_\beta P(^Q/_x, ^R/_y)\) и получим, что:
+    \[Add\;\underline{m}\;\underline{m} = \lambda fx.\underline{m}f(\underline{n}fx) = \lambda fx.\underbrace{f(f(\dots(f}_{m\text{ раз}}(\underline{n}fx)))) = \lambda fx.\underbrace{f(f(\dots(f}_{m\text{ раз}}(\underbrace{f(f(\dots(f}_{n\text{ раз}}fx))))))) = \underline{m + n}\]
+\end{proof}
+
+\subsubsection{Умножение}
+\begin{definition}[Первый способ]
+    \[Mult = \lambda mn.m \;Add\;n\;\underline{0} = \lambda mn.m \;(\lambda k.Add\;n\;k)\;\underline{0}\]
+\end{definition}
+\begin{proof}
+    По сути, мы \(m\) раз прибавляем \(\underline{n}\) к \(\underline{0}\)
+\end{proof}
+
+\begin{definition}[Второй способ]
+    \[Mult = \lambda mnfx.m(nf)x\]
+\end{definition}
+\begin{proof}
+    \[Mult\;\underline{m}\;\underline{n} = \lambda fx.\underline{m}(f\underline{n})x = \lambda fx.\underbrace{(\underline{n}f)((\underline{n}f)(\dots((\underline{n}f)}_{m\text{ раз}}x))) = \lambda fx.\underbrace{f^n(f^n(\dots(f^n}_{n\text{ раз}}(x)))) =\]
+    \[ = \lambda fx.f^{mn}x = \underline{mn}\]
+\end{proof}
+
+\subsubsection{Возведение в степень}
+\begin{definition}[Первый способ]
+    \[\lambda mn.n(\lambda k.Mult\;m\;k)\underline{1}\]
+\end{definition}
+\begin{proof}
+    По сути, мы \(m\) раз умножаем \(\underline{n}\) на \(\underline{1}\)
+\end{proof}
+
+\begin{definition}[Второй способ]
+    \[\lambda mnfx.nmfx\]
+\end{definition}
+\begin{proof}
+    Набросок доказательства:
+    \[\underline{n}\underline{m}fx = ((\underline{n}\underline{m})f)x = \underbrace{\underline{m}(\underline{m}(\dots(\underline{m}}_{n\text{ раз}}f)))x\]
+    По сути, \(n\) раз умножаем на \(m\)
+\end{proof}
+
+\subsubsection{Проверка на равенство нулю}
+Реализуем функцию \(IsZero\), которая удовлевторяет следующим условиям:
+\begin{enumerate}
+    \item \(IsZero\;\underline{0} = True\)
+    \item \(IsZero\;\underline{n + 1} = False\)
+\end{enumerate}
+
+\begin{definition}
+    \[IsZero = \lambda n.n (\lambda x.False)True\]
+\end{definition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \(IsZero\;\underline{0} = (\lambda fx.x)(\lambda x.False)True = True\)
+        \item \(IsZero\;\underline{n + 1} = (\lambda fx.f(\dots))(\lambda x.False)True = (\lambda x.False)(\dots) = False\)
+    \end{enumerate}
+\end{proof}
+
+\subsubsection{Трюк Клини}
+Мы хотим реализовать декремент. Строго говоря, он не определен для всех пар натуральных чисел. Поэтому мы реализуем ''срезанный декремент'':
+\[Dec\;\underline{m} = \underline{\max\{m - 1, 0\}}\]
+Идея состоит в том, что мы рассматриваем следующее преобразование пар:
+\[(x, y) \mapsto_g (f(x), x)\]
+Чтобы каким-то образом получить число \(n - 1\), мы сделаем следующее:
+\[(x, y) \mapsto (f(x), x) \mapsto (f(f(x)), f(x)) \mapsto \dots \mapsto (f^n(x), f^{n - 1}(x))\]
+Поэтому для того, чтобы получить \(f^{n - 1}\), надо взять функцию \(f\), функцию \(g\), котоаря будет данным образом преобразовывать пару и применить \(g^n\) к изначальной паре. Получится \((f^n(x), f^{n - 1}(x))\) и теперь достаточно будет взять правую часть этой пары. Формально:
+
+\begin{definition}
+    \[DecAux = \lambda fp.Pair(f(Left\;p))(Left\;p)\]
+    Это аналог \(g\) для декремента
+\end{definition}
+\begin{definition}
+    \[Dec = \lambda nfx.Right(n(DecAux\;f)(Pair\;x\;x))\]
+\end{definition}
+\begin{proof}
+    По сути, мы проделываем описанную выше процедуру. Формально:
+    \begin{enumerate}
+        \item \(Dec\;\underline{0}\) 
+        \[= \lambda fx.Right(\underline{0}(DecAux\;f)(Pair\;x\;x)) = \lambda fx.Right(Pair\;x\;x) = \lambda fx.x = \underline{0}\]
+        \item \(Dec\;\underline{n + 1}\)
+        \[= \lambda fx.Right(\underline{n + 1}(DecAux\;f)(Pair\;x\;x)) = \]
+        \[ = \lambda fx.Right(\underbrace{(DecAux\;f)((DecAux\;f)(\dots((DecAux\;f)}_{n + 1\text{ раз}}(Pair\;x\;x)))))\]
+        Заметим, что 
+        \[DecAux\;f = \lambda p.Pair(f(Left\;p))(Left\;p)\]
+        \[(DecAux\;f)(Pair\;x\;x) = Pair(f(Left\;(Pair\;x\;x)))(Left\;(Pair\;x\;x)) = Pair(fx)x\]
+        Поэтому крокодил выше свернется в \(\underline{n}\)
+        
+    \end{enumerate}
+\end{proof}
+
+\subsubsection{Вычитание}
+Как и декремент, вычитаение будет ''срезанным'':
+\[m - n = \underline{\max\{m - n, 0\}}\]
+\begin{definition}
+    \[Sub = \lambda mn.n\;Dec\;m\]
+\end{definition}
+
+\subsection{Рекурсивное программирование в \(\lambda\)-исчислении}
+Хотим рекурсивно определить деление:
+\[\left[\frac{m}{n}\right] = \left\{\begin{array}{l}
+    0, m < n \\
+    1 + \left[\frac{m - n}{n}\right], m \ge n
+\end{array}\right.\]
+
+Получим уравнение:
+\[Div\;\underline{n}\;\underline{m} = (LT\;m\;n)\underline{0}(Inc\;(Div(Sub\;m\;n)n))\]
+
+\(Div\) --- ''Решение уравнения выше'' или неподвижная точка преобразования.
+
+\begin{definition}
+    \[DivAux = \lambda gmn.(LT\;m\;n)\underline{0}(Inc(g(Sub\;m\;n)n))\]
+\end{definition}
+Хотим, чтобы \(Div = DivAux\;Div\)
+
+\subsection{\(Y\)-Комбинатор}
+Хотим, чтобы \(YF = F(YF)\). Тогда, если мы сможем представить \(Div\) в виде \(Y\;DivAux\), то мы победим.
+
+\begin{definition}
+    \[Y = (\lambda xy.y(xxy))(\lambda xy.y(xxy))\]
+\end{definition}
+\begin{proof}
+    \[YF = (\lambda xy.y(xxy))(\lambda xy.y(xxy))F = F((\lambda xy.y(xxy))(\lambda xy.y(xxy))F) = F(YF)\]
+\end{proof}
+
+\subsection{Комбинатор Клопа}
+\[\mathcal{L} = \lambda abcdefghijklmnopqstuvwxyzr.r(thisisafixedpointcombinator)\]
+Тогда \(Y = \underbrace{\mathcal{L}\mathcal{L}\dots\mathcal{L}}_{26}\)
