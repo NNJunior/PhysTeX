@@ -1,0 +1,125 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Интеграл Лебега от произвольной функции}
+
+\begin{definition}
+    Пусть \(f: E \ra \R\) --- измерима, тогда
+    \[\int_E f d \mu = \int_E f^+ d \mu - \int_E f^- d\mu\]
+    При условии, что хотя бы один из интегралов \(\int_E f^+ d \mu, \int_E f^- d\mu\) конечен
+\end{definition}
+
+\begin{definition}
+    Функция \(f\) называется интегрируемой по Лебегу, если оба интеграла \(\int_E f^+ d \mu, \int_E f^- d\mu\) конечны 
+\end{definition}
+
+\begin{note}
+    Данное определение согласуется с определением в неотрицательном случае: \(f^+ = f, f^- = 0 \int_E 0 d \mu = 0\)
+\end{note}
+
+\begin{note}
+    Если функция \(f\) измерима на \(E\), то интегрируемость \(f\) и \(|f|\) эквивалентны на \(E\)
+\end{note}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\Ra\)] Тогда \(\int_E f d \mu < \infty\). Т.к. \(|f| = f^+ + f^-\) на \(E \Ra \int_E|f|d\mu = \int_E f^+ d \mu + \int_E f^- d \mu < \infty\)
+        \item[\(\La\)] Пусть \(|f|\) интегрируема на \(E\). Тогда \(0 \le f^\pm \le |f| \Ra \int_E f^\pm d \mu \le \infty\)
+    \end{enumerate}
+\end{proof}
+
+\begin{note}
+    Если \(f\) интегрируема на \(E\), то
+    \[\left|\int_E f d \mu\right| \le \int_E |f|d \mu\]
+\end{note}
+\begin{proof}
+    \[\left|\int_E f d \mu\right| = \left|\int_E f^+ d \mu + \int_E f^- d \mu\right| \le \int_E f^+ d \mu + \int_E f^- d \mu = \int_E |f| d \mu\]
+\end{proof}
+
+\begin{note}
+    Если \(f\) интегрируема на \(E\), то \(f\) конечно почти всюду
+\end{note}
+\begin{proof}
+    Определим \(E_\infty = \{x \in E: |f(x)| = +\infty\}\). Тогда \(\forall t \in (0, \infty) \mu(x \in E: f(x) \ge t) \le \frac{1}{t}\int_E f d \mu \Ra \mu(E_\infty) = 0\)
+\end{proof}
+
+\begin{theorem}[Счетная аддитивность интеграла]
+    Пусть \(E_k\) измеримы, \(E_i \cap E_j = \emptyset, E = \bigcup_{k = 1}^\infty E_k\). Тогда, если \(f\) неотрицательная измеримая функция на \(E\), или \(f\) интегрируема на \(E\), то 
+    \[\int_E f d \mu = \sum_{k = 1}^\infty \int_E f_k d \mu\]
+\end{theorem}
+\begin{proof}
+    Докажем в первом случае. Т.к. \(E_k\) образуют разбиение \(E\), то \(I_E = \sum_{k = 1}^\infty I_{E_k} \Ra f = fI_{E} = \sum_{k = 1}^\infty f I_k \) на \(E\). Тогда по теореме Леви для рядов:
+    \[\int_E f d \mu = \sum_{k = 1}^\infty \int_E fI_{E_k} d \mu = \sum_{k = 1}^\infty \int_{E_k}f d \mu\]
+    Второй случай следует из измеримости и неотрицательности функций \(f^\pm\)
+\end{proof}
+
+\begin{lemma}
+    Пусть \(E\) --- измермо, \(E_0 \subset E: \mu(E_0 \subset E) = 0\). Тогда \(\int_E f d \mu = \int_{E_0} f d \mu\) существуют одновременно, и в случае существования, совпадают
+\end{lemma}
+\begin{proof}
+    Отметим, что \(f|_E, f|_{E_0}\) измеримы одновременно. Тогда по аддитивности интеграла 
+    \[\int_E f^\pm d \mu = \int_E f^\pm d \mu + \int_{E \setminus E_0} f^\pm d \mu = \int_{E_0} f^\pm d \mu\]
+    Последний переход верен, т.к. 
+    \[\forall g \exists \int_{E \setminus E_0} g d \mu = 0\]
+\end{proof}
+
+\begin{corollary}
+    Если \(f\) интегрируема на \(E\), \(g = f\) почти всюду на \(E\). Тогда \(g\) также интегрируема на \(E\), причем \(\int_E f d \mu = \int_E g d \mu\)
+\end{corollary}
+
+\begin{corollary}[Признак интегрируемости]
+    Если \(f\) измерима на \(E\) и \(\exists g\) --- интегрируемая на \(E\), такая, что \(|f| \le g\) почти всюду на \(E \Ra f\) тоже интегрируема
+\end{corollary}
+\begin{proof}
+    Интегрируемость \(|f|, f\) эквивалентны, поэтмоу докажем только интегрируемость \(|f|\). По монотонности интеграла и лемме,
+    \[\int_E f d\mu = \int_{E \setminus \{x : |f| > g\}} |f| d \mu \le \int_{E \setminus \{x : |f| > g\}} g d \mu = \int_E g d \mu < \infty\]
+\end{proof}
+
+\begin{theorem}
+    Пусть \(f, g: E \ra \overline{\R}\) интегрируемы и \(\lambda\) --- число. Тогда
+    \begin{enumerate}
+        \item Если \(f \le g\) на \(E\), то \(\int_E f d \mu \le \int_E g d \mu\)
+        \item \(\int_E \lambda f d \mu = \lambda \int_E f d \mu\)
+        \item \(\int_E (f + g) d \mu = \int_E f d \mu + \int_E g d \mu\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \(f^+ \le g^+, f^- \ge g^-\). Проинтегрируем эти неравенства, получаем:
+        \[\int_E f^+ d \mu \le \int_E g^+ d \mu, \int_E g^- d \mu \le \int_E f^- d \mu\]
+        Вычитая второй неравенство из первого, 
+        \[\int_E f^+ d \mu - \int_E g^- d \mu  \le \int_E g^+ d \mu - \int_E f^- d \mu\]
+        \item Для \(\lambda \ge 0\). Тогда \((\lambda f)^\pm = \lambda f^\pm\). Тогда
+        \[\int_E \lambda f d \mu = \int_E (\lambda f)^+ d \mu - \int_E (\lambda f)^- d \mu = \int_E \lambda f^+ d \mu - \int_E \lambda f^- d \mu = \lambda \int_E f d \mu\]
+        Для \(\lambda = -1\): \((-f)^+ = f^-, (-f)^- = f^+\). Тогда
+        \[\int_E (-f) d \mu = \int_E f^- d \mu - \int_E f^+ d \mu = -\int_E f d \mu\]
+        Для \(\lambda < 0: \lambda = -|\lambda|\) и пользуемся утверждением выше.
+        \item Обозначим \(h = f + g\). \(\exists E_0 \subset E\), такое, что \(\mu(E \setminus E_0) = 0\), \(f, g\) принимают на \(E_0\) конечные значения. (\(\Ra h\)) тоже будет на \(E_0\) конечной. Имеем:
+        \[h^+ - h^- = h = f + g = (f^+ - f^-) + (g^+ - g^-) \Ra h^+ + f^- + g^- = h^- + f^+ + g^+\]
+        \[\int_{E_0} h^+ d\mu + \int_{E_0} f^- d\mu + \int_{E_0} g^- d\mu = \int_{E_0} h^- d\mu + \int_{E_0} f^+ d\mu + \int_{E_0} g^+ d\mu = \]
+        Получили, что
+        \[\int_E h d \mu = \int_E f d \mu + \int_E g d \mu\]
+        Причем \(h\) интегрируема, т.к.  
+        \[\int_E h^\pm d\mu < \infty \Ra |h| \le |f| + |g|\]
+    \end{enumerate}    
+\end{proof}
+
+\begin{theorem}[Лебега о мажорированной сходимости]
+    Пусть \(f_k, f: E \ra \R, f_k \ra f\) почтю всюду на \(E\). Если \(\exists g\) --- интегрируемая на \(E\) и \(|f_k| \le g\) почти всюду на \(E\), то
+    \[\lim_{k \ra \infty}\int_E f_k d \mu = \int_E f d \mu\]
+\end{theorem}
+\begin{proof}
+    Будем считать, что \(f_k \ra f\) всюду на \(E\), \(|f_k| \le g\) всюду на \(E\), \(g\) --- конечна на \(E\). Так можно сделать, т.к. множествами меры 0 ''можно пренебрегать''. Переходя к пределу в неравенствах \(|f_k| \le g\) на \(E\), получим \(|f| \le g\). Следовательно, все \(f_k, f\) интегрируемы на \(E\). Определим \(h_k = \sup_{m \ge k}|f_m - f| \ge 0 \Ra 0 \le h_{k + 1}(x) \le h_k(x) \forall x \in E\). \(h_k\) интегрируемы на \(E\), т.к. \(|h_k| \le 2g\) на \(E\). Применим теорему Леви к последовательности \(\{2g - h_k\}\), получим
+    \[\lim_{k \ra \infty} \int_E (2g - h_k)d \mu = \lim_{n \ra \infty} h_k(x) = \inf_k \sup_{m \ge k} |f_m(x) - f(x)| = \limsup_{n \ra \infty} |f_k(x) - f(x)| = 0\]
+    Следовательно
+    \[\lim_{k \ra \infty} \int_E h_k d \mu = 0\]
+    Т.к. \(\int_E |f_k - f| d \mu \le \int_E h_k d \mu, \left|\int_E f_k d \mu - \int_E f d \mu\right| \le \int_E |f_k - f| d \mu\)
+\end{proof}
+
+\begin{theorem}
+    Пусть \(f\) ограничена на \([a, b]\). Тогда \(f\) интегрируема на \([a, b]\), когда \(f\) непрерывна почти всюду на \([a, b]\). В этом случае, \(f\) интегрируема по Лебегу, причем
+    \[\int_a^b fdx = \int_{[a, b]} fd\mu\]
+\end{theorem}
+\begin{proof}
+    Пусть \(T\) --- разбиение \([a, b]\). Определим \(\phi_T = \sum_{i = 1}^n m_iI_{[x_{i - 1}, x_i)}, \psi_T = \sum_{i = 1}^n M_iI_{[x_{i - 1}, x_i)}\), где \(M_i = \sup_{x \in [x_{i - 1}, x_i]}f(x)\). Имеем (\(s_T, S_T\)) --- нижняя и верхние суммы Дарбу.
+    \[\int_{[a, b]}\phi_T d \mu = s_T, \int_{[a, b]}\psi_T d \mu = S_T\]
+    Доказательство будет завершено на следующей лекции
+\end{proof}

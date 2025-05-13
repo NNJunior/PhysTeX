@@ -65,6 +65,8 @@
       <lecture name="Лекция 25" path="Лекции/Семестр 2/Матан/lecture_25" description="Измеримые функции" setting="Лекции/Семестр 2/Матан/setting" date="29.04.25"/>
       <lecture name="Лекция 26" path="Лекции/Семестр 2/Матан/lecture_26" description="Продолжение измеримых функций" setting="Лекции/Семестр 2/Матан/setting" date="02.05.25"/>
       <lecture name="Лекция 27" path="Лекции/Семестр 2/Матан/lecture_27" description="Интеграл Лебега от неотрицательных функций" setting="Лекции/Семестр 2/Матан/setting" date="06.05.25"/>
+      <lecture name="Лекция 28" path="Лекции/Семестр 2/Матан/lecture_28" description="Интеграл Лебега от произвольных функций" setting="Лекции/Семестр 2/Матан/setting" date="13.05.25"/>
+
     </subject>
     <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Лекции/Семестр 2/ОКТЧ/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/ОКТЧ/lecture_1" description="Квадратичные вычеты. Начало" setting="Лекции/Семестр 2/ОКТЧ/setting" date="06.02.25"/>
