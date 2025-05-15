@@ -10,60 +10,113 @@ $$ m - 1 = 2^s \cdot l$$
 
 Пусть $B_{MR} = \{a \in \Z^{*}_{m}\}$, если для $a$ выполнено одно из следующих условий:
 \begin{enumerate}
-  \item $a^l \equiv_m \pm 1$
-  \item $a^{2l} \equiv_m -1 mod m$
-  \item $a^{4l} \equiv_m -1 mod m$
-  \item  $a^{\frac{m - 1}{2}} = a^{2^{s-1} l} \equiv_m -1 mod m$
+    \item $a^l \equiv_m \pm 1$
+    \item $a^{2l} \equiv_m -1$
+    \item $a^{4l} \equiv_m -1$
+    \item   $a^{\frac{m - 1}{2}} = a^{2^{s-1} l} \equiv_m -1 mod m$
 \end{enumerate}
 
 \begin{proof}
-  Пусть $m$ - простое. Несложно заметить факт, что для простых чисел существует некоторое дерево ветвлений: $a^{p - 1} = 1$, для половины простых $a^{\frac{p-1}{2}} = 1$, для другой половины $a^{\frac{p-1}{2} = -1}$. Первая половина делится на еще 2 группы простых (для которых $a^{\frac{p-1}{4}} = 1$ и $a^{\frac{p-1}{4}} = -1$). 
+    Пусть $m$ - простое. Несложно заметить факт, что для простых чисел существует некоторое дерево ветвлений: $a^{p - 1} = 1$, для половины простых $a^{\frac{p-1}{2}} = 1$, для другой половины $a^{\frac{p-1}{2} = -1}$. Первая половина делится на еще 2 группы простых (для которых $a^{\frac{p-1}{4}} = 1$ и $a^{\frac{p-1}{4}} = -1$). 
 
-  В обратную сторону воспользуемся утвеждением ниже (б/д).
+    В обратную сторону воспользуемся утвеждением ниже (б/д).
 \end{proof}
 
 \begin{proposition}{(б/д)}
-  $B_{MR}(m) \subset B_SS(m)$
+    $B_{MR}(m) \subset B_SS(m)$
 \end{proposition}
 
 \begin{proposition}
-  $\left|B_{MR}(m)\right| \le \left|\Z_m^*(m)\right|$
+    $\left|B_{MR}(m)\right| \le \left|\Z_m^*(m)\right|$
 \end{proposition}
 \begin{proof}
-  \begin{enumerate}
-    \item $m \vdots p, q, r$ - различные простые.
-    \item $m = p^\alpha q^\beta \then m - $ не число Кармайкла$\then \left| B_F(m)\right| \le \frac{1}{2}\left|\Z_m^*\right|$
-    \item $m = p ^ \alpha$
-  \end{enumerate} 
+    \begin{enumerate}
+        \item $m \vdots p, q, r$ - различные простые.
+        \item $m = p^\alpha q^\beta \then m - $ не число Кармайкла$\then \left| B_F(m)\right| \le \frac{1}{2}\left|\Z_m^*\right|$
+        \item $m = p ^ \alpha$
+    \end{enumerate} 
 
-  \textbf{Первый случай:}
-  
-  Пусть $M_i$ - множество остатков $a$ из первого доказательства, то есть $M_0' = \{a \in \Z_m^* | a^l \equiv_m 1\}, M_j = \{a \in \Z_m^* | a^{2^j \cdot l} \equiv_m -1\}$. Выбирая минимальные $j$, добьемся того, что $B_{MR}(m) = M'0 \sqcup M_0 \sqcup M_1 \sqcup \dots \sqcup M_{s-1}$.
+    \textbf{Первый случай:}
+    
+    Пусть $M_i$ - множество остатков $a$ из первого доказательства, то есть $M_0' = \{a \in \Z_m^* | a^l \equiv_m 1\}, M_j = \{a \in \Z_m^* | a^{2^j \cdot l} \equiv_m -1\}$. Выбирая минимальные $j$, добьемся того, что $B_{MR}(m) = M'0 \sqcup M_0 \sqcup M_1 \sqcup \dots \sqcup M_{s-1}$.
 
-  \begin{proposition}
-    $d \in \Z, d > 1$, если $\left|\{a \in \Z_d^* | a^k = -1\}\right| \ne 0 \then \left|\{a \in \Z_d^* | a^k = 1\}\right|$
-  \end{proposition}
+    \begin{proposition}
+        $d \in \Z, d > 1$, если $\left|\{a \in \Z_d^* | a^k = -1\}\right| \ne 0 \then \left|\{a \in \Z_d^* | a^k = 1\}\right|$
+    \end{proposition}
 
-  \textit{Доказательство простое, достаточно просто взять $a^2$}
+    \textit{Доказательство простое, достаточно просто взять $a^2$}
 
-  Определим $M_j = \left|\{a \in \Z_m^* | a^{2^j l} \equiv_m -1\}\right|$, что по КТО равносильно системе:
-  \begin{enumerate}
-    \item $a^{2^j l} \equiv_{p^\alpha} -1$
-    \item $a^{2^j l} \equiv_{p^\beta} -1$
-     \item $a^{2^j l} \equiv_{p^\gamma} -1$
-  \end{enumerate}
-  
-  \begin{proposition}
-    $|N_j|$ = $6 |M_j|$ 
-  \end{proposition}
+    Определим $M_j = \left|\{a \in \Z_m^* | a^{2^j l} \equiv_m -1\}\right|$, что по КТО равносильно системе:
+    \begin{enumerate}
+        \item $a^{2^j l} \equiv_{p^\alpha} -1$
+        \item $a^{2^j l} \equiv_{p^\beta} -1$
+         \item $a^{2^j l} \equiv_{p^\gamma} -1$
+    \end{enumerate}
+    
+    \begin{proposition}
+        $|N_j|$ = $6 |M_j|$ 
+    \end{proposition}
 
-  \begin{proposition}
-    $N_j \cup M_{j + k} = \varnothing \then N_j \cup N_{j + k} = \varnothing$
-  \end{proposition}
+    \begin{proposition}
+        $N_j \cup M_{j + k} = \varnothing \then N_j \cup N_{j + k} = \varnothing$
+    \end{proposition}
 
-  \begin{proof}
-    $a \in N_j \then a^{2^{j}l} \equiv_{m} 1 $
-  \end{proof}
+    \begin{proof}
+        $a \in N_j \then a^{2^{j}l} \equiv_{m} 1 $
+    \end{proof}
 
-  Из описанного следует, что $|M^'_0 \sqcup M_0 \sqcup M_1 \sqcup \dots \sqcup M_{s - 1}| \le \frac{1}{3} |N_0 \sqcup N_1 \sqcup \dots \sqcup N_{s - 1}|$
+    Из описанного следует, что $|M'_0| \sqcup M_0 \sqcup M_1 \sqcup \dots \sqcup M_{s - 1}| \le \frac{1}{3} |N_0 \sqcup N_1 \sqcup \dots \sqcup N_{s - 1}|$
+\end{proof}
+
+\subsection{Числа Мерсенна}
+\begin{definition}
+    Простые числа \(2^p - 1\) называются числами Мерсенна
+\end{definition}
+
+\begin{definition}
+    Простые числа \(2^{2^n} - 1\) называются числами Ферма
+\end{definition}
+
+\begin{note}
+    \(\forall n > 5\) числа Ферма составные
+\end{note}
+
+\begin{note}
+    \(2^n - 1\) --- простое число \(\Ra n\) --- простое
+\end{note}
+\begin{proof}
+    Пусть нет, тогда \(n = mk \Ra 2^{mk} - 1 = (2^m)^k - 1 \equiv_{2^m} 0\)
+\end{proof}
+
+\begin{definition}
+    \(s_0 = 4, s_{k + 1} = s_k^2 - 2\).
+\end{definition}
+
+\begin{lemma}
+    \(s_k = (2 + \sqrt{3})^{2^k} + (2 - \sqrt{3})^{2^k}\)
+\end{lemma}
+\begin{proof}
+    По индукции
+\end{proof}
+
+\begin{definition}
+    \(\Z_m[\sqrt{k}] = \Z_m[x]/_{(x^2 - k)}\), т.е. это все остатки при делении на многочлен \(x^2 - k\)
+\end{definition}
+
+\begin{theorem}[Люка-Лемера]
+    Тогда \(M_p\) --- простое \(\Lra M_p | s_{p - 2}\)
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\La\)] Пусть \(q\) --- наименьший делитель \(M_p\)
+        \[(2 + \sqrt{3})^{2^{p - 2}} + (2 - \sqrt{3})^{2^{p - 2}} \equiv_q 0\]
+        \[(2 + \sqrt{3})^{2^{p - 2}} \equiv_q - (2 - \sqrt{3})^{2^{p - 2}}\]
+        \[(2 + \sqrt{3})^{2^{p - 1}} \equiv_q -1\]
+        \[(2 + \sqrt{3})^{2^p} \equiv_q 1\]
+        \[ord(2 + \sqrt{3}) | {2^p} \Ra ord(2 + \sqrt{3}) = 2^k, k > p - 1 \Ra ord(2 + \sqrt{3}) = 2^p\]
+        \[M_p = 2^p - 1 < ord(2 + \sqrt{3}) = 2^p < || =  q^2 \le M_p\]
+
+        КОРОЧЕ СОРЯН Я НЕ УСПЕЛ
+    \end{enumerate}    
+    \href{https://ru.wikipedia.org/wiki/Тест_Люка_—_Лемера#Достаточность}{ВОТ ВАМ ВИКИПЕДИЯ}
 \end{proof}

@@ -83,6 +83,9 @@
       <lecture name="Лекция 9" path="Лекции/Семестр 2/ОКТЧ/lecture_9" description="Иррациональность и трансцендентность числа e" setting="Лекции/Семестр 2/ОКТЧ/setting" date="03.04.25"/>
       <lecture name="Лекция 10" path="Лекции/Семестр 2/ОКТЧ/lecture_10" description="Решетки" setting="Лекции/Семестр 2/ОКТЧ/setting" date="10.04.25"/>
       <lecture name="Лекция 11" path="Лекции/Семестр 2/ОКТЧ/lecture_11" description="Теорема Минковского-Главки для октаэдра" setting="Лекции/Семестр 2/ОКТЧ/setting" date="17.04.25"/>
+      <lecture name="Лекция 12" path="Лекции/Семестр 2/ОКТЧ/lecture_12" description="Последовательности и какая-то шняга" setting="Лекции/Семестр 2/ОКТЧ/setting" date="24.04.25"/>
+      <lecture name="Лекция 13" description="скип" date="01.05.25"/>
+      <lecture name="Лекция 14" path="Лекции/Семестр 2/ОКТЧ/lecture_14" description="Еще тесты на простоту. Тесты Миллера-Рабина. И что-то еще, не затехал, сорян" setting="Лекции/Семестр 2/ОКТЧ/setting" date="15.05.25"/>
     </subject>
     <subject name="Технологии программирования" description="
 Основные ссылки по курсу:&#xA;
