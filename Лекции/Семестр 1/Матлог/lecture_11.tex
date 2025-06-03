@@ -1,0 +1,74 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Предварённая нормальная форма}
+\begin{definition}
+    Предваренная нормальная форма --- это такая формула, в которой сначала идут кванторы, а потом бескванторная форма.
+\end{definition}
+
+$$\underbrace{\forall\exists\exists\dots}_{\text{кванторы}}\underbrace{(\dots\dots\dots\dots\dots)}_{\text{''бескванторная форма''}}$$
+
+\begin{theorem}
+    У любой формулы первого порядка существует эквивалентная ей ПНФ
+\end{theorem}
+\begin{proof}
+    Будем проводить следующие эквивалентные преобразования:
+    \begin{enumerate}
+        \item $\neg \exists x \phi \longleftrightarrow \forall x \neg \phi$
+        \item \begin{enumerate}
+            \item $\forall x \phi \wedge \forall x \psi \longleftrightarrow \forall x (\phi \wedge \psi)$
+            \item $\exists x \phi \vee \exists x \psi \longleftrightarrow \exists x (\phi \vee \psi)$
+        \end{enumerate} 
+        \item[\cancel{3.}] $\exists x (\phi \wedge \psi) \rightarrow (\exists x\phi \wedge \exists x\psi)$ --- но это не эквивалентность, поэтому это использовать нельзя. Как тогда? Нужно сделать замену переменной:
+        $$\exists x \phi \longleftrightarrow \exists y \phi(^y/_x)$$
+        Где $\phi(^y/_x)$ --- все свободные вхождения $x$ заменили на $y$. При этом эти вхождения не должны подпадать под действие кванторов по $y$ и $y$ не входит свободно в формулу $\phi$. Примера некорректных замен:
+        \begin{enumerate}
+            \item $\exists x \forall y A(x, y) \not\rightarrow \exists y \forall y A(y, y)$
+            \item $\exists x A(x, y) \not\rightarrow \exists y A(y, y)$
+        \end{enumerate}
+        Причем, если мы заменяем на новую переменную, такая замена всегда будет корректна.
+
+        Если $x$ --- не параметр $\psi$, то $(\exists x \phi) \wedge \psi \longleftrightarrow \exists x (\phi \wedge \psi)$. Но тогда, если $x$ --- параметр $\psi$, то $(\exists x \phi) \wedge \psi \longleftrightarrow (\exists y \phi(^y/_x)) \wedge \psi \longleftrightarrow \exists y (\phi(^y/_x) \wedge \psi)$ ($y$ не встречается ни в $\phi$, ни в $\psi$).
+    \end{enumerate}
+\end{proof}
+
+\subsection{Предикаты и выразимость}
+
+Значение формулы зависит только от значения ее параметров. Формула с $k$ параметрами при фиксированной интерпретации задает $k$-местный предикат.
+
+\begin{definition}
+    Предикат называется выразимым в данной интерпретации, если его можно задать формулой первого порядка.
+\end{definition}
+
+
+\begin{example}
+    $$\langle \N, S, = \rangle, S(n) = n + 1$$
+    Тогда:
+    \begin{enumerate}
+        \item $x = 0 \Leftrightarrow \neg \exists y (x = S(y))$
+        \item $x = 1 \Leftrightarrow \exists y (x = S(y) \wedge \underbrace{y = 0}_{\text{подставляем предыдущее}})$
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    $$\langle \N, \cdot, = \rangle$$
+    Тогда:
+    \begin{enumerate}
+        \item $x = 0 \Leftrightarrow \neg \forall y (y\cdot x = x)$
+        \item $x = 0 \Leftrightarrow \neg \forall y (y\cdot x = y)$
+        \item $x \vdots y \Leftrightarrow \exists z (x = y\cdot z)$
+        \item $p$ --- простое $\Leftrightarrow (p \ne 1 \wedge \forall q(p \vdots q \rightarrow (q = 1 \vee q = p)))$
+        \item $d = \text{НОД}(x, y) \Leftrightarrow (x \vdots d \wedge y \vdots d \forall k ((x \vdots k \wedge y \vdots k) \rightarrow d \vdots k)$
+        \item $c = \text{НОК}(x, y) \Leftrightarrow (c \vdots x \wedge c \vdots y \forall k ((k \vdots x \wedge k \vdots y) \rightarrow k \vdots c)$
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    $$\langle 2^A, \subset \rangle$$
+    Тогда:
+    \begin{enumerate}
+        \item $x = y \Leftrightarrow (x \subset y \wedge y \subset x)$
+        \item $x = \varnothing \Leftrightarrow \forall y (x \subset y)$
+        \item $|x| = 1 \Leftrightarrow (x \ne \varnothing) \wedge \forall y (y \subset x \rightarrow (y = x \vee y = \varnothing))$
+        \item $z = x \cup y \Leftrightarrow (x \subset z \wedge y \subset z \wedge \forall t((x \subset t \wedge y \subset t)) \rightarrow z \subset t)$
+    \end{enumerate}
+\end{example}

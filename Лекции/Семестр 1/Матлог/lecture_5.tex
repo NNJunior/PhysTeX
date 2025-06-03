@@ -1,0 +1,118 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Типы пропозициональных формул}
+\begin{definition}
+    Тавтология --- всегда истинная формула
+\end{definition}
+\begin{definition}
+    Противореиче --- всегда ложная формула
+\end{definition}
+\begin{definition}
+    Опровержимая формула --- не противоречие
+\end{definition}
+\begin{definition}
+    Выполнимая формула --- не тавтология
+\end{definition}
+
+\subsection{Важные тавтологии (логические законы)}
+\begin{enumerate}
+    \item Закон непротиворечия $\neg (A \wedge \neg A)$
+    \item Закон двойного отрицания $A \leftrightarrow \neg\neg A$
+    \item Закон исключенного третьего $A\vee \neg A$
+    \begin{theorem}[Пример неконструктивного доказательства]
+        Существуют $\alpha, \beta \in \R\setminus\Q: \alpha^\beta \in \Q$
+    \end{theorem}
+    \begin{proof}
+        $$\left(\sqrt{2}^{\sqrt{2}}\right)^{\sqrt{2}} = 2$$
+        Тогда либо $\sqrt{2}^{\sqrt{2}} = x$ --- иррациональное число, и тогда $x^{\sqrt{2}}$ удовлетворяет условию, иначе $\sqrt{2}^{\sqrt{2}}$ подходит.
+    \end{proof}
+    
+    \item Контрпозиция $(A \rightarrow B) \leftrightarrow (\neg B \rightarrow \neg A)$
+    \item Законы де Моргана 
+    \begin{enumerate}
+        \item $\neg(A\wedge B) \leftrightarrow (\neg A \vee \neg B)$
+        \item $\neg(A\vee B) \leftrightarrow (\neg A \wedge \neg B)$
+    \end{enumerate}
+\end{enumerate}
+
+\section{Задача о выполнимости условий}
+Даны несколько формул, спрашивается, могут ли они одновременно быть истинными? 
+$$\varphi_1 \wedge \varphi_2 \wedge \dots \wedge \varphi_n$$
+\subsection{Пример превращения математической задачи в задачу о выполнимаости}
+\subsection{Задача о четырех красках}
+У нее была очень долгая история, когда ее решали о опровергали, но в итоге в 1976г. Эту задачу решили при помощи перебора. Переформулируем в терминах выполнимости условий. Вершинам планарного графа сопоставим 2 бита $(p, q)$ (цвет). Таким образом, если $u, v$ --- различные области на карте, то нужно, чтобы $(p_v \neq p_u) \vee (q_v \neq q_u)$.
+
+\section{Исчисление высказываний}
+\begin{definition}
+    Логический вывод --- это последовательность формул, в которой каждая формула либо является аксиомой, либо получается из более ранних по одному из правил вывода.
+\end{definition}
+
+Все теории отличаются аксиомами и правилами вывода. Обычно, когда нам в школе рассказывали аксиомы плоскости или, не дай бог, пространства, мы рассматривали сами аксиомы, но не способы их вывода. Итак, постараемся отвлечься от смысла, будем лишь наблюдать за синтаксисом. Идея такая: для того, чтобы формализовать математику, нам нужен четкий список правил, по которым она работает (тавтологий). Т.к. доказательство это, буквально, текст, мы сейчас будем работать исключительно с синтаксисом, но не семантикой. Проще говоря, мы хотим научиться получать все возможные тавтологии, причем конечным набором правил. Один из таких наборов правил приведен ниже:
+
+\subsection{Схемы аксиом}
+\begin{enumerate}
+    \item $A \rightarrow (B \rightarrow A)$
+    \item $(A \rightarrow (B \rightarrow C)) \rightarrow ((A \rightarrow B) \rightarrow (A \rightarrow C))$
+    \item $(A\wedge B) \rightarrow A$
+    \item $(A\wedge B) \rightarrow B$
+    \item $A \rightarrow (B \rightarrow (A\wedge B))$
+    \item $A \rightarrow (A \vee B)$
+    \item $B \rightarrow (A \vee B)$
+    \item $(A\rightarrow C) \rightarrow ((B \rightarrow C )\rightarrow ((A\vee B) \rightarrow C))$ --- разбор случаев
+    \item $\neg A \rightarrow (A \rightarrow B)$
+    \item $(A \rightarrow B) \rightarrow ((A \rightarrow \neg B) \rightarrow \neg A)$ --- рассуждение от противного.
+    \item $A\vee\neg A$
+\end{enumerate}
+\subsection{Правило Вывода}
+\begin{definition}
+    Modus Ponens ---
+    $$\frac{A, A\rightarrow B}{B}$$
+\end{definition}
+
+\subsection{Обозначения}
+\begin{enumerate}
+    \item $\vdash A$ --- $A$ --- выводима
+    \item $\models A$ --- $A$ --- тавтология
+\end{enumerate}
+
+\subsection{Примеры вывода}
+
+\begin{example}
+    $$\vdash (A \vee B) \rightarrow (B\vee A)$$
+    \begin{enumerate}
+        \item $A \rightarrow (B\vee A)$
+        \item $B \rightarrow (B\vee A)$
+        \item $(A\rightarrow(B\vee A)) \rightarrow((B \rightarrow (B \vee A))\rightarrow (( A \vee B ) \rightarrow (B \vee A )))$
+        \item $(B \rightarrow (B \vee A)) \rightarrow ((A\vee B) \rightarrow (B \vee A))$
+        \item $(A\vee B) \rightarrow (B \vee A)$
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    $$\vdash (A \rightarrow A)$$
+    \begin{enumerate}
+        \item $A \rightarrow ((A \rightarrow A) \rightarrow A)$
+        \item $(A \rightarrow ((A \rightarrow A) \rightarrow A)) \rightarrow ((A \rightarrow (A \rightarrow A)) \rightarrow (A \rightarrow A))$
+        \item $(A \rightarrow (A \rightarrow A)) \rightarrow (A \rightarrow A)$
+        \item $A \rightarrow (A \rightarrow A)$
+        \item $A \rightarrow A$
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}
+    \(A\) --- выводима \(\Ra\) \(A\) --- тавтология
+\end{theorem}
+\begin{proof}
+    Аксиомы --- тавтологии.
+    $$\left.\begin{array}{r}
+        A\text{ --- тавтология }  \\
+        A\rightarrow B \text{ --- тавтология } 
+    \end{array}\right\} \Rightarrow B\text{ --- тавтология }$$
+\end{proof}
+
+\begin{theorem}[О полноте]
+    Правда ли, что \(A\) --- тавтология \(\Ra\) \(A\) --- выводима?
+\end{theorem}
+\begin{proof}
+    Доказательство будет дальше
+\end{proof}

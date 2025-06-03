@@ -1,0 +1,73 @@
+% !TEX root = ../../../main.tex
+
+\subsubsection{Использование резолюций для проверки тавтологий}
+$\phi$ --- тавтология $\Leftrightarrow \neg \phi$ --- противоречие $\Leftrightarrow \neg \phi$ --- не выполнима.
+$\phi$ --- тавтология $\Leftrightarrow$ из некоторой задачи о выполнимости КНФ, построенной по $\neg \phi$ можно вывести $\perp$. 
+
+\subsubsection{Преобразование Цейтина}
+\begin{example}
+    $(p \wedge q) \vee (r \rightarrow \neg s)$. Запишем:
+    $$\begin{array}{ccc}
+        u = p \wedge q & \mapsto & (\neg u \vee p) \wedge (\neg u \vee q) \wedge (u \vee \neg p \vee \neg q)\\
+        t = \neg s & \mapsto & (\neg t \vee \neg s) \wedge (t \vee s)\\
+        v = r \rightarrow t & \mapsto & (r \vee v) \wedge (\neg t \vee v) \wedge (\neg v \vee \neg r \vee t)\\
+        w = u \vee v & \mapsto & (\neg u \vee w) \wedge (\neg v \vee w) \wedge (\neg w \vee u \vee v)\\
+    \end{array}$$
+\end{example}
+
+Все формулы могут быть одновременно верны $\Rightarrow \phi$ --- не тавтология. Это равносильно получению 3-КНФ из всех этих формул (в каждой скобке $\le 3$ литералов). На 2-КНФ метод резолюций работает за $O(n)$, но на 3-КНФ уже за экспоненциально долгое время. Хотелось бы придумать алгоритм, который работает быстрее. Эта проблема, также известная как проблема $P$ vs $NP$ на данный момент на имеет решения
+
+\section{Языки первого порядка}
+\subsection{Алфавит}
+\begin{enumerate}
+    \item Индивидные переменные $x, y, z, \dots$
+    \item Функциональные символы (с указанием числа аргументов (например, ''$-$'' может быть и бинарным, и унарным)) $f^{(1)}, g^{(2)}, \dots$, в том числе константные символы (функциональные символы валентности 0) $0, e, \pi, \dots$
+    \item Предикатные символы (с указанием валентности) $P^{(1)}, Q^{(3)}, \dots$
+    \item $\neg, \wedge, \vee, \rightarrow$
+    \item Кванторы $\forall, \exists$
+    \item Служебные символы ''$($'', ''$,$'', ''$)$''
+\end{enumerate}
+
+Символы из пунктов 2, 3 называются сигнатурами
+
+\subsection{Термы}
+\begin{enumerate}
+    \item $x$ --- переменная, тогда $x$ --- терм
+    \item $c$ --- константный символ, то $c$ --- терм
+    \item $t_1, t_2, \dots t_k$ --- термы, $f$ --- функциональный символ валентности $k$, то $f(t_1, t_2, \dots t_k)$ --- терм.
+\end{enumerate}
+\subsection{Формулы}
+\begin{center}
+    \textsc{Формулы --- это не термы, нумерация сквозная, чтобы у каждого правила был свой номер!!!}
+\end{center}
+\begin{enumerate}
+    \setcounter{enumi}{5}
+    \item $t_1, t_2, \dots t_k$ --- термы, $P$ --- предикатный символ валентности $k$, то $P(t_1, t_2, \dots t_k)$ --- формула
+    \item $\phi$ --- формула, тогда $\neg \phi$ --- формула
+    \item $\phi, \psi$ --- формулы тогда $(\phi * \psi)$, где ''$*$'' --- это одна из бинарных логических связок, тоже формула.
+    \item $\phi$ --- формулы тогда $\exists x\phi, \forall x\phi$ --- тоже формула.
+\end{enumerate}
+Тогда нам не запрещены записи вида $\exists x \forall xP(x)$ или $\exists x P(y)$. Часто добавляют отдельный вид атомарных формул с равенством $t_1 = t_2$. Но при таком определении появляются вопросы, например:
+$$\exists x x < y$$
+Что такое $y$? Что такое ''$<$''? Откуда берем $x$?
+
+\subsection{Интерпретация}
+$M$ --- непустое множество --- носитель интерпретации. 
+\begin{enumerate}
+    \item $f$ --- функциональный символ валентности $k > 0$. $[f]: M^k \rightarrow M$. 
+    \item $c$ --- константный символ, тогда $[c] \in M$.
+    \item $P$ --- предикатный символ валентности $k$, тогда $[P]: M^k \rightarrow \{0, 1\}$.
+\end{enumerate}
+
+Также, пусть $Var$ --- множество переменных. Оценкой называется произвольная функция $\pi: Var \rightarrow M$. Тогда, если заданы носитель интерпретации и оценка, то определены значения всех термов и формул.
+\begin{proof}\indent
+    \begin{enumerate}
+        \item $t \eqcirc x \Rightarrow [t](\pi) = \pi(x)$
+        \item $t \eqcirc C \Rightarrow [t](\pi) = [C]$
+        \item $t \eqcirc f(t_1, t_2, \dots t_k) \Rightarrow [t](\pi) = [f]([t_1](\pi), [t_2](\pi), \dots [t_k](\pi))$
+        \item $\phi \eqcirc P(t_1, t_2, \dots t_k) \Rightarrow [t](\pi) = [P]([t_1](\pi), [t_2](\pi), \dots [t_k](\pi))$
+        \item $\phi \eqcirc \neg \Rightarrow \psi [\phi](\pi) = neg([\psi](\pi))$
+        \item Для бинарных связок все как и в ПФах.
+        \item Обсудим потом
+    \end{enumerate}
+\end{proof}

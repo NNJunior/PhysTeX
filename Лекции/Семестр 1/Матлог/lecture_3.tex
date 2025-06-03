@@ -1,0 +1,107 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Многочлены Жегалкина}
+
+Вместо $\neg, \vee, \wedge$ используем $\cdot, \oplus$
+\begin{note}
+    \begin{enumerate}
+        \item $x^2 = x$
+        \item $x \oplus x = 0$
+    \end{enumerate}
+\end{note}
+
+\begin{definition}
+    Пусть даны $x_1, x_2, \dots x_n$ --- переменные. Тогда одночленом жегалкина называется произведение каких то из этих переменных, в том числе 1, как произведение пустого подмножества переменных.
+\end{definition}
+
+\begin{definition}
+    Многочленом жегалкина называется сумма каких-то одночленов, в том числе 0, как сумма пустого множества одночленов. 
+\end{definition}
+
+\begin{center}
+    \textbf{Порядок в произведениях и суммах не важен}
+\end{center}
+
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item $\neg p = p \oplus 1$
+        \item $p \wedge q = p\cdot q$
+        \item $p \vee q = p \oplus q \oplus pq$
+        \item $p \rightarrow q = \neg p \vee q = (p \oplus 1) \oplus q \oplus (p \oplus 1)q = 1 \oplus p \oplus pq$
+        \item $maj_3(p, q, r) = \left\{\begin{array}{cc}
+            1, p + q + r \ge 2  \\
+            0, p + q + r \le 1 & 
+        \end{array}\right. = pq \oplus qr \oplus rp$
+    \end{enumerate}    
+\end{enumerate}
+
+\begin{theorem}
+    Любую булеву функцию можно представить, как многочлен Жегалкина (с точностью до перерестановки множителей и слагаемых).
+\end{theorem}
+\begin{proof}[Первое доказательство]\indent
+    \begin{enumerate}
+        \item Количество булевых функций ---  $2^{2^n}$
+        \item Количество одночленов жегалкина ---  $2^n$
+        \item Количество многочленов жегалкина ---  $2^{2^n}$
+    \end{enumerate}
+    --- итого на каждый многочлен приходится не более одной функции. Докажем, что никакие два многочлена не могут соответствовать одной функции $\Leftrightarrow$ докажем, что у каждой функции есть представление среди многочленов жегалкина. Доказательство: по функции можно сделать КНФ, а по КНФ можно сделать многочлен, т.к. в КНФ участвуют только конъюнкция ($\wedge$), дизъюнкция ($\vee$), отрицание ($\neg$), а их мы умеет получать многочленами жегалкина.
+\end{proof}
+\begin{proof}[Второе доказательство]\indent
+    Пусть это не так, тогда есть $p \ne q$, такие, что $\forall x\ p(x) = q(x)$. Рассмотрим $S(x) = q(x) \oplus p(x)$. Тогда $S \ne 0$, но $S(x) = 0\ \forall x$. Рассмотрим одночлен, в котором меньше всего множителей. Б.О.О. это будет $x_1x_2x_3\dots x_k$. Тогда 
+    $$S(x) = x_1x_2\dots x_k \oplus (\text{в каждом из этих одночленов будет множитель не из }x_1\dots x_k)$$
+    Но тогда, если мы возьмем $x_1, x_2, \dots, x_k = 1$, а все остальные переменные за 0, то $S(x)$ будет равно 1, т.к. в правой части в каждом из одночленов будет 0. Противоречие.
+\end{proof}
+Все функции можно выразить через $\neg, \vee, \wedge$ (КНФ/ДНФ). Даже можно только используя $\neg, \wedge$, используя \textbf{Законы Де-Моргана}
+\begin{enumerate}
+    \item $p\wedge q = \neg (\neg p \vee \neg q)$
+    \item $p\vee q = \neg (\neg p \wedge \neg q)$
+\end{enumerate}
+
+Многочлены жегалкина позволяют выразить все функции через $\wedge, \oplus, 1$. А можно ли выразить все через $\wedge, \vee, \rightarrow$? Нет, т.к. любая формула, использующая их, будет выдавать 1 при входных данных $1, 1, 1, \dots, 1$
+
+\subsection{Классы Поста}
+
+\subsubsection{Классы \(P_0, P_1\)}
+\begin{definition}
+    $P_0$ --- класс функций, которые сохраняют 0. (Для которых $f(0, 0, \dots 0) = 0$)
+\end{definition}
+\begin{definition}
+    $P_1$ --- класс функций, которые сохраняют 1. (Для которых $f(1, 1, \dots 1) = 1$)
+\end{definition}
+
+
+\begin{definition}
+    Суперпозиция функций $f, g_1, g_2, \dots g_k$, где $k$ --- количество аргументов --- это $h(x_1, x_2, \dots x_n) = f(g_1(x_1, x_2, \dots x_n), g_2(x_1, x_2, \dots x_n), \dots g_k(x_1, x_2, \dots x_n))$. Более формально:
+    \begin{enumerate}
+        \item Суперпозиция 0-порядка --- это проекторы $pr_i(x_1, x_2, \dots, x_n) = x_i$
+        \item Суперпозиция $(m+1)$-порядка --- это где $f$ --- одна из базовых функций, а $g_1, g_2, \dots g_n$ --- не более $m$-ого порядка каждая.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Пусть $C$ --- множество функций. Тогда множество всех суперпозиций функций из $C$ называется замыканием $C$ и обозначается $[C]$.
+\end{definition}
+
+\begin{theorem}
+    Все базовые функции из $P_a$ $\Rightarrow$ все их суперпозиции тоже.
+\end{theorem}
+\begin{proof}
+    $$\underbrace{f(\underbrace{g_1(\underbrace{x_1, x_2, \dots x_n}_{a, a, a\dots a})}_{a}, \underbrace{g_2(\underbrace{x_1, x_2, \dots x_n}_{a, a, a\dots a})}_{a}, \dots \underbrace{g_n(\underbrace{x_1, x_2, \dots x_n}_{a, a, a\dots a})}_{a})}_{a}$$
+\end{proof}
+
+\begin{definition}
+    Пусть $C$ --- множество функций. Тогда множество всех суперпозиций функций из $C$ называется замыканием $C$ и обозначается $[C]$.
+\end{definition}
+
+\subsubsection{Монотонные функции}
+\begin{definition}
+    $f$ --- монотонная функция, если $\forall(a_1, a_2\dots a_n),\ \forall(b_1, b_2\dots b_n)$ верно следующее: $((a_1 \le b_1) \wedge (a_2 \le b_2) \wedge \dots \wedge (a_n \le b_n)) \Rightarrow f(a_1, a_2 \dots a_n) \le g(a_1, a_2 \dots a_n)$    
+\end{definition}
+
+\begin{theorem}
+    Для монотонных функций тоже выполнено, что их суперпозиции монотонны, т.к.
+\end{theorem}
+\begin{proof}
+    $$\underbrace{f(\underbrace{g_1(\underbrace{x_1, x_2, \dots x_n}_{\nearrow, \nearrow, \nearrow\dots \nearrow})}_{\nearrow}, \underbrace{g_2(\underbrace{x_1, x_2, \dots x_n}_{\nearrow, \nearrow, \nearrow\dots \nearrow})}_{\nearrow}, \dots \underbrace{g_n(\underbrace{x_1, x_2, \dots x_n}_{\nearrow, \nearrow, \nearrow\dots \nearrow})}_{\nearrow})}_{\nearrow}$$
+\end{proof}
