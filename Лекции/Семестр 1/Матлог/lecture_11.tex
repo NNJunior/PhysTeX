@@ -18,7 +18,7 @@ $$\underbrace{\forall\exists\exists\dots}_{\text{кванторы}}\underbrace{(
             \item $\forall x \phi \wedge \forall x \psi \longleftrightarrow \forall x (\phi \wedge \psi)$
             \item $\exists x \phi \vee \exists x \psi \longleftrightarrow \exists x (\phi \vee \psi)$
         \end{enumerate} 
-        \item[\cancel{3.}] $\exists x (\phi \wedge \psi) \rightarrow (\exists x\phi \wedge \exists x\psi)$ --- но это не эквивалентность, поэтому это использовать нельзя. Как тогда? Нужно сделать замену переменной:
+        \item $\exists x (\phi \wedge \psi) \rightarrow (\exists x\phi \wedge \exists x\psi)$ --- но это не эквивалентность, поэтому это использовать нельзя. Как тогда? Нужно сделать замену переменной:
         $$\exists x \phi \longleftrightarrow \exists y \phi(^y/_x)$$
         Где $\phi(^y/_x)$ --- все свободные вхождения $x$ заменили на $y$. При этом эти вхождения не должны подпадать под действие кванторов по $y$ и $y$ не входит свободно в формулу $\phi$. Примера некорректных замен:
         \begin{enumerate}
@@ -27,7 +27,7 @@ $$\underbrace{\forall\exists\exists\dots}_{\text{кванторы}}\underbrace{(
         \end{enumerate}
         Причем, если мы заменяем на новую переменную, такая замена всегда будет корректна.
 
-        Если $x$ --- не параметр $\psi$, то $(\exists x \phi) \wedge \psi \longleftrightarrow \exists x (\phi \wedge \psi)$. Но тогда, если $x$ --- параметр $\psi$, то $(\exists x \phi) \wedge \psi \longleftrightarrow (\exists y \phi(^y/_x)) \wedge \psi \longleftrightarrow \exists y (\phi(^y/_x) \wedge \psi)$ ($y$ не встречается ни в $\phi$, ни в $\psi$).
+        \item \(\exists x \phi * \psi\). Если $x$ --- не параметр $\psi$, то $(\exists x \phi) * \psi \longleftrightarrow \exists x (\phi * \psi)$. Но тогда, если $x$ --- параметр $\psi$, то $(\exists x \phi) * \psi \longleftrightarrow (\exists y \phi(^y/_x)) * \psi \longleftrightarrow \exists y (\phi(^y/_x) * \psi)$ ($y$ не встречается ни в $\phi$, ни в $\psi$).
     \end{enumerate}
 \end{proof}
 
