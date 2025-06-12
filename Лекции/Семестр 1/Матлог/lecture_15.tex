@@ -1,0 +1,89 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Теорема Геделя о Полноте}
+
+\begin{definition}
+    $\Delta$ полная в сигнатуре $\sigma$, если для любой замкнутой формулы $\psi$ этой сигнатуры $\Delta \vdash \phi$ или $\Delta \vdash \neg\phi$.
+\end{definition}
+
+\begin{lemma}
+    $\Gamma$ --- непротиворечивая теория в сигнатуре $\sigma \Rightarrow$ существует теория $\Delta \supset \Gamma$ --- непротиворечивая, полная в сигнатуре $\sigma$.
+\end{lemma}
+\begin{proof}[Для конечного или счетного количесвта переменных]
+    $\Rightarrow$ Все формулы можно занумеровать натуральными числами ($\phi_1, \phi_2 \dots$). Обозначим:
+    $$\Gamma_0 := \Gamma, \Gamma_{i+1} = \left\{\begin{array}{l}
+        \Gamma_i \cup \{\phi_i\}, \text{ если непротиворечиво}  \\
+        \Gamma_i \cup \{\neg\phi_i\}, \text{ иначе}
+    \end{array}\right.$$
+    Заметим, что все $\Gamma_i$ непротиворечивы, т.к. $\Gamma$ --- непротиворечива, и если $\Gamma_{i+1}$ проиворечива, то и $\Gamma_i \cup \{\phi_i\}, \Gamma_i \cup \{\neg\phi_i\}$ --- тоже, но тогда $\Gamma \vdash \neg\phi_{i+1}, \Gamma \vdash \neg\neg\phi_{i+1}$, Но тогда и все предыдущие были противоречивы, в том числе, $\Gamma$, противоречие.
+    Рассмотрим
+    $$\Delta = \bigcup_{i = 0}^\infty\Gamma_i$$
+    $\Delta$ непротиворечива, т.к. иначе в нем было бы конечное противоречивое подмножество, а это неправда, т.к. все $\Gamma_i$ непротиворечивы.
+\end{proof}
+
+\begin{definition}
+    Теория $\Gamma$ экзистенциально полна относительно сигнатуры $\sigma$, если для любой замкнутой формулы вида $\exists x \phi$, если $\Gamma \vdash \exists x \phi$, то для некоторого константного символа $c \in \sigma$ (или замкнутого терма) выполнено, что $\Gamma \vdash \phi(^c/_x)$
+\end{definition}
+
+\begin{lemma}
+    %Любую непротиворечивую теорию можно расширить до экзистенциально полной в расширенной сигнатуре
+    $\Gamma$ --- непротиворечивая теория в сигнатуре $\sigma \Rightarrow$ существует непротиворечивая теория $\Delta \supset \Gamma$ и сигнатура $\tau \supset \sigma$, т.ч. если $\Gamma \vdash \exists x \phi$ и $\phi$ в сигнатуре $\sigma$, то для некоторого константного символа $c \in \tau$ выполнено, что $\Delta \vdash \phi(^c/_x)$
+\end{lemma}
+\begin{proof}
+    Если $\Gamma \vdash \exists x \phi$, то добавим в сигнатуру константу $c_\phi$, а в теорию --- формулу $\phi(^{c_\phi}/_\phi)$. Почему не будет противоречия? Пусть $\Gamma \cup \{\phi(^{c_\phi}/_x)\} \vdash \psi, \neg \psi$. По лемме о дедукции $\Gamma \vdash \phi(^{c_\phi}/_x) \rightarrow \psi, \Gamma \vdash \phi(^{c_\phi}/_x) \rightarrow \neg\psi$. Можно считать, что $\psi$ замкнута, иначе применим Аксиому 9. Получим, что $\Gamma \vdash \phi(^y/_x) \rightarrow \psi$, где $y$ --- свободная переменная. По $\Sigma$-правилу Бернайса, $\Gamma \vdash \exists y \phi(^y/_x) \rightarrow \psi$. Переименуем переменную $y \rightarrow x$: получится $\Gamma\vdash \exists x \phi \rightarrow \psi$. Т.к. $\Gamma \vdash \exists x \phi$, то $\Gamma \vdash \psi$. Аналогично $\Gamma \vdash \neg \psi \Rightarrow \Gamma$ --- проиворечива, противоречие.
+\end{proof}
+
+\begin{lemma}
+    $\Gamma$ --- непротиворечивая теория в сигнатуре $\sigma \Rightarrow$ существует теория $\Delta \supset \Gamma$ и сигнатура $\tau \supset \sigma$, т.ч. $\Delta$ --- непротиворечивая, полная и экзистениально полная относительно $\tau$.
+\end{lemma}
+\begin{proof}
+    Идея: поочередно применяем две предыдущие леммы.
+    $$\begin{array}{ccl}
+        \Gamma_0 = \Gamma & \sigma_0 = \sigma \\
+        \Gamma_1 \supset \Gamma_0 & \sigma_1 = \sigma_0 & \text{$\Gamma_1$ полная относительно $\sigma_1$} \\
+        \Gamma_2 \supset \Gamma_1 & \sigma_2 = \sigma_1 & \text{$\Gamma_2$ экзистенциально полная относительно $\sigma_1$} \\
+        \Gamma_3 \supset \Gamma_2 & \sigma_3 = \sigma_2 & \text{$\Gamma_3$ полная относительно $\sigma_3$} \\
+        \vdots & \vdots & \vdots \\
+        \Delta = \bigcup_{i = 0}^\infty\Gamma_i & \tau = \bigcup_{i = 0}^\infty\sigma_i
+    \end{array}$$
+    $\phi$ --- замкнутая формула в сигнатуре $\tau \Rightarrow \phi$ --- замкнутая формула $\Rightarrow \Gamma_{i+1} \vdash \phi$ или $\Gamma_{i+1} \vdash \neg\phi \Rightarrow \Delta \vdash \phi$ или $\Delta \vdash \neg \phi$. Аналогично для экзистенциальной полноты.
+\end{proof}
+
+\begin{lemma}
+    Полная, непротиворечивая, экзистенциально полная теория имеет модель
+\end{lemma}
+\begin{proof}
+    Носитель --- замкнутые термы (составленные из констант). Будем обозначать за ''$t$'' --- терм, как элемент носителя. Вычисляем термы и предикаты следующим образом:
+    $$[f]("t_1"\:,"t_2"\:, "t_3"\dots) = "[f](t_1, t_2, t_3, \dots)"$$
+    $$[P]("t_1"\:, "t_2"\:, "t_3"\dots) = \left\{\begin{array}{l}
+        0, \Delta\vdash P(t_1, t_2, t_3, \dots)  \\
+        1, \Delta\vdash \neg P(t_1, t_2, t_3, \dots)
+    \end{array}\right.$$
+    \begin{proposition}
+        Все формулы из $\Delta$ истинны в этой интерпретации , а все замкнутые формулы не из $\Delta$ ложны.
+    \end{proposition}
+    \begin{proof}
+        Ведем индукцию по построению формулы.
+        \begin{enumerate}
+            \item Атомарные формулы --- по определению
+            \item $\phi \eqcirc \neg \psi$
+            $\Delta\not\vdash\phi \Leftrightarrow \Delta\vdash\psi \Rightarrow \psi \text{ истинно } \Rightarrow \phi \text{ ложна }$
+            \item $\phi \eqcirc (\psi * \mu)$ --- Аналогично
+            \item $\phi \eqcirc \exists x \psi$
+            $$\Delta \vdash \exists x \psi \Leftrightarrow \Delta \vdash \psi(^t/_x) \Rightarrow \psi(^t/_x) \text{ истинна} \Rightarrow \exists x \psi \text{ истинна}$$
+            $$\Delta \vdash \neg \exists x \psi \Rightarrow \text{ для всех $t$ формула $\psi(^t/_x)$ ложна, тогда $\exists x \psi$ тоже ложна}$$
+            $$\text{иначе, если $\psi(^t/_x)$ истинно, то $\Delta\vdash\psi(^t/_x) \Rightarrow \Delta \vdash \exists x \psi$}$$
+            \item $\phi \eqcirc \forall x \psi$ --- аналогично
+        \end{enumerate}
+    \end{proof}
+\end{proof}
+
+\begin{theorem}[Мальцева о Компактности]
+    Если $\Gamma$ --- теория и любая конечная подтеория имеет модель, то и вся $\Gamma$ имеет модель
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item $\Gamma$ --- противоречивая $\Rightarrow$ конечная подтеория противоречива $\Rightarrow$ не имеет модели
+        \item $\Gamma$ --- непротиворечива $\Rightarrow$ имеет модель
+    \end{enumerate}
+\end{proof}

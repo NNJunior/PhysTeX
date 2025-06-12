@@ -1,0 +1,135 @@
+% !TEX root = ../../../main.tex
+
+% \begin{theorem}[О полноте]
+%     $\vdash \phi \Rightarrow \phi$ --- выводима
+% \end{theorem}
+
+\subsection{Дополнительные правила вывода}
+\begin{definition}
+    Вывод из множества посылок $\Gamma$ --- это последовательноть $\phi_1, \phi_2 \dots, \phi_n$, где $\phi_i$ --- либо аксиома, либо $\in \Gamma$, либо получается по m.p.
+\end{definition}
+
+
+\subsubsection{Лемма о Дедукции}
+\begin{lemma}[О дедукции]
+    $\Gamma \vdash (A \rightarrow B) \Leftrightarrow \Gamma \cup \{A\} \vdash B$
+\end{lemma}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[$\Rightarrow$] $$\left.\begin{array}{l}
+           \left.\begin{array}{c}
+            \dots  \\
+            \dots  \\
+            \dots  \\
+            A \rightarrow B
+        \end{array}\right\}\text{вывод  $A\rightarrow B$ из $\Gamma$}  \\
+            A\text{ --- элемент $\Gamma \cup \{A\}$ (посылка)} \\
+            B\text{ --- m.p.} \\
+        \end{array}\right\}\text{вывод $B$ из $\Gamma \cup \{A\}$}$$
+        \item[$\Leftarrow$] Пусть $ \Gamma \cup \{A\} \vdash B$. Тогда существует вывод $\phi_1, \phi_2, \dots \phi_n \eqcirc B$. Каждое $\phi_i$ --- либо аксиома, либо $\in \Gamma$, либо $\eqcirc A$, либо выводится по m.p. Мы докажем по индукции, что $\Gamma \vdash A \rightarrow \phi_i$.
+        \begin{enumerate}
+            \item $\phi_i$ --- аксиома. Вывод:
+                \begin{enumerate}
+                    \item $\phi_i$
+                    \item $\phi_i \rightarrow (A \rightarrow \phi_i)$ --- аксиома 1.
+                    \item $A \rightarrow \phi_i$ --- m.p.
+                \end{enumerate}
+            \item $\phi_i \in \Gamma$ --- аналогично
+            \item $\phi_i = A$. На прошлой лекции мы выводили $A \rightarrow A$.
+            \item $\phi_i$ по m.p.: $\exists j, k < i: \phi_k \eqcirc (\phi_j \rightarrow \phi_i)$. По предположению индукции, 
+            $$\left.\begin{array}{l}
+           \left.\begin{array}{c}
+            \dots  \\
+            \dots  \\
+            \dots  \\
+            A \rightarrow \phi_j
+        \end{array}\right\}\text{вывод из $\Gamma$}\\
+        \begin{array}{c}
+             \dots \\
+            \dots \\
+            A\rightarrow(\phi_j \rightarrow \phi_i)\text{ --- m.p.} \\
+        \end{array}  \\
+        \end{array}\right\}\text{вывод из $\Gamma$}$$
+        $$\Rightarrow (A \rightarrow (\phi_j \rightarrow \phi_i)) \rightarrow ((A \rightarrow \phi_j) \rightarrow (A\rightarrow \phi_i))\text{ --- аксиома 2}$$
+        $$\Rightarrow (A \rightarrow \phi_j) \rightarrow (A\rightarrow \phi_i)\text{ --- m.p.}$$
+        $$\Rightarrow A\rightarrow \phi_i\text{ --- m.p.}$$
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\begin{example}[Силлогизм]
+    $$\begin{array}{c}
+        (A \rightarrow B) \rightarrow ((B \rightarrow C) \rightarrow (A \rightarrow C))  \\
+        \{A \rightarrow B\} \vdash  (B \rightarrow C) \rightarrow (A \rightarrow C) \\
+        \{A \rightarrow B, B \rightarrow C\} \vdash (A \rightarrow C) \\
+        \{A, A \rightarrow B, B \rightarrow C\} \vdash C
+    \end{array}$$
+\end{example}
+Тогда вывод последней формулы можно провести следующим образом:
+\begin{enumerate}
+    \item $A$ --- посылка
+    \item $A\rightarrow B$ --- посылка
+    \item $B$ --- m.p. 1, 2
+    \item $B\rightarrow C$ --- посылка
+    \item $C$ --- m.p 3, 4
+\end{enumerate}
+
+
+\begin{example}
+    $\vdash (A \wedge B) \rightarrow (B \wedge A) \Leftrightarrow (A \wedge B) \vdash (B \wedge A)$`
+    \begin{enumerate}
+        \item $(A \wedge B)$ --- посылка
+        \item $(A \wedge B) \rightarrow B$ --- аксиома 4
+        \item $B$ --- m.p. 1, 2
+        \item $(A \wedge B) \rightarrow A$ --- аксиома 3
+        \item $A$ --- m.p. 1, 4
+        \item $B \rightarrow (A \rightarrow (B \wedge A))$ --- аксиома 5
+        \item $A \rightarrow (B \wedge A)$ --- m.p. 3, 6
+        \item $(B \wedge A)$ --- m.p. 5, 7
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    $\vdash (A \rightarrow \neg A) \rightarrow \neg A$
+    \begin{enumerate}
+        \item[1..5.] $A \rightarrow A$
+        \item[6.] $(A \rightarrow A) \rightarrow ((A \rightarrow \neg A) \rightarrow \neg A)$ --- аксиома 10
+        \item[7.] $(A \rightarrow \neg A) \rightarrow \neg A$ --- m.p. 5, 6
+    \end{enumerate}
+\end{example}
+
+\subsubsection{Рассуждение от противного}
+$$\frac{\Gamma, A \vdash B\ \ \ \ \Gamma, A \vdash \neg B}{\Gamma \vdash \neg A}$$
+\begin{proof}
+    $$\left.\begin{array}{l}
+        \Gamma, A \vdash B \Leftrightarrow \Gamma \vdash A \rightarrow B  \\
+        \Gamma, A \vdash \neg B \Leftrightarrow \Gamma \vdash A \rightarrow \neg B
+    \end{array}\right\}\Rightarrow\Gamma \vdash \neg A (\text{аксиома 10})$$
+\end{proof}
+
+\subsubsection{Законы де Моргана}
+я снова умер(
+
+Короче, мы вывели дофига разных законов и порассуждали, зачем они нужны, как их использовать и тд. 
+
+\subsubsection{Правило сечения}
+$$\frac{\Gamma\vdash  A\ \ \ \ \ \Delta, A \vdash B}{\Gamma, \Delta \vdash B}$$
+
+\subsubsection{Введение/разбиение конъюнкции}
+$$\frac{\Gamma, A\wedge B \vdash  C}{\Gamma, A, B \vdash C}$$
+\\
+$$\frac{\Gamma, A, B \vdash C}{\Gamma, A\wedge B \vdash  C}$$
+\\
+$$\frac{\Gamma, \vdash A \wedge B}{\Gamma\vdash  A\ \ \ \ \ \ \Gamma\vdash B}$$
+\\
+$$\frac{\Gamma\vdash  A\ \ \ \ \ \ \Gamma\vdash B}{\Gamma, \vdash A \wedge B}$$
+
+\subsubsection{Разбор случаев}
+$$\frac{\Gamma, A\vdash C\ \ \ \ \ \ \Gamma, B\vdash C}{\Gamma, A\vee B\vdash C}$$
+
+\subsubsection{Правила без названия}
+$$\frac{\Gamma \vdash A}{\Gamma\vdash A\vee B}$$
+$$\frac{\Gamma \vdash B}{\Gamma\vdash A\vee B}$$
+
+\subsubsection{Правило контрпозиции}
+$$\frac{\Gamma, A \vdash B}{\Gamma, \neg B \vdash \neg A}$$

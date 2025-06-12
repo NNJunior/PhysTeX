@@ -41,6 +41,16 @@
             \item \(\forall x \forall y \forall z ((x = y \wedge y = z) \ra x = z)\)
         \end{enumerate}
         \item[Б2] \textbf{Аксиома замены} \(\forall x, y, z, t ((x = y \wedge z = t) \ra x + z = y + t)\)
+        \begin{note}
+            Для произвольной сигнатуры, аксиом замены больше. Допустим, что у нас есть два предикатных символа \(P^{(1)}, Q^{(2)}\) и два функциональных символа \(f^{(2)}, g^{3}\). Тогда аксиомы замены для них выглядят следующим образом:
+            \begin{enumerate}
+                \item[] \(\forall x \forall y((x = y) \ra (P(x) \lra  P(y)))\)
+                \item[] \(\forall x \forall y \forall z \forall t((x = y \wedge z = t) \ra (Q(x, z) \lra  Q(y, t)))\)
+                \item[] \(\forall x_1 \forall y_1 \forall x_2 \forall y_2 \forall x_3 \forall y_3((x_1 = y_1 \wedge x_2 = y_2 \wedge x_3 = y_3) \ra (f(x_1, x_2, x_3) = f(y_1, y_2, y_3)))\)
+                \item[] \(\forall x_1 \forall y_1 \forall x_2 \forall y_2 ((x_1 = y_1 \wedge x_2 = y_2) \ra (g(x_1, x_2) = g(y_1, y_2)))\)
+            \end{enumerate}
+            Однако, в аксиоматике Пеано, нам достаточно только одной аксиомы замены.
+        \end{note}
     \end{enumerate}
     \item[В] \textbf{Аксиомы арифметики (Аксиомы Пеано)}
     \begin{enumerate}

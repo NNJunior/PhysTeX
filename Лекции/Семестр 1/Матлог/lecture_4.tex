@@ -1,0 +1,92 @@
+% !TEX root = ../../../main.tex
+
+
+\subsubsection{Самодвойственные функции}
+\begin{definition}
+    Функция $f^*$ (двойственная к $f$) --- это такая функция, что
+    $$\neg f(\neg p_1, \neg p_2, \dots, \neg p_n) = f^*(p_1, p_2, \dots p_n)$$
+\end{definition}
+
+\begin{example}\indent
+    \begin{enumerate}
+        \item $\wedge^* = \vee$
+        \item $\vee^* = \wedge$
+        \item $\oplus^* = \leftrightarrow$
+    \end{enumerate}
+\end{example}
+
+\begin{definition}
+    Самодвойственные функции --- это такие, которые двойственны сами себе.
+\end{definition}
+
+\subsubsection{Линейные функции}
+\begin{definition}
+    Линейные функции --- это те, которые задаются линейными многочленами жегалкина.
+\end{definition}
+
+\subsubsection{Критерий Поста}
+
+\begin{definition}
+    Полная система связок --- это такая, в которой все функции можно выразить.
+\end{definition}
+
+\begin{example}
+    $$\{\neg, \wedge, \vee, \rightarrow\}, \{\neg, \vee\}, \{\neg, \wedge\}, \{\rightarrow, 0\}, \{1, \oplus, \wedge\}$$
+\end{example}
+
+Итак, вспомним, какие у нас уже были системы:
+\begin{enumerate}
+    \item $P_0$ --- $\{\wedge, \vee, \rightarrow\}$ --- сохраняют 1
+    \item $P_1$ --- $\{\wedge, \oplus\}$ --- сохраняют 0
+    \item $M$ --- $\{\wedge, \vee, 0, 1\}$ --- монотонные
+    \item $D$ --- $\{\neg, maj\}$ --- все самодвойственные  (без доказательства)
+    \item $L$ --- $\{\neg, \oplus\}$ --- все линейные (без доказательства)
+\end{enumerate}
+
+\begin{theorem}[Критерий Поста]
+    Система связок полна $\Leftrightarrow$ она не является подмножеством ни одного из 5 классов $\Leftrightarrow$ система содержит некие функции $f_0 \not\in P_0$, $f_1 \not\in P_1$, $g \not\in M$, $h \not\in D$, $k \not\in L$, 
+\end{theorem}
+\begin{proof}
+    Создадим полную систему связок пошагово:
+    \begin{enumerate}
+        \item $f_0(0, 0, \dots 0) = 1$, т.к. $f_0$ не сохраняет 1.
+        \begin{enumerate}
+            \item $f_0(1, 1, \dots, 1) = 1 \Rightarrow f_0 \sim 1$
+            \item $f_0(1, 1, \dots, 1) = 0 \Rightarrow f_0(p, p, \dots p) = \neg p$
+        \end{enumerate}
+        \item $f_1(1, 1, \dots 0) = 0$, т.к. $f_1$ не сохраняет 1.
+        \begin{enumerate}
+            \item $f_1(0, 0, \dots, 0) = 0 \Rightarrow f_1 \sim 0$
+            \item $f_1(0, 0, \dots, 0) = 1 \Rightarrow f_1(p, p, \dots p) = \neg p$
+        \end{enumerate}
+        Итого есть 4 варианта. Если мы нашли $\neg$ и константу (0 или 1), то вторую из них можно получить при помощи $\neg$ и перейти к 5 шагу. Если мы получили только $\neg$, то переходим к шагу 4, иначе к шагу 3.
+        \item $0, 1, g \not\in M$ --- получим $\neg$.
+        \begin{lemma}
+            Если $g$ не монотонна, то $\exists i \exists (a_1 \dots a_n)$, такие, что 
+            $$g(a_1, a_2 \dots a_{i-1}, 0, a_{i+1}, \dots, a_n) = 1 \wedge$$
+            $$g(a_1, a_2 \dots a_{i-1}, 1, a_{i+1}, \dots, a_n) = 0$$
+        \end{lemma}
+        \begin{proof}
+            По определению.
+        \end{proof}
+        Тогда мы нашли отрицание, т.к. $g(a_1, a_2 \dots a_{i-1}, p, a_{i+1}, \dots, a_n) = \neg p$
+        \item $\neg, h \not\in D$ --- получим $0, 1$.
+        Так как $h \not\in D \Leftrightarrow \exists(a_1, a_2, \dots, a_n):$
+        $$h(a_1, a_2, \dots, a_n) = h(\neg a_1, \neg a_2, \dots \neg a_n)$$
+        Тогда рассмотрим такую функцию от $p$:
+        $h(p, \neg p, \dots, \neg p)$, где на месте нулей в наборе $a_i$ стоят $\neg p$, а на месте единиц стоят $p$. Пример:
+        $h(1, 0, 0, 1, 0, 1, 1, 0) = h(0, 1, 1, 0, 1, 0, 0, 1)$, тогда рассматриваем $h(p, \neg p, \neg p, p, \neg p, p, p, \neg p)$. Тогда 
+        $$h(p, \neg p, \dots, p, \neg p) = h(\neg p, p, \dots, \neg p, p)$$
+        И тогда $h(p, \neg p, \dots, p, \neg p)$ --- некая константа. Тогда можно получить и вторую константу. 
+        \item $0, 1, \neg, k \not\in L$ --- получим все. Из определения $L$ следует (Б.О.О. переменные имеют индексы $x_1, x_2$):
+        $$k(x_1, x_2,\dots x_n) = x_1x_2A(x_3, \dots, x_n) + x_1B(x_3, \dots, x_n) + x_2C(x_3, \dots, x_n) + D(x_3, \dots, x_n)$$
+        И многочлен $A$ --- непустой. Но тогда $\exists (a_3, \dots a_n): A(a_3 \dots a_n) = 1$. Тогда $k(x_1, x_2, a_3, \dots a_n) = x_1x_2 + bx_1 + cx_2 + d$
+        Использование отрицания позволяет менять 1. Тогда нужно рассмотреть 3 случая.
+        \begin{enumerate}
+            \item $b=c=0$ Тогда получили $x_1x_2$ и выразили, таким образом, $x_1 \wedge x_2$.
+            \item $b=c=1$ Тогда получили $x_1x_2 + x_1 + x_2$ и выразили, таким образом, $x_1 \vee x_2$.
+            \item $b = 1, c = 0$ Тогда получили $x_1x_2 + x_2 + 1$, и выразили, таким образом, $\rightarrow$.
+        \end{enumerate}
+        Все три операции вместе с $0, 1, \neg$ позволяют составить полную систему связок.
+    \end{enumerate}
+\end{proof}

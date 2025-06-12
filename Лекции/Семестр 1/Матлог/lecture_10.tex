@@ -1,0 +1,102 @@
+% !TEX root = ../../../main.tex
+
+\begin{center}
+    \textit{... см. предыдущую лекцию}
+\end{center}
+\begin{enumerate}
+    \item[7.] $\phi = \exists x\, \psi$. Тогда
+    $$[\phi](\pi) = 1 \Leftrightarrow \text{ найдется } a \in M: [\psi](\pi_{x \mapsto a}) = 1$$
+    $$\pi_{x\mapsto a}(y) = \left\{\begin{array}{l}
+        \pi(y), y \ne x  \\
+        a, y = x
+    \end{array}\right.$$
+    Но тогда 
+    $$[\phi](\pi) = \bigvee_{a \in M} [\psi](\pi_{x \mapsto a})$$
+    \item[8.] $\phi = \forall x\, \psi$. Тогда
+    $$[\phi](\pi) = \bigwedge_{a \in M} [\psi](\pi_{x \mapsto a})$$
+\end{enumerate}
+
+\subsubsection{Параметры}
+
+\begin{definition}
+    Параметры терма $t$ ($Par(t)$), это множество, которое задается рекурсивно:
+    \begin{enumerate}
+        \item $t = x \in Var \Rightarrow Par(t) = x$
+        \item $t = c^{(0)} \Rightarrow Par(t) = \varnothing$
+        \item $t = f(t_1, t_2, \dots t_n) \Rightarrow Par(t) = \bigcup_{i = 1}^n Par(t_i)$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Параметры формулы $t$ ($Par(t)$), это множество переменных, которое задается рекурсивно:
+    \begin{enumerate}
+        \item $\phi = P(t_1, t_2, \dots t_n) \Rightarrow Par(\phi) = \bigcup_{i = 1}^n Par(t_i)$.
+        \item $\phi = \neg \psi \Rightarrow Par(\phi) = Par(\psi)$.
+        \item $\phi = \psi * \xi \Rightarrow Par(\phi) = Par(\psi) \cup Par(\xi)$
+        \item $\phi = \exists x \psi \Rightarrow Par(\phi) = Par(\psi) \setminus\{x\}$.
+        \item $\phi = \forall x \psi \Rightarrow Par(\phi) = Par(\psi) \setminus\{x\}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}\indent
+    \begin{enumerate}
+        \item Если $\pi, \pi'$ --- оценки и для любой переменной $x \in Par(t), \pi(x) = \pi'(x)$, то $[t](\pi) = [t](\pi')$
+        \item Если $\pi, \pi'$ --- оценки и для любой переменной $x \in Par(t), \pi(x) = \pi'(x)$, то $[\phi](\pi) = [\phi](\pi')$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Ведем индукцию по построению терма $t$
+        \begin{enumerate}
+            \item $t = x \Rightarrow [t](\pi) = \pi(x) = \pi'(x) = [t](\pi')$
+            \item $t = c \Rightarrow [t](\pi) = [c] = [t](\pi')$
+            \item $t = f(t_1, t_2, \dots t_n) \Rightarrow [t](\pi) = [f]([t_1](\pi), [t_2](\pi), \dots [t_n](\pi)) = [f]([t_1](\pi'), [t_2](\pi'), \dots [t_n](\pi'))$
+        \end{enumerate}   
+        \item Ведем индукцию по построению формулы $f$
+        \begin{enumerate}
+            \item $\phi = P(t_1, t_2, \dots t_n) \Rightarrow [\phi](\pi) = [P]([t_1](\pi), [t_2](\pi), \dots [t_n](\pi)) = [P]([t_1](\pi'), [t_2](\pi'), \dots [t_n](\pi'))$
+            \item $\phi = \psi * \xi \Rightarrow [\phi](\pi) = *([\psi](\pi), [\xi](\pi)) = *([\psi](\pi'), [\xi](\pi')) = [\phi](\pi')$
+            \item $\phi = \exists x \psi$.
+            $$[\phi](\pi) = \bigvee_{a \in M}[\psi](\pi_{x \mapsto a}) = \bigvee_{a \in M}[\psi](\pi'_{x \mapsto a}) = [\phi](\pi')$$
+            \item $\phi = \forall x \psi$.
+        \end{enumerate}   
+    \end{enumerate}
+\end{proof}
+
+\subsubsection{Типы формул}
+
+\begin{definition}
+    Формула $\phi$ называется замкнутой (или предположением), если $Par(\phi) = \varnothing$. Тогда пишут просто $[\phi]$, причем, если $[\phi] = 1$, то пишут, что $\phi$ истинна на своем носителе.
+\end{definition}
+
+\begin{definition}
+    Формула $\phi$ называется общезначной, если она верна для любого носителя интерпретации и любой оценке.
+\end{definition}
+
+\begin{definition}
+    $\phi \sim \psi$, если $\forall $ интерпретации $\forall $ оценки $[\phi](\pi) = [\psi](\pi)$.
+\end{definition}
+
+\begin{note}
+    $\phi \sim \psi \Leftrightarrow \phi \leftrightarrow \psi$ --- общезначная
+\end{note}
+
+\subsubsection{Примеры общезначних формул}
+\begin{center}
+    \textit{Я привел их без доказательства, проделайте это в качестве нетрудного упражнения на дом}
+\end{center}
+\begin{enumerate}
+    \item $\forall x P(x) \rightarrow (\exists y Q(x, y) \rightarrow \forall x P(x))$
+    \item $\forall x \phi \rightarrow \exists x \phi$
+    \item $\exists x \forall y \phi \rightarrow \forall y \exists x \phi$
+    \item $\forall x \forall y \phi \rightarrow \forall y \forall x \phi$
+    \item $\forall x (\phi \wedge \psi) \leftrightarrow \forall x \phi \wedge \forall x \psi$
+    \item $\exists x (\phi \wedge \psi) \rightarrow \exists x \phi \wedge \exists x \psi$
+    \item $\exists x (\phi \wedge \psi) \leftrightarrow \exists x \phi \wedge \psi$, при ($x \notin Par(\psi)$)
+    \item $\exists x (\phi \vee \psi) \leftrightarrow \exists x \phi \vee \exists x \psi$
+    \item $\forall x (\phi \vee \psi) \leftarrow \forall x \phi \vee \forall x \psi$
+    \item $\forall x (\phi \vee \psi) \leftrightarrow \forall x \phi \vee \psi$, при ($x \notin Par(\psi)$)
+    \item $\neg \exists x \phi \leftrightarrow \forall x \neg \phi$
+    \item $\neg \forall x \phi \leftrightarrow \exists x \neg \phi$
+    \item $\exists x (\phi \rightarrow \psi) \leftrightarrow (\forall x \phi \rightarrow \exists x \psi)$
+\end{enumerate}

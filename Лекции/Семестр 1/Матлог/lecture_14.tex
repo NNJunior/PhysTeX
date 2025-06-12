@@ -1,0 +1,170 @@
+% !TEX root = ../../../main.tex
+
+\section{Исчисление предикатов}
+Хотим расширить исчисление высказываний на формулы первого порядка, то есть, чтобы множество выводимых формул было равно множеству общезначных формул.
+
+$$\{\text{выводимые формулы}\} = \{\text{общезначные формулы}\}$$
+\begin{theorem}[Теорема о корректности]
+    $$\{\text{выводимые формулы}\} \subset \{\text{общезначные формулы}\}$$
+\end{theorem}
+\begin{theorem}[Слабая форма Теоремы о полноте]
+    $$\{\text{выводимые формулы}\} \supset \{\text{общезначные формулы}\}$$
+\end{theorem}
+
+\subsection{Аксиомы}
+\begin{enumerate}
+    \item[1...11.] A1-11
+    \setcounter{enumi}{11}
+    \item $\forall x \phi \rightarrow \phi(^t/_x)$, $t$ --- терм, подстановка корректна
+    \item $\phi(^t/_x) \rightarrow \exists x \phi$, $t$ --- терм, подстановка корректна
+
+    $\phi(^t/_x)$ --- результат замены свободного выхождения $x$ на $t$, при этом свободные переменные \(t\) не попадают под действие кванторов $\phi$.
+
+    Подстановка точно корректна, если:
+    \begin{enumerate}
+        \item $t$ --- замкнутый терм (состоящий только из констант)
+        \item $t \eqcirc x$
+    \end{enumerate}
+
+    \item
+\end{enumerate}
+
+\subsection{Правила Бернайса (правила вывода)}
+\begin{enumerate}
+    \item $\Sigma$-правило. Если $x$ --- не параметр $\psi$, то
+    $$\frac{\phi \rightarrow \psi}{\exists x \phi \rightarrow \psi}$$
+    \item $\Pi$-правило. Если $x$ --- не параметр $\psi$, то
+    $$\frac{\psi \rightarrow \phi}{\psi \rightarrow \forall x \phi}$$
+\end{enumerate}
+
+\subsection{Примеры вывода}
+\begin{example}
+    $$\forall x \phi \rightarrow \exists x \phi$$
+    \begin{enumerate}
+        \item $\forall x \phi \rightarrow \phi$ --- А12
+        \item $\phi \rightarrow \exists x \phi$ --- А13
+        \item $\forall x \phi \rightarrow \exists x \phi$ --- Силлогизм
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    $$\exists x \forall y \phi \rightarrow \forall y \exists x \phi$$
+    \begin{enumerate}
+        \item $\forall y \phi \rightarrow \phi$ --- А12
+        \item $\phi \rightarrow \exists x \phi$ --- А13
+        \item $\forall y \phi \rightarrow \exists x \phi$ --- Силлогизм
+        \item $\exists x \phi \forall y \phi \rightarrow \exists x \phi$ --- $\Sigma$-правило
+        \item $\exists x \forall y \phi \rightarrow \forall y \exists x \phi$ --- $\Pi$-правило
+    \end{enumerate}
+\end{example}
+
+
+\begin{example}[Вывод правила обощения]
+    \begin{definition}
+        Правило обобщения:
+        $$\frac{\phi}{\forall x \phi}$$    
+    \end{definition}
+    
+    Это значит, что $\vdash \phi \Rightarrow \vdash \forall x \phi$
+    \begin{enumerate}
+        \item $\phi$
+        \item $\psi$ --- Любая замкнутая аксиома
+        \item $\phi \rightarrow (\psi \rightarrow \phi)$ --- А1
+        \item $\psi \rightarrow \phi$ --- m.p. 1, 3
+        \item $\psi \rightarrow \forall x \phi$ --- $\Pi$-правило 4
+        \item $\forall x \phi$ --- m.p. 2, 5
+    \end{enumerate}
+\end{example}
+
+
+\begin{example}
+    $$\neg \exists x \phi \leftrightarrow \forall x \neg \phi$$
+    \begin{enumerate}
+        \item $\forall x \phi \rightarrow \phi$ --- А12
+        \item $\neg \phi \rightarrow \neg \forall x \phi$ --- контрапозиция
+        \item $\exists x \neg \phi \rightarrow \neg \forall x \phi$ --- $\Sigma$-правило 2
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    $$\neg \forall x \phi \leftrightarrow \exists x \neg \phi$$
+    \begin{enumerate}
+        \item $\forall x \neg \phi \rightarrow \neg \phi$
+        \item $\phi \rightarrow \neg\forall x \neg\phi$
+        \item $\exists x \phi \rightarrow \neg \forall x \neg \phi$
+        \item $\neg \forall x \phi \leftrightarrow \exists x \neg \phi$
+    \end{enumerate}
+\end{example}
+
+\begin{definition}
+    Вывод из посылок --- вывод, где в качестве посылок используются замкнутые фомрулы. (Посылки также называют аксиомами)
+\end{definition}
+
+\begin{definition}
+    Теория --- множество замкнтых формул
+\end{definition}
+
+\begin{definition}
+    Модель теории --- интерпретация, где все формулы теории истинны.
+\end{definition}
+
+\subsection{Лемма о дедукции для исчисления предикатов}
+\begin{lemma}[О дедукции]
+    Пусть $\Gamma$ --- теория, $A$ --- замкнутая формула, $B$ --- произвольная формула. Тогда $\Gamma \vdash A \rightarrow B \Leftrightarrow \Gamma, A \vdash B$.
+\end{lemma}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[$\Rightarrow$.]\begin{enumerate}
+                \item[1.] $A \rightarrow B$ --- вывод
+                \item[2.] $A$ --- посылка
+                \item[3.] $B$ --- m.p. 1, 2
+            \end{enumerate}
+        \item[$\Leftarrow$.] Пусть $C_1, C_2, \dots C_n$ --- вывод $B$ из $\Gamma, A$. По индукции докажем, что $\Gamma \vdash A \rightarrow C_i$.
+        \begin{enumerate}
+            \item[] \textbf{База}
+            \item[] \textbf{Переход} \begin{enumerate}
+                \item $C_i$ --- аксиома, или элемент $\Gamma$, или получена по m.p. --- аналог для Исчисления Высказываний.
+                \item $C_i$ --- получена по $\Sigma$-правилу. Тогда $C_i \eqcirc (\exists x \phi \rightarrow \psi), C_j \eqcirc (\phi \rightarrow \psi), j < i$. По предположению индукции, $\Gamma \vdash (A \rightarrow (\phi \rightarrow \psi))$. Тавтология: $(A \rightarrow (\phi \rightarrow \psi)) \leftrightarrow (\phi \rightarrow (A \rightarrow \psi)) \Rightarrow \Gamma \vdash (\phi \rightarrow (A \rightarrow \psi)) \Rightarrow \Gamma \vdash (\exists x \phi \rightarrow (A \rightarrow \psi)) \underbrace{\Longrightarrow}_{\Sigma\text{-правило}} \Gamma \vdash (A \rightarrow ( \exists x \phi \rightarrow \psi)) \Rightarrow \Gamma \vdash (A \rightarrow C_i)$.
+                \item $C_i$ --- получена по $\Pi$-правилу.
+                $$\Gamma \vdash (A \rightarrow (\psi \rightarrow \phi)) \Rightarrow \left[\begin{array}{l}
+                    \Gamma \vdash (A \rightarrow (\psi \rightarrow \forall x \phi))  \\
+                    \Gamma \vdash ((A \wedge \psi) \rightarrow \phi) 
+                \end{array}\right.$$
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}    
+\end{proof}
+
+\begin{definition}
+    Теория $\Gamma$ называется полной, если $\forall \phi$ верно $\Gamma \vdash \phi$ или $\Gamma \vdash \neg\phi$.
+\end{definition}
+
+\begin{definition}
+    Теория $\Gamma$ называется экзистенциально полной, если $\Gamma \vdash \exists x \psi \Rightarrow \Gamma \vdash \psi(^t/_x)$ для некоторого замкнутого терма $t$.
+\end{definition}
+
+\begin{lemma}
+    Любая непротиворечивая теория вложена в какую-то полную
+\end{lemma}
+
+\begin{lemma}
+    $\Gamma$ --- непротиворечивая теория в сигнатуре $\sigma \Rightarrow$ существует $\tau \subset \sigma, \Delta \supset \Gamma$, $\Delta$ --- экзистенциально полная непротиворечивая теория в сигнатуре $\tau$.
+\end{lemma}
+
+\begin{theorem}[Сильная форма Теоремы о полноте ИП]
+    У любой непротиворечивой теории существует модель
+\end{theorem}
+\begin{proof}
+    Потом
+\end{proof}
+
+
+\begin{proof}[Доказательство слабой формы теоремы о полноте ИП]
+    $\phi$ --- общезначная $\Rightarrow \forall x \phi$ --- общезначная $\Rightarrow$ у $\{\neg \forall x \phi\}$ нет модели $\Rightarrow \{\neg \forall x \phi\}$ --- противоречива $\Rightarrow \left\{\begin{array}{l}
+        \{\neg \forall x \phi\} \vdash A  \\
+        \{\neg \forall x \phi\} \vdash \neg A 
+    \end{array}\right. = \left\{\begin{array}{l}
+        \vdash \{\neg \forall x \phi\} \rightarrow A  \\
+        \vdash \{\neg \forall x \phi\} \rightarrow \neg A 
+    \end{array}\right. \Rightarrow \vdash \neg\neg \forall x \phi \Rightarrow \vdash \forall x \phi \Rightarrow \phi$. 
+\end{proof}

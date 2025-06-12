@@ -1,0 +1,110 @@
+% !TEX root = ../../../main.tex
+
+\section{Теорема о полноте}
+
+\begin{theorem}[О полноте]
+    Если $\phi$ --- тавтология, то тогда она выводима.
+\end{theorem}
+
+\subsection{Первое доказательство}
+
+% $$\frac{\Gamma, A \vdash B\ \ \ \ \ \ \Gamma, \neg A \vdash B}{\Gamma \vdash B}$$
+
+\begin{definition}
+    Обозначим $p^\varepsilon = \left\{\begin{array}{l}
+        p, \varepsilon = 1  \\
+        \neg p, \varepsilon = 0
+    \end{array}\right.$
+\end{definition}
+
+\begin{lemma}[Базовая Лемма]\indent
+\begin{enumerate}
+    \item $A, B \vdash A \wedge B$
+    \item $\neg A, B \vdash \neg(A \wedge B)$
+    \item $A, \neg B \vdash \neg(A \wedge B)$
+    \item $\neg A, \neg B \vdash \neg(A \wedge B)$
+    \item $A, B \vdash A \vee B$
+    \item $\neg A, B \vdash A \vee B$
+    \item $A, \neg B \vdash A \vee B$
+    \item $\neg A, \neg B \vdash \neg(A \vee B)$
+    \item $A, B \vdash A \rightarrow B$
+    \item $\neg A, B \vdash A \rightarrow B$
+    \item $A, \neg B \vdash \neg(A \rightarrow B)$
+    \item $\neg A, \neg B \vdash A \rightarrow B$
+    \item $\neg A \vdash \neg A$
+    \item $A \vdash \neg (\neg A)$
+\end{enumerate}
+\end{lemma}
+
+\begin{lemma}[Основная Лемма]
+    Пусть $\phi$ --- формула от $n$ переменных $p_1, p_2, \dots p_n$, $(a_1, a_2, \dots a_n) \in \{0, 1\}^n, \phi(a_1, a_2, \dots a_n) = a \in \{0, 1\}$. Тогда $p_1^{a_1}, p_2^{a_2}, \dots p_n^{a_n} \vdash \phi^a$.
+\end{lemma}
+\begin{proof}
+    Индукция по построению формулы.
+    \begin{enumerate}
+        \item[] \textbf{База:} переменная. $p_i^{a_i} \vdash p_i^{a_i}$.
+        \item[] \textbf{Переход:} пусть, например, $\phi = (\xi \wedge \nu)$. $\xi(a_1, a_2, \dots a_n) = a, \nu(a_1, a_2, \dots a_n) = b \Rightarrow \phi(a_1, a_2, \dots a_n) = ab$. По базовой лемме, $p_1^{a_1}, p_2^{a_2}, \dots p_n^{a_n} \vdash \xi^a, p_1^{a_1}, p_2^{a_2}, \dots p_n^{a_n} \vdash \nu^b$. По базовой лемме, $\xi^a, \nu^b \vdash \phi^{ab}$. Запишем три вывода подряд, получим желаемое
+    \end{enumerate}
+\end{proof}
+
+Тогда если $\phi$ --- тавтология, то при всех $(a_1, \dots a_n): \phi(a_1, a_2, \dots a_n) = 1$, тогда по правилу исчерпвающего разбора случаев, формула $\phi$ будет выводима, т.к. вне зависимости от любой переменной, $\phi$ будет истинна.
+
+\subsection{Второе доказательство}
+Пусть $\Gamma$ --- множество пропозициональных формул. Тогда:
+
+\begin{definition}
+    $\Gamma$ --- совместно, если при некоторых значениях переменных, все формулы из $\Gamma$ истинны.
+\end{definition}
+
+\begin{definition}
+    $\Gamma$ --- противоречиво, если из нее можно вывести $\psi, \neg \psi$ одновременно для некоторого $\psi$.
+\end{definition}
+
+\begin{definition}
+    $\Gamma$ --- полное, если для любого $\phi$ верно $\Gamma \vdash \phi$ или $\Gamma \vdash \neg \phi$.
+\end{definition}
+
+\begin{theorem}
+    $\Gamma$ совместна $\Leftrightarrow \Gamma$ непротиворечива.
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item $\Gamma$ --- противоречива, тогда она совместна. Если $\Gamma$ совместна, то все формулы из $\Gamma$ верны на некотором наборе. Тогда если $\Gamma \vdash \phi$, то и $\phi$ --- тоже верна на этом наборе. Аналогично и для $\neg \phi$. Но формулы $\phi, \neg \phi$ не могут быть одновременно истинны, тогда они не могут одновременно выводиться из $\Gamma$.
+        \item $\Gamma$ --- несовместна, тогда она противоречива. Пусть $\Delta$ непротиворечива. 
+        \begin{lemma}
+            $\Gamma$ непротиворечива $\Rightarrow \Gamma \subset \Delta$ для некоторого полного непротиворечивого $\Delta$.
+        \end{lemma}
+        \begin{proof}[для счетного множества переменных]
+            Если переменных счетное число, то и формул тоже счетное число. Пусть $\phi_1, \phi_2, \dots$ --- все формулы. Определим $\Gamma_i$ по индукции:
+            $$\Gamma_0 = \Gamma, \Gamma_i = \left\{\begin{array}{l}
+                \Gamma_{i-1} \cup \{\phi_i\}\text{, если это непротиворечиво}  \\
+                \Gamma_{i-1} \cup \{\neg\phi_i\} \text{, иначе}
+            \end{array}\right.$$
+            Заметим, что все $\Gamma_i$ --- непротиворечивы, т.к.
+            $$\left.\begin{array}{l}
+                \Gamma_{i-1} \cup \{\phi_i\}\text{ --- противоречиво } \Rightarrow \Gamma_{i-1}\vdash\neg\phi_i \\
+                \Gamma_{i-1} \cup \{\neg\phi_i\} \text{ --- противоречиво }\Rightarrow \Gamma_{i-1}\vdash\phi_i
+            \end{array}\right\} \Rightarrow \Gamma_{i-1}\text{ --- противоречиво }$$
+            Тогда 
+            $$\Delta = \bigcup_{i = 0}^{\infty}\Gamma_i$$
+            --- тоже непротиворечиво, т.к. в противном случае, вывод, при помощи котрого мы получили противоречие использует конечное число формул, но тогда он вывелся из какого-то конечного подмножества, но такого не может быть, т.к. все конечные подмножества непротиворечивы.
+        \end{proof}
+        \begin{lemma}
+            $\Delta$ --- полное и непротиворечивое, тогда оно совместное
+        \end{lemma}
+        \begin{proof}
+            $\Delta$ полное, тогда для переменной $p_i$ верно $\Delta\vdash p_i$ или $\Delta\vdash \neg p_i$. Рассмотрим следующий набор значений:
+            $$a_i = \left\{\begin{array}{l}
+                1, \Delta \vdash p_i  \\
+                0, \Delta \vdash\neg p_i
+            \end{array}\right.$$
+        \end{proof}
+    \end{enumerate}
+\end{proof}
+
+\begin{proof}[Теоремы о полноте]\indent
+    \begin{enumerate}
+        \item[] \textbf{Корректность} $\vdash \phi \Rightarrow \{\neg \phi\}$ --- противоречиво $\Rightarrow$ несовместно $\Rightarrow \forall a \neg \phi(a) = 0 \Rightarrow \forall \phi(a) = 1 \Rightarrow \phi$ --- тавтология
+        \item[] \textbf{Полнота} $\phi$ --- тавтология $\Rightarrow \{\neg \phi\}$ несовместна $\Rightarrow \{\neg \phi\}$ --- противоречиво, тогда, т.к. $\frac{\neg \phi \vdash B\ \ \ \neg \phi \vdash B}{\vdash \neg(\neg\phi)} \Rightarrow \vdash\phi$
+    \end{enumerate}    
+\end{proof}

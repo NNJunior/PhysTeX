@@ -1,4 +1,23 @@
 <all name="Все семестры" description="Все семестры, которые конспектировались">
+  <semester name="Семестр 1" description="Все предметы первого семестра" date="01.09.24 - 13.12.24">
+    <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 1/Матлог/setting">
+      <lecture name="Лекция 1" path="Лекции/Семестр 1/Матлог/lecture_1" setting="Лекции/Семестр 1/Матлог/setting" date="04.09.24" />
+      <lecture name="Лекция 2" path="Лекции/Семестр 1/Матлог/lecture_2" setting="Лекции/Семестр 1/Матлог/setting" date="11.09.24" />
+      <lecture name="Лекция 3" path="Лекции/Семестр 1/Матлог/lecture_3" setting="Лекции/Семестр 1/Матлог/setting" date="18.09.24" />
+      <lecture name="Лекция 4" path="Лекции/Семестр 1/Матлог/lecture_4" setting="Лекции/Семестр 1/Матлог/setting" date="25.09.24" />
+      <lecture name="Лекция 5" path="Лекции/Семестр 1/Матлог/lecture_5" setting="Лекции/Семестр 1/Матлог/setting" date="02.10.24" />
+      <lecture name="Лекция 6" path="Лекции/Семестр 1/Матлог/lecture_6" setting="Лекции/Семестр 1/Матлог/setting" date="09.10.24" />
+      <lecture name="Лекция 7" path="Лекции/Семестр 1/Матлог/lecture_7" setting="Лекции/Семестр 1/Матлог/setting" date="16.10.24" />
+      <lecture name="Лекция 8" path="Лекции/Семестр 1/Матлог/lecture_8" setting="Лекции/Семестр 1/Матлог/setting" date="23.10.24" />
+      <lecture name="Лекция 9" path="Лекции/Семестр 1/Матлог/lecture_9" setting="Лекции/Семестр 1/Матлог/setting" date="30.10.24" />
+      <lecture name="Лекция 10" path="Лекции/Семестр 1/Матлог/lecture_10" setting="Лекции/Семестр 1/Матлог/setting" date="06.11.24" />
+      <lecture name="Лекция 11" path="Лекции/Семестр 1/Матлог/lecture_11" setting="Лекции/Семестр 1/Матлог/setting" date="13.11.24" />
+      <!-- <lecture name="Лекция 12" path="Лекции/Семестр 1/Матлог/lecture_12" description="Лямбда-исчисление. Синтаксис + капелька семантики" setting="Лекции/Семестр 1/Матлог/setting" date="20.11.24" /> -->
+      <lecture name="Лекция 13" path="Лекции/Семестр 1/Матлог/lecture_13" setting="Лекции/Семестр 1/Матлог/setting" date="27.11.24" />
+      <lecture name="Лекция 14" path="Лекции/Семестр 1/Матлог/lecture_14" setting="Лекции/Семестр 1/Матлог/setting" date="04.12.24" />
+      <lecture name="Лекция 15" path="Лекции/Семестр 1/Матлог/lecture_15" setting="Лекции/Семестр 1/Матлог/setting" date="11.12.24" />
+    </subject>
+  </semester>
   <semester name="Семестр 2" description="Все предметы второго семестра" date="03.02.25 - 16.05.25">
     <subject name="Алгебра и Геометрия" description="Какую-то шнягу изучаем" setting="Лекции/Семестр 2/Алгем/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгем/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Лекции/Семестр 2/Алгем/setting" date="05.02.25"/>
@@ -84,6 +103,9 @@
       <lecture name="Лекция 9" path="Лекции/Семестр 2/ОКТЧ/lecture_9" description="Иррациональность и трансцендентность числа e" setting="Лекции/Семестр 2/ОКТЧ/setting" date="03.04.25"/>
       <lecture name="Лекция 10" path="Лекции/Семестр 2/ОКТЧ/lecture_10" description="Решетки" setting="Лекции/Семестр 2/ОКТЧ/setting" date="10.04.25"/>
       <lecture name="Лекция 11" path="Лекции/Семестр 2/ОКТЧ/lecture_11" description="Теорема Минковского-Главки для октаэдра" setting="Лекции/Семестр 2/ОКТЧ/setting" date="17.04.25"/>
+      <lecture name="Лекция 12" path="Лекции/Семестр 2/ОКТЧ/lecture_12" description="Последовательности и какая-то шняга" setting="Лекции/Семестр 2/ОКТЧ/setting" date="24.04.25"/>
+      <lecture name="Лекция 13" description="скип" date="01.05.25"/>
+      <lecture name="Лекция 14" path="Лекции/Семестр 2/ОКТЧ/lecture_14" description="Еще тесты на простоту. Тесты Миллера-Рабина. И что-то еще, не затехал, сорян" setting="Лекции/Семестр 2/ОКТЧ/setting" date="15.05.25"/>
     </subject>
     <subject name="Технологии программирования" description="
 Основные ссылки по курсу:&#xA;
