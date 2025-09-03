@@ -40,6 +40,7 @@
       <lecture name="Лекция 10" path="Лекции/Семестр 2/Алгосы/lecture_10" description="Паросочетания в двудольных графах, алгоритм Эдмондса" setting="Лекции/Семестр 2/Алгосы/setting" date="09.04.25" />
       <lecture name="Лекция 11" path="Лекции/Семестр 2/Алгосы/lecture_11" description="Потоки. Начало..." setting="Лекции/Семестр 2/Алгосы/setting" date="16.04.25" />
       <lecture name="Лекция 12" path="Лекции/Семестр 2/Алгосы/lecture_12" description="Продолжение потоков. Алгоритм Диница" setting="Лекции/Семестр 2/Алгосы/setting" date="23.04.25" />
+      <lecture name="Лекция 13" path="Лекции/Семестр 2/Алгосы/lecture_13" description="Штор-Вагнер и min-cost k-flow" setting="Лекции/Семестр 2/Алгосы/setting" date="30.04.25" />
     </subject>
     <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 2/Матлог/setting">
       <lecture name="Лекция 1" path="Лекции/Семестр 2/Матлог/lecture_1" description="ВУМы и Фундированные множества" setting="Лекции/Семестр 2/Матлог/setting" date="05.02.25" />
