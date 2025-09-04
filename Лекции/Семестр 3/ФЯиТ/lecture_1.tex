@@ -1,0 +1,105 @@
+% !TEX root = ../../../main.tex
+
+\section{Конечные Автоматы}
+\begin{definition}
+    Алфавит --- конечное непустое множество
+\end{definition}
+
+\begin{definition}
+    Слово --- кортеж из букв
+\end{definition}
+
+\begin{definition}
+    Пусть \(L_1, L_2\) --- множества слов. \(L_1L_2 = \{uv | u \in L_1, v \in L_2\}\)
+\end{definition}
+
+\begin{definition}
+    \(\Sigma^* = \bigcup_{\bigcup_{k = 0}^\infty} \Sigma^k\) --- звезда Клини
+\end{definition}
+
+\begin{definition}
+    \(\epsilon\) --- пустое слово
+\end{definition}
+
+\begin{definition}
+    Недетерминированный Конечный Автомат --- кортеж \((Q, \Sigma, \Delta, q_0, F)\), удовлетворяющий следующим условиям:
+    \begin{enumerate}
+        \item \(Q\) называется множеством состояний, \(Q\) конечное
+        \item \(\Sigma\) --- Алфавит
+        \item \(\Delta \subset Q \times \Sigma^* \times Q\) --- переходы, \(\Delta\) конечное
+        \item \(q_0 \in Q\) --- стартовое состояние
+        \item \(F \subset Q\) --- множество завершающих состояний
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Конфигурация Автомата --- элемент \(Q \times \Sigma^*\). обозначается \(\langle q, w\rangle\)
+\end{definition}
+
+\begin{definition}
+    \(\vdash\) --- наименьшее по включению рефлексивное транзитивное отношение над \(Q \times \Sigma^*\), что \(\forall u \in \Sigma^*, (\langle q_1, w \rangle \ra q_2) \in \Delta \Ra \langle q_1, wu\rangle \vdash \langle q_2, u\rangle)\).
+\end{definition}
+
+\begin{definition}
+    \(L(M) = \{w \in \Sigma^* | \exists q_F \in F: \langle q_0, w \rangle \vdash \langle q_F, \epsilon \rangle\}\).
+\end{definition}
+
+\begin{definition}
+    Язык \(L\) называется автоматным, если \(\exists M\) --- автомат, такой, что \(L(M) = L\)
+\end{definition}
+
+\begin{proposition}
+    В определении автомата можно считать, что \(|F| = 1\).
+\end{proposition}
+\begin{proof}[Неформально]
+    Добавим новое состояние \(q_F\). Из всех конечных состоянии сделаем в него переходы по \(\epsilon\). Сделаем \(q_F\) единственным конечным. Тогда наш автомат успешно завершился \(\Lra\) мы перешли в \(q_F\) и слово закончилось, но в него можно было прийти только по \(\epsilon\)-переходу, значит в исходном автомате мы бы остановились в конечном состоянии и на пустом слове.
+\end{proof}
+\begin{proof}
+    Рассмотрим автомат \(M' = (Q \cup \{q_F\}, \Sigma, \Delta \cup F \times \{\epsilon\} \times \{q_F\}, q_0, \{q_F\})\).
+    \begin{enumerate}
+        \item \(L(M) \subset L(M')\)
+        \[w \in L(M) \Ra \exists q \in F: \langle q_0, w \rangle \vdash_M \langle q, \epsilon \rangle\]
+        \[\Delta \subset \Delta' \Ra \langle q_0, w \rangle \vdash_{M'} \langle q, \epsilon \rangle \vdash_{M'} \langle q_F, \epsilon \rangle \Ra \langle q_0, w \rangle \vdash_{M'} \langle q_F, \epsilon \rangle\]
+        \item \(L(M) \supset L(M')\)
+        \[w \im L(M') \Ra \langle q_0, w\rangle \vdash_{M'} \langle q_F, \epsilon\rangle\]
+        \[\exists u, q_1 \in F: \langle q_0, w\rangle \vdash_{M'} \langle q_1, u\rangle \vdash_{M', 1} \langle q_F, \epsilon\rangle \Ra u = \epsilon \Ra \langle q_0, w\rangle \vdash_{M'} \langle q_1, \epsilon\rangle\]
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    В определении автомата можно считать, что \(\forall \langle q_1, w \rangle \ra q_2 \in \Delta |w| \le 1\).
+\end{proposition}
+\begin{proof}
+    Превращаем \(q_1 \ra_{abc} q_2\) в \(q_1 \ra_a q_3 \ra_b q_4 \ra_c q_2\).
+\end{proof}
+
+\begin{theorem}
+    В определении автомата можно считать, что \(\forall \langle q_1, w \rangle \ra q_2 \in \Delta |w| = 1\).
+\end{theorem}
+\begin{proof}[Неформально]
+    Делаем две операции:
+    \begin{enumerate}
+        \item В цепочку \(q_1 \ra_\epsilon q_2 \ra_\epsilon q_3 \ra_\epsilon \dots \ra_\epsilon q_{n - 1} \ra_a q_n\) удаляем \(\epsilon\)-переходы, вместо них добавим переходы вида \(q_1 \ra_a q_i\).
+        
+        \item В цепочке \(q_1 \ra_\epsilon q_2 \ra_\epsilon q_3 \ra_\epsilon \dots \ra_\epsilon  q_n\), где \(q_n\) --- конечное состояние делаем все состояния конечными
+    \end{enumerate}
+    Сначала до упора делаем 1, потом 2, потом удаляем оставшиеся \(\epsilon\)-переходы.
+\end{proof}
+\begin{proof}
+    Положим \(\Delta(q, w) = \{q' \in Q | \langle q, w\rangle \vdash \langle q', \epsilon\rangle\}\), \(M' = \{Q, \Sigma, \Delta', q_0, F'\}\), где \(\Delta' = \{\langle q_1, w\rangle \ra q_2 | \exists q_3 \in \Delta(q_1, \epsilon): \langle q_3, \epsilon\rangle \ra q_2 \in \Delta\}, F' = \{q' | \exists q \in F: \langle q', \epsilon\rangle \vdash \langle q, \epsilon\rangle\}\)
+
+    \begin{enumerate}
+        \item \(L(M) \subset L(M')\)
+        \[w \in L(M), w = w_1w_2\dots w_k, w_i \in \Sigma\]
+        \[\exists q \in F \langle q_0, w\rangle \vdash \langle q, \epsilon\rangle\]
+        \[\Ra \begin{array}{lclclcl}
+            \langle q_0, w_1w_2\dots w_k\rangle & \vdash_{M} & \langle q_1, w_1w_2\dots w_k\rangle & \vdash_{M, 1} & \langle q_1', w_2\dots w_k\rangle & \vdash_M \\
+            
+            & \vdash_{M} & \langle q_2, w_2\dots w_k\rangle & \vdash_{M, 1} & \langle q_2', w_3\dots w_k\rangle & \vdash_M \\
+            
+            & & \vdots & & & \\
+
+            & \vdash_{M} & \langle q_s, w_k\rangle & \vdash_{M, 1} & \langle q_s', \epsilon\rangle & \vdash_M  &\langle q, \epsilon\rangle\\
+        \end{array}\]
+    \end{enumerate}
+\end{proof}
