@@ -1,0 +1,106 @@
+% !TEX root = ../../../main.tex
+
+\section{Введение}
+\subsection{Определения}
+\begin{definition}
+    В рамках Основы Вероятности мы будем рассматривать \((\Omega, P)\), где \(\Omega\) --- элементарные события, а \(P: 2^\Omega \ra [0, 1]\), которые удовлетворяют следующими свойствами:
+    \begin{enumerate}
+        \item \(|\Omega| \le \N\), элементы \(\Omega\) называются элементарными исходами
+        \item \(\sum_{\omega \in 2^\Omega} P(\omega) = 1\)
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Событие --- элемент \(2^\Omega, P(A) = \sum_{\omega \in A} P(\{\omega\})\) --- вероятность события \(A\).
+\end{definition}
+
+В дальнейшем будем сокращать \(P(\{\omega\})\) как \(P(\omega)\).
+
+\begin{note}
+    \(P\) обладает следующими свойствами
+    \begin{enumerate}
+        \item \(P(\emptyset) = 0\)
+        \item \(P(\Omega) = 1\)
+        \item \(A \subset B \Ra P(A) \le P(B)\)
+        \item \(P\left(\bigsqcup_{i = 1}^\infty A_i\right) = \sum_{i = 1}^\infty P(A_i)\)
+    \end{enumerate}
+\end{note}
+
+\begin{definition}
+    Классическая модель --- случай, когда все элементарные исходы равновероятны, т.е. \(\forall \omega \in \Omega P(\omega) = \frac{1}{|\Omega|}\).
+\end{definition}
+
+\begin{definition}
+    \(P(A | B)\) --- вероятность события \(A\) при улсовии, что произошло событие \(B\).
+    \[P(A|B) = \frac{P(A \cap B)}{P(B)}\]
+\end{definition}
+
+\begin{definition}(Формула полной вероятности)
+    Пусть \(\Omega = \bigsqcup_{i = 1}^\infty B_i\). Тогда \(P(A) = \sum_{i = 1}^\infty P(B_i)P(A | B_i)\).
+\end{definition}
+
+\begin{definition}(Формула Байеса)
+    \[P(A | B) = \frac{P(B | A)P(A)}{P(B)}\]
+\end{definition}
+
+\begin{note}
+    \[P(A_1A_2 \dots A_n) = P(A_1)P(A_2 | A_1)P(A_3 | A_1A_2)\dots P(A_n|A_1\dots A_{n - 1})\]
+\end{note}
+
+\begin{definition}
+    События \(A, B\) называются независимыми, если \(P(AB) = P(A)P(B)\)
+\end{definition}
+
+\begin{definition}
+    События \(A_1, \dots\) называются независимыми в совокупности, если 
+    \[P(A_{i_1}A_{i_2}\dots A_{i_k}) = P(A_{i_1})P(A_{i_2})\dots P(A_{i_k})\]
+\end{definition}
+
+\begin{definition}(Схема испытаний Бернулли)
+    \(\Omega = \{0, 1\}^n, P(1) = p, P(0) = 1 - p \Ra P(\omega) = p^{\sum w_i}(1 - p)^{n - \sum w_i}\).
+\end{definition}
+
+\begin{definition}
+    Отображение \(\xi: \Omega \ra \R\) --- случайная величина.
+\end{definition}
+
+\noindent\textbf{Соглашение.} вместо \(\xi(\omega)\) будем писать \(\omega\).
+
+\begin{example}
+    \(P(\xi = \sqrt{2})\) вместо \(P(\{\omega | \xi(\omega) = \sqrt{2}\})\)
+\end{example}
+
+\subsection{Распределение случайных величин}
+\subsubsection{Равномерное распределение}
+\[\begin{array}{c|cccccc}
+    x \in Im\xi & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \hline
+    P(\xi = x) & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} \\
+\end{array}\]
+
+\subsubsection{Распределение Бернулли}
+\(\Omega = \{0, 1\}, \xi(\omega) = \omega, P(\xi = 1) = p, P(\xi = 0) = 1 - p\). Пишут \(\xi \sim Bern(p)\).
+
+\subsubsection{Биномиальное распределение}
+\(\Omega = \{0, 1\}^n, \xi(\omega) = \sum \omega_i\) (количество успехов). \(P(\xi = k) = C_n^kp^k(1-p)^{n - k}\). Пишут \(\xi \sim Bin(n, p)\).
+
+\begin{note}
+    Распределение Бернулли --- частный случай Биномиального (при \(n = 1\))
+\end{note}
+
+\begin{theorem}(Пуассона)
+    Пусть \(\xi_n \sim Bin(n, p_n)\) --- случайные величины, такие, что \(np_n \ra \lambda > 0\). Тогда \(P(\xi_n = k) \ra \frac{\lambda^k}{k!}e^{-\lambda}\).
+\end{theorem}
+\begin{proof}
+    \[P(\xi_n = k) = C_n^kp^k(1-p)^{n - k}\]
+    Т.к. количество множителей фиксированно, переходим к пределу.
+    \[\frac{n!}{k!(n-k)!}p^k(1-p)^{n - k} = \frac{(np_n)^k}{k!}\cdot1\cdot\left(1 - \frac{1}{n}\right) \cdot\left(1 - \frac{2}{n}\right)\cdot\dots\cdot\left(1 - \frac{k - 1}{n}\right)\frac{(1 - p_n)^n}{(1 - p_n)^k} \ra \frac{\lambda^k}{k!}e^{-\lambda}\]
+\end{proof}
+
+\begin{definition}
+    Распределение, задаваемого формлуой \(P(\xi = k) = \frac{\lambda^k}{k!}e^{-\lambda}\) называется распределением Пуассона и пишется \(Pois(\lambda)\)
+\end{definition}
+
+\subsubsection{Геометрическое распределение}
+\[\Omega = \{0^k1 | k \in \N\} P(\xi = k) = (1 - p)^kp\]
+По сути, \(\xi(\omega)\) --- количество нулей перед первой единицей.
