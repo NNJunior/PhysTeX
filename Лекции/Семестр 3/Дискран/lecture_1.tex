@@ -108,7 +108,7 @@
 
     \[e^{-\frac{r(r-1)}{2n}} = e^{-\frac{r^2}{2n}(1 + o(1))} \le e^{-\frac{n^{1.2}}{2n}(1 + o(1))} = e^{-\frac{n^{0.2}}{2}(1 + o(1))}\]
 
-    \[S_1 = \sum_{r = 3}^{[n^0.6]}e^{-\frac{r(r-1)}{2n} + O\left(\frac{r^3}{n^3}\right)} \sim \sum_{r = 3}^{[n^0.6]}e^{-\frac{r(r-1)}{2n}} \sim \sum_{r = 3}^{[n^0.6]}e^{-\frac{r^2}{2n}} \sim \sum_{r = 0}^{\infty}e^{-\frac{r^2}{2n}} \sim_{\text{сх.}} \int_0^\infty e^{-\frac{r^2}{2n}}dr = \int_0^\infty e^{-\frac{x^2}{2}}\sqrt{n}dx = \frac{\sqrt{2\pi n}}{2}\]
+    \[S_1 = \sum_{r = 3}^{[n^{0.6}]}e^{-\frac{r(r-1)}{2n} + O\left(\frac{r^3}{n^3}\right)} \sim \sum_{r = 3}^{[n^{0.6}]}e^{-\frac{r(r-1)}{2n}} \sim \sum_{r = 3}^{[n^{0.6}]}e^{-\frac{r^2}{2n}} \sim \sum_{r = 0}^{\infty}e^{-\frac{r^2}{2n}} \sim_{\text{сх.}} \int_0^\infty e^{-\frac{r^2}{2n}}dr = \int_0^\infty e^{-\frac{x^2}{2}}\sqrt{n}dx = \frac{\sqrt{2\pi n}}{2}\]
     
     \[\int_{-\infty}^{+\infty} e^{-\frac{x}{2}}dx = \sqrt{2\pi}\]
 \end{proof}
