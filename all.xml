@@ -1,155 +1,141 @@
-<all name="Все семестры" description="Все семестры, которые конспектировались">
-  <semester name="Семестр 1" description="Все предметы первого семестра" date="01.09.24 - 13.12.24">
-    <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 1/Матлог/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 1/Матлог/lecture_1" setting="Лекции/Семестр 1/Матлог/setting" date="04.09.24" />
-      <lecture name="Лекция 2" path="Лекции/Семестр 1/Матлог/lecture_2" setting="Лекции/Семестр 1/Матлог/setting" date="11.09.24" />
-      <lecture name="Лекция 3" path="Лекции/Семестр 1/Матлог/lecture_3" setting="Лекции/Семестр 1/Матлог/setting" date="18.09.24" />
-      <lecture name="Лекция 4" path="Лекции/Семестр 1/Матлог/lecture_4" setting="Лекции/Семестр 1/Матлог/setting" date="25.09.24" />
-      <lecture name="Лекция 5" path="Лекции/Семестр 1/Матлог/lecture_5" setting="Лекции/Семестр 1/Матлог/setting" date="02.10.24" />
-      <lecture name="Лекция 6" path="Лекции/Семестр 1/Матлог/lecture_6" setting="Лекции/Семестр 1/Матлог/setting" date="09.10.24" />
-      <lecture name="Лекция 7" path="Лекции/Семестр 1/Матлог/lecture_7" setting="Лекции/Семестр 1/Матлог/setting" date="16.10.24" />
-      <lecture name="Лекция 8" path="Лекции/Семестр 1/Матлог/lecture_8" setting="Лекции/Семестр 1/Матлог/setting" date="23.10.24" />
-      <lecture name="Лекция 9" path="Лекции/Семестр 1/Матлог/lecture_9" setting="Лекции/Семестр 1/Матлог/setting" date="30.10.24" />
-      <lecture name="Лекция 10" path="Лекции/Семестр 1/Матлог/lecture_10" setting="Лекции/Семестр 1/Матлог/setting" date="06.11.24" />
-      <lecture name="Лекция 11" path="Лекции/Семестр 1/Матлог/lecture_11" setting="Лекции/Семестр 1/Матлог/setting" date="13.11.24" />
-      <!-- <lecture name="Лекция 12" path="Лекции/Семестр 1/Матлог/lecture_12" description="Лямбда-исчисление. Синтаксис + капелька семантики" setting="Лекции/Семестр 1/Матлог/setting" date="20.11.24" /> -->
-      <lecture name="Лекция 13" path="Лекции/Семестр 1/Матлог/lecture_13" setting="Лекции/Семестр 1/Матлог/setting" date="27.11.24" />
-      <lecture name="Лекция 14" path="Лекции/Семестр 1/Матлог/lecture_14" setting="Лекции/Семестр 1/Матлог/setting" date="04.12.24" />
-      <lecture name="Лекция 15" path="Лекции/Семестр 1/Матлог/lecture_15" setting="Лекции/Семестр 1/Матлог/setting" date="11.12.24" />
+<all name="Все семестры" description="Все семестры, которые конспектировались" id="all">
+  <semester name="Семестр 1" description="Все предметы первого семестра" date="01.09.24 - 13.12.24" id="1S">
+    <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 1/Матлог/setting" id="1S_ML">
+      <lecture name="Лекция 1" path="Лекции/Семестр 1/Матлог/lecture_1" setting="Лекции/Семестр 1/Матлог/setting" date="04.09.24" id="1S_ML_1" />
+      <lecture name="Лекция 2" path="Лекции/Семестр 1/Матлог/lecture_2" setting="Лекции/Семестр 1/Матлог/setting" date="11.09.24" id="1S_ML_2" />
+      <lecture name="Лекция 3" path="Лекции/Семестр 1/Матлог/lecture_3" setting="Лекции/Семестр 1/Матлог/setting" date="18.09.24" id="1S_ML_3" />
+      <lecture name="Лекция 4" path="Лекции/Семестр 1/Матлог/lecture_4" setting="Лекции/Семестр 1/Матлог/setting" date="25.09.24" id="1S_ML_4" />
+      <lecture name="Лекция 5" path="Лекции/Семестр 1/Матлог/lecture_5" setting="Лекции/Семестр 1/Матлог/setting" date="02.10.24" id="1S_ML_5" />
+      <lecture name="Лекция 6" path="Лекции/Семестр 1/Матлог/lecture_6" setting="Лекции/Семестр 1/Матлог/setting" date="09.10.24" id="1S_ML_6" />
+      <lecture name="Лекция 7" path="Лекции/Семестр 1/Матлог/lecture_7" setting="Лекции/Семестр 1/Матлог/setting" date="16.10.24" id="1S_ML_7" />
+      <lecture name="Лекция 8" path="Лекции/Семестр 1/Матлог/lecture_8" setting="Лекции/Семестр 1/Матлог/setting" date="23.10.24" id="1S_ML_8" />
+      <lecture name="Лекция 9" path="Лекции/Семестр 1/Матлог/lecture_9" setting="Лекции/Семестр 1/Матлог/setting" date="30.10.24" id="1S_ML_9" />
+      <lecture name="Лекция 10" path="Лекции/Семестр 1/Матлог/lecture_10" setting="Лекции/Семестр 1/Матлог/setting" date="06.11.24" id="1S_ML_10" />
+      <lecture name="Лекция 11" path="Лекции/Семестр 1/Матлог/lecture_11" setting="Лекции/Семестр 1/Матлог/setting" date="13.11.24" id="1S_ML_11" />
+      
+      <lecture name="Лекция 13" path="Лекции/Семестр 1/Матлог/lecture_13" setting="Лекции/Семестр 1/Матлог/setting" date="27.11.24" id="1S_ML_13" />
+      <lecture name="Лекция 14" path="Лекции/Семестр 1/Матлог/lecture_14" setting="Лекции/Семестр 1/Матлог/setting" date="04.12.24" id="1S_ML_14" />
+      <lecture name="Лекция 15" path="Лекции/Семестр 1/Матлог/lecture_15" setting="Лекции/Семестр 1/Матлог/setting" date="11.12.24" id="1S_ML_15" />
     </subject>
   </semester>
-  <semester name="Семестр 2" description="Все предметы второго семестра" date="03.02.25 - 16.05.25">
-    <subject name="Алгебра и Геометрия" description="Какую-то шнягу изучаем" setting="Лекции/Семестр 2/Алгем/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгем/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Лекции/Семестр 2/Алгем/setting" date="05.02.25"/>
-      <lecture name="Лекция 2" path="Лекции/Семестр 2/Алгем/lecture_2" description="Скоро здесь будет описание" setting="Лекции/Семестр 2/Алгем/setting" date="12.02.25"/>
-      <lecture name="Лекция 3" path="Лекции/Семестр 2/Алгем/lecture_3" description="По техническим причинам, инвариантные пространства затеханы очень плохо (простите)" setting="Лекции/Семестр 2/Алгем/setting" date="19.02.25"/>
-      <lecture name="Лекция 4 ☠️" path="Лекции/Семестр 2/Алгем/lecture_4" description="я сдаюсь..." setting="Лекции/Семестр 2/Алгем/setting" date="26.02.25"/>
-      <lecture name="Лекция 5 ☠️☠️" path="Лекции/Семестр 2/Алгем/lecture_5" description="он победил..." setting="Лекции/Семестр 2/Алгем/setting" date="05.03.25"/>
-      <lecture name="Лекция 6 ❌" description="я умер" date="12.03.25"/>
+  <semester name="Семестр 2" description="Все предметы второго семестра" date="03.02.25 - 16.05.25" id="2S">
+    <subject name="Алгебра и Геометрия" description="Какую-то шнягу изучаем" setting="Лекции/Семестр 2/Алгем/setting" id="2S_AG">
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгем/lecture_1" description="* звуки шипящего микрофона *. Не будет геометрии. Все. Теперь у нас многочлены" setting="Лекции/Семестр 2/Алгем/setting" date="05.02.25" id="2S_AG_1" />
+      <lecture name="Лекция 2" path="Лекции/Семестр 2/Алгем/lecture_2" description="Скоро здесь будет описание" setting="Лекции/Семестр 2/Алгем/setting" date="12.02.25" id="2S_AG_2" />
+      <lecture name="Лекция 3" path="Лекции/Семестр 2/Алгем/lecture_3" description="По техническим причинам, инвариантные пространства затеханы очень плохо (простите)" setting="Лекции/Семестр 2/Алгем/setting" date="19.02.25" id="2S_AG_3" />
+      <lecture name="Лекция 4 ☠️" path="Лекции/Семестр 2/Алгем/lecture_4" description="я сдаюсь..." setting="Лекции/Семестр 2/Алгем/setting" date="26.02.25" id="2S_AG_4" />
+      <lecture name="Лекция 5 ☠️☠️" path="Лекции/Семестр 2/Алгем/lecture_5" description="он победил..." setting="Лекции/Семестр 2/Алгем/setting" date="05.03.25" id="2S_AG_5" />
+      <lecture name="Лекция 6 ❌" description="я умер" date="12.03.25" id="2S_AG_6" />
     </subject>
-    <subject name="Алгоритмы и Структуры данных" description="Конспекты техает Иван, так что не обессудьте"  setting="Лекции/Семестр 2/Алгосы/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгосы/lecture_1" description="Динамическое программирование. &lt;a href=&quot;https://youtu.be/Cy7M4WnFFUY?si=Y39VDoNYy2Mt5Y87&quot;&gt;Запись лекции&lt;/a&gt;" setting="Лекции/Семестр 2/Алгосы/setting" date="05.02.25" />
-      <lecture name="Лекция 2" path="Лекции/Семестр 2/Алгосы/lecture_2" description="Динамическое программирование. Метод матриц. &lt;a href=&quot;https://youtu.be/hal4MYN9CIk?si=4e-YQuVvi3Y0fMSl&quot;&gt;Запись лекции&lt;/a&gt;" setting="Лекции/Семестр 2/Алгосы/setting" date="12.02.25" />
-      <lecture name="Лекция 3" path="Лекции/Семестр 2/Алгосы/lecture_3" description="Динамическое программирование. Маски" setting="Лекции/Семестр 2/Алгосы/setting" date="19.02.25" />
-      <lecture name="Лекция 4" path="Лекции/Семестр 2/Алгосы/lecture_4" description="Графы. Алгоритм dfs" setting="Лекции/Семестр 2/Алгосы/setting" date="26.02.25" />
-      <lecture name="Лекция 5" path="Лекции/Семестр 2/Алгосы/lecture_5" description="Графы (продолжение). Эйлеровы циклы и пу-пу-пути" setting="Лекции/Семестр 2/Алгосы/setting" date="05.03.25" />
-      <lecture name="Лекция 6" path="Лекции/Семестр 2/Алгосы/lecture_6" description="Графы. BFS" setting="Лекции/Семестр 2/Алгосы/setting" date="12.03.25" />
-      <lecture name="Лекция 7" path="Лекции/Семестр 2/Алгосы/lecture_7" description="Алгоритмы A* и Форда-Беллмана" setting="Лекции/Семестр 2/Алгосы/setting" date="19.03.25" />
-      <lecture name="Лекция 8" path="Лекции/Семестр 2/Алгосы/lecture_8" description="Минимальные остовные деревья" setting="Лекции/Семестр 2/Алгосы/setting" date="26.03.25" />
-      <lecture name="Лекция 9" path="Лекции/Семестр 2/Алгосы/lecture_9" description="Паросочетания в двудольных графах, алгоритм Куна" setting="Лекции/Семестр 2/Алгосы/setting" date="02.04.25" />
-      <lecture name="Лекция 10" path="Лекции/Семестр 2/Алгосы/lecture_10" description="Паросочетания в двудольных графах, алгоритм Эдмондса" setting="Лекции/Семестр 2/Алгосы/setting" date="09.04.25" />
-      <lecture name="Лекция 11" path="Лекции/Семестр 2/Алгосы/lecture_11" description="Потоки. Начало..." setting="Лекции/Семестр 2/Алгосы/setting" date="16.04.25" />
-      <lecture name="Лекция 12" path="Лекции/Семестр 2/Алгосы/lecture_12" description="Продолжение потоков. Алгоритм Диница" setting="Лекции/Семестр 2/Алгосы/setting" date="23.04.25" />
-      <lecture name="Лекция 13" path="Лекции/Семестр 2/Алгосы/lecture_13" description="Штор-Вагнер и min-cost k-flow" setting="Лекции/Семестр 2/Алгосы/setting" date="30.04.25" />
+    <subject name="Алгоритмы и Структуры данных" description="Конспекты техает Иван, так что не обессудьте" setting="Лекции/Семестр 2/Алгосы/setting" id="2S_ALGO">
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/Алгосы/lecture_1" description="Динамическое программирование. &lt;a href=&quot;https://youtu.be/Cy7M4WnFFUY?si=Y39VDoNYy2Mt5Y87&quot;&gt;Запись лекции&lt;/a&gt;" setting="Лекции/Семестр 2/Алгосы/setting" date="05.02.25" id="2S_ALGO_1" />
+      <lecture name="Лекция 2" path="Лекции/Семестр 2/Алгосы/lecture_2" description="Динамическое программирование. Метод матриц. &lt;a href=&quot;https://youtu.be/hal4MYN9CIk?si=4e-YQuVvi3Y0fMSl&quot;&gt;Запись лекции&lt;/a&gt;" setting="Лекции/Семестр 2/Алгосы/setting" date="12.02.25" id="2S_ALGO_2" />
+      <lecture name="Лекция 3" path="Лекции/Семестр 2/Алгосы/lecture_3" description="Динамическое программирование. Маски" setting="Лекции/Семестр 2/Алгосы/setting" date="19.02.25" id="2S_ALGO_3" />
+      <lecture name="Лекция 4" path="Лекции/Семестр 2/Алгосы/lecture_4" description="Графы. Алгоритм dfs" setting="Лекции/Семестр 2/Алгосы/setting" date="26.02.25" id="2S_ALGO_4" />
+      <lecture name="Лекция 5" path="Лекции/Семестр 2/Алгосы/lecture_5" description="Графы (продолжение). Эйлеровы циклы и пу-пу-пути" setting="Лекции/Семестр 2/Алгосы/setting" date="05.03.25" id="2S_ALGO_5" />
+      <lecture name="Лекция 6" path="Лекции/Семестр 2/Алгосы/lecture_6" description="Графы. BFS" setting="Лекции/Семестр 2/Алгосы/setting" date="12.03.25" id="2S_ALGO_6" />
+      <lecture name="Лекция 7" path="Лекции/Семестр 2/Алгосы/lecture_7" description="Алгоритмы A* и Форда-Беллмана" setting="Лекции/Семестр 2/Алгосы/setting" date="19.03.25" id="2S_ALGO_7" />
+      <lecture name="Лекция 8" path="Лекции/Семестр 2/Алгосы/lecture_8" description="Минимальные остовные деревья" setting="Лекции/Семестр 2/Алгосы/setting" date="26.03.25" id="2S_ALGO_8" />
+      <lecture name="Лекция 9" path="Лекции/Семестр 2/Алгосы/lecture_9" description="Паросочетания в двудольных графах, алгоритм Куна" setting="Лекции/Семестр 2/Алгосы/setting" date="02.04.25" id="2S_ALGO_9" />
+      <lecture name="Лекция 10" path="Лекции/Семестр 2/Алгосы/lecture_10" description="Паросочетания в двудольных графах, алгоритм Эдмондса" setting="Лекции/Семестр 2/Алгосы/setting" date="09.04.25" id="2S_ALGO_10" />
+      <lecture name="Лекция 11" path="Лекции/Семестр 2/Алгосы/lecture_11" description="Потоки. Начало..." setting="Лекции/Семестр 2/Алгосы/setting" date="16.04.25" id="2S_ALGO_11" />
+      <lecture name="Лекция 12" path="Лекции/Семестр 2/Алгосы/lecture_12" description="Продолжение потоков. Алгоритм Диница" setting="Лекции/Семестр 2/Алгосы/setting" date="23.04.25" id="2S_ALGO_12" />
+      <lecture name="Лекция 13" path="Лекции/Семестр 2/Алгосы/lecture_13" description="Штор-Вагнер и min-cost k-flow" setting="Лекции/Семестр 2/Алгосы/setting" date="30.04.25" id="2S_ALGO_13" />
     </subject>
-    <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 2/Матлог/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матлог/lecture_1" description="ВУМы и Фундированные множества" setting="Лекции/Семестр 2/Матлог/setting" date="05.02.25" />
-      <lecture name="Лекция 2" path="Лекции/Семестр 2/Матлог/lecture_2" description="Теорема о сравнимости ВУМов. Ординалы" setting="Лекции/Семестр 2/Матлог/setting" date="12.02.25" />
-      <lecture name="Лекция 3" path="Лекции/Семестр 2/Матлог/lecture_3" description="Теорема Цермело. Лемма Цорна." setting="Лекции/Семестр 2/Матлог/setting" date="26.02.25" />
-      <lecture name="Лекция 4" path="Лекции/Семестр 2/Матлог/lecture_4" description="Приложения Теоремы Цермело и Леммы Цорна" setting="Лекции/Семестр 2/Матлог/setting" date="05.03.25" />
-      <lecture name="Лекция 5" path="Лекции/Семестр 2/Матлог/lecture_5" description="Теория вычислимости" setting="Лекции/Семестр 2/Матлог/setting" date="12.03.25" />
-      <lecture name="Лекция 6" path="Лекции/Семестр 2/Матлог/lecture_6" description="Свойства, эквивалентные перечислимости" setting="Лекции/Семестр 2/Матлог/setting" date="19.03.25" />
-      <lecture name="Лекция 7" path="Лекции/Семестр 2/Матлог/lecture_7" description="Различные результаты теории вычислимости." setting="Лекции/Семестр 2/Матлог/setting" date="26.03.25" />
-      <lecture name="Лекция 8" path="Лекции/Семестр 2/Матлог/lecture_8" description="Не дописана (ночью исправим)" setting="Лекции/Семестр 2/Матлог/setting" date="02.04.25" />
-      <lecture name="Лекция 9" path="Лекции/Семестр 2/Матлог/lecture_9" description="Связь бреда из первого семестра и бреда из второго семестра" setting="Лекции/Семестр 2/Матлог/setting" date="09.04.25" />
-      <lecture name="Лекция 10" path="Лекции/Семестр 2/Матлог/lecture_10" description="Доказательство теоремы о равенстве Ar, AH. Доказательства в формальной арифметике" setting="Лекции/Семестр 2/Матлог/setting" date="16.04.25" />
-      <lecture name="Лекция 11" path="Лекции/Семестр 2/Матлог/lecture_11" description="Теорема Геделя о неполноте" setting="Лекции/Семестр 2/Матлог/setting" date="23.04.25" />
-      <lecture name="Лекция 12" path="Лекции/Семестр 2/Матлог/lecture_12" description="Лямбда-исчисление. Синтаксис + капелька семантики" setting="Лекции/Семестр 2/Матлог/setting" date="30.04.25" />
-      <lecture name="Лекция 13" path="Лекции/Семестр 2/Матлог/lecture_13" description="Арифметика в лямбда-исчислении" setting="Лекции/Семестр 2/Матлог/setting" date="07.05.25" />
-      <lecture name="Лекция (дополнительная)" path="Лекции/Семестр 2/Матлог/lecture_14" description="Проблема равенства классов P и NP" setting="Лекции/Семестр 2/Матлог/setting" date="14.05.25" />
+    <subject name="Математическая логика" description="Логично" setting="Лекции/Семестр 2/Матлог/setting" id="2S_ML">
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матлог/lecture_1" description="ВУМы и Фундированные множества" setting="Лекции/Семестр 2/Матлог/setting" date="05.02.25" id="2S_ML_1" />
+      <lecture name="Лекция 2" path="Лекции/Семестр 2/Матлог/lecture_2" description="Теорема о сравнимости ВУМов. Ординалы" setting="Лекции/Семестр 2/Матлог/setting" date="12.02.25" id="2S_ML_2" />
+      <lecture name="Лекция 3" path="Лекции/Семестр 2/Матлог/lecture_3" description="Теорема Цермело. Лемма Цорна." setting="Лекции/Семестр 2/Матлог/setting" date="26.02.25" id="2S_ML_3" />
+      <lecture name="Лекция 4" path="Лекции/Семестр 2/Матлог/lecture_4" description="Приложения Теоремы Цермело и Леммы Цорна" setting="Лекции/Семестр 2/Матлог/setting" date="05.03.25" id="2S_ML_4" />
+      <lecture name="Лекция 5" path="Лекции/Семестр 2/Матлог/lecture_5" description="Теория вычислимости" setting="Лекции/Семестр 2/Матлог/setting" date="12.03.25" id="2S_ML_5" />
+      <lecture name="Лекция 6" path="Лекции/Семестр 2/Матлог/lecture_6" description="Свойства, эквивалентные перечислимости" setting="Лекции/Семестр 2/Матлог/setting" date="19.03.25" id="2S_ML_6" />
+      <lecture name="Лекция 7" path="Лекции/Семестр 2/Матлог/lecture_7" description="Различные результаты теории вычислимости." setting="Лекции/Семестр 2/Матлог/setting" date="26.03.25" id="2S_ML_7" />
+      <lecture name="Лекция 8" path="Лекции/Семестр 2/Матлог/lecture_8" description="Не дописана (ночью исправим)" setting="Лекции/Семестр 2/Матлог/setting" date="02.04.25" id="2S_ML_8" />
+      <lecture name="Лекция 9" path="Лекции/Семестр 2/Матлог/lecture_9" description="Связь бреда из первого семестра и бреда из второго семестра" setting="Лекции/Семестр 2/Матлог/setting" date="09.04.25" id="2S_ML_9" />
+      <lecture name="Лекция 10" path="Лекции/Семестр 2/Матлог/lecture_10" description="Доказательство теоремы о равенстве Ar, AH. Доказательства в формальной арифметике" setting="Лекции/Семестр 2/Матлог/setting" date="16.04.25" id="2S_ML_10" />
+      <lecture name="Лекция 11" path="Лекции/Семестр 2/Матлог/lecture_11" description="Теорема Геделя о неполноте" setting="Лекции/Семестр 2/Матлог/setting" date="23.04.25" id="2S_ML_11" />
+      <lecture name="Лекция 12" path="Лекции/Семестр 2/Матлог/lecture_12" description="Лямбда-исчисление. Синтаксис + капелька семантики" setting="Лекции/Семестр 2/Матлог/setting" date="30.04.25" id="2S_ML_12" />
+      <lecture name="Лекция 13" path="Лекции/Семестр 2/Матлог/lecture_13" description="Арифметика в лямбда-исчислении" setting="Лекции/Семестр 2/Матлог/setting" date="07.05.25" id="2S_ML_13" />
+      <lecture name="Лекция (дополнительная)" path="Лекции/Семестр 2/Матлог/lecture_14" description="Проблема равенства классов P и NP" setting="Лекции/Семестр 2/Матлог/setting" date="14.05.25" id="2S_ML_(дополнительная)" />
 
     </subject>
-    <subject name="Многомерный анализ, интегралы и ряды" description="Коллега рассказывает про матан" setting="Лекции/Семестр 2/Матан/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Лекции/Семестр 2/Матан/setting" date="04.02.25"/>
-      <lecture name="Лекция 2" path="Лекции/Семестр 2/Матан/lecture_2" description="Продолжаем свойства несобственных интегралов" setting="Лекции/Семестр 2/Матан/setting" date="07.02.25"/>
-      <lecture name="Лекция 3" path="Лекции/Семестр 2/Матан/lecture_3" description="Абсолютная сходимость, лемма Дирихле, Абеля" setting="Лекции/Семестр 2/Матан/setting" date="11.02.25"/>
-      <lecture name="Лекция 4" path="Лекции/Семестр 2/Матан/lecture_4" description="Числовые ряды и их свойства" setting="Лекции/Семестр 2/Матан/setting" date="14.02.25"/>
-      <lecture name="Лекция 5" path="Лекции/Семестр 2/Матан/lecture_5" description="Признаки сход рядов. Числовые ряды с произвольными членами" setting="Лекции/Семестр 2/Матан/setting" date="18.02.25"/>
-      <lecture name="Лекция 6" path="Лекции/Семестр 2/Матан/lecture_6" description="Еще признаки сходмости рядов. Группировки и перестановки." setting="Лекции/Семестр 2/Матан/setting" date="21.02.25"/>
-      <lecture name="Лекция 7" path="Лекции/Семестр 2/Матан/lecture_7" description="Теорема Римана, Теорема Мертенса" setting="Лекции/Семестр 2/Матан/setting" date="25.02.25"/>
-      <lecture name="Лекция 8" path="Лекции/Семестр 2/Матан/lecture_8" description="Формула Стирлинга. Функциональные последовательности и ряды, их поточечная и равномерная сходимость" setting="Лекции/Семестр 2/Матан/setting" date="28.02.25"/>
-      <lecture name="Лекция 9" path="Лекции/Семестр 2/Матан/lecture_9" description="Свойства равномерной сходимости" setting="Лекции/Семестр 2/Матан/setting" date="04.03.25"/>
-      <lecture name="Лекция 10" path="Лекции/Семестр 2/Матан/lecture_10" description="Признаки равномерной сходимости рядов" setting="Лекции/Семестр 2/Матан/setting" date="07.03.25"/>
-      <lecture name="Лекция 11" path="Лекции/Семестр 2/Матан/lecture_11" description="Пример непрерывной, но нигде не дифференцируемой функции. Степенные ряды" setting="Лекции/Семестр 2/Матан/setting" date="11.03.25"/>
-      <lecture name="Лекция 12" path="Лекции/Семестр 2/Матан/lecture_12" description="Дифференцирование степенных рядов. Ряды Тейлора" setting="Лекции/Семестр 2/Матан/setting" date="14.03.25"/>
-      <lecture name="Лекция 13" path="Лекции/Семестр 2/Матан/lecture_13" description="Ряды Тейлора. Метрические простанства. Метрики и нормы" setting="Лекции/Семестр 2/Матан/setting" date="18.03.25"/>
-      <lecture name="Лекция 14" path="Лекции/Семестр 2/Матан/lecture_14" description="Продолжение метрических пространств. Топология метрического пространства" setting="Лекции/Семестр 2/Матан/setting" date="21.03.25"/>
-      <lecture name="Лекция 15" path="Лекции/Семестр 2/Матан/lecture_15" description="Компакты" setting="Лекции/Семестр 2/Матан/setting" date="25.03.25"/>
-      <lecture name="Лекция 16" path="Лекции/Семестр 2/Матан/lecture_16" description="Полные метрические пространства. Обобщения пределов функций и их свойств" setting="Лекции/Семестр 2/Матан/setting" date="28.03.25"/>
-      <lecture name="Лекция 17" path="Лекции/Семестр 2/Матан/lecture_17" description="Непрерывные функции. Критерий непрерывности" setting="Лекции/Семестр 2/Матан/setting" date="01.04.25"/>
-      <lecture name="Лекция 18" path="Лекции/Семестр 2/Матан/lecture_18" description="Равномерная непрерывность, связность, линейная связность. Их свойства" setting="Лекции/Семестр 2/Матан/setting" date="04.04.25"/>
-      <lecture name="Лекция 19" path="Лекции/Семестр 2/Матан/lecture_19" description="Частные производные. Дифференцируемые функции в R^n" setting="Лекции/Семестр 2/Матан/setting" date="08.04.25"/>
-      <lecture name="Лекция 20" path="Лекции/Семестр 2/Матан/lecture_20" description="Еще какие-то результаты (мама спаси)" setting="Лекции/Семестр 2/Матан/setting" date="11.04.25"/>
-      <lecture name="Лекция 21" path="Лекции/Семестр 2/Матан/lecture_21" description="Спасите" setting="Лекции/Семестр 2/Матан/setting" date="15.04.25"/>
-      <lecture name="Лекция 22" description="Спасите" date="18.04.25"/>
-      <lecture name="Лекция 23" path="Лекции/Семестр 2/Матан/lecture_23" description="Алгебры множеств и внешняя мера" setting="Лекции/Семестр 2/Матан/setting" date="22.04.25"/>
-      <lecture name="Лекция 24" path="Лекции/Семестр 2/Матан/lecture_24" description="Измеримые множества, мера Лебега" setting="Лекции/Семестр 2/Матан/setting" date="25.04.25"/>
-      <lecture name="Лекция 25" path="Лекции/Семестр 2/Матан/lecture_25" description="Измеримые функции" setting="Лекции/Семестр 2/Матан/setting" date="29.04.25"/>
-      <lecture name="Лекция 26" path="Лекции/Семестр 2/Матан/lecture_26" description="Продолжение измеримых функций" setting="Лекции/Семестр 2/Матан/setting" date="02.05.25"/>
-      <lecture name="Лекция 27" path="Лекции/Семестр 2/Матан/lecture_27" description="Интеграл Лебега от неотрицательных функций" setting="Лекции/Семестр 2/Матан/setting" date="06.05.25"/>
-      <lecture name="Лекция 28" path="Лекции/Семестр 2/Матан/lecture_28" description="Интеграл Лебега от произвольных функций" setting="Лекции/Семестр 2/Матан/setting" date="13.05.25"/>
+    <subject name="Многомерный анализ, интегралы и ряды" description="Коллега рассказывает про матан" setting="Лекции/Семестр 2/Матан/setting" id="2S_MA">
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Преобразование абеля и несобственные интегралы, их свойства" setting="Лекции/Семестр 2/Матан/setting" date="04.02.25" id="2S_MA_1" />
+      <lecture name="Лекция 2" path="Лекции/Семестр 2/Матан/lecture_2" description="Продолжаем свойства несобственных интегралов" setting="Лекции/Семестр 2/Матан/setting" date="07.02.25" id="2S_MA_2" />
+      <lecture name="Лекция 3" path="Лекции/Семестр 2/Матан/lecture_3" description="Абсолютная сходимость, лемма Дирихле, Абеля" setting="Лекции/Семестр 2/Матан/setting" date="11.02.25" id="2S_MA_3" />
+      <lecture name="Лекция 4" path="Лекции/Семестр 2/Матан/lecture_4" description="Числовые ряды и их свойства" setting="Лекции/Семестр 2/Матан/setting" date="14.02.25" id="2S_MA_4" />
+      <lecture name="Лекция 5" path="Лекции/Семестр 2/Матан/lecture_5" description="Признаки сход рядов. Числовые ряды с произвольными членами" setting="Лекции/Семестр 2/Матан/setting" date="18.02.25" id="2S_MA_5" />
+      <lecture name="Лекция 6" path="Лекции/Семестр 2/Матан/lecture_6" description="Еще признаки сходмости рядов. Группировки и перестановки." setting="Лекции/Семестр 2/Матан/setting" date="21.02.25" id="2S_MA_6" />
+      <lecture name="Лекция 7" path="Лекции/Семестр 2/Матан/lecture_7" description="Теорема Римана, Теорема Мертенса" setting="Лекции/Семестр 2/Матан/setting" date="25.02.25" id="2S_MA_7" />
+      <lecture name="Лекция 8" path="Лекции/Семестр 2/Матан/lecture_8" description="Формула Стирлинга. Функциональные последовательности и ряды, их поточечная и равномерная сходимость" setting="Лекции/Семестр 2/Матан/setting" date="28.02.25" id="2S_MA_8" />
+      <lecture name="Лекция 9" path="Лекции/Семестр 2/Матан/lecture_9" description="Свойства равномерной сходимости" setting="Лекции/Семестр 2/Матан/setting" date="04.03.25" id="2S_MA_9" />
+      <lecture name="Лекция 10" path="Лекции/Семестр 2/Матан/lecture_10" description="Признаки равномерной сходимости рядов" setting="Лекции/Семестр 2/Матан/setting" date="07.03.25" id="2S_MA_10" />
+      <lecture name="Лекция 11" path="Лекции/Семестр 2/Матан/lecture_11" description="Пример непрерывной, но нигде не дифференцируемой функции. Степенные ряды" setting="Лекции/Семестр 2/Матан/setting" date="11.03.25" id="2S_MA_11" />
+      <lecture name="Лекция 12" path="Лекции/Семестр 2/Матан/lecture_12" description="Дифференцирование степенных рядов. Ряды Тейлора" setting="Лекции/Семестр 2/Матан/setting" date="14.03.25" id="2S_MA_12" />
+      <lecture name="Лекция 13" path="Лекции/Семестр 2/Матан/lecture_13" description="Ряды Тейлора. Метрические простанства. Метрики и нормы" setting="Лекции/Семестр 2/Матан/setting" date="18.03.25" id="2S_MA_13" />
+      <lecture name="Лекция 14" path="Лекции/Семестр 2/Матан/lecture_14" description="Продолжение метрических пространств. Топология метрического пространства" setting="Лекции/Семестр 2/Матан/setting" date="21.03.25" id="2S_MA_14" />
+      <lecture name="Лекция 15" path="Лекции/Семестр 2/Матан/lecture_15" description="Компакты" setting="Лекции/Семестр 2/Матан/setting" date="25.03.25" id="2S_MA_15" />
+      <lecture name="Лекция 16" path="Лекции/Семестр 2/Матан/lecture_16" description="Полные метрические пространства. Обобщения пределов функций и их свойств" setting="Лекции/Семестр 2/Матан/setting" date="28.03.25" id="2S_MA_16" />
+      <lecture name="Лекция 17" path="Лекции/Семестр 2/Матан/lecture_17" description="Непрерывные функции. Критерий непрерывности" setting="Лекции/Семестр 2/Матан/setting" date="01.04.25" id="2S_MA_17" />
+      <lecture name="Лекция 18" path="Лекции/Семестр 2/Матан/lecture_18" description="Равномерная непрерывность, связность, линейная связность. Их свойства" setting="Лекции/Семестр 2/Матан/setting" date="04.04.25" id="2S_MA_18" />
+      <lecture name="Лекция 19" path="Лекции/Семестр 2/Матан/lecture_19" description="Частные производные. Дифференцируемые функции в R^n" setting="Лекции/Семестр 2/Матан/setting" date="08.04.25" id="2S_MA_19" />
+      <lecture name="Лекция 20" path="Лекции/Семестр 2/Матан/lecture_20" description="Еще какие-то результаты (мама спаси)" setting="Лекции/Семестр 2/Матан/setting" date="11.04.25" id="2S_MA_20" />
+      <lecture name="Лекция 21" path="Лекции/Семестр 2/Матан/lecture_21" description="Спасите" setting="Лекции/Семестр 2/Матан/setting" date="15.04.25" id="2S_MA_21" />
+      <lecture name="Лекция 22" description="Спасите" date="18.04.25" id="2S_MA_22" />
+      <lecture name="Лекция 23" path="Лекции/Семестр 2/Матан/lecture_23" description="Алгебры множеств и внешняя мера" setting="Лекции/Семестр 2/Матан/setting" date="22.04.25" id="2S_MA_23" />
+      <lecture name="Лекция 24" path="Лекции/Семестр 2/Матан/lecture_24" description="Измеримые множества, мера Лебега" setting="Лекции/Семестр 2/Матан/setting" date="25.04.25" id="2S_MA_24" />
+      <lecture name="Лекция 25" path="Лекции/Семестр 2/Матан/lecture_25" description="Измеримые функции" setting="Лекции/Семестр 2/Матан/setting" date="29.04.25" id="2S_MA_25" />
+      <lecture name="Лекция 26" path="Лекции/Семестр 2/Матан/lecture_26" description="Продолжение измеримых функций" setting="Лекции/Семестр 2/Матан/setting" date="02.05.25" id="2S_MA_26" />
+      <lecture name="Лекция 27" path="Лекции/Семестр 2/Матан/lecture_27" description="Интеграл Лебега от неотрицательных функций" setting="Лекции/Семестр 2/Матан/setting" date="06.05.25" id="2S_MA_27" />
+      <lecture name="Лекция 28" path="Лекции/Семестр 2/Матан/lecture_28" description="Интеграл Лебега от произвольных функций" setting="Лекции/Семестр 2/Матан/setting" date="13.05.25" id="2S_MA_28" />
 
     </subject>
-    <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Лекции/Семестр 2/ОКТЧ/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/ОКТЧ/lecture_1" description="Квадратичные вычеты. Начало" setting="Лекции/Семестр 2/ОКТЧ/setting" date="06.02.25"/>
-      <lecture name="Лекция 2" path="Лекции/Семестр 2/ОКТЧ/lecture_2" description="Матрицы Адамара. Коды, исправляющие ошибки (начало)." setting="Лекции/Семестр 2/ОКТЧ/setting" date="13.02.25"/>
-      <lecture name="Лекция (дополнитальная)" path="Лекции/Семестр 2/ОКТЧ/lecture_extra" description="ОТА, лемма Евклида" setting="Лекции/Семестр 2/ОКТЧ/setting" date="19.02.25"/>
-      <lecture name="Лекция 3" path="Лекции/Семестр 2/ОКТЧ/lecture_3" description="Матрицы Адамара (продолжение)" setting="Лекции/Семестр 2/ОКТЧ/setting" date="20.02.25"/>
-      <lecture name="Лекция 4" path="Лекции/Семестр 2/ОКТЧ/lecture_4" description="Распределение простых чисел. Первообразные корни (начало)" setting="Лекции/Семестр 2/ОКТЧ/setting" date="27.02.25"/>
-      <lecture name="Лекция 5" path="Лекции/Семестр 2/ОКТЧ/lecture_5" description="Первообразные корни (продолжение). Теорема Шевалле" setting="Лекции/Семестр 2/ОКТЧ/setting" date="06.03.25"/>
-      <lecture name="Лекция 6" path="Лекции/Семестр 2/ОКТЧ/lecture_6" description="Тесты Ферма и Соловея-Штрассена натуральных чисел на простоту. Числа Кармайкла" setting="Лекции/Семестр 2/ОКТЧ/setting" date="13.03.25"/>
-      <lecture name="Лекция 7" path="Лекции/Семестр 2/ОКТЧ/lecture_7" description="Теорема Дирихле, Минковского. Цепные дроби" setting="Лекции/Семестр 2/ОКТЧ/setting" date="20.03.25"/>    
-      <lecture name="Лекция 8" path="Лекции/Семестр 2/ОКТЧ/lecture_8" description="Цепные дроби. Теорема Лиувилля" setting="Лекции/Семестр 2/ОКТЧ/setting" date="27.03.25"/>
-      <lecture name="Лекция 9" path="Лекции/Семестр 2/ОКТЧ/lecture_9" description="Иррациональность и трансцендентность числа e" setting="Лекции/Семестр 2/ОКТЧ/setting" date="03.04.25"/>
-      <lecture name="Лекция 10" path="Лекции/Семестр 2/ОКТЧ/lecture_10" description="Решетки" setting="Лекции/Семестр 2/ОКТЧ/setting" date="10.04.25"/>
-      <lecture name="Лекция 11" path="Лекции/Семестр 2/ОКТЧ/lecture_11" description="Теорема Минковского-Главки для октаэдра" setting="Лекции/Семестр 2/ОКТЧ/setting" date="17.04.25"/>
-      <lecture name="Лекция 12" path="Лекции/Семестр 2/ОКТЧ/lecture_12" description="Последовательности и какая-то шняга" setting="Лекции/Семестр 2/ОКТЧ/setting" date="24.04.25"/>
-      <lecture name="Лекция 13" description="скип" date="01.05.25"/>
-      <lecture name="Лекция 14" path="Лекции/Семестр 2/ОКТЧ/lecture_14" description="Еще тесты на простоту. Тесты Миллера-Рабина. И что-то еще, не затехал, сорян" setting="Лекции/Семестр 2/ОКТЧ/setting" date="15.05.25"/>
+    <subject name="Основы Комбинаторики и Теории Чисел" description="Хе-хе" setting="Лекции/Семестр 2/ОКТЧ/setting" id="2S_OKTCH">
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/ОКТЧ/lecture_1" description="Квадратичные вычеты. Начало" setting="Лекции/Семестр 2/ОКТЧ/setting" date="06.02.25" id="2S_OKTCH_1" />
+      <lecture name="Лекция 2" path="Лекции/Семестр 2/ОКТЧ/lecture_2" description="Матрицы Адамара. Коды, исправляющие ошибки (начало)." setting="Лекции/Семестр 2/ОКТЧ/setting" date="13.02.25" id="2S_OKTCH_2" />
+      <lecture name="Лекция (дополнитальная)" path="Лекции/Семестр 2/ОКТЧ/lecture_extra" description="ОТА, лемма Евклида" setting="Лекции/Семестр 2/ОКТЧ/setting" date="19.02.25" id="2S_OKTCH_(дополнитальная)" />
+      <lecture name="Лекция 3" path="Лекции/Семестр 2/ОКТЧ/lecture_3" description="Матрицы Адамара (продолжение)" setting="Лекции/Семестр 2/ОКТЧ/setting" date="20.02.25" id="2S_OKTCH_3" />
+      <lecture name="Лекция 4" path="Лекции/Семестр 2/ОКТЧ/lecture_4" description="Распределение простых чисел. Первообразные корни (начало)" setting="Лекции/Семестр 2/ОКТЧ/setting" date="27.02.25" id="2S_OKTCH_4" />
+      <lecture name="Лекция 5" path="Лекции/Семестр 2/ОКТЧ/lecture_5" description="Первообразные корни (продолжение). Теорема Шевалле" setting="Лекции/Семестр 2/ОКТЧ/setting" date="06.03.25" id="2S_OKTCH_5" />
+      <lecture name="Лекция 6" path="Лекции/Семестр 2/ОКТЧ/lecture_6" description="Тесты Ферма и Соловея-Штрассена натуральных чисел на простоту. Числа Кармайкла" setting="Лекции/Семестр 2/ОКТЧ/setting" date="13.03.25" id="2S_OKTCH_6" />
+      <lecture name="Лекция 7" path="Лекции/Семестр 2/ОКТЧ/lecture_7" description="Теорема Дирихле, Минковского. Цепные дроби" setting="Лекции/Семестр 2/ОКТЧ/setting" date="20.03.25" id="2S_OKTCH_7" />    
+      <lecture name="Лекция 8" path="Лекции/Семестр 2/ОКТЧ/lecture_8" description="Цепные дроби. Теорема Лиувилля" setting="Лекции/Семестр 2/ОКТЧ/setting" date="27.03.25" id="2S_OKTCH_8" />
+      <lecture name="Лекция 9" path="Лекции/Семестр 2/ОКТЧ/lecture_9" description="Иррациональность и трансцендентность числа e" setting="Лекции/Семестр 2/ОКТЧ/setting" date="03.04.25" id="2S_OKTCH_9" />
+      <lecture name="Лекция 10" path="Лекции/Семестр 2/ОКТЧ/lecture_10" description="Решетки" setting="Лекции/Семестр 2/ОКТЧ/setting" date="10.04.25" id="2S_OKTCH_10" />
+      <lecture name="Лекция 11" path="Лекции/Семестр 2/ОКТЧ/lecture_11" description="Теорема Минковского-Главки для октаэдра" setting="Лекции/Семестр 2/ОКТЧ/setting" date="17.04.25" id="2S_OKTCH_11" />
+      <lecture name="Лекция 12" path="Лекции/Семестр 2/ОКТЧ/lecture_12" description="Последовательности и какая-то шняга" setting="Лекции/Семестр 2/ОКТЧ/setting" date="24.04.25" id="2S_OKTCH_12" />
+      <lecture name="Лекция 13" description="скип" date="01.05.25" id="2S_OKTCH_13" />
+      <lecture name="Лекция 14" path="Лекции/Семестр 2/ОКТЧ/lecture_14" description="Еще тесты на простоту. Тесты Миллера-Рабина. И что-то еще, не затехал, сорян" setting="Лекции/Семестр 2/ОКТЧ/setting" date="15.05.25" id="2S_OKTCH_14" />
     </subject>
-    <subject name="Технологии программирования" description="
-Основные ссылки по курсу:&#xA;
-&lt;a href=&quot;https://akhpl.ru/tp2025-drive&quot;&gt;Материалы&lt;/a&gt;&#xA;
-&lt;a href=&quot;https://akhpl.ru/tp2025-channel&quot;&gt;Общая информация по курсу&lt;/a&gt;&#xA;
-&lt;a href=&quot;https://akhpl.ru/tp2025-chat&quot;&gt;Чат курса&lt;/a&gt;&#xA;
-&lt;a href=&quot;https://akhcheck.ru/system registration&quot;&gt;Регистрация на Курс Вики страница&lt;/a&gt;&#xA;">
-      <lecture name="Лекция 1" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1DfpqFcF3h-oRZz1AVyQBDWUygNWfihk0hnckn1mNT1o/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="05.02.25"/>
-      <lecture name="Лекция 2" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1uB9vzsJRM24gPfP60dp9FIg3wDB0QjlRoTIpSbkcVt8/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="12.02.25"/>
-      <lecture name="Лекция 3" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="19.02.25"/>
-      <lecture name="Лекция 4" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="26.02.25"/>
-      <lecture name="Лекция 5" description="&lt;a href=&quot;https://docs.google.com/presentation/d/19vf8ldcpw5vwF06hvd5LAdj3fGJK8S1rblPOOpIP2Og/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="05.03.25"/>
-      <lecture name="Лекция 6" description="&lt;a href=&quot;https://docs.google.com/presentation/d/19vf8ldcpw5vwF06hvd5LAdj3fGJK8S1rblPOOpIP2Og/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="12.03.25"/>
+    <subject name="Технологии программирования" description=" Основные ссылки по курсу:&#10; &lt;a href=&quot;https://akhpl.ru/tp2025-drive&quot;&gt;Материалы&lt;/a&gt;&#10; &lt;a href=&quot;https://akhpl.ru/tp2025-channel&quot;&gt;Общая информация по курсу&lt;/a&gt;&#10; &lt;a href=&quot;https://akhpl.ru/tp2025-chat&quot;&gt;Чат курса&lt;/a&gt;&#10; &lt;a href=&quot;https://akhcheck.ru/system registration&quot;&gt;Регистрация на Курс Вики страница&lt;/a&gt;&#10;" id="2S_TP">
+      <lecture name="Лекция 1" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1DfpqFcF3h-oRZz1AVyQBDWUygNWfihk0hnckn1mNT1o/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="05.02.25" id="2S_TP_1" />
+      <lecture name="Лекция 2" description="&lt;a href=&quot;https://docs.google.com/presentation/d/1uB9vzsJRM24gPfP60dp9FIg3wDB0QjlRoTIpSbkcVt8/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="12.02.25" id="2S_TP_2" />
+      <lecture name="Лекция 3" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="19.02.25" id="2S_TP_3" />
+      <lecture name="Лекция 4" description="&lt;a href=&quot;https://docs.google.com/presentation/d/14nSGVKpDvBLQzNdWNgVquwFQai7kA4amQVLoZ0lF-vE/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="26.02.25" id="2S_TP_4" />
+      <lecture name="Лекция 5" description="&lt;a href=&quot;https://docs.google.com/presentation/d/19vf8ldcpw5vwF06hvd5LAdj3fGJK8S1rblPOOpIP2Og/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="05.03.25" id="2S_TP_5" />
+      <lecture name="Лекция 6" description="&lt;a href=&quot;https://docs.google.com/presentation/d/19vf8ldcpw5vwF06hvd5LAdj3fGJK8S1rblPOOpIP2Og/edit&quot;&gt;Презентация лекции&lt;/a&gt;" date="12.03.25" id="2S_TP_6" />
     </subject>
-    <subject name="Python" description="">
-      <lecture name="Лекция 1" description="Кодстайл + идеалогия языка. Не техалась." date="08.02.25"/>
-      <lecture name="Лекция 2" description="Планы на семестр. Dunder methods (magic methods).&#xA;Скоро здесь появится ссылка на ноутбук леции" date="01.03.25"/>
+    <subject name="Python" description="" id="2S_">
+      <lecture name="Лекция 1" description="Кодстайл + идеалогия языка. Не техалась." date="08.02.25" id="2S__1" />
+      <lecture name="Лекция 2" description="Планы на семестр. Dunder methods (magic methods).&#10;Скоро здесь появится ссылка на ноутбук леции" date="01.03.25" id="2S__2" />
     </subject>
-    <subject name="C++" description="Заходят как-то программисты на Python, C# и C++ в бар.
-Программист на Python говорит:&#xA;
-&#xA;
-— Мне бокал пива. * Выпил, оплатил, ушел *&#xA;
-&#xA;
-Программист на C#:&#xA;
-&#xA;
-— Здравствуйте! налейте мне, пожалуйста, пенного хмельного пива в стеклянную тару, в простонародии называемую бокалом. * Минут 30 сидел, пил, оплатил, со всеми в баре попрощался и ушёл *&#xA;
-&#xA;
-А программист на C++ часа три не мог открыть рот.">
-      <lecture name="Лекция 1" description="&lt;a href=&quot;https://t.me/c/2150836650/6813&quot;&gt;Запись лекции&lt;/a&gt;" date="08.02.25" />
-      <lecture name="Лекция 2" description="&lt;a href=&quot;https://t.me/c/2150836650/6957&quot;&gt;Запись лекции&lt;/a&gt;" date="11.02.25" />
-      <lecture name="Лекция 3" description="&lt;a href=&quot;https://t.me/c/2150836650/7726&quot;&gt;Запись лекции&lt;/a&gt;" date="18.02.25" />
-      <lecture name="Лекция 4" description="&lt;a href=&quot;https://t.me/c/2150836650/7738&quot;&gt;Запись лекции&lt;/a&gt;" date="25.02.25" />
-      <lecture name="Лекция 5" description="&lt;a href=&quot;https://t.me/c/2150836650/8194&quot;&gt;Запись лекции&lt;/a&gt;" date="04.03.25" />
-      <lecture name="Лекция 6" description="&lt;a href=&quot;https://t.me/c/2150836650/8196&quot;&gt;Запись лекции&lt;/a&gt;" date="11.03.25" />
-      <lecture name="Лекция 7" description="&lt;a href=&quot;https://t.me/c/2150836650/9294&quot;&gt;Запись лекции&lt;/a&gt;" date="18.03.25" />
-      <lecture name="Лекция 8" description="Скоро здесь появится ссылка на запись лекции" date="25.03.25" />
+    <subject name="C++" description="Заходят как-то программисты на Python, C# и C++ в бар. Программист на Python говорит:&#10; &#10; — Мне бокал пива. * Выпил, оплатил, ушел *&#10; &#10; Программист на C#:&#10; &#10; — Здравствуйте! налейте мне, пожалуйста, пенного хмельного пива в стеклянную тару, в простонародии называемую бокалом. * Минут 30 сидел, пил, оплатил, со всеми в баре попрощался и ушёл *&#10; &#10; А программист на C++ часа три не мог открыть рот." id="2S_CPP">
+      <lecture name="Лекция 1" description="&lt;a href=&quot;https://t.me/c/2150836650/6813&quot;&gt;Запись лекции&lt;/a&gt;" date="08.02.25" id="2S_CPP_1" />
+      <lecture name="Лекция 2" description="&lt;a href=&quot;https://t.me/c/2150836650/6957&quot;&gt;Запись лекции&lt;/a&gt;" date="11.02.25" id="2S_CPP_2" />
+      <lecture name="Лекция 3" description="&lt;a href=&quot;https://t.me/c/2150836650/7726&quot;&gt;Запись лекции&lt;/a&gt;" date="18.02.25" id="2S_CPP_3" />
+      <lecture name="Лекция 4" description="&lt;a href=&quot;https://t.me/c/2150836650/7738&quot;&gt;Запись лекции&lt;/a&gt;" date="25.02.25" id="2S_CPP_4" />
+      <lecture name="Лекция 5" description="&lt;a href=&quot;https://t.me/c/2150836650/8194&quot;&gt;Запись лекции&lt;/a&gt;" date="04.03.25" id="2S_CPP_5" />
+      <lecture name="Лекция 6" description="&lt;a href=&quot;https://t.me/c/2150836650/8196&quot;&gt;Запись лекции&lt;/a&gt;" date="11.03.25" id="2S_CPP_6" />
+      <lecture name="Лекция 7" description="&lt;a href=&quot;https://t.me/c/2150836650/9294&quot;&gt;Запись лекции&lt;/a&gt;" date="18.03.25" id="2S_CPP_7" />
+      <lecture name="Лекция 8" description="Скоро здесь появится ссылка на запись лекции" date="25.03.25" id="2S_CPP_8" />
     </subject>
   </semester>
-  <semester name="Семестр 3" description="Все предметы третьего семестра" date="02.09.24 - ??.12.24">
-    <subject name="Кратные Интегралы и Теория Меры" description="Ну короче все понятно" setting="Лекции/Семестр 3/Матан/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Продолжаем, коллеги" date="02.09.25"/>
+  <semester name="Семестр 3" description="Все предметы третьего семестра" date="02.09.24 - ??.12.24" id="3S">
+    <subject name="Кратные Интегралы и Теория Меры" description="Ну короче все понятно" setting="Лекции/Семестр 3/Матан/setting" id="3S_OVITM">
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Продолжаем, коллеги" date="02.09.25" id="3S_OVITM_1" />
     </subject>
-    <subject name="Формальные языки и Трансляции" description="Ну короче все понятно" setting="Лекции/Семестр 3/Матан/setting">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/ФЯиТ/lecture_1" description="Продолжаем, коллеги" date="04.09.25"/>
+    <subject name="Формальные языки и Трансляции" description="Ну короче все понятно" setting="Лекции/Семестр 3/Матан/setting" id="3S_FLT">
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/ФЯиТ/lecture_1" description="Продолжаем, коллеги" date="04.09.25" id="3S_FLT_1" />
     </subject>
   </semester>
 </all>
