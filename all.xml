@@ -132,10 +132,10 @@
   </semester>
   <semester name="Семестр 3" description="Все предметы третьего семестра" date="02.09.24 - ??.12.24" id="3S">
     <subject name="Кратные Интегралы и Теория Меры" description="Ну короче все понятно" setting="Лекции/Семестр 3/Матан/setting" id="3S_OVITM">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Продолжаем, коллеги" date="02.09.25" id="3S_OVITM_1" />
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/Матан/lecture_1" description="Продолжаем, коллеги" date="02.09.25"  setting="Лекции/Семестр 3/Матан/setting" id="3S_OVITM_1" />
     </subject>
-    <subject name="Формальные языки и Трансляции" description="Ну короче все понятно" setting="Лекции/Семестр 3/Матан/setting" id="3S_FLT">
-      <lecture name="Лекция 1" path="Лекции/Семестр 2/ФЯиТ/lecture_1" description="Продолжаем, коллеги" date="04.09.25" id="3S_FLT_1" />
+    <subject name="Формальные языки и Трансляции" description="Ну короче все понятно" setting="Лекции/Семестр 3/ФЯиТ/setting" id="3S_FLT">
+      <lecture name="Лекция 1" path="Лекции/Семестр 2/ФЯиТ/lecture_1" description="Продолжаем, коллеги" date="04.09.25" setting="Лекции/Семестр 3/ФЯиТ/setting" id="3S_FLT_1" />
     </subject>
   </semester>
 </all>
