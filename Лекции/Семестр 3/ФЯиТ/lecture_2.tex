@@ -1,0 +1,135 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Детерминированный Конечный Автомат}
+\begin{definition}
+    НКА \(M = \langle Q, \Sigma, \Delta, q_0, F\rangle\) называется Детерминированным конечным автоматом, если
+    \begin{enumerate}
+        \item \(\forall \langle q, w\rangle \ra q_1 \in \Delta: |w| = 1\)
+        \item \(\forall \langle q, w\rangle \ra q_1 \in \Delta: |\Delta(q, w)| \le 1\)
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Если в определении выше \(|\Delta(q, w)| = 1\), то такой ДКА называется полным
+\end{definition}
+
+\begin{theorem}
+    \(\forall\) НКА \(M\) \(\exists\) полный ДКА \(M'\), такой, что \(L(M) = l(M')\), причем \(M' = \langle 2^Q, \Sigma, \Delta', \{q_0\}, F'\rangle\), где
+    \[\Delta(S, w) = \bigcup_{a \in S} \Delta(a, w)\]
+    \[F' = \{S \subset Q: S \cap F \ne \emptyset\}\]
+    \[\Delta' = \{\langle S, a\rangle  \ra \Delta(S, a)\}\]
+\end{theorem}
+\begin{lemma}
+    В условиях теоремы, \(\Delta'(\{q_0, w\}) = \{\Delta(\{q_0\}, w)\}\)
+\end{lemma}
+\begin{proof}
+    \(\Delta'(\{q_0\}, w) = \Delta(q_0, w)\). Ведем индукцию по \(|w|\)
+    \begin{enumerate}
+        \item[] \textbf{База:} \(|w| = 0 \Ra w = \epsilon\). \(\Delta(q_0, \epsilon) = \{q_0\}\), т.к. в \(M\) все переходы однобуквенные. \(\Delta'(\{q_0\}, \epsilon) = \{S | \langle \{q_0\}, \epsilon \rangle\} \vdash_{M'}\langle S, \epsilon \rangle = \{\{q_0\}\} \Ra \{\Delta(q_0, \epsilon)\} = \{\{q_0\}\} = \Delta'(\{q_0\}, \epsilon)\)
+        
+        \item[] \textbf{Переход:}
+        \[\Delta'(\{q_0\}, w'a) = \{S | \langle \{q_0\}, w'a \rangle \vdash \langle S, \epsilon \rangle\} = \{S| \exists T \subset Q: \langle \{q_0\}, w'a \rangle \vdash_{M'} \langle T, a \rangle \vdash \langle S, \epsilon \rangle\} =\]
+        \[ = \{S | \exists T \subset Q: T \in \Delta'(\{q_0\}, w), \langle T, a \rangle \vdash_{M', 1} \langle S, \epsilon \rangle\} = \]
+        \[ = \{S | \exists T \subset Q: T \in \{\Delta(\{q_0\}, w')\}, \langle T, a \rangle \vdash_{M', 1} \langle S, \epsilon \rangle\} = \]
+        \[ = \{S | \exists T \subset Q: T = \Delta(\{q_0\}, w'), S = \Delta(T, a)\} = \{\Delta(q_0, w'a)\}\]
+        \[\Delta(q_0, w'a) = \{q | \langle q_0, w'a \rangle \vdash \langle q, \epsilon \rangle\} = \{q | \exists q': \langle q_0, w'a \rangle \vdash \langle q', a \rangle \vdash_{M, 1} \langle q, \epsilon \rangle\} = \]
+        \[= \{q | \exists q' \in \Delta(q_0, w') : q \in \Delta(q', a)\} = \Delta(T, a) = S\]
+
+    \end{enumerate}
+\end{proof}
+\begin{proof}[Доказательство Теоремы]
+    \[w \in L(m) \Lra \exists q \in F: \langle q_0, w \rangle \vdash \langle q, \epsilon \rangle \Lra \Delta(q_0, w) \cap F \ne \emptyset \Lra \Delta(\{q_0\}, w) \cap F \ne \emptyset \Lra\]
+    \[\Lra \Delta(\{q_0\}, w) \in F' \Lra \Delta'(\{q_0\}, w) = \{\Delta(\{q_0\}, w)\} \subset F' \Lra \Delta'(\{q_0\}, w) \cap F \ne \emptyset \Lra w \in L(M')\]
+\end{proof}
+
+\begin{proposition}
+    \(\forall M\) --- ДКА \(\exists M'\) ---  ПДКА, такой, что \(L(M) = L(M')\)
+\end{proposition}
+\begin{proof}[Идея доказательства]
+    Добавим сток \(q_s\), в который можно зайти, но нельзя выйти. Т.е. \(M' = \langle Q \cup \{q_s\}, \Sigma, \Delta', q_0, F\rangle\), где \(\Delta' = \Delta \cup \{\langle q_s, a \rangle \ra a | a \in \Sigma\} \cup \{\langle q, a \rangle \ra q_s | \nexists q: \langle q, a \rangle \ra q'\}\). Таким образом, если мы попали в сток, то мы из него не выберемся
+\end{proof}
+
+\begin{theorem}
+    Пусть \(L_1, L_2\) --- автоматные языки. Тогда следующие языки также автоматные:
+    \begin{enumerate}
+        \item \(L_1L_2\)
+        \item \(L_1 \cup L_2\)
+        \item \(L_1 \cap L_2\)
+        \item \(\overline{L}\)
+        \item \(L^*\)
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Регулярные выражения}
+\begin{definition}
+    Пусть \(\Sigma\) --- алфавит. Регулярное выражение --- конечная последовательность из \(\Sigma, *, \cdot, +, 0, 1\), определяемая индуктивно:
+    \begin{enumerate}
+        \item \(0\) --- регулярное выражение 
+        \item \(1\) --- регулярное выражение
+        \item \(a\) --- регулярное выражение, \(a \in \Sigma\)
+        \item \(\alpha + \beta\) --- регулярные выражение, где \(\alpha, \beta\) --- регулярные выражения
+        \item \(\alpha \cdot \beta\) --- регулярные выражение, где \(\alpha, \beta\) --- регулярные выражения
+        \item \(\alpha^*\) --- регулярные выражение, где \(\alpha\) --- регулярное выражение
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    \(L(\alpha): \{\text{Множество регулярных выражений}\} \ra 2^\Sigma\), где \(\alpha\) --- регулярное выражение задается рекурсивно:
+    \begin{enumerate}
+        \item \(L(0) = \emptyset\)
+        \item \(L(1) = \{\epsilon\}\)
+        \item \(L(a) = \{a\}, a \in \Sigma\)
+        \item \(L(\alpha + \beta) = L(\alpha) \cup L(\beta)\)
+        \item \(L(\alpha \cdot \beta) = L(\alpha)L(\beta)\)
+        \item \(L(\alpha^*) = (L(\alpha))^*\)
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Язык \(L\) называется регулярным, если \(\exists \alpha\) --- регулярное выражение, т.ч. \(L(\alpha) = L\)
+\end{definition}
+
+\begin{definition}
+    Регулярный автомат --- автомат, в котором на ребрах написаны регулярные выражения.
+\end{definition}
+
+\begin{theorem}[Клини]
+    Язык \(L\) регулярен тогда и только тогда, когда он автоматный
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[\(\Ra\)] Ведем индукцию по построению регулярного выражения
+        \begin{enumerate}
+            \item[] \textbf{База:} 
+            \[\begin{array}{c|c}
+                R & \text{Автомат} \\
+                \hline
+                0 & q_0, q_F \\
+                1 & q_0 \ra_{\epsilon} q_F \\
+                a & q_0 \ra_a q_F
+            \end{array}\]
+            \item[] \textbf{Переход:}
+            \[\begin{array}{c|l}
+                R & \text{Автомат} \\
+                \hline
+                \alpha \cdot \beta & M(\alpha) \ra_\epsilon M(\beta) \\
+                \alpha + \beta & \text{соединяем параллельно \(M(\alpha), M(\beta)\)} \\
+                \alpha^* & \text{Зацикливаем автомат \(M(\alpha)\) с переходом \(\ra_\epsilon\)}
+            \end{array}\]
+        \end{enumerate}
+
+        \item[\(\La\)] Ведем индукцию по \(|Q|\) в регулярном автомате
+        \begin{enumerate}
+            \item[] \textbf{База:} \(Q = 1, 2\) --- позже
+            \item[] \textbf{Переход:}
+            \[\begin{array}{c|l}
+                R & \text{Автомат} \\
+                \hline
+                \alpha \cdot \beta & M(\alpha) \ra_\epsilon M(\beta) \\
+                \alpha + \beta & \text{соединяем параллельно \(M(\alpha), M(\beta)\)} \\
+                \alpha^* & \text{Зацикливаем автомат \(M(\alpha)\) с переходом \(\ra_\epsilon\)}
+            \end{array}\]
+        \end{enumerate}
+
+    \end{enumerate}
+\end{proof}

@@ -1,6 +1,7 @@
 % !TEX root = ../../../main.tex
 
 \section{Конечные Автоматы}
+\subsection{Напоминание}
 \begin{definition}
     Алфавит --- конечное непустое множество
 \end{definition}
@@ -21,6 +22,7 @@
     \(\epsilon\) --- пустое слово
 \end{definition}
 
+\subsection{Недетерминированный Конечный Автомат}
 \begin{definition}
     Недетерминированный Конечный Автомат --- кортеж \((Q, \Sigma, \Delta, q_0, F)\), удовлетворяющий следующим условиям:
     \begin{enumerate}
@@ -67,14 +69,14 @@
 \end{proof}
 
 \begin{proposition}
-    В определении автомата можно считать, что \(\forall \langle q_1, w \rangle \ra q_2 \in \Delta |w| \le 1\).
+    В определении автомата можно считать, что \(\forall \langle q_1, w \rangle \ra q_2 \in \Delta: |w| \le 1\).
 \end{proposition}
 \begin{proof}
     Превращаем \(q_1 \ra_{abc} q_2\) в \(q_1 \ra_a q_3 \ra_b q_4 \ra_c q_2\).
 \end{proof}
 
 \begin{theorem}
-    В определении автомата можно считать, что \(\forall \langle q_1, w \rangle \ra q_2 \in \Delta |w| = 1\).
+    В определении автомата можно считать, что \(\forall \langle q_1, w \rangle \ra q_2 \in \Delta: |w| = 1\).
 \end{theorem}
 \begin{proof}[Неформально]
     Делаем две операции:
