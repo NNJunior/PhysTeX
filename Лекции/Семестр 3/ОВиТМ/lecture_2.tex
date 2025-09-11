@@ -1,0 +1,151 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Математическое ожидание}
+\begin{definition}
+    Пусть \(\xi\) --- случайная величина. \(\E\xi = \sum_{\omega \in \Omega} \xi(\omega)P(\omega)\)
+\end{definition}
+
+\begin{note}
+    Ряд должен сходиться абсолютно, т.к. элементы \(\Omega\) можно суммировать в разном порядке.
+\end{note}
+
+\begin{proposition}
+    \(\E(\alpha\xi + \beta\eta) = \alpha\E\xi + \beta\E\eta\).
+\end{proposition}
+\begin{proof}
+    \[\E((\alpha\xi + \beta\eta)) = \sum_{\omega \in \Omega} (\alpha\xi + \beta\eta)(\omega)|P(\omega) = \sum_{\omega \in \Omega} (\alpha\xi(\omega) + \beta\eta(\omega))P(\omega) =\]
+    \[ = \sum_{\omega \in \Omega} \alpha\xi(\omega)P(\omega) + \sum_{\omega \in \Omega} \beta\eta(\omega)P(\omega) = \E\xi + \E\eta\]
+\end{proof}
+\begin{proposition}
+    \(\xi \le \eta \Ra \E\xi \le \E\eta\).
+\end{proposition}
+\begin{proposition}
+    \(|\E\xi| \le E|\xi|\).
+\end{proposition}
+\begin{proof}
+    \[\E|\xi| = \sum_{\omega \in \Omega} |\xi(\omega)|P(\omega)\]
+    Т.к. \(-|\xi| \le \xi \le |\xi| \Ra -\E|\xi| \le \E \xi \le \E|\xi| \Ra |\E\xi| \le \E|\xi|\)
+\end{proof}
+\begin{proposition}
+    \(\xi = c \le E\xi = c\).
+\end{proposition}
+\begin{proof}
+    \[\E\xi = \sum_{\omega \in \Omega} \xi(\omega)P(\omega) = \E\xi = \sum_{\omega \in \Omega} c P(\omega) = \E\xi = c \sum_{\omega \in \Omega} P(\omega) = c\]
+\end{proof}
+
+\begin{proposition}
+    \(\E\xi = \sum_{x \im \xi} x\cdot P(\xi = x)\)
+\end{proposition}
+\begin{proof}
+    \[\E\xi = \sum_{\omega \in \Omega} \xi(\omega)P(\omega) = \sum_{x \in \im \xi}\sum_{\omega: \xi(\omega) = x} x P(\omega) = \sum_{x \in \im \xi}x \sum_{\omega: \xi(\omega) = x} P(\omega) = \sum_{x \in \im \xi}x P(\xi = \omega)\]
+\end{proof}
+
+\begin{proposition}
+    Пусть \(\xi_1, \xi_2 \dots \xi_n\) --- независимые в совокупности. Тогда 
+    \[\E \xi_1\xi_2\dots\xi_n = \E\xi_1\E\xi_2\dots\E\xi_n\]
+\end{proposition}
+\begin{proof}
+    \[\E \xi_1\xi_2\dots\xi_n = \sum x_1x_2\dots x_nP(\xi_1 = x_1 \cap \xi_2 = x_2 \cap \dots \cap \xi_n = x_n) =\]
+    \[= \sum x_1x_2\dots x_nP(\xi_1 = x_1)P(\xi_2 = x_2)\dots P(\xi_n = x_n) =\]
+    \[=\left(\sum_{x_1} x_1P(\xi_1 = x_1)\right)\left(\sum_{x_2} x_2P(\xi_2 = x_2)\right) \dots \left(\sum_{x_n} x_nP(\xi_n = x_n)\right)\]
+    \[= \E\xi_1\E\xi_2\dots\E\xi_n\]
+\end{proof}
+\begin{definition}
+    Пусть \(\xi\) --- случайная величина. Дисперсия \(\xi\) = \(\Variance \xi = \E(\xi - \E\xi)^2\)
+\end{definition}
+
+\begin{proposition}
+    \(\Variance \xi = \E\xi^2 - (\E\xi)^2\)
+\end{proposition}
+\begin{proof}
+    \[\Variance \xi = \E(\xi^2 - 2\xi\E\xi + (\E\xi)^2) = \E\xi^2 - 2(\E\xi)^2 + (\E\xi)^2 = \E\xi^2 - (E\xi)^2\]
+\end{proof}
+
+\begin{proposition}
+    \(\Variance(c\xi) = c^2 \Variance \xi\)
+\end{proposition}
+\begin{proof}
+    \[\Variance (c\xi) = \E(c\xi - \E c\xi)^2 = c^2\E(\xi - \E\xi)^2 = c^2\Variance \xi\]
+\end{proof}
+\begin{proposition}
+    \(\Variance \xi = 0 \Lra \xi = c\) с вероятностью \(1\)
+\end{proposition}
+\begin{proof}
+    \[\Variance \xi = 0 \Lra \E(\xi - \E\xi)^2 = 0 \Lra (\xi - \E\xi)^2 \Lra \xi = c \text{ с вероятностью \(1\)}\]
+\end{proof}
+
+\begin{definition}
+    \(cov(\xi, \eta) = \E(\xi - \E\xi)(\eta - \E\eta)\).
+\end{definition}
+
+\begin{note}
+    \(cov(\xi, \eta) \lessgtr 0 \Lra\) величины растут либо в разных направлениях, либо в одном.
+\end{note}
+\begin{proposition}
+    \(cod(\xi, \eta) = 0 \La \xi, \eta\) независимые.
+\end{proposition}
+
+\begin{proposition}
+    \(cov(\xi, \eta) = \E\xi\eta - \E\xi\E\eta\)
+\end{proposition}
+\begin{proof}
+    \[cov(\xi, \eta) = \E(\xi - \E\xi)(\eta - \E\eta) = \E(\xi\eta - \eta\E\xi - \xi\E\eta - \E\xi\E\eta) = \E(\xi\eta) - (\E\eta\E\xi) - (\E\xi\E\eta) + \E\xi\E\eta =\]
+    \[= \E\xi\eta - \E\xi\E\eta\]
+\end{proof}
+\begin{note}
+    \(cov(\xi, \eta) = cov(\eta, \xi)\)
+\end{note}
+\begin{note}
+    \(cov(\xi, \xi) = \Variance \xi\)
+\end{note}
+\begin{note}
+    \(cov(\alpha\xi + \beta\eta, \mu) = \alpha cov(\xi, \mu) + \beta cov(\eta, \mu)\).
+\end{note}
+
+\begin{proposition}
+    Пусть \(\xi_1, \xi_2, \dots \xi_n\) --- случайные величины, причем \(cov(\xi_i, \xi_j) = 0 \forall i \ne j\). Тогда 
+    \[\Variance\left(\sum_i \xi_i\right) = \sum \Variance \xi_i\]
+\end{proposition}
+\begin{proof}
+    \[cov\left(\sum_i \xi_i, \sum_j \xi_j\right) = \sum_{i, j} cov(\xi_i, \xi_j) = \sum_i cov(\xi_i, \xi_i) + \underbrace{\sum_{i \ne j} cov(\xi_i, \xi_j)}_{0} = \sum_i \Variance \xi_i\]
+\end{proof}
+
+\begin{definition}
+    Коэффициент корреляции \(\rho(\xi, \eta) = \frac{cov(\xi, \eta)}{\sqrt{\Variance \xi}\sqrt{\Variance \eta}}\)
+\end{definition}
+
+\begin{definition}
+    Матрица ковариаций случайных величин \(\xi_1, \xi_2 \dots \xi_n\) --- матрица
+    \[\Sigma = \left(\begin{array}{cccc}
+        cov(\xi_1, \xi_1) & cov(\xi_2, \xi_1) & \dots & cov(\xi_n, \xi_1) \\
+        cov(\xi_1, \xi_2) & cov(\xi_2, \xi_2) & \dots & cov(\xi_n, \xi_2) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        cov(\xi_1, \xi_n) & cov(\xi_2, \xi_n) & \dots & cov(\xi_n, \xi_n) \\
+    \end{array}\right)\]
+    То есть \(\Sigma_{i, j} = cov(\xi_i, \xi_j)\).
+\end{definition}
+
+\begin{proposition}
+    Пусть \(\Sigma\) --- матрица ковариаций. Тогда
+    \begin{enumerate}
+        \item \(\Sigma\) неотрицательно определена.
+        \item \(\Sigma\) не определена положительно тогда и только тогда, когда \(\exists x \in \R^n: \sum x_i\xi_i = c\) с вероятностью 1.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item \[\sum_{i, j}x_i\Sigma_{i, j}x_j = \sum_{i, j} x_ix_j cov(\xi_i, \xi_j) = cov\left(\sum_i x_i\xi_i, \sum_j x_j\xi_j\right) = \Variance \left(\sum \xi_i x_i\right) = (*) \ge 0\]
+        \item \(\Sigma\) не определена положительно тогда и только тогда, когда \((*) = \Variance \left(\sum \xi_i x_i\right) = 0 \Ra \xi = c\) с вероятностью \(1\).
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}[Неравенство Коши-Буняковского-Шварца]
+    \[|cov(\xi, \eta)| \le \sqrt{\Variance \xi}\sqrt{\Variance \eta}\]
+\end{proposition}
+\begin{proof}
+    Рассмотрим матрицу ковариаций для \(\xi, \eta\) --- \(\Sigma\). Т.к. она неотрицательно определена, то \(|\Sigma| \ge 0\). Причем:
+    \[\left|\begin{array}{cc}
+        \Variance \xi & cov(\xi, \xi) \\ 
+        cov(\eta, \xi) & \Variance \eta \\ 
+    \end{array}\right| = \Variance \xi \Variance \eta - cov^2(\xi, \eta)\ge 0\].
+\end{proof}
