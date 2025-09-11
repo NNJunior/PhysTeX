@@ -1,3 +1,5 @@
+% !TEX root = ../main.tex
+
 \documentclass[a4paper,12pt]{article}
 \usepackage[makeroom]{cancel}
 \usepackage[matrix,arrow,curve,frame,poly,arc]{xy}
@@ -39,6 +41,7 @@
 \newcommand{\Cm}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\id}{\mathrm{id}}
+\newcommand{\E}{\mathbb{E}}
 
 \newcommand{\imp}[2]{
 	(#1\,\,$\ra$\,\,#2)\,\,
@@ -191,6 +194,9 @@
 \renewcommand{\limsup}{\overline{\lim}}
 \renewcommand{\liminf}{\underline{\lim}}
 \DeclareMathOperator{\ord}{ord}
+
+\let\Variance\relax
+\DeclareMathOperator{\Variance}{Var}
 
 \newcommand{\ivanbir}{https://t.me/ivanbir06}
 \newcommand{\stupidlucy}{https://t.me/stupidlucy}
