@@ -146,6 +146,7 @@
     </subject>
     <subject name="ОВиТМ" id="3S_OVITM" description="Ну короче все понятно" setting="Лекции/Семестр 3/ОВиТМ/setting">
       <lecture name="Лекция 1" id="3S_OVITM_1" description="Введение" date="04.09.25" path="Лекции/Семестр 3/ОВиТМ/lecture_1" setting="Лекции/Семестр 3/ОВиТМ/setting" />
+      <lecture name="Лекция 2" id="3S_OVITM_2" description="Матожидание, дисперсия, ковариация. Различные их свойства." date="11.09.25" path="Лекции/Семестр 3/ОВиТМ/lecture_2" setting="Лекции/Семестр 3/ОВиТМ/setting" />
     </subject>
     <subject name="Дискретная математика" id="3S_DM" description="О нет..." setting="Лекции/Семестр 3/Дискран/setting">
       <lecture name="Лекция 1" id="3S_DM_1" description="Интегралы на первой лекции... Нам всем конец." date="05.09.25" path="Лекции/Семестр 3/Дискран/lecture_1" setting="Лекции/Семестр 3/Дискран/setting" />
