@@ -116,8 +116,10 @@
     \[H(x) = G(x) + c\]
     И далее алгебраически находим \(x\).
 \end{example}
+\begin{proof}[Почему так можно делать]
+    Пусть \(h(x) \ne 0 \forall x \in \mathcal{G}, H(x)\) --- первообразная \(x = \frac{1}{h(x)}, G(x)\) --- первообразная \(g(x), x\) --- непрерывная дифференцируемая функция \((t, x(t)) \in I \times \mathcal{G}\). Заметим, что \(x\) --- решение \(\Lra \stackrel{.}{x}(t) \equiv h(x(t)) g(t) \Lra \frac{\stackrel{.}{x}(t)}{h(x(t))} \equiv g(t) \Lra \exists c \in \R: H(x(t)) \equiv G(t) + c\).
 
-Пусть \(h(x) \ne 0 \forall x \in \mathcal{G}, H(x)\) --- первообразная \(x = \frac{1}{h(x)}, G(x)\) --- первообразная \(g(x), x\) --- непрерывная дифференцируемая функция \((t, x(t)) \in I \times \mathcal{G}\). Заметим, что \(x\) --- решение \(\Lra \stackrel{.}{x}(t) \equiv h(x(t)) g(t) \Lra \frac{\stackrel{.}{x}(t)}{h(x(t))} \equiv g(t) \Lra \exists c \in \R: H(x(t)) \equiv G(t) + c\).
+\end{proof}
 
 Пусть \(x_0 \in \mathcal{G}, t_0 \in I\) даны, \(h(x_0) = 0, h(x) \ne 0\) при \(x \ne x_0, g(t_0) \ne 0, H(x) = \int_{x_0}^x \frac{d\xi}{h(\xi)}\) сходится при всех \(x \in \mathcal{G}\). Тогда 
 \begin{enumerate}
