@@ -1,0 +1,108 @@
+% !TEX root = ../../../main.tex
+
+\begin{lemma}
+    Если \(E \subset U\) измеримо, то \(g(E)\) измеримо и \(\mu(g(E)) \le \int_E |J_g(x)| d\mu\)
+\end{lemma}
+\begin{proof}
+    Для \(m \in \N\) определим \(W_m = \{x \in U | \|x\| < m, |J_g(x)| < m\}\). Из непрерывности функций \(\|x\|J_g(x)\) и открытоти множеств \((-\infty, m)\) заключаем, что \(W_m \subset U\) открыто и \(\bigcap_{m = 1}^\infty W_m = U\). Докажем утверждение для \(E \subset W_m\)
+    \begin{enumerate}
+        \item Пусть \(E = \bigcap_{k = 1}^\infty G_k\), где \(G_k\) --- открыто и \(G_k \supset G_{k + 1}\). Б.О.О. можно считать, что все \(G_k \subset W_m\) (иначе заменим \(G_k\) на \(G_k \cap W_m\)). Тогда \(g(E) = \bigcap_{k = 1}^\infty g(G_k)\) измеримо и по непрерывности меры, \(\mu(g(E)) = \lim_{k \ra \infty}\mu(g(G_k))\) (т.к. \(\{x \in U: \|x\| \le m, |J_g(x)| \le m\}\) --- компакт \(\Ra\) ограничен)
+        \[\mu(g(E)) = \lim_{k \ra \infty}\mu(g(G_k)) \le \lim_{k \ra \infty}\int_{G_k}|J_g(x)|d\mu(x) = \int_E |J_g(x)|d\mu\]
+        Последнее равенсво выполняется по теореме Лебега, примененной к функции \(f_k = |J_g(x)|\cdot I_{G_k}\)
+
+        \item Пусть \(E = Z \subset W_m, \mu(Z) = 0\). По критерию измеримости, \(\exists \Omega_0\) --- \(G_\delta\) множество, такое, что \(\Omega_0 \supset E, \mu(\Omega_0) = 0\). Без ограничения счиатем, что \(\Omega_0 \in W_m\). Тогда 
+        \[\mu^*(g(E)) \le \mu^*(g(\Omega_0)) = \mu(g(\Omega_0)) \le \int_{\Omega_0}|J_g(x)|d\mu(x) = 0\]
+        То есть \(g(E)\) измеримо и \(\mu(g(E)) = 0\).
+
+        \item Пусть \(E\) --- произвольное измеримое множество в \(W_m\). Тогда \(E = \Omega \setminus Z\), где \(\Omega\) --- \(G_\delta\)-множество, а \(\mu(Z) = 0\). Тогда \(g(E) = g(\Omega) \setminus g(Z)\). Т.к \(\mu(g(Z)) = 0\) и по первому пункту \(g(\Omega)\) --- измеримо, то \(g(E)\) --- тоже измеримо. Следовательно,
+        \[\mu(g(E)) \le \mu(g(\Omega)) \le \int_\Omega |J_g(x)|d\mu(x) = \int_E |J_g(x)|d\mu(x)\]
+
+        \item Пусть \(E\) --- произвольное измеримое множество в \(U\). Тогда \(E = \bigcup_{m = 1}^\infty E_m\), где \(E_m = E \cap W_m\). По доказанному, \(\mu(g(E_m)) \le \int_E |J_g(x)|d\mu\). Получаем
+        \[\mu(g(E)) = \lim_{m \ra \infty} \mu(g(E_m)) \le \lim_{m \ra \infty} \int_{E_m} |J_g(x)|d\mu= \int_E |J_g(x)|d\mu\]
+        Последнее равенство получено по теореме Леви для \(f_m = |J_g|\cdot I_{E_m}\).
+    \end{enumerate}
+\end{proof}
+
+% \begin{theorem}
+%     Пусть \(g: U \ra V\) --- диффеоморфизм открытых \(U, V \subset \R^n\). Пусть \(E \subset U\) --- измеримо по Лебегу. Если \(f\) --- неотрицательная измеримая или интегрируемая на \(g(E)\) функция, то
+%     \[\int_{g(E)} f(y) d\mu(y) \int_E f \circ g(x) |\det Dg(x)|d\mu(x)\]
+% \end{theorem}
+\begin{proof}
+    Для любого \(a \in \R\) условия \(f \circ g(x) \le a \Lra g(x) \in \{y: f(y) < a\}\). Поэтому, \(\{x: f(g(x)) < a\} = g^{-1}(\{y: f(y) < a\})\). Поскольку диффеоморфизм сохраняет измеримость \(\Ra\) множества \(\{x : f(g(x)) < a\}, \{y: f(y) < a\}\) измеримы одновременно, т.е. функции \(f \circ g\) на \(E\) и \(f\) на \(g(E)\) измеримы одновременно.
+
+    Рассмотрим \(F: U \times \R \ra V \times \R, F(x, t) = (g(x), t)\) --- диффеоморфизм. Получаем:
+    \[DF = \left(\begin{array}{cccc}
+        & & & 0\\
+        & Dg & & \vdots \\
+        &  & & 0 \\
+        0 & \dots & 0 & 1 \\
+
+    \end{array}\right) \Ra |J_F| = |J_g|\]
+    Пололжим \(B = \{(y, t): y \in g(E), 0 < t < f(y)\}, A = \{(x, t): x\in E, 0 < t < f(g(x))\}\). Т.к. \(f\) --- неотрицательная измеримая функция, то \(\mu(B) = \int_{g(E)} f(y)d\mu\). Имеем \(F(A) = B, \mu(B) = \mu(F(A)) \le \int_A |J_F|d\mu(x, t)\). По теореме Тонелли \(\int_A |J_F|d\mu = \int_E\left(\int_{(0, f(g(x)))} |J_g| dt\right)dx\ = \int_E f \circ g(x) |J_g|dx\). Итак, справедлива формула:
+    \[\int_{g(E)} f(y)d\mu(y) \le \int_E f\circ g(x) |J_g|d\mu(x)\]
+    В правом интеграле сделам замену \(x = g^{-1}(y)\).
+    \[\int_E f\circ g(x) |J_g|d\mu(x) \le \int_{E} f(y) \underbrace{|J_g(g^{-1}(y))|\cdot|J_{g^{-1}}(y)|}_{1}d\mu(y)\le \int_{g(E)} f(y)d\mu(y)\]
+\end{proof}
+
+\begin{corollary}
+    В условиях теоремы, \(\mu(g(E)) = \int_E |J_g(x)|d\mu(x)\)
+\end{corollary}
+
+\begin{note}
+    В теореме о замене переменной условие на \(g\) можно ослабить, а именно: Пусть \(U \subset W \subset \R^n\), \(U\) --- открыто, \(g: W \ra \R^n, g|_{U}\) --- диффеоморфизм и \(\mu(W \setminus U) = \mu(g(W) \setminus g(U)) = 0\). Тогда для \(E \in W\) --- измеримого справедлива формула замены
+    \[\int_{g(E)} f(y) d\mu(y) \int_E f \circ g(x) |\det Dg(x)|d\mu(x)\]
+\end{note}
+\begin{proof}
+    Пренебрегая множествами меры \(0\), имеем: 
+    \[\int_{g(E)} f(y) d\mu(y) = \int_{g(E \cap U)} f(y) d\mu(y) = \int_{E \cap U} f \circ g(x) |J_g(x)|d\mu(x) = \int_{E} f \circ g(x) |J_g(x)|d\mu(x)\]
+\end{proof}
+
+\begin{example}[Интеграл Эйлера-Пуассона]
+    \[I = \int_0^{+\infty} e^{-x^2}dx\]
+\end{example}
+\begin{proof}[Решение]
+    \[I^2 = \int_0^{+\infty} e^{-x^2}dx \int_0^{+\infty} e^{-y^2}dy = \iint_{(0, +\infty)^2} e^{-(x^2+y^2)}dxdy = \]
+    Заменяем координаты на полярные:
+    \[= \iint_{(0, \pi/2) \times (0, +\infty)} e^{-r^2}rdrd\phi = \int_0^{\frac{\pi}{2}}d\phi \int_0^\infty e^{-r^2}rdr = \int_0^{\frac{\pi}{2}}d\phi \left(\left.-\frac{1}{2}e^{-r^2}\right|_0^{+\infty}\right) = \int_0^{\frac{\pi}{2}} \frac{1}{2} d\phi = \frac{\pi}{4}\]
+\end{proof}
+
+\section{Теоремы об обратной и неявной функциях}
+% Начнем с одного варианта теоремы о среднем:
+\begin{definition}
+    \(B \subset \R^n\) называется выпуклым, если \(\forall x, y \in B: [x, y] \subset B\)
+\end{definition}
+
+\begin{lemma}
+    Пусть \(f: U \ra \R^m, f = (f_1, f_2, \dots d_m)\) --- дифференцируема на \(U \subset \R^n\) --- открытом множестве и пусть \(B \subset U\) открыто. Если \(\left| \frac{\partial f_i}{\partial x_j}(x) \right| \le M\) для всех \(x \in B\), то \(\forall x, y \in B: |f(y) - f(x)| \le nmM|y - x|\).
+\end{lemma}
+\begin{proof}
+    Пусть \(x, y \in B\), тогда для \(i = 1, \dots m\) рассмотрим функцию \(g_i(t) = f_i(x + t(y - x)), t \in [0, 1]\) --- дифференцируема. Тогда про теореме Лагранжа о среднем:
+    \[f_i(y) - f_i(x) = g(1) - g_i(0) = g'_i(c_i), c_i \in (0, 1)\]
+    \[g_i'(c_i) = \sum_{j = 1}^n \frac{\partial f_i}{\partial x_j}(x + c_i(y - x))(y_j - x_j) \Ra |g_i'(c_i)| \le M\sum_{j = 1}^n |y_j - x_j| \le nM|y - x|\]
+    Откуда \(|f_i(y) - f_i(x)| \le nM|y - x|\). При этом, \(|a| \le \sum_{i = 1}^n |a_i|\). Получаем \(f(y) - f(x) \le nmM|y - x|\)
+\end{proof}
+
+\begin{corollary}
+    Если частные производные \(f\) непрерывны в \(a \in U\), то \(\forall \epsilon > 0 \exists \delta > 0 \forall x, y \in B_\delta(a): |f(y) - f(x) - df_a(y - x)| \le \epsilon|y - x|\)
+\end{corollary}
+\begin{proof}
+    Применим лемму к \(g(z) = f(z) - df_a(z)\). Т.к. дифференциал линейного отображения совпадает с ним, то \(dg_z = df_z - df_a\), откуда \(\frac{\partial g_i}{\partial x_j}(z) = \frac{\partial f_i}{\partial x_j}(z) - \frac{\partial g_i}{\partial x_j}(a)\). В силу непрерывноси частных производных, \(\forall \epsilon > 0 \exists \delta > 0: \forall z \in B_\delta(a) \left| \frac{\partial g_i}{\partial x_j}(z) \right| \le \frac{\epsilon}{mn} \Ra |g(y) - g(x)| \le \epsilon|y - x|\).
+\end{proof}
+
+\begin{theorem}[Банах]
+    Пусть \(C\) --- непустое замкнутое множество в \(\R^m\). Пусть \(f: C \ra C\), такое, что \(\exists \lambda \in (0, 1)\), что \(\forall x, y \in C |F(x) - F(y)| \le \lambda|x - y|\). Тогда \(\exists! x^* \in C: F(x^*) = x^*\)
+\end{theorem}
+\begin{proof}
+    Пусть \(x_0 \in C\) и рассмотрим \(x_{k + 1} = F(x_K)\). Тогда \(\forall k |x_{k + 1} - x_k| \le \lambda^k |x_1 - x_0|\). Следовательно \(|x_{n + p} - x_n| |x_{n + p} - x_{n + p - 1}| + |x_{n + p - 1} - x_{n + p - 2}| + \dots + |x_{n + 1} - x_n| = \left(\lambda^{n + p - 1} + \dots + \lambda^n\right)|x_1 - x_0| \le \frac{\lambda^n}{1 - \lambda}\). Т.к. \(\lambda^n \ra 0\) при \(n \ra \infty\), то последовательность \(\{x_n\}\) фундаментальна. Следовательно, \(x_n \ra x^*\). В силу замкнутости, \(x^* \in C\). Т.к. \(x_{n + 1} = F(x_n)\), то \(F\) непрерывна и \(F(x^*) = x^*\). Пусть \(y^*\) --- другая точка, такая, что \(F(y^*) = y^*\). Но тогда \(|y^* - x^*| = |F(y^*) - F(x^*)| \le \lambda |y^* - x^*| \Ra |y^* - x^*| = 0 \Ra y^* = x^*\).
+\end{proof}
+
+\begin{theorem}[Об обратной функции]
+    Пусть \(U\) --- открыто в \(\R^n\) и \(a \in U\). Если \(f: U \ra \R^n\) класса \(C^1\) и \(\det Df(a) \ne 0\), то \(\exists\) открытые \(W, V: a \in W \supset U, f(a) \in V\), такие, что \(f: W \ra V\) --- диффеоморфизм.
+\end{theorem}
+\begin{proof}
+    Можно считать, что \(Df(a) = E\): положим \(T = Df(a)\) и заменим \(f\) на \(\tilde{f} = T^{-1}f\). Такая замена не меняет обратимости, при этом \(f^{-1}\) и \(\tilde{f}^{-1} = f^{-1}T\) одновременно лежат в \(C^1\).
+
+    Рассмотрим \(g(x) = f(x) - x_j, x \in U\). \(g \in C^1, Dg(a) = 0\). Тогда \(\exists \overline{B}_r(a)\), что \(\forall x \in \overline{B}_r(a) \left(\left| \frac{\partial g_i}{\partial x_j}(x) \right| \le \frac{1}{2n^2} \forall i, j = 1, \dots n\right)\). Следовательно, \(\forall x, x' \in \overline{B}_r(a) (|g(x) - g(x')| \le \frac{1}{2}|x - x'|)\). Покажем, что \(\forall y \in B_{\frac{r}{2}}(f(a)) \exists !x \in B_r(a) (y = f(x))\). Для этого рассмотрим отображение \(F_y(x) = y - g(x), x \in U\). Тогда \(\forall x \in \overline{B}_r(a)\) имеем: 
+    \[|F_y(x) - a| \le |F(x) - F(a)| + |F(a) - a| \le |g(x) - g(a)| + |y - f(a)| \le \frac{1}{2}|x - a| + |y - f(a)| < \frac{r}{2} + \frac{r}{2} = r\]
+    То есть, \(F(\overline{B}_r(a)) \subset B_r(a)\). Кроме того, \(\forall x, x' \in \overline{B}_r(a), |F(x) - F(x')| = |g(x) - g(x')| \le \frac{1}{2}|x - x'|\). По теореме Банаха, \(\exists! x: F(x) = x \Lra y = f(x)\). Более того, \(x \in B_r(a)\). Положим \(M = B_{\frac{r}{2}}(a), W = f^{-1}(V) \cap B_r(a)\). Тогда \(f\) биективно отображает \(W\) на \(V\) по построению, т.е. определена обратная функция \(f^{-1}: V \ra W\).
+\end{proof}

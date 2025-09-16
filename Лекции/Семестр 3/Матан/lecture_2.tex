@@ -37,7 +37,7 @@
 \end{definition}
 
 \begin{definition}
-    Всюду далее за \(Dg(x)\) обозначается матрица Якоби отображения \(g\) в точке \(x\). Определитель \(\mathcal{G}_g(x) = |\det Dg(x)|\) называется Якобианом.
+    Всюду далее за \(Dg(x)\) обозначается матрица Якоби отображения \(g\) в точке \(x\). Определитель \(J_g(x) = |\det Dg(x)|\) называется Якобианом.
 \end{definition}
 
 \begin{definition}
@@ -45,39 +45,9 @@
 \end{definition}
 
 \begin{theorem}
-    Пусть \(g: U \ra V\) --- диффеоморфизм открытых \(U, V \subset \R^n\). Пусть \(E \subset U\) --- измеримо по Лебегу. Если \(f\) --- неотрицательная измеримая или интегрируемая на \(E\) функция, то
-    \[\int_{g(E)} f(y) d\mu(y) \int_E f \circ g(x) |\det Dg(x)|d\mu(x)\]
+    Пусть \(g: U \ra V\) --- диффеоморфизм открытых \(U, V \subset \R^n\). Пусть \(E \subset U\) --- измеримо по Лебегу. Если \(f\) --- неотрицательная измеримая или интегрируемая на \(g(E)\) функция, то
+    \[\int_{g(E)} f(y) d\mu(y) = \int_E f \circ g(x) |\det Dg(x)|d\mu(x)\]
 \end{theorem}
-В основе доказательства будет лежать следующее утверждение:
-\begin{lemma}
-    Пусть \(x_0 \in U, \epsilon > 0\). Положим \(l(Q)\) --- длина ребра куба \(Q\). Тогда найдется такое \(\delta > 0\), что для всягого замкнутого куба \(Q, x \in Q \subset U, l(Q) < \delta\) справедливо равенство:
-    \[\frac{\mu(g(Q))}{\mu(Q)} \le |\det \mathcal{G}_g(x_0)| + \epsilon\]
-\end{lemma}
-\begin{proof}
-    Все мы помним, что в \(\R^n\) все нормы эквивалентны. Будем рассматривать норму \(\|x\| = \max_{1 \le i \le n}|x_i| =\|\cdot\|_{\infty}\). Тогда \(C_r(y) = \{x: \|x - y\| \le r\}\) --- замкнутый куб и \(l(C) = 2r\). Сначла рассмотрим случай \(Dg(x_0) = E\) и \(g(x_0) = 0\). По определению диффеоморфизма, имеем:
-    \[g(x) = x + \alpha(x) \|x - x_0\|, \alpha(x) \ra 0, x \ra x_0\]
-    Выберем \(\eta > 0\) так, что \(() < 1 + \epsilon\) и пусть \(\delta > 0\) такое, что если \(x \in U (\|x - x_0\| < \delta \Ra \|\alpha(x)\| < \eta)\). Пусть \(Q\) --- замкнутый куб, такой, что \(Q, x \in Q \subset U, l(Q) < \delta\). Положим \(s = L(Q)\) Если \(a\) --- центр \(Q\), то \(Q = C_{\frac{s}{2}}(a)\). Пусть \(x \in Q\). Тогда \(\|x - x_0\| < \|x - a\| + \|a - x_0\| \le \frac{s}{2} + \frac{s}{2} < s < \delta \Ra \|\alpha(x)\| \le \eta\). Следовательно, \(\|g(x) - a\| \le \|x - a\| + \|\alpha(x)\|\cdot\|x-x_0\| < \frac{s}{2} + \eta s = \frac{s}{2}(1 + 2\eta) \Ra g(x) \in C_{\frac{s}{2}(1 + 2\eta)}(a) \Ra g(Q) \subset C_{\frac{s}{2}(1 + 2\eta)}(a)\). По монотонности меры, \(\mu(g(Q)) \le s^n(1 + 2\eta)\). Учитывая, что \(\mu(Q) = s^n \Ra \frac{\mu(g(Q))}{\mu(Q)} \le (1 + 2\eta)^n < 1 + \epsilon\).
-
-    Для общего случая, рассмотрим \(h = T^{-1} g - T^{-1} g(x_0)\) --- диффеоморфизм. \(Dh(x_0) = T^{-1}T = E\). Следовательно, \(\exists \delta > 0: l(Q) < \delta \Ra \frac{\mu(h(Q))}{\mu(Q)} \le |\mathcal{G}_g(x_0)| + \frac{\epsilon}{|\det T|} \le 1 + \frac{\epsilon}{|\det T|}\).
-    \[\mu(h(Q)) = \mu(T^{-1}g(Q)) = |\det T^{-1}|\mu(g(Q)) = \frac{\mu(g(Q))}{|\det T|} \Ra \frac{\mu(g(Q))}{\mu(Q)} \le |\det T| + \epsilon\]
-    Получили желаемое.
-\end{proof}
-
-\begin{corollary}
-    Пусть \(\{Q_k\}\) --- последовательность замкнутых, вложенных кубов и \(l(Q_k) \ra 0\). Если \(x_0\) --- единственная точка из \(\bigcap_{k = 1}^\infty Q_k\), то \(\limsup_{n \ra \infty} \frac{\mu(g(Q_k))}{\mu(Q_k)} \le |\mathcal{G}_g(x_0)|\)
-\end{corollary}
-
-\begin{lemma}
-    Если \(G\) --- открытое в \(U\), то \(g(G)\) открыто в \(V\) и \(\mu(g(G)) \le \int_G |\mathcal{G}_g| d \mu (*)\).
-\end{lemma}
-\begin{proof}
-    По свойству счетной аддитивности меры Лебега и счетной аддитивности интеграла, достаточно установить \((*)\) для двоичного куба.
-    \[G = \bigsqcup_{k = 1}^\infty Q_k, \text{где \(Q_k\) --- двоичные кубы} \Ra Q_k = \left[\frac{p}{2^q}, \frac{p + 1}{2^q}\right)^n, p \in \Z, q \in \N\]
-    Т.к. \(Q = \bigcup_{i = 1}^\infty \left[\frac{p}{2^q}, \frac{p + 1}{2^q} - \frac{1}{2^q\cdot i}\right]^n\) --- \(\sigma\)-компакт, тогда и \(g(Q)\) --- \(\sigma\)-компакт --- измеримое множество.
-
-    Предположим, что \(\exists Q\) --- двоичный куб, такой, что \(\overline{Q} \subset U\), для которого \(\mu(g(Q)) > \int_Q |\mathcal{G}_g|d\mu + \epsilon \mu(Q)\). Деля каждое ребро пополам, получаем разбиение \(Q\) на \(2^n\) двоичных кубов \(\{Q_i\}\). Предположим, что для каждого из \(Q_i\) выполнена лемма. Тогда пользуясь конечной аддитивностью меры и интеграла, для \(Q\) выполнена лемма. Тогда Б.О.О, \(\mu(g(Q_1)) > \int_{Q_1} |\mathcal{G}_g|d\mu + \epsilon \mu(Q_1)\). Положим \(C_1 = \overline{Q}, C_2 = \overline{Q_1}, \dots\). По индукции строим последовательность замкнутых вложенных кубов, \(l(C_k) \ra 0\), такую, что \(\forall k \mu(g(C_k)) > \int_{C_k}|\mathcal{G}_g(x)|d \mu(x) + \epsilon(\mu(C_k))\). Т.к. \(\mathcal{G}_g\) --- непрерывна, то \(\frac{1}{\mu(C_k)}\int_{C_k} |\mathcal{G}_g|d\mu \ra_{k \ra \infty} |\mathcal{G}_g(x)| \Ra \limsup_{k \ra \infty} \frac{\mu(g(C_k))}{\mu(C_k)} \ge |\mathcal{G}_g(x_0)| + \epsilon\).
-\end{proof}
-
 \begin{example}
     Вычислить меру \(n\)-мерного шара \(B_R(a)\)
 \end{example}
@@ -107,3 +77,33 @@
     \end{enumerate}
 \end{proof}
 
+В основе доказательства будет лежать следующее утверждение:
+\begin{lemma}
+    Пусть \(x_0 \in U, \epsilon > 0\). Положим \(l(Q)\) --- длина ребра куба \(Q\). Тогда найдется такое \(\delta > 0\), что для всягого замкнутого куба \(Q, x_0 \in Q \subset U, l(Q) < \delta\) справедливо равенство:
+    \[\frac{\mu(g(Q))}{\mu(Q)} \le |\det J_g(x_0)| + \epsilon\]
+\end{lemma}
+\begin{proof}
+    Все мы помним, что в \(\R^n\) все нормы эквивалентны. Будем рассматривать норму \(\|x\| = \max_{1 \le i \le n}|x_i| =\|\cdot\|_{\infty}\). Тогда \(C_r(y) = \{x: \|x - y\| \le r\}\) --- замкнутый куб и \(l(C) = 2r\). Сначла рассмотрим случай \(Dg(x_0) = E\) и \(g(x_0) = 0\). По определению диффеоморфизма, имеем:
+    \[g(x) = x + \alpha(x) \|x - x_0\|, \alpha(x) \ra 0, x \ra x_0\]
+    \textit{На лекции была ошибка, на самом деле \(g(x) = x - x_0 + \alpha(x) \|x - x_0\|, \alpha(x) \ra 0, x \ra x_0\), но это фиксится параллельным переносом на \(x_0\)}.
+    Выберем \(\eta > 0\) так, что \((1 + \alpha \nu)^n < 1 + \epsilon\) и пусть \(\delta > 0\) такое, что если \(x \in U (\|x - x_0\| < \delta \Ra \|\alpha(x)\| < \eta)\). Пусть \(Q\) --- замкнутый куб, такой, что \(Q, x \in Q \subset U, l(Q) < \delta\). Положим \(s = L(Q)\) Если \(a\) --- центр \(Q\), то \(Q = C_{\frac{s}{2}}(a)\). Пусть \(x \in Q\). Тогда \(\|x - x_0\| < \|x - a\| + \|a - x_0\| \le \frac{s}{2} + \frac{s}{2} < s < \delta \Ra \|\alpha(x)\| \le \eta\). Следовательно, \(\|g(x) - a\| \le \|x - a\| + \|\alpha(x)\|\cdot\|x-x_0\| < \frac{s}{2} + \eta s = \frac{s}{2}(1 + 2\eta) \Ra g(x) \in C_{\frac{s}{2}(1 + 2\eta)}(a) \Ra g(Q) \subset C_{\frac{s}{2}(1 + 2\eta)}(a)\). По монотонности меры, \(\mu(g(Q)) \le s^n(1 + 2\eta)\). Учитывая, что \(\mu(Q) = s^n \Ra \frac{\mu(g(Q))}{\mu(Q)} \le (1 + 2\eta)^n < 1 + \epsilon\).
+
+    Для общего случая, рассмотрим \(h = T^{-1} g - T^{-1} g(x_0)\) --- диффеоморфизм. \(Dh(x_0) = T^{-1}T = E\). Следовательно, \(\exists \delta > 0: l(Q) < \delta \Ra \frac{\mu(h(Q))}{\mu(Q)} \le |J_g(x_0)| + \frac{\epsilon}{|\det T|} \le 1 + \frac{\epsilon}{|\det T|}\).
+    \[\mu(h(Q)) = \mu(T^{-1}g(Q)) = |\det T^{-1}|\mu(g(Q)) = \frac{\mu(g(Q))}{|\det T|} \Ra \frac{\mu(g(Q))}{\mu(Q)} \le |\det T| + \epsilon\]
+    Получили желаемое.
+\end{proof}
+
+\begin{corollary}
+    Пусть \(\{Q_k\}\) --- последовательность замкнутых, вложенных кубов и \(l(Q_k) \ra 0\). Если \(x_0\) --- единственная точка из \(\bigcap_{k = 1}^\infty Q_k\), то \(\limsup_{n \ra \infty} \frac{\mu(g(Q_k))}{\mu(Q_k)} \le |J_g(x_0)|\)
+\end{corollary}
+
+\begin{lemma}
+    Если \(G\) --- открытое в \(U\), то \(g(G)\) открыто в \(V\) и \(\mu(g(G)) \le \int_G |J_g| d \mu (*)\).
+\end{lemma}
+\begin{proof}
+    По свойству счетной аддитивности меры Лебега и счетной аддитивности интеграла, достаточно установить \((*)\) для двоичного куба.
+    \[G = \bigsqcup_{k = 1}^\infty Q_k, \text{где \(Q_k\) --- двоичные кубы} \Ra Q_k = \left[\frac{p}{2^q}, \frac{p + 1}{2^q}\right)^n, p \in \Z, q \in \N\]
+    Т.к. \(Q = \bigcup_{i = 1}^\infty \left[\frac{p}{2^q}, \frac{p + 1}{2^q} - \frac{1}{2^q\cdot i}\right]^n\) --- \(\sigma\)-компакт, тогда и \(g(Q)\) --- \(\sigma\)-компакт --- измеримое множество.
+
+    Предположим, что \(\exists Q\) --- двоичный куб, такой, что \(\overline{Q} \subset U\), для которого \(\mu(g(Q)) > \int_Q |J_g|d\mu + \epsilon \mu(Q)\). Деля каждое ребро пополам, получаем разбиение \(Q\) на \(2^n\) двоичных кубов \(\{Q_i\}\). Предположим, что для каждого из \(Q_i\) выполнена лемма. Тогда пользуясь конечной аддитивностью меры и интеграла, для \(Q\) выполнена лемма. Тогда Б.О.О, \(\mu(g(Q_1)) > \int_{Q_1} |J_g|d\mu + \epsilon \mu(Q_1)\). Положим \(C_1 = \overline{Q}, C_2 = \overline{Q_1}, \dots\). По индукции строим последовательность замкнутых вложенных кубов, \(l(C_k) \ra 0\), такую, что \(\forall k \mu(g(C_k)) > \int_{C_k}|J_g(x)|d \mu(x) + \epsilon(\mu(C_k))\). Т.к. \(J_g\) --- непрерывна, то \(\frac{1}{\mu(C_k)}\int_{C_k} |J_g|d\mu \ra_{k \ra \infty} |J_g(x)| \Ra \limsup_{k \ra \infty} \frac{\mu(g(C_k))}{\mu(C_k)} \ge |J_g(x_0)| + \epsilon\).
+\end{proof}
