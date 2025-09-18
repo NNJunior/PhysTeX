@@ -40,6 +40,14 @@
     \[\E\xi = \sum_{\omega \in \Omega} \xi(\omega)P(\omega) = \sum_{x \in \im \xi}\sum_{\omega: \xi(\omega) = x} x P(\omega) = \sum_{x \in \im \xi}x \sum_{\omega: \xi(\omega) = x} P(\omega) = \sum_{x \in \im \xi}x P(\xi = \omega)\]
 \end{proof}
 
+\begin{definition}
+    \(\xi, \eta\) называются независимыми, если события \(\{\xi = x_i\}\) и \(\eta = x_j\) независимы
+\end{definition}
+
+\begin{definition}
+    \(\xi_i\) называются независимыми в совокупности, если события \(\{\xi_i = x_i\}\) независимы в совокупности.
+\end{definition}
+
 \begin{proposition}
     Пусть \(\xi_1, \xi_2 \dots \xi_n\) --- независимые в совокупности. Тогда 
     \[\E \xi_1\xi_2\dots\xi_n = \E\xi_1\E\xi_2\dots\E\xi_n\]
@@ -81,9 +89,6 @@
 \begin{note}
     \(cov(\xi, \eta) \lessgtr 0 \Lra\) величины растут либо в разных направлениях, либо в одном.
 \end{note}
-\begin{proposition}
-    \(cod(\xi, \eta) = 0 \La \xi, \eta\) независимые.
-\end{proposition}
 
 \begin{proposition}
     \(cov(\xi, \eta) = \E\xi\eta - \E\xi\E\eta\)
@@ -92,6 +97,9 @@
     \[cov(\xi, \eta) = \E(\xi - \E\xi)(\eta - \E\eta) = \E(\xi\eta - \eta\E\xi - \xi\E\eta - \E\xi\E\eta) = \E(\xi\eta) - (\E\eta\E\xi) - (\E\xi\E\eta) + \E\xi\E\eta =\]
     \[= \E\xi\eta - \E\xi\E\eta\]
 \end{proof}
+\begin{proposition}
+    \(cov(\xi, \eta) = 0 \La \xi, \eta\) независимые.
+\end{proposition}
 \begin{note}
     \(cov(\xi, \eta) = cov(\eta, \xi)\)
 \end{note}
