@@ -1,0 +1,149 @@
+% !TEX root = ../../../main.tex
+
+\begin{lemma}[О разрастании]
+    Пусть \(L\) --- автоматный язык. Тогда:
+    \[\exists P \forall w \in L: |w| \ge P \exists x, y, z: w = xyz, |xy| \le P, |y| \ne 0:\]
+    \[\forall k \in \N: xy^kz \in L\]
+\end{lemma}
+\begin{proof}
+    \(L\) --- автоматный \(\Ra \exists M\) --- НКА с однобуквенными переходами, т.ч. \(L(M) = L\). Положим \(P = |Q|\), где \(Q\) --- множество состояний \(M\). Рассмотрим \(w = w_1w_2\dots w_P\dots\).
+    \[\langle q_0, w_1\dots w_Pu\rangle \vdash_1 \langle q_1, w_2\dots w_Pu\rangle \vdash \dots \vdash \langle q_P, u\rangle \vdash \langle q, \epsilon \rangle\]
+    Тогда \(\exists k' < l' \le P: q_{k'} = q_{l'}\) по принципу Дирихле (всего состояний \(P\), а мы посетили больше). Положим \(x = w_1\dots w_{k'}, y = w_{k' + 1}\dots w_{l'}, w = w_{l' + 1}\dots w_P u\). Т.к. \(k1 \ne l' \Ra |y| = l' - k' > 0, l' \le P \ra |x| = l' \le P\). Таким образом, \(xy^kz \in L \forall k\).
+\end{proof}
+
+\begin{note}[Отрицание к лемме]
+    Пусть \(L\) --- некоторый язык и
+    \[\forall P \exists w \in L: |w| \ge P \forall x, y, z: w = xyz, |xy| \le P, |y| \ne 0:\]
+    \[\exists k \in \N: xy^kz \notin L\]
+    Тогда \(L\) --- не автоматный
+\end{note}
+\begin{example}
+    Рассмотрим \(L = \{a^nb^n | n \in \N\}\). \(\forall P \exists w = a^Pb^P \in L\). Рассмотрим \(w = xyz\). \(|xy| < P \Ra xy = a^k, |y| > 0 \Ra y = a^l, l > 0\). Тогда \(xy^2z = a^{k - l}a^{2l}b^P = a^{P + l}b^P\). Т.к. \(l > 0\), то \(a^{P + L}b^P \notin L \Ra L\) --- не автоматный.
+\end{example}
+
+\begin{proposition}
+    Пусть \(L\) --- язык, \(R\) --- регулярное выражение, \(L(R) \cap L\) --- неавтоматный \(\Ra\) \(L\) --- неавтоматный
+\end{proposition}
+\begin{proof}
+    Пусть \(L\) --- автоматный, но тогда \(L \cap L(R)\) --- тоже.
+\end{proof}
+
+\begin{example}
+    Рассмотрим \(L = \{w | |w|_a = |w|_b\}\). Т.к. \(L = \{a^kb^k | k \in \N\} \cap L(a^*b^*)\), то \(L\) --- неавтоматный
+\end{example}
+
+\subsection{Минимальный Полный Конечный Детерминированный Автомат?}
+Пусть есть два ПДКА: \(M_1, M_2\). Проверим, что \(L(M_1) = L(M_2)\). Это равносильно тому, что \(L(M_1) \Delta L(M_2) = \emptyset\). Однако есть более удобный способ это проверять.
+
+Далее \(M\) --- ПДКА, \(L\) --- автоматный язык.
+
+\begin{definition}
+    Будем говорить, что \(u \sim_L v,\;\; u, v \in \Sigma^* \Lra \forall w \in \Sigma^* uw \in L \Lra vw \in L\).
+\end{definition}
+\begin{proposition}
+    \(\sim_L\) --- отношение эквивалентности
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item [] \textbf{Рефлексивность} \(u \sim_L u: uw \in L \Lra uw \in L\)
+        \item [] \textbf{Симметричность} \(u \sim_L v \Lra (uw \in L \Lra vw \in L) \Lra v \sim_L u\)
+        \item [] \textbf{Транзитивность} \(u \sim_L v, v \sim s \Lra (uw \in L \Lra vw \in L) \wedge (vw \in L \Lra sw \in L) \Ra u \sim_L s\).
+    \end{enumerate}
+\end{proof}
+
+\begin{note}
+    \(\Sigma^*/_{\sim_L}\) --- фактормножество \(\Sigma^*\) по отношению \(\sim_L\). Класс эквивалентности слова \(u\) будем обозначать \([u]\).
+\end{note}
+
+\begin{definition}
+    Будем говорить, что \(q_1 \sim_M q_2,\;\; q_1, q_2 \in Q \Lra \forall w \in \Sigma^* \Delta(q_1, w) \subset F \Lra \Delta(q_2, w) \subset F\).
+\end{definition}
+\begin{proposition}
+    \(\sim_M\) --- отношение эквивалентности
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item [] \textbf{Рефлексивность} \(q_1 \sim_M q_1: \Delta(q_1, w) \subset F \Lra \Delta(q_1, w) \subset F\)
+        \item [] \textbf{Симметричность} \(q_1 \sim_M q_2 \Lra (\Delta(q_1, w) \subset F \Lra \Delta(q_2, w) \subset F) \Lra q_2 \sim_M q_1\)
+        \item [] \textbf{Транзитивность} \(q_1 \sim_L q_2, q_2 \sim q_3 \Lra (\Delta(q_1, w) \subset F \Lra \Delta(q_2, w) \subset F) \wedge (\Delta(q_1, w) \subset F \Lra \Delta(q_3, w) \subset F) \Ra q_1 \sim_L q_3\).
+    \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+    Пусть \(L_q = \{w | \Delta(q_0, w) = q\}\). Тогда каждый класс эквивалентности в \(\Sigma^*/_{\sim_L}\) --- объединение классов в \(L_q\).
+\end{lemma}
+\begin{proof}
+    Пусть \(u, v \in L_q\). Тогда \(\Delta(q_0, u) = q, \Delta(q_0, v) = q\). Рассмотрим произвольное \(w \in \Sigma^*\). \(\Delta(q_0, uw) = q'\).
+    \[\langle q_0, uw \rangle \vdash \langle q_0, \epsilon \rangle  \Ra \langle q_0, uw \rangle \vdash \langle q_1, w \rangle \vdash \langle q', \epsilon \rangle \Ra q' = \Delta(q, w)\]
+    Аналогично, \(\Delta(q_0, vw) = \Delta(q, w)\). Но тогда \(uw \in L \Lra \Delta(q, w) \in F \Lra w \in L\).
+\end{proof}
+\begin{corollary}
+    \(|Q| \ge |\Sigma^*/_{\sim_L}|\)
+\end{corollary}
+\begin{proof}
+    В каждом классе \([u]\) существует хотя бы один \(L_q\).
+\end{proof}
+
+\begin{lemma}
+    Пусть \(L\) --- автоматный язык. Тогда \(\exists\) ПДКА \(M'\), такой, что все состояния в \(M'\) попарно неэквивалентны.
+\end{lemma}
+\begin{proof}
+    Построим автомат над классами \([q] \in Q/_{\sim_M}\):
+    \[M' = (Q/_{\sim_M}, \Sigma, \Delta', [q_0], F')\]
+    \[\Delta' = \{\langle [q], a \rangle \ra [\Delta(q, a)]\}\]
+    \[F' = \{[q] | q \in F\}\]
+    \begin{enumerate}
+        \item \textbf{Согласованность переходов:}
+        \[q_1 \in [q] \Ra \Delta(q_1, a) \in [\Delta(q, a)]\]
+        \[q_1 \in [q] \Ra q_1 \sim q \Ra \forall w \in \Sigma^* \Delta(q_1, w) \in F \Lra \Delta(q, w) \in F\]
+        \[\forall w = au: \Delta(q_1, au) \in F \Lra \Delta(q, au) \in F\]
+        \[\forall u: \Delta(\Delta(q_1, a), u) \in F \Lra \Delta(\Delta(q, a), u) \in F\]
+        \[\Delta(q_1, a) \sim_M \Delta(q, a)\]
+
+        \item \textbf{Согласованность завершающих состояний:}
+        
+        Пусть \(q \in F\)
+        \[q_1 \sim q \Ra \forall w (\Delta(q_1, w) \in F \Lra \Delta(q, w) \in F)\]
+        \[w = \epsilon \Ra ((\Delta(q_1, \epsilon) = q_1 \in F) \Lra (\Delta(q, \epsilon) = q \in F)) \Ra q_1 \in F\]
+    \end{enumerate}
+
+    Покажем, что \(\Delta([q_0], w) = [\Delta(q_0, w)]\) индукцией по \(|w|\).
+    \begin{enumerate}
+        \item[] \textbf{База:} уже доказана
+        \item[] \textbf{Переход:} Пусть \(w = ua\).
+        \[\Delta([q_0], ua) = \Delta(\Delta([q_0], u), a) = \Delta([\Delta(q_0, u)], a) = [\Delta(\Delta(q_0, u), a)] = [\Delta(q_0, ua)]\]
+        Тогда:
+        \[w \in L(M) \Lra \Delta(q_0, w) \in F \Lra \Delta([q_0], w) \in F' \Lra w \in L(M')\]
+    \end{enumerate}
+
+    Осталось показать, что состояния неэквивалентны.
+    Пусть \([q_1] \sim_M [q_2]\).
+    \[\forall w: \Delta([q_1], w) \in F' \Lra \Delta([q_2], w) \in F'\]
+    \[\forall w: [\Delta(q_1, w)] \in F' \Lra [\Delta(q_2, w)] \in F'\]
+    \[\forall w: \Delta(q_1, w) \in F \Lra \Delta(q_2, w) \in F\]
+    \[q_1 \sim_M q_2\]
+    \[[q_1] = [q_2]\]
+\end{proof}
+
+\begin{definition}
+    \(M\) --- МПДКА, если \(M\) --- ПДКА и \(\nexists M'\), такой, что \(L(M) = L(M'), |Q| > |Q'|\).
+\end{definition}
+
+\begin{theorem}
+    \(M\) --- МПДКА, такой, что \(L(M) = L \Lra\) все состояния недостижимы из стартового и никакие два неэквивалентны.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[\(\Ra\)] Пусть \(M\) --- МПДКА. Если в нем есть два эквивалентных состояния, то строим автомат на \(Q/_{\sim_M}\). Если же какое-то состояние недостижимо, то убираем его, таким образом всегда можно уменьшить число состояний
+        \item[\(\La\)] Пусть в \(M\) нет эквивалентных состояний. Пусть \(\Delta(q_0, w_1) \ne \Delta(q_0, w_2)\)
+        \[\exists u: \Delta(\Delta(q_0, w_1), u) \notin F, \Delta(\Delta(q_0, w_2), u) \in F\]
+        \[\exists u: \Delta(q_0, w_2u) \notin F, \Delta(q_0, w_2u) \in F\]
+        \[\exists u: w_1u \notin L, w_2u \in L\]
+        \[w_1 \not\sim_L w_2\]
+        Тогда \(|\Sigma^*/_{\sim_L}| \ge |Q|\). Однако, \(|Q| \ge |\Sigma^*/_{\sim_L}| \Ra M\) --- минимальный.
+    \end{enumerate}
+\end{proof}
+
+\begin{note}
+    \(|Q| \le |\Sigma^*/_{\sim_L}| \le |Q| \Ra |Q| = |\Sigma^*/_{\sim_L}|\)
+\end{note}
