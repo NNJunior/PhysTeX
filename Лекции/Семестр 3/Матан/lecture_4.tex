@@ -1,0 +1,136 @@
+% !TEX root = ../../../main.tex
+
+\begin{note}
+    Если в условиях Теоремы об обратной функции, \(f \in C^r\), где \(r \in \N \cup \{\infty\}\), то \(f^{-1} \in C^r\).
+\end{note}
+\begin{proof}
+    Ведем индукцию по \(n\)
+    \begin{enumerate}
+        \item[] \textbf{База:} \(n = 1\) --- Теорема об обратной функции
+        \item[] \textbf{Переход:} Если \(f \in C^{n + 1}\), то \(\frac{\partial f_i}{\partial x_j} \in C^n\) и \(f^{-1} \in C^n \Ra \frac{\partial f^{-1}_i}{\partial x_j} \in C^n\), т.е. \(f^{-1} \in C^{n + 1}\)
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    Пусть \(U \subset \R^n\) --- открыто и \(f: U \ra \R^n\) класса \(C^1\). Если \(J_f \ne 0\) на \(U\), то \(f(U)\) открыто
+\end{corollary}
+\begin{proof}
+    Пусть \(b \in f(U), b = f(a)\). По теореме об обратной функции, \(\exists W \subset U, V\) --- открытые, такие, что \(f: W \ra V\) --- дифференцируема. Т.к. \(V \subset f(U) \Ra b \in int\;f(U)\)
+\end{proof}
+
+\begin{definition}
+    Если \(\forall x \in U \exists W_x \subset U\) --- открытое, такое, что \(f|_W\) --- диффеоморфизм, то \(f\) называется локальным диффеоморфизмом.
+\end{definition}
+
+\begin{note}
+    Таким образом мы показали, что если \(f: U \ra \R^n\) класса \(C^1\) с \(J_f \ne 0\), то \(f\) --- локальный диффеоморфизм.
+\end{note}
+
+\begin{note}
+    Верно и обратное.
+\end{note}
+
+\begin{problem}
+    Пусть \(U \subset \R^n\) --- открыто, \(f: U \ra \R^n\) класса \(C^1\) и инъективно. Если \(J_f \ne 0\) на \(U\), то \(f\) --- диффеоморфизм
+\end{problem}
+
+\begin{problem}[Проблема Якобиана]
+    Пусть \(f: \R^n \ra \R^n, f_i\) --- полиномы, причем \(J_f \equiv 1\). Верно ли, что \(f\) инъективна?
+\end{problem}
+
+\begin{example}[Полярные координаты]
+    Пусть \(U = \{(r, \phi): r > 0, 0 < \phi < 2\pi\}, V = \R^2 \setminus \{(x, 0): x \ge 0\}\). Тогда \(g: U \ra V, g(r, \phi) = (r\cos \phi, r\sin \phi)\) --- диффеоморфизм
+\end{example}
+\begin{proof}
+    Покажем, что \(g\) --- биекция. \(\forall (x, y) \in V \exists ! (r, \phi) \in V: g(r, \phi) = (x, y)\). Тогда \(g^{-1}(x, y) = \)
+    \[r = \sqrt{x^2 + y^2}, \phi = \left\{\begin{array}{l}
+        \arctg \frac{y}{x}, y > 0, x \ge 0 \\
+        \pi - \arctg \frac{y}{x}, x < 0 \\
+        2\pi + \arctg \frac{y}{x}, y < 0
+    \end{array}\right.\]
+    Проверять, что \(g^{-1}\) --- диффеоморфизм очень долго и неприятно, поэтмоу воспользуемся теоремой об обратной функции. \(g \in C^1(U), Dg = \left( \begin{array}{cc}
+        \cos & -r\sin\phi \\
+        \sin \phi & r\cos \phi
+    \end{array} \right) \Ra J_g = r > 0\). Следовательно, \(g^{-1} \in C^1(V)\).
+\end{proof}
+
+\begin{problem}
+    Пусть \(U = \{(r, \phi, \psi), r > 0, 0 < \phi < 2\pi, -\frac{\pi}{2} < \psi < \frac{\pi}{2}\}, V = \R^3 \setminus \{(x, 0, z), x \ge 0, z \in \R\}\). Докажите, что \(g: U \ra V\):
+    \[g(r, \phi, \psi) = (r\cos\phi\cos\psi, r\sin\phi\cos\psi, r\sin\psi)\]
+    Является диффеоморфизмом
+\end{problem}
+
+\begin{definition}
+    Если \(g: U \ra V\) --- диффеоморфизм, \(U, V \subset \R^n\) --- открыты, то говорят, что на \(V\) введена криволинейная система координат. Точке \(x\) сопоставляется точка \((u_1, u_2, \dots u_n)\) --- декартова координата \(a = g^{-1}(x)\).
+\end{definition}
+
+\begin{note}
+    Локальный диффеоморфизм при \(n > 1\) необратим.
+\end{note}
+
+\begin{example}
+    \(g: U \ra V\), где \(U = \{(r, \phi): r > 0, \phi \in \R\}, V = \R^2, g(r, \phi) = (r\sin\phi, r\cos\phi)\) не является диффеоморфизмом, хотя \(J_f \ne 0\) (т.к. это не биекция).
+\end{example}
+
+\begin{problem}
+    Пусть \(f: \R^n \ra \R^n\) класса \(C^1\) и \(|f(x) - f(y)| \ge |x - y| \forall x, y \in \R^n\). Докажите, что \(f\) --- диффеоморфизм
+\end{problem}
+
+% Изучим вопрос, при каких условиях множество нулей гладкой функции \(\)
+
+\subsection{Теорема о неявной функции}
+Пусть \(U \subset \R^{n + m}\) --- открыто, \(F: U \ra \R^m, F = (F_1, F_2, \dots F_n)\) дифференцируема в точке \(p = (a, b)\). Тогда матрица Якоби \(DF(p)\) имеет вид
+\[\left( \begin{array}{cccccc}
+    \frac{\partial F_1}{\partial x_1} & \dots & \frac{\partial F_1}{\partial x_n} & \frac{\partial F_1}{\partial y_1} & \dots & \frac{\partial F_1}{\partial y_m} \\
+    \frac{\partial F_2}{\partial x_1} & \dots & \frac{\partial F_2}{\partial x_n} & \frac{\partial F_2}{\partial y_1} & \dots & \frac{\partial F_2}{\partial y_m} \\
+    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+    \frac{\partial F_m}{\partial x_1} & \dots & \frac{\partial F_m}{\partial x_n} & \frac{\partial F_m}{\partial y_1} & \dots & \frac{\partial F_m}{\partial y_m}
+\end{array} \right) = \left( \frac{\partial F}{\partial x}(p), \frac{\partial F}{\partial y}(p) \right)\]
+Где \( \frac{\partial F}{\partial x}(p)\) --- матрица Якоби \(x \mapsto F(x, b)\) в точке \(a\), а \( \frac{\partial F}{\partial y}(p)\) --- матрица Якоби \(y \mapsto F(a, y)\) в точке \(b\).
+
+\begin{theorem}[О неявной функции]
+    Пусть \(U \subset \R^{n + m}\) --- открыто, \(a, b \in U\) и задана \(F: U \ra \R^m\) класса \(C^1\). Если
+    \begin{enumerate}
+        \item \(F(a, b) = 0\)
+        \item \(\det \frac{\partial F}{\partial{y}}(a, b) \ne 0\)
+    \end{enumerate}
+    То существуют открытые \(W \ni a, V \ni b\) и функция \(f: W \times V \subset U\) и \(\forall x, y \in W \times V (F(x, y) = 0 \Lra y = f(x))\).
+\end{theorem}
+\begin{proof}
+    Рассмотрим \(\Phi: U \ra \R^{n + m}, \Phi(x, y) = (x, F(x, y))\). Функция \(\Phi \in C^1(U)\) и
+    \[D\Phi(a, b) = \left( \begin{array}{cccc}
+        E & 0 \\
+        \frac{\partial F}{\partial x}(a, b) & \frac{\partial F}{\partial y}(a, b)
+    \end{array} \right)\]
+    Тогда \(J_\Phi = \det \frac{\partial F}{\partial y}(a, b) \ne 0\), а, значит, по теореме об обратной функции, существуют открытые \(O_1 \ni (a, b), O_2 \ni (a, 0)\), что \(\Phi: O_1 \ra O_2\) --- диффеоморфизм. Из вида \(\Phi\) получаем, что \(\Phi^{-1}(u, v) = (u, g(u, v))\) для некоторой \(g \in C^1\). Композиции \(\Phi^{-1} \circ \Phi, \Phi \circ \Phi^{-1}\) приводят к равенствам
+    \[\begin{array}{cc}
+        (x, y) = \Phi^{-1}(x, F(x, y)) \Ra y = g(x, F(x, y)) & (1) \\
+        (u, v) = \Phi(u, g(u, v)) \Ra v = F(u, g(u, v)) & (2)
+    \end{array}\]
+    Положим \(W = \{x: (x, 0) \in O_2\}\) и функцию \(f(x) = g(x, 0), x \in W\). Тогда \(W\) открыто и \(f \in C^1(W)\). Уменьшая \(W\), если необходимо, можно выбрать открытое \(V \ni b, V \subset \R^n\) так, что \(W \times V \subset O_1\). Пользуясь непрерывностью \(f\), уменьшим \(W\) так, что \(f(W) \subset V\). Проверим заключение теоремы. Пусть фиксирована точка \(x, y \in W \times V\), тогда
+    \begin{enumerate}
+        \item \(F(x, y) = 0 \stackrel{(1)}{\Ra} y = g(x, 0)\), т.е. \(y = f(x)\)
+        \item \(y = f(x) \stackrel{(2)}{\Ra}_{(u, v) = (x, 0)} 0 = F(x, f(x))\)
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}[О неявном дифференцировании]
+    В условиях теоремы о неявной функции, матрица Якоби \(\frac{\partial f}{\partial x}\) на \(W\) имеем вид 
+    \[\frac{\partial f}{\partial x} = -\left( \frac{\partial F}{\partial y} \right)^{-1}\frac{\partial F}{\partial x}\]
+\end{corollary}
+\begin{proof}
+    \(F(x, f(x)) \equiv 0\) на \(W\). Дифференцируя это равенство, получим
+    \[\underbrace{\left( \frac{\partial F}{\partial x} \frac{\partial F}{\partial y} \right)}_{m \times (m + n)} \underbrace{\left( \begin{array}{c}
+        E \\
+        \frac{\partial f}{\partial x}
+    \end{array} \right)}_{(m + n) \times n} = 0 \Lra \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}\frac{\partial F}{\partial x} = 0\]
+    Т.к. \(\det \frac{\partial F}{\partial y} \ne 0\) на \(W\), получаем ответ.
+\end{proof}
+
+\begin{note}
+    В условиях теоремы о неявной функции, если \(F \in C^r\), то и неявно заданная функция \(f \in C^r\) на своей области определения.
+\end{note}
+
+\begin{problem}
+    Докажите, что теоремы о неявной функции и обратной функции эквивалентны.
+\end{problem}
