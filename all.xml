@@ -159,6 +159,7 @@
       <lecture name="Лекция 1" id="3S_DM_1" description="Интегралы на первой лекции... Нам всем конец." date="05.09.25" path="Лекции/Семестр 3/Дискран/lecture_1" setting="Лекции/Семестр 3/Дискран/setting" />
       <lecture name="Лекция 2" id="3S_DM_2" description="Кокнуло" date="11.09.25" path="Лекции/Семестр 3/Дискран/lecture_2" setting="Лекции/Семестр 3/Дискран/setting" />
       <lecture name="Лекция 3" id="3S_DM_3" description="Вроде не кокнуло" date="16.09.25" path="Лекции/Семестр 3/Дискран/lecture_3" setting="Лекции/Семестр 3/Дискран/setting" />
+      <lecture name="Лекция 4" id="3S_DM_4" description="Кокнуло?" date="25.09.25" path="Лекции/Семестр 3/Дискран/lecture_4" setting="Лекции/Семестр 3/Дискран/setting" />
     </subject>
   </semester>
 </all>
