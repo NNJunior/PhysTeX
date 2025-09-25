@@ -1,0 +1,29 @@
+% !TEX root = ../../../main.tex
+\section{Эйлеровость графа}
+\subsection{Гамильтоновость графа}
+\begin{definition}
+  Граф \(G - \)гамильтонов, если \(\exists\) простой цикл, проходящий по всем вершинам графа.
+\end{definition}
+
+\begin{theorem}{(Дирака)}
+
+  Пусть \(G = (V, E), n = |V|, \forall v \in V \ deg \  v \le \frac{n}{2}\). Тогда граф \(G\) гамильтонов.
+\end{theorem}
+
+\begin{definition}
+  \(\varkappa\) - вершинная связность, то есть минимальное количество вершин, которое нужно удалить из графа, чтобы нарушить его связность:
+
+  \[\varkappa(G) = min \{k : \exists W \subseteq V: |W| = k, G |_{V 
+  \setminus W} \text{несвязный}\}\]
+\end{definition}
+\begin{theorem}{(Эрдеш, Хватал)}
+  Пусть \(\varkappa(G) \ge \alpha(G)\). Тогда \(G\) гамильтонов. 
+  
+\end{theorem}
+
+\begin{note}
+В 2 предыдущих теоремах связность графа следует из условия. В теорема Дирака 
+\end{note}
+
+
+
