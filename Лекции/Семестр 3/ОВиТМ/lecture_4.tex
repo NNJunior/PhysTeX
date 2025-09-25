@@ -1,0 +1,63 @@
+% !TEX root = ../../../main.tex
+
+
+\begin{definition}
+    Пусть \(\mathcal{X} \subset 2^\Omega\). Тогда \(m: \mathcal{X} \ra [0, +\infty)\) называется мерой, если она аддитивна, т.е.
+    \[A_1, A_2, \dots A_n \in X, A_i \cap A_j = \emptyset \Ra m(A_1 \sqcup A_2 \sqcup \dots \sqcup A_n) = \sum_{i = 1}^n m(A_i)\]
+\end{definition}
+
+\begin{definition}
+    Отображение \(m: \mathcal{X} \ra 2^\Omega\) называется субаддитивным, если 
+    \[\forall A_1, A_2, \dots A_n, A \subset \bigcup_{i = 1}^n A_i \Ra m\left( A  \right) \le \sum_{i = 1}^n m(A_i)\]
+\end{definition}
+
+\begin{definition}
+    Отображение \(m: \mathcal{X} \ra 2^\Omega\) называется супераддитивным, если 
+    \[\forall A_1, A_2, \dots A_n \in X, A_i \cap A_j = \emptyset, A \supset \bigsqcup_{i = 1}^n A_i  \Ra m\left( A \right) \ge \sum_{i = 1}^n m(A_i)\]
+\end{definition}
+
+\begin{proposition}
+    Пусть \(R\) --- кольцо. Тогда \(m\) --- мера на \(R\) тогда и только тогда, когда \(m\) субаддитивна и супераддитивна.
+\end{proposition}
+\begin{proof}
+    Т.к. следствие \(\La\) очевидно, докажем только \(\Ra\).
+    \begin{enumerate}
+        \item[] \textbf{Субаддивность меры:} Пусть \(A_1, A_2, \dots A_n \in R, A \subset \bigcup_{i = 1}^n A_i\). По утверждению об общих кирпичах, \(\exists B_i: B_i \cap B_j = \emptyset: A_i = \bigsqcup_{s \in \Gamma_i} B_s\). Тогда \(m(A) = \sum_{i \in I} m(B_i)\le \sum_i m(B_i) \le \sum_{i = 1}^n m(A_i)\).
+        \item[] \textbf{Супераддивность меры:} Пусть \(A_1, A_2, \dots A_n \in R, A \supset \bigsqcup_{i = 1}^n A_i\). По утверждению об общих кирпичах, \(\exists B_i: B_i \cap B_j = \emptyset: A_i = \bigsqcup_{s \in \Gamma_i} B_s\). Тогда \(m(A) = \sum_{i \in I} m(B_i)\ge \sum_{i = 1}^n m(A_i)\).
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Мера называется \(\sigma\)-аддитивной, если \(\forall A_1, A_2, \dots\) верно:
+    \[m\left( \bigsqcup_{i = 1}^\infty A_i \right) = \sum_{i = 1}^\infty m(A_i)\]
+\end{definition}
+
+\begin{definition}
+    Отображение \(m: \mathcal{X} \ra 2^\Omega\) называется \(\sigma\)-субаддитивным, если 
+    \[\forall A_1, A_2, \dots, A \subset \bigcup_{i = 1}^\infty A_i \Ra m\left( A  \right) \le \sum_{i = 1}^\infty m(A_i)\]
+\end{definition}
+
+\begin{definition}
+    Отображение \(m: \mathcal{X} \ra 2^\Omega\) называется \(\sigma\)-супераддитивным, если 
+    \[\forall A_1, A_2, \dots \in X, A_i \cap A_j = \emptyset, A \supset \bigsqcup_{i = 1}^\infty A_i  \Ra m\left( A \right) \ge \sum_{i = 1}^\infty m(A_i)\]
+\end{definition}
+
+\begin{proposition}
+    Мера \(m: S \ra [0, +\infty)\) является \(\sigma\)-аддитивной тогда и только тогда, когда она \(\sigma\)-субаддитивна.
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(\La\)] Следует из антисимметричности \(\ge\).
+        \item[\(\Ra\)] Докажем \(\sigma\)-субаддитивность для \(A = \bigcup^\infty A_i, A, A_i \in S\). Заменим \(A_i \ra A_i \cap A\), тогда \(\sum_{i = 1}^\infty m(A_i) \) не увеличится. Заменим \(A_i \ra A_i \setminus \bigcup_{j < i} A_j\). Тогда 
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    Пусть \(m: S \ra [0, +\infty)\) --- мера. Тогда \(\exists ! \nu: R(S) \ra [0, +\infty)\), такая, что \(\nu|_S = m\). Более того, \(\sigma\)-аддитивность наследуется
+\end{proposition}
+\begin{proof}
+    \[R(S) = \left\{ \bigsqcap^n_{i = 1} A_i | n \in \N, A_k \in S \right\}\]
+    Положим \(\nu\left( \bigsqcup_{i = 1}^n A_i \right) = \sum_{i = 1}^n m(A_i)\).
+    \[\bigsqcup_{i = 1}^n A_i = \bigsqcup_{i = 1}^n B_i\]
+    \[\bigsqcup_{i = 1}^n A_i = \bigsqcup_{i = 1}^n B_i\]
+\end{proof}
