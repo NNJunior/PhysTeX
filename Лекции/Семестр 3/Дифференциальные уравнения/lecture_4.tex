@@ -1,0 +1,44 @@
+% !TEX root = ../../../main.tex
+
+\section{Существование решений задачи Коши}
+\begin{problem}[Коши]
+    Пусть \(\Gamma \subset \R \times \R^n\) --- открыто, \((t_0, x_0) \in \Gamma, f: \Gamma \ra \R^n\).
+    Найти все \(x\), удовлетворяющие системе:
+    \[\left\{\begin{array}{l}
+        x' = f(x, t) \\
+        x(t_0) = x_0
+    \end{array}\right. = (1)\]
+\end{problem}
+
+\begin{theorem}[О существовании и единственности решения задачи Коши]
+    В задаче Коши \((1)\), Положим \(r > 0: B = B((t_0, x_0), r) \subset \Gamma, M = \sup_{(t, x) \in B}|f(t, x)|, d = \frac{r}{\sqrt{1 + M^2}}\). Тогда, если \(f\) --- непрерывна, а \(\frac{\partial f_i}{\partial x_j}\) существуют и непрерывны, то 
+    \begin{enumerate}
+        \item \(\exists\) решение \(x: (t_0 - d, t_0 + d) \ra \R^n\) задачи Коши \((1)\).
+        \item \(\forall\) решения \(y: I \ra \R^n\) задачи Коши \((1)\), верно: \(y(t) = x(t) \forall t \in I \cap (t_0 - d, t_0 + d)\).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Положим \(T \subset (t_0 - d, t_0 + d), t_0 \in T, R = \sqrt{r^2 - d^2}, L = \max_{(t, x) \in B}\left\|\frac{\partial f_i}{\partial x_j}\right\|, X = C(T, B(x_0, R))\). Тогда:
+    \begin{enumerate}
+        \item \(x \in X \Ra (t, x(t)) \in B \forall t \int T\).
+        \[\forall t \in T: |t - t_0|^2 + |x(t) - x_0|^2 \le d^2 + r^2 - d^2 = r^2\]
+        \item Рассмотрим \(\Phi: X \ra X, \Phi(x)(t) = x_0 + \int_{t_0}^t f(s, x(s))ds, x \in X, t \in T\).
+        \[\forall x \in X, t \in T: |\Phi(x)(t) - x_0| = @|\left| \int_{t_0}^t f(s, x(s))ds \right| \le \left| \int_{t_0}^{t} |f(s, x(s))|ds \right| \le \left| \int_{t_0}^r M ds \right| \le \]
+        \[Md = M \frac{r}{\sqrt{1 + M^2}} = R\]
+        \[M^2r^2 = R^2(1 + M^2)\]
+        \[M^2r^2 = (r^2 - d^2)(1 + M^2)\]
+        \[0 = r^2 - d^2 - d^2M^2\]
+        \[d^2(1 + M^2) = r^2\]
+        \item \(x \in X \La x \in C(T, R^n)\).
+        \[x = \Phi(x) \Ra x(t) \equiv x_0 + \int_{t_0}^t f(s, x(s))ds \Lra \left\{\begin{array}{l}
+            x \in C(T, \R^n) \\
+            x'(t) \equiv f(t, x(t)) \\
+            x(t_0) = x_0
+        \end{array}\right. \Lra \left\{\begin{array}{l}
+            x \in C(T, \R^n) \\
+            \text{\(x\) --- решение (1)}
+        \end{array}\right.\]
+        Заметим, что достаточно доказать, что \(x \in X\), то есть, что \(|x(t) - x_0| \le R \forall t \in T\).
+        Пусть \(\exists t \in T: t > t_0: |x(t) - x_0| > R\). Тогда \(\exists \tau > t_0\)
+    \end{enumerate}
+\end{proof}
