@@ -1,0 +1,146 @@
+% !TEX root = ../../../main.tex
+
+\section{Гладкие многообразия и гладкие отображения}
+
+\subsection{Соглашения}
+\begin{enumerate}
+    \item Под окрестностью точки будем понимать любое открытое множество, содержащее эту точку
+    \item Зафиксируем \(r \in \N \cup \{\infty\}\). Под гладкостью функции далее будем понимать принадлежность ее классу \(C^r\), т.е. под ''гладкостью'' понимается \(C^r\)-гладкость
+\end{enumerate}
+
+\subsection{Основные определения}
+\begin{definition}
+    Пусть \(m, n \in \N, m \le n\). Множество \(M\) в \(\R^n\) называется гладким \(m\)-мерным многообразием, если \(\forall p \in M \exists W \ni p\) --- открытое в \(\R^n\), \(\exists V \subset \R^m\) --- открытое и \(\phi: V \ra \R^n\), такое, что
+    \begin{enumerate}
+        \item \(\phi\) --- гладкое
+        \item \(\phi: V \ra M \cap W\) --- гомеоморфизм
+        \item \(rk\;D\phi(x) = m\) на \(V\)
+    \end{enumerate}
+    При этом, \(\phi\) называется локальной параметризацией в окрестности \(p\), а \(\phi^{-1}: M \cap W \ra V\) называется картой.
+\end{definition}
+
+\begin{example}
+    Параметризация плоскости \(\Pi_p\), проходящей через \(p\):
+    \[\left( \begin{array}{c}
+        x \\
+        y \\
+        z
+    \end{array} \right) = \underbrace{\left( \begin{array}{c}
+        x_0 \\
+        y_0 \\
+        z_0
+    \end{array} \right)}_p + u\left( \begin{array}{c}
+        a_1 \\
+        b_1 \\
+        c_1
+    \end{array} \right) + v\left( \begin{array}{c}
+        a_2 \\
+        b_2 \\
+        c_2
+    \end{array} \right)\]
+    Где векторы \(\left( \begin{array}{c}
+        a_1 \\
+        b_1 \\
+        c_1
+    \end{array} \right), \left( \begin{array}{c}
+        a_2 \\
+        b_2 \\
+        c_2
+    \end{array} \right)\) неколлинеарны.
+\end{example}
+
+\begin{example}
+    \[S^2 = \{(x, y, z) | x^2 + y^2 + z^2 = 1\}\]
+    Параметризация сферы в окрестности любой точки \(p \in S^2 \setminus \{Oxz, x \ge 0\}\).
+    \[r: (0, 2\pi)\times\left( -\frac{\pi}{2}, \frac{\pi}{2} \right) \ra \R^3, r(\phi, \psi) = (\cos\phi\cos\psi, \sin\phi\cos\psi, \sin\psi)\]
+    \[Dr = \left( \begin{array}{cc}
+        -\sin\phi\cos\psi & -\cos\phi\sin\psi \\
+        \cos\phi\cos\psi & -\sin\phi \sin\psi \\
+        0 & \cos\psi \\
+    \end{array} \right) \Ra rk\;Dr = 2\]
+\end{example}
+
+\begin{problem}
+    Зафершите доказательство
+\end{problem}
+
+\begin{problem}
+    Докажите, что гладкое \(n\)-мерное многообразие в \(\R^n\) открыто.
+\end{problem}
+
+\begin{example}
+    Пусть \(V\) открыто в \(\R^m\) и функция \(f: V \ra \R^{n - m}\) гладкая. Тогда \(\Gamma_f = \{(x, f(x)) : x \in V\}\) --- гладкое \(m\)-мерное многообразием в \(\R^n\)
+\end{example}
+\begin{proof}
+    Рассмотрим \(\phi: V \ra \R^n, \phi(x) = (x, f(x))\), тогда \(\phi\) --- гладкая, причем \(D\phi = \left( \begin{array}{c}
+        E \\
+        Df
+    \end{array} \right)\) имеет ранг \(m\) и обратное отображение \(\psi: \Gamma_f \ra V\), где \(\psi(x, f(x)) = x\) --- непрерывно. Следовательно, \(\phi\) является параметризацией \(\Gamma_f\) в области каждой точки.
+\end{proof}
+
+\begin{theorem}
+    Следующие утверждения эквивалентны:
+    \begin{enumerate}
+        \item \(M\) --- гладкое \(m\)-мерное многообразие в \(\R^n\)
+        \item \(\forall p \in M \exists U \ni p, W\) --- открытые в \(\R^n\) и диффеоморфизм \(\Phi: U \ra W\), такой, что \(\Phi(M \cap U) = W \cap (\R^m \times \{0\})\) (\(0 \in \R^{n - m}\)).
+        \item \(\forall p \in M \exists U \ni p\) --- открытое в \(\R^n\) и гладкая функция \(F: U \ra \R^{n - m}\), такая, что \(M \cap U = F^{-1}(0)\) и \(rk\;Df(x) = n - m \forall x \in M \cap U\).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\((1) \Ra (2)\)] Пусть \(\phi: V \ra \R^n\) --- локальная параметризация \(M\) в окрестности \(p = \phi(a)\). По определению, столбцы матрицы \(D\phi(a)\) линейно независимы. Дополним их до базиса. Следовательно, найдется матрица \(A \in M_{n \times (n - m)}\), что \(\det\left( \begin{array}{cc}
+            D\phi(a) & A
+        \end{array} \right)\ne 0\). Рассмотрим \(f: V \times \R^{n - m} \ra \R^n, F(x, y) = \phi(x) + Ay\). Эта функция гладкая и \(DF(a, 0) = \left( \begin{array}{cc}
+            DF(a) & A
+        \end{array} \right)\) --- невырожденная. Тогда по теореме об обратной функции, \(\exists \tilde{V} \subset V \times \R^{n - m}, (a, 0) \in \tilde{V}, \tilde{U}\) --- открытые в \(\R^n\), т.ч. \(F: \tilde{V} \ra \tilde{U}\) является диффеоморфизмом. Пусть \(V_0 = \{x \in \R^n: (x, 0) \in \tilde{V}\}\). Тогда \(V_0\) открыто, а значит, \(\phi(V_0) = F(V_0 \times \{0\})\) открыто в \(M\) (\(\phi: V \ra \phi(V)\) --- гомеоморфизм). Найдется открытое \(U_0 \in \R^n\), т.ч. \(M \cap U_0 = \phi(V_0)\). Положим \(U = U_0 \cap \tilde{U}, W = F^{-1}(U), \Phi = F^{-1}\). Покажем, что \(\Phi\) --- искомое отображение. \(U \ni p, \Phi: U \ra W\) --- диффеоморфизм, как сужение диффеоморфизма \(F^{-1}\). \(\Phi(M \cap U) = \Phi(\phi(V_0)) = F^{-1}(F(V_0 \times \{0\})) = V_0 \times \{0\} = W \cap (\R^m \times \{0\})\)
+        \item[\((2) \Ra (3)\)] Пусть \(\Phi = (\Phi_1, \dots \Phi_n)\) на \(U\), положим \(F = (\Phi_{m + 1}, \dots \Phi_n)\). Докажем, что полученная функция удовлетворяет пункту \((3)\). \(x \in M \cap U \Lra F(x) = 0, rk\;DF = n - m\), т.к. \(\Phi\) --- диффеоморфизм.
+        \item[\((3) \Ra (1)\)] Зафиксируем \(p \in M\). Без ограничения общности, можно считать, что последние \(n - m\) столбцов \(DF(p)\) линейно независимы (иначе заменим \(F\) на композицию с перестановкой координат). Положим \(\R^n = \R^m_x \times \R^{n - m}_y, p = (a, b)\). Тогда \(\frac{\partial F}{\partial y}\) невырождена и \((x, y) \in M \cap U \Lra F(x, y) = 0\). Тогда по теореме о неявной функции, \(\exists V' \ni a\) --- открытое в \(\R^n, \exists V''\) --- открытое в \(\R^{n - m}, \exists V_0 = V' \times V''\) и \(f: V' \ra \R^{n - m}\), т.ч. \(M \cap U = \{(x, y): F(x, y) = 0\} = \{(x, f(x)): x \in V'\} = \Gamma\). Пользуясь предыдущим утверждением, получаем желаемое.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    Покажем, что \(S^{n - 1}\) --- гладкое \((n-1)\)-мерное многообразие в \(\R^n\)
+\end{example}
+\begin{proof}
+    \(F: \R^n \setminus \{0\} \ra \R, F(x) = |x|^2 - 1 \nabla F(x) = 2x \ne 0\). Следовательно, \(S^{n - 1} = F^{-1}(0)\) --- \((n-1)\)-мерное многообразие
+\end{proof}
+
+\subsection{Гладкие отображения}
+\begin{definition}[Гладкость по Милнеру]
+    Пусть \(X \subset \R^n, Y \subset \R^l, f: X \ra Y\). Отображение \(f\) называется гладким, если \(\forall x \in X \exists U\) --- окрестность \(x\) и гладкая функция \(F: U \ra \R^l\), т.ч. \(F|_{X \cap U} = f|_{X \cap U}\). Функция \(F\) называется гладким продолжением \(f\) в окрестности \(x\).
+\end{definition}
+
+\begin{note}
+    Если \(f: X \ra Y, g: Y \ra Z\) --- гладкие по Милнеру, то их композиция тоже гладкая.
+\end{note}
+
+Пусть \(M\) --- гладкое \(m\)-мерное многообразие в \(\R^n\)
+\begin{lemma}
+    Если \(\phi: V \ra \R^n\) --- локальная параметризация в окрестности \(p\), \(\phi(V) = U_0\), то \(\phi^{-1}: U_0 \ra V\) --- гладкое.
+\end{lemma}
+\begin{proof}
+    Из доказательства пункта 2 предыдущей теоремы следует, что диффеоморфизм \(\Phi: U \ra W\) можно выбрать так, что \(M \cap U \subset U_0\). Тогда \(\Phi(q) = (\phi^{-1}(q), 0)\) для всех \(q \in M \cap U\). Сужая \(W\), если необходимо, можно считать, что \(W = W' \times W''\), где \(W'\) --- открытое в \(\R^m, W''\) --- открытое в \(\R^{n - m}\). Рассмотрим \(\pi: W \ra W', \pi(x, y) = x\) --- проектирование на \(W'\). Положим \(f = \pi \circ \Phi: U \ra \R^m\). Тогда \(F\) гладкое и \(F|_{M \cap U} = \phi^{-1}|_{M \cap U}\). Поскольку такие рассуждения можно провести в окрестности каждой точки из \(U_0\), это доказывает, что отображение \(\phi^{-1}\) гладкое.
+\end{proof}
+
+\begin{corollary}
+    Отображение \(\phi^{-1}\) локально липшицево, т.е. \(\forall p \in U_0 \exists C > 0 \exists W_0 \subset U_0\) --- открытое в \(M\) и содержащее \(p\), верно \(\forall x, y \in W_0 |\phi^{-1}(x) - \phi^{-1}(y)| \le C|x - y|\)
+\end{corollary}
+\begin{proof}
+    Рассмотрим гладкое продолжение \(F = (F_1, F_2)\) функции \(\phi^{-1}\) в окрестности \(p\). Тогда \(\frac{\partial F_i}{\partial x_j}\) ограничены в некотором шаре \(B\) с центром \(p\). Тогда \(\exists C > 0 \forall x, y \in B |F(x) - F(y)| \le C|x - y| \Ra \forall x, y \in B \cap U_0 = W_0 |\phi^{-1}(x) - \phi^{-1}(y)| \le C|x - y|\)
+\end{proof}
+
+\begin{definition}
+    Пусть \(M\) --- гладкое многообразие. Отображение \(f: M \ra N\) называется дифференцируемым, если \(f\) --- биекция, \(f, f^{-1}\) --- гладкие.
+\end{definition}
+
+\begin{corollary}
+    Пусть \(\phi: V \ra U_0\) --- параметризация окрестности \(U_0\) в \(M\). Тогда \(\phi\) является диффеоморфизмом
+\end{corollary}
+
+\begin{note}
+    \(U_0:\) --- точке\(q \in U_0\) сопостовляется \((U_1, \dots U_m)\) точки \(\phi^{-1}(q)\) в \(\R^m\)
+\end{note}
+
+\begin{corollary}[О функциях перехода]
+    Пусть \(\phi: V \ra \R^n \psi: W \ra \R^n\) --- локальная параметризация, \(O = \phi(V) \cap \psi(W) \ne \emptyset\). Тогда \(g: \psi^{-1}(O) \ra \phi^{-1}(O), g = \phi^{-1}\circ\psi\) является диффеоморфизмом.
+\end{corollary}
