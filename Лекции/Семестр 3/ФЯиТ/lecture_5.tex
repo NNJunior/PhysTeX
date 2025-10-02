@@ -1,0 +1,160 @@
+% !TEX root = ../../../main.tex
+
+\section{Грамматики}
+
+\begin{definition}
+    \(G = \langle N, \Sigma, P, S \rangle\), где 
+    \begin{enumerate}
+        \item \(N\) --- алфавит, называется множеством нетерминалов
+        \item \(\Sigma\) --- алфавит, называется множеством терминалов
+        \item \(P \subset (N \cup \Sigma)^+ \setminus \Sigma^* \times (N \cup \Sigma)^*\)
+        \item \(S\) --- стартовый нетерминал
+    \end{enumerate}
+    Называется грамматикой
+\end{definition}
+
+\begin{definition}
+    \(\vdash_G\) --- наименьшее транзитивное отношение, такое, что 
+    \[\forall \alpha \ra \beta, \phi, \psi \in (N \cup \Sigma)^*: \phi \alpha \psi \vdash_G \phi\beta\psi\]
+\end{definition}
+
+\begin{corollary}
+    Тогда \(w \in L(G) \Lra S \vdash w\)
+\end{corollary}
+
+\subsection{Иерархия Хомского}
+\begin{definition}[Порождающие грамматики]
+    Порождающие грамматики --- класс вообще всех грамматик
+\end{definition}
+
+\begin{definition}[Контекстно-зависимые грамматики]
+    Контекстно-зависимые грамматики --- такие, в которых все правила имеют вид \(\psi A \phi \ra \psi \alpha \phi, \alpha \ne \epsilon\)
+\end{definition}
+
+\begin{definition}[Контекстно-свободные грамматики]
+    Контекстно-свободные грамматики --- такие, в которых все правила имеют вид \(A \ra \alpha\)
+\end{definition}
+
+\begin{definition}[Праволинейные грамматики]
+    Контекстно-свободные грамматики --- такие, в которых все правила имеют вид \(A \ra wB, A \ra w\).
+\end{definition}
+
+\begin{theorem}
+    Множество автоматных языков равно множеству языков, задаваемых праволинейными грамматиками.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[\(\subset\)] Пусть \(G = \langle N, \Sigma, P, S \rangle\) --- наша грамматика, \(M = \langle N \cup \{q_f\}, \Sigma, \Delta, S, \{q_f\} \rangle\), \(\Delta = \{\langle A, w \rangle \ra B | A \ra wB\} \cup \{\langle A, w \rangle \ra q_f | A \ra w\}\). Хотим доказать два утверждения:
+        
+        \begin{enumerate}
+            \item \(<A, w> \vdash_M <B, \epsilon> \Lra A \vdash_G wB\)
+            \item \(<A, w> \vdash_M <q_f, \epsilon> \Lra A \vdash_G w\)
+        \end{enumerate}
+        Докажем оба следствия вправо. Ведем индукцию по \(|\vdash_M|\) --- количеству шагов в выводе автомата.
+        \begin{enumerate}
+            \item[] \textbf{База:}
+            \[<A, w> \vdash_0 <B, \epsilon> \Ra A = B, w = \epsilon \Ra A \vdash_{G, 0} B = A\]
+            \[<A, w> \vdash_1 <q_f, \epsilon> \Ra <A, w> \ra q_f \in \Delta \Ra A \ra w \in P \Ra A \vdash w\]
+            \item[] \textbf{Переход:}
+            Положим, для общности, \(\alpha\) так, что \(<A, w> \vdash <\alpha, \epsilon> (\alpha \in N \cup \{q_0\})\)
+            Положим \(w = uv\)
+            \[<A, uv> \vdash_1 <C, v> \vdash <\alpha, \epsilon>\]
+            \[<A, uv> \ra C \in \Delta \Ra A \vdash_1 uC\]
+            Но, по предположению индукции:
+            \[\left[\begin{array}{l}
+                C \vdash vB, B \in N (\alpha = B) \Ra A \vdash_G uvB\\
+                C \vdash v, \alpha = q_f  \Ra A \vdash_G w\\
+            \end{array}\right.\]
+        \end{enumerate}
+        Докажем оба следствия влево. Ведем индукцию по \(|\vdash_G|\) --- длине вывода в грамматике
+        \begin{enumerate}
+            \item[] \textbf{База:}
+            \[A \vdash_0 wB \Ra A = B, w = \epsilon \Ra <A, w> \vdash_0 <B, \epsilon>\]
+            \[A \vdash_1 w \Ra A \ra w \in P \Ra <A, w> \vdash_1 <q_s, \epsilon>\]
+
+            \item[] \textbf{Переход:} 
+            Положим, для общности \(\alpha\) так, что \(A \vdash w\alpha, \alpha \in N \cup \{\epsilon\}\)
+            \[A \vdash_1 uC \vdash uv\alpha, w = uv\]
+            Тогда \(<A, u> \vdash <C, \epsilon>\), и по предположению индукции
+            \[\left[\begin{array}{l}
+                <C, v> \vdash <B, \epsilon>, B = \alpha \\
+                <C, v> \vdash <q_f, \epsilon>, \alpha = \epsilon
+            \end{array}\right.\]
+        \end{enumerate}
+
+        Тогда \(w \in L(G) \Lra S \vdash w \Lra <S, w> \vdash <q_f, \epsilon> \Lra w \in L(M)\)
+
+        \item[\(\supset\)] Можно считат, что исходный автомат с одним завершающим состоянием, \(M = <Q, \Sigma, \Delta, q_0, F = \{q_s\}>\). Построим по нему грамматику \(G = <Q, \Sigma, P, q_0>\), такую, что
+        \[P = \{q_1 \ra wq_2 | <q_1, w> \ra q_2 \in \Delta\} \cup \{q \ra \epsilon | q \in F\}\]
+        Теперь, построим по грамматике \(G\) автомат \(M'\). Тогда \(M' = <Q, \Sigma, \Delta', q_0, \{q_f'\}>\), где \(\Delta' = \Delta \cup \{<q_f, \epsilon> \ra q_f'\}\). Тогда \(w \in L(M) \Lra <q_0, w> \vdash_M <q_f, \epsilon> \Lra <q_0, w> \vdash{M'} <q_f, \epsilon> \vdash_1 <q_f', \epsilon> \Lra w \in L(M')\). Но тогда \(L(M) = L(M')\).
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    Пусть грамматика у нас следующая:
+    \begin{enumerate}
+        \item \(S \ra abC\)
+        \item \(C \ra a\)
+        \item \(C \ra ab\)
+        \item \(C \ra bD\)
+        \item \(D \ra dE\)
+    \end{enumerate}
+    Тогда для данной грамматики, автомат следующий:
+    \begin{center}\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+        \node[state,initial] (S)  {\(S\)};
+        \node[state] (C) [right=of S] {\(C\)};
+        \node[state] (D) [below=of C] {\(D\)};
+        \node[state] (E) [right=of D] {\(E\)};
+        \node[state,accepting] (q_f) [right=of C] {\(q_f\)};
+
+        \path[->] 
+            (S) edge node {\(ab\)} (C)
+            (C) edge [bend left] node {\(a\)} (q_f)
+            (C) edge [bend right] node {\(ab\)} (q_f)
+            (C) edge node {\(b\)} (D)
+            (D) edge node {\(d\)} (E)
+            ;
+    \end{tikzpicture}\end{center}
+\end{example}
+
+\subsection{Контекстно-свободные граммаики}
+
+Далее, для краткости, будем обозначать контекстно-свободные грамматики за КС
+
+\begin{definition}
+    Дерево вывода --- последовательность слов из \((N \cup \Sigma)^+\), каждый из элементов которой получается при переходе грамматики.
+\end{definition}
+
+\begin{definition}
+    Дерево называется право(лево)сторонним, если для каждого слова, дерево его вывода единственно
+\end{definition}
+
+\begin{definition}
+    Существенно неоднозначный язык --- язык, которого не существует однозначной КС-грамматики, распознающей этот язык.
+\end{definition}
+
+\begin{problem}
+    Доказать, что языки \(\{a^kb^lc^m | k = l\}\), \(\{a^kb^lc^m | m = l\}\) существенно неоднозначные.
+\end{problem}
+
+\subsubsection{Нормальная форма Хомского}
+
+\begin{definition}
+    КС грамматика \(G\) находится в нормальной форме Хомского, если все правила имеют вид:
+    \begin{enumerate}
+        \item \(A \ra BC, B \ne S, C \ne S\)
+        \item \(A \ra a, a \in \Sigma\)
+        \item \(S \ra \epsilon\)
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    \(D \in N\) называеся порождающим, если \(\exists w: D \vdash w\).
+\end{definition}
+
+\begin{proposition}
+    Пусть нам дана грамматика \(G_0\). Рассмотрим грамматику \(G_1\), такую, что \(N_1 = N_0 \setminus \{D | D \text{ непорождающий}\}\). Тогда \(L(G_0) = L(G_1)\).
+\end{proposition}
+\begin{proof}
+    Пусть \(\exists w \in L(G_0) \setminus L(G_1)\). \(S \vdash_{G_0} w \Ra \exists D\) --- непорождающий, такой, что \(S \vdash uDv \vdash uxv = w \Ra D\) --- порождающий, противоречие. Вложение в другую сторону очевидно.
+\end{proof}
