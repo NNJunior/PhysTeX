@@ -32,23 +32,27 @@
 
 \begin{definition}[Задача Коши]
     Пусть даны \(x_0, \stackrel{.}{x_0}, \stackrel{..}{x_0}, \dots x_0^{(k)} \in \R^n, t_0 \in \R\).
-    \[\left\{\begin{array}{l}
-        F(t, x, \stackrel{.}{x}, \stackrel{..}{x}, \dots x^{(k)}) = 0\\
-        x(t_0) = x_0,  \stackrel{.}{x}(t_0) = \stackrel{.}{x_0}, \dots x^{(k)}(t_0) = x_0^{(k)}
-    \end{array}\right.\]
+    \begin{equation}
+        \begin{cases}
+            F(t, x, \stackrel{.}{x}, \stackrel{..}{x}, \dots x^{(k)}) = 0\\
+            x(t_0) = x_0,  \stackrel{.}{x}(t_0) = \stackrel{.}{x_0}, \dots x^{(k)}(t_0) = x_0^{(k)}    
+        \end{cases}
+    \end{equation}
     Называется Задаей Коши.
 \end{definition}
 
 \begin{note}
-    \(x(\cdot)\) --- решение задачи Коши, если \(x(\cdot)\) --- решение \((1)\) и \(x(t_0) = x_0,  \stackrel{.}{x_0}(t_0) = \stackrel{.}{x_0}, \dots x_0^{(k)}(t_0) = x_0^{(k)}\)
+    \(x(\cdot)\) --- решение задачи Коши, если \(x(\cdot)\) --- решение (1.1) и \(x(t_0) = x_0,  \stackrel{.}{x_0}(t_0) = \stackrel{.}{x_0}, \dots x_0^{(k)}(t_0) = x_0^{(k)}\)
 \end{note}
 
 \begin{theorem}
     Пусть \(n \in \N, k = 1, \Gamma = \subset \R \times \R^n, (t_0, x_0) \in \Gamma \Ra \)
-    \[(2)\left\{\begin{array}{l}
-        \stackrel{.}{x} = f(t, x) \\
-        x(t_0) = x_0
-    \end{array}\right.\]
+    \begin{equation}
+        \begin{cases}
+            \stackrel{.}{x} = f(t, x) \\
+            x(t_0) = x_0    
+        \end{cases}
+    \end{equation}
     Рассмотрим \(B((t_0, x_0), r) = \{(t, x) : |t - t_0|^2 + |x - x_0|^2 \le r^2\} \subset \Gamma\). Пололжим \(M = \sup_{(t, x) \in B}(f(t, x)), d = \frac{r}{\sqrt{1 + M^2}}\)
 
     \(\Gamma\) --- открыто, \(f\) --- непрерывно \(\Ra \exists \) решение \(x: (t_0 - d, t_0 + d) \ra \R^n\)
@@ -70,7 +74,7 @@
 \end{proof}
 
 \begin{theorem}
-    Пусть \(\Gamma\) --- открыто, \(f\) --- непрерывна, \(\frac{\delta f_i}{\delta x_j} \exists\) и непрерывна \(\Ra \exists \) решение \(x\) задачи Коши \((2)\) и \(\forall\) решения \(\tilde{x}: I \ra \R^n\) задачи Коши \((2)\) \(x(t) = \tilde{x}(t), t \in I \cap (t_0 - d, t_0 + d)\).
+    Пусть \(\Gamma\) --- открыто, \(f\) --- непрерывна, \(\frac{\delta f_i}{\delta x_j} \exists\) и непрерывна \(\Ra \exists \) решение \(x\) задачи Коши (1.2) и \(\forall\) решения \(\tilde{x}: I \ra \R^n\) задачи Коши (1.2) \(x(t) = \tilde{x}(t), t \in I \cap (t_0 - d, t_0 + d)\).
     % \[f(t, x) = \left(\begin{array}{c}
     %     f_1(t, x) \\
     %     f_2(t, x) \\

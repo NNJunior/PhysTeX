@@ -4,17 +4,19 @@
 \begin{problem}[Коши]
     Пусть \(\Gamma \subset \R \times \R^n\) --- открыто, \((t_0, x_0) \in \Gamma, f: \Gamma \ra \R^n\).
     Найти все \(x\), удовлетворяющие системе:
-    \[\left\{\begin{array}{l}
-        x' = f(x, t) \\
-        x(t_0) = x_0
-    \end{array}\right. = (1)\]
+    \begin{equation}
+        \begin{cases}
+            x' = f(x, t) \\
+            x(t_0) = x_0
+        \end{cases}
+    \end{equation}
 \end{problem}
 
 \begin{theorem}[О существовании и единственности решения задачи Коши]
-    В задаче Коши \((1)\), Положим \(r > 0: B = B((t_0, x_0), r) \subset \Gamma, M = \sup_{(t, x) \in B}|f(t, x)|, d = \frac{r}{\sqrt{1 + M^2}}\). Тогда, если \(f\) --- непрерывна, а \(\frac{\partial f_i}{\partial x_j}\) существуют и непрерывны, то 
+    В задаче Коши (4.1), Положим \(r > 0: B = B((t_0, x_0), r) \subset \Gamma, M = \sup_{(t, x) \in B}|f(t, x)|, d = \frac{r}{\sqrt{1 + M^2}}\). Тогда, если \(f\) --- непрерывна, а \(\frac{\partial f_i}{\partial x_j}\) существуют и непрерывны, то 
     \begin{enumerate}
-        \item \(\exists\) решение \(x: (t_0 - d, t_0 + d) \ra \R^n\) задачи Коши \((1)\).
-        \item \(\forall\) решения \(y: I \ra \R^n\) задачи Коши \((1)\), верно: \(y(t) = x(t) \forall t \in I \cap (t_0 - d, t_0 + d)\).
+        \item \(\exists\) решение \(x: (t_0 - d, t_0 + d) \ra \R^n\) задачи Коши (4.1).
+        \item \(\forall\) решения \(y: I \ra \R^n\) задачи Коши (4.1), верно: \(y(t) = x(t) \forall t \in I \cap (t_0 - d, t_0 + d)\).
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -36,7 +38,7 @@
             x(t_0) = x_0
         \end{array}\right. \Lra \left\{\begin{array}{l}
             x \in C(T, \R^n) \\
-            \text{\(x\) --- решение (1)}
+            \text{\(x\) --- решение (4.1)}
         \end{array}\right.\]
         Заметим, что достаточно доказать, что \(x \in X\), то есть, что \(|x(t) - x_0| \le R \forall t \in T\).
         Пусть \(\exists t \in T: t > t_0: |x(t) - x_0| > R\). Тогда \(\exists \tau > t_0: |x(\tau) - x_0| > R\) и \(|x(t) - x_0| < R, t \in [t_0, R)\).
@@ -52,25 +54,29 @@
             \[= \frac{L^N}{(N - 1)!}\rho(x_1, x_2)\left| \int_{t_0}^t |s - t_0|^{N - 1}ds \right| = \frac{L^N}{N!}|t - t_0|^N\rho(x_1, x_2)\]
         \end{enumerate}
 
-        \item Тогда \(\Phi: \exists N: \Phi^N: X \ra X\) является сжимающим отображением, т.к. \(\frac{L^N}{N!}|t - t_0|^N \le \frac{L^N}{N!}d^N < 1\) при достаточно больших \(N\). Тогда \(\exists! x \in X: x = \Phi(x) \Ra \exists!\) на \(T\) решение \(x\) задачи Коши \((1)\). Возьмем любое решение \(y: I \ra \R^n\). Положим \(T = I \cap (t_0 - d, t_0 + d)\). Тогда на \(T\) верно, что \(x(t) = y(t)\)
+        \item Тогда \(\Phi: \exists N: \Phi^N: X \ra X\) является сжимающим отображением, т.к. \(\frac{L^N}{N!}|t - t_0|^N \le \frac{L^N}{N!}d^N < 1\) при достаточно больших \(N\). Тогда \(\exists! x \in X: x = \Phi(x) \Ra \exists!\) на \(T\) решение \(x\) задачи Коши (4.1). Возьмем любое решение \(y: I \ra \R^n\). Положим \(T = I \cap (t_0 - d, t_0 + d)\). Тогда на \(T\) верно, что \(x(t) = y(t)\)
     \end{enumerate}
 \end{proof}
 
 \subsection{В общем случае}
 \(\Gamma \subset \R^n\) --- открытое, \(g: \Gamma \ra \R^n, x_0, x_0^1, \dots, x_0^{n - 1} \in \R\)
-\[\left\{\begin{array}{l}
-    x^{(n)} = g(t, x', x'', \dots, x^{(n - 1)}) \\
-    x(t_0) = x_0, x'(t_0) = x_0^1, \dots, x^{(n - 1)}(t_0) = x_0^{(n - 1)}
-\end{array}\right. = (3)\]
+\begin{equation}
+    \begin{cases}
+        x^{(n)} = g(t, x', x'', \dots, x^{(n - 1)}) \\
+        x(t_0) = x_0, x'(t_0) = x_0^1, \dots, x^{(n - 1)}(t_0) = x_0^{(n - 1)}
+    \end{cases}
+\end{equation}
 Сделаем замену \(y_1 = x, y_2 = x', \dots y_n = x^{(n - 1)}\). Тогда мы получим систему:
-\[\left\{\begin{array}{l}
-    y_1' = y_2 \\
-    y_2' = y_3 \\
-    \vdots \\
-    y'_n = g(t, y_1, y_2, \dots y_n)
-\end{array}\right.\]
+\begin{equation}
+    \begin{cases}
+        y_1' = y_2 \\
+        y_2' = y_3 \\
+        \vdots \\
+        y'_n = g(t, y_1, y_2, \dots y_n)
+    \end{cases}
+\end{equation}
 
-Покажем, что полученная система в действительности эквивалентна задаче Коши \((3)\). Заметим, что 
+Покажем, что полученная система в действительности эквивалентна задаче Коши (4.2). Заметим, что 
 \[\left\{\begin{array}{l}
     y_1(t_0) = x_0 \\
     y_2(t_0) = x_0^1 \\
@@ -78,25 +84,25 @@
     y_n(t_0) = x_0^{n - 1}
 \end{array}\right.\]
 Тогда:
-\[x\text{ --- решение (3) }\Ra \left( \begin{array}{c}
+\[x\text{ --- решение (4.2) }\Ra \left( \begin{array}{c}
     x(\cdot) \\
     x'(\cdot) \\
     x''(\cdot) \\
     \vdots \\
     x^{(n - 1)}(\cdot) \\
-\end{array} \right)\text{ --- решение (4)}\]
-\[y_1\text{ --- решение (3) }\La \left( \begin{array}{c}
+\end{array} \right)\text{ --- решение (4.3)}\]
+\[y_1\text{ --- решение (4.2) }\La \left( \begin{array}{c}
     y_1(\cdot) \\
     y_2(\cdot) \\
     y_3(\cdot) \\
     \vdots \\
     y_n(\cdot) \\
-\end{array} \right)\text{ --- решение (4)}\]
+\end{array} \right)\text{ --- решение (4.3)}\]
 \begin{corollary}
     Если \(g\) --- непрервна, и \(\frac{\partial g}{\partial x_k}\) существуют и непрерывны, то 
     \begin{enumerate}
-        \item \(\exists d > 0: \exists\) решение \(x: (t_0 - d, t_0 + d) \ra \R\) задачи Коши (3)
-        \item \(\forall\) решения \(\tilde{x}: I \ra \R^n\) задачи Коши \((4)\), \(x(t) \equiv \tilde{x}(t), t \in I \cap (t_0 - d, t_0 + d)\).
+        \item \(\exists d > 0: \exists\) решение \(x: (t_0 - d, t_0 + d) \ra \R\) задачи Коши (4.2)
+        \item \(\forall\) решения \(\tilde{x}: I \ra \R^n\) задачи Коши (4.3), \(x(t) \equiv \tilde{x}(t), t \in I \cap (t_0 - d, t_0 + d)\).
     \end{enumerate}
 \end{corollary}
 \begin{proof}

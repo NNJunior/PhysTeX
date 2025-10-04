@@ -90,20 +90,22 @@
 
 \begin{definition}
     Уравнение
-    \[M(t, x)dt + N(t, x)dx = 0 (1)\]
+    \begin{equation}
+        M(t, x)dt + N(t, x)dx = 0
+    \end{equation}
     Называется уравнением в дифференциалах
 \end{definition}
 
 \begin{definition}
-    Решением \((1)\) называются функции \(x(t)\) и \(t(x)\), являющиеся решением однородного дифференциального уравнения: \(M(t, x) + N(t, x)x' = 0\) и \(M(t, x)t' + N(t, x) = 0\)
+    Решением (2.1) называются функции \(x(t)\) и \(t(x)\), являющиеся решением однородного дифференциального уравнения: \(M(t, x) + N(t, x)x' = 0\) и \(M(t, x)t' + N(t, x) = 0\)
 \end{definition}
 
 \subsubsection{Уравнения в полных дифференциалах}
 \begin{definition}
-    Если \(\Omega\) открыто и \(M, N \in C^1(\Omega, \R)\). Тогда \((1)\) называется уравнением в полных дифференциалах, если \(\exists g \in C^2(\Omega, \R): \frac{dg}{dt}(t, x) = M(t, x), \frac{dg}{dx}(t, x) = N(t, x)\).
+    Если \(\Omega\) открыто и \(M, N \in C^1(\Omega, \R)\). Тогда (2.1) называется уравнением в полных дифференциалах, если \(\exists g \in C^2(\Omega, \R): \frac{dg}{dt}(t, x) = M(t, x), \frac{dg}{dx}(t, x) = N(t, x)\).
 \end{definition}
 
-Если \((1)\) является УВПД, то \((1) \sim g(t, x) = c, c \in \R\):
+Если (2.1) является УВПД, то \((1) \sim g(t, x) = c, c \in \R\):
 \[g(t, x(t)) \equiv c, g(t(x), x) \equiv c\]
 
 \(x_0\) является решением \((1) \Lra M(t, x(t)) + N(t, x(t))x'(t) \equiv 0\)
@@ -111,19 +113,19 @@
 \[\Lra \frac{d}{dt}g(t, x(t)) \equiv 0 \Lra \exists c \in \R: g(t, x(t)) \equiv c\]
 
 \begin{enumerate}
-    \item Если \((1)\) --- УВПД и \(\Omega = I \times J\) (\(I, J \subset \R\) --- интервалы), то
+    \item Если (2.1) --- УВПД и \(\Omega = I \times J\) (\(I, J \subset \R\) --- интервалы), то
     \[g(t, x) = \int_{t_0}^t M(s, x)ds + \gamma(x)\]
     \[\frac{d}{dx}\left(\int_{t_0}^t M(s, x)sx + \gamma(x)\right) = N(t, x)\]
 \end{enumerate}
 
 \begin{theorem}
-    Если \(\Omega\) --- выпуклое и \(\frac{dM}{dx}(t, x) \equiv \frac{dM}{dt}(t, x)\), то \((1)\) является уравнением в полных дифференциалах.
+    Если \(\Omega\) --- выпуклое и \(\frac{dM}{dx}(t, x) \equiv \frac{dM}{dt}(t, x)\), то (2.1) является уравнением в полных дифференциалах.
 \end{theorem}
 
 \subsubsection{Интегрирующий множитель}
 Пусть \(\Omega\) --- открыто, \(M, N \in C^1(\Omega, \R)\)
 \begin{definition}
-    \(\mu(t, x) \in C^1(\Omega, \R), \mu(t, x) \ne 0 \forall (t, x) \in \Omega\) называется интегрирующим множителем для \((1)\), если 
+    \(\mu(t, x) \in C^1(\Omega, \R), \mu(t, x) \ne 0 \forall (t, x) \in \Omega\) называется интегрирующим множителем для (2.1), если 
     \[\mu(t, x)M(t, x)dt + \mu(t, x)N(t, x)dx = 0\]
     Является УВПД
 \end{definition}
