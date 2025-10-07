@@ -1,0 +1,93 @@
+% !TEX root = ../../../main.tex
+
+Гладкость можно определить в координатах
+\begin{lemma}
+    Пусть \(M\) --- гладкое многообразие в \(\R^n\), \(f: M \ra \R^l\). Тогда следующие условия эквивалентны:
+    \begin{enumerate}
+        \item \(f\) --- гладкое по Милнеру
+        \item \(\forall p \in M, \phi: V \ra \R^n\) --- параметризации в окрестности точки \(p\), верно \(f \circ \phi\) --- гладкая
+        \item \(\forall p \in M \exists \phi: V \ra \R^n\) --- параметризации в окрестности точки \(p\), такая, что \(f \circ \phi\) --- гладкая
+    \end{enumerate}
+\end{lemma}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\(1 \Ra 2\)] Пусть \(\phi: V \ra \R^n\) --- параметризация \(M\) в окрестности точки \(p\) и пусть \(a \in V\). Рассмотрим \(F\) --- гладкое продолжение \(f\) в окрестности \(q = \phi(a)\). Тогда \(f \circ \phi = F \circ \phi\) в некоторой окрестности \(a\). Следовательно, \(f \circ \phi\) гладкая в некоторой окрестности точки \(a\).
+        
+        \item [\(2 \Ra 3\)] Очевидно
+        \item [\(3 \Ra 2\)] \(f = (f \circ \phi) \circ \phi^{-1}\) --- гладкое как композиция гладких отображений.
+    \end{enumerate}    
+\end{proof}
+
+\begin{definition}
+    Пусть \(M, N\) --- гладкие многообразия и гладкое отображение \(f: M \ra \R^l\), такое, что \(f(M) \subset N\). Если \(\phi, \psi\) --- параметризации многообразий в окрестностях \(p, f(p)\) соответственно, то \(\psi^{-1} \circ f \circ \phi\) называется координатным представлением \(f\) в окрестности точки \(p\). Если \(N\) --- открыто в \(\R^l\), то \(\psi\) будем полагать только тождественным.
+\end{definition}
+
+\begin{example}
+    Пусть \(\gamma\) --- гладкая параметризованная кривая на многообразии \(M\), т.е. \(\gamma: I \ra \R^n\), где \(I\) --- интервал, такое, что \(\gamma(I) \subset M\) --- гладкое. Если \(p \in \gamma(I)\) и \(\phi: V \ra \R^n\) --- локальная параметризация \(f\) в окрестности \(p\), то \(\beta = \phi^{-1} \circ \gamma\) --- координатное представление \(\gamma\) в окрестности точки \(p\). Таким образом на гладкую кривую \(\gamma\) можно смотреть локально как на образ гладкой кривой \(\beta\) под действием \(\phi\).
+\end{example}
+
+\begin{definition}
+    Пусть \(M\) --- гладкое \(m\)-мерное многообразие в \(\R^n, p \in M\). Вектор \(v \in \R^n\) называется касательным вектором к \(M\) в точке \(p\), если найдется такая гладкая кривая \(\gamma\), что \(\gamma(0) = p, \gamma'(0) = v\). Множество касательных векторов к \(M\) в точке \(p\) обозначается \(T_pM\) и называется касательным пространством к \(M\) в точке \(p\).
+\end{definition}
+
+\begin{theorem}
+    Пусть \(M\) --- гладкое \(m\)-мерное многообразие в \( \R^n, p \in M\). Справедливы следующие утверждения.
+    \begin{enumerate}
+        \item Пусть \(\phi: V \ra \R^n\) --- параметризация \(M\) в окрестности \(p = \phi(a)\). Тогда \(T_pM = d\phi_a(\R^m)\)
+        \item Пусть \(U \ni p, W\) --- открытые множества в \(\R^n\) и \(\Phi: U \ra W\) --- такой диффеоморфизм, что \(\Phi(M \cap U) = W \cap (\R^m \times \{0\}), 0 \in \R^{n - m}\). Тогда \(T_pM = d\Phi^{-1}_p(\R^m \times \{0\})\)
+        \item Пусть \(U\) --- открыто в \(\R^n, F: U \ra \R^{n - m}\) --- гладкая, т.ч. \(M \cap U = F^{-1}(0)\) и \(rk\;DF = n - m\) на \(M \cap U\). Тогда \(T_pM = \ker dF_p\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[1, 2.] Пусть \(\phi: V \ra \R^n\) из пункта \(1\), а \(\Phi: U \ra W\) из пункта 2. Покажем, что \(d\phi_a(\R^m) \subset T_pM \subset d\Phi_p^{-1}(\R^m \times \{0\})\). Пусть \(h \in \R^m\). Рассмотрим \(B_r(a) \subset V\). Выберем такое \(\delta\), что \(\delta|h| < r\), тогда \(a + th \in V\) для всех \(|t| < \delta\). Определим \(\gamma(t) = \phi(a + th), t \in (-\delta, \delta)\). Тогда \(\gamma: (-\delta, \delta) \ra M\) --- гладкая, \(\gamma(0) = \phi(a) = p, \gamma'(0) = d\phi_a(h)\), т.е. \(d\phi_a(h) \in T_pM\). Пусть \(v \in T_pM\). Тогда \(\exists \gamma (-\delta, \delta) \ra M\) --- гладкая, такая, что \(\gamma(0) = p, \gamma'(0) = v\). Уменьшая \(\delta\), если это необходимо, можно считать, что \(\gamma(-\delta, \delta) \subset M \cap U\). Следовательно \(\Phi(\gamma(t)) \in \R^m \times \{0\}\) при \(|t| < \delta\), а значит, \(d\Phi_p(v) = d\Phi_{\gamma(0)}(\gamma'(0)) = \left.\frac{d}{dt}\right|_0\Phi(\gamma(t)) \subset \R^m \times \{0\}\), т.е. \(d\Phi_p(v) \in \R^m \times \{0\}\) или \(v \in d\Phi^{-1}_p(\R^m \times \{0\})\). Таким образом доказано желаемое вложение. Поскольку \(d\phi_a, d\Phi^{-1}_p\) --- инъекции, то \(d\phi_a(\R^m)\) и \(d\Phi_p^{-1}(\R^m \times \{0\})\) --- \(m\)-мерные линейные пространства в \(\R^n\). Тогда заключаем, что они равны.
+        \item[3.] Пусть \(v \in T_pM\), тогда \(\exists \gamma: (-\delta, \delta) \ra M: \gamma(0) = p, \gamma'(0) = v, \gamma\) --- гладкая. Следовательно, в некоторой окрестности \(t = 0\) выполнено \(F(\gamma(t)) \equiv 0\). Продифференцируем тождество при \(t = 0\). \(0 = dF_{\gamma(0)}(\gamma'(0)) = dF_p(v)\), т.е. \(v \in \ker dF_p\) или \(T_pM \subset \ker dF_p\). Равнество выполняется из совпадения размерностей.
+    \end{enumerate}    
+\end{proof}
+
+\begin{note}
+    Во втором пункте неважно, мы берем \((d\Phi)^{-1}\) или \(d(\Phi^{-1})\), т.к. \(\Phi\) --- диффеоморфизм.
+\end{note}
+
+Пользуясь известными фактами из линейной алгебры, получим несколько следствий:
+
+\begin{corollary}
+    Отображение \(d\phi_a\) задает линейный изоморфизм между \(\R^m, T_pM\).
+\end{corollary}
+\begin{proof}
+    Пусть \((u_1, u_2, \dots u_m)\) --- координаты в \(\R^m\). Тогда \(\frac{\partial \phi}{\partial u_1}(u) = d\phi_a(e_1), \frac{\partial \phi}{\partial u_2}(u) = d\phi_a(e_2), \dots, \frac{\partial \phi}{\partial u_m}(u) = d\phi_a(e_m)\) образуют базис в \(T_pM\). Если \(h = (h_1, h_2, \dots h_m) \in \R^m\), то по линейности, \(d\phi_a(h) = \sum_{i = 1}^m\frac{\partial \phi}{\partial u_i}(a)h_i\). Причем, геометрический смысл у \(h\) --- \(\gamma = \phi \circ \beta, v = d\phi_a(\beta'(0)) \Ra h = \beta'(0)\).
+\end{proof}
+
+\begin{corollary}
+    Если \(M\) локально задано уравнением \(F(x) = v\) (из пункта 3) и \(F = (F_1, F_2, \dots F_n)\), то \(T_pM\) задается СЛУ:
+    \begin{equation*}
+        \begin{cases*}
+            (\nabla F_1(p), v) = 0 \\
+            (\nabla F_2(p), v) = 0 \\
+            \vdots \\
+            (\nabla F_{n - m}(p), v) = 0
+        \end{cases*}
+    \end{equation*}
+    В частности, векторы \(\nabla F_1(p), \nabla F_2(p), \dots \nabla F_{n - m}(p)\) образуют базис в \(T_pM\).
+\end{corollary}
+
+\begin{example}
+    Пусть \(S^{n - 1}\) --- \(n-1\)-мерная сфера в \(\R^n\), задается уравнением \(F(x) = 0\), где \(F(x) = |x|^2 - 1\). Заметим, что \(\nabla F(x) = 2x \Ra T_xS^{n - 1} = x^{\perp}\).
+\end{example}
+
+\begin{definition}
+    Аффинное пространство \(\Pi_p = p + T_pM\) называется касательной плоскостью к \(M\) в \(p\).
+\end{definition}
+
+Пусть \(\phi: V \ra \R^n\) --- локальная параметризация \(M\) в окрестности \(p = \phi(a)\). Тогда \(p + d\phi_a(u - a) \in \Pi_p\) и \(\phi(u) = p + d\phi_a(u - a) + o(|u - a|), u \ra a\). Следовательно, расстояние от \(x = \phi(u)\) до \(\Pi_p\) есть \(d(x, \Pi_p) = \inf_{y \in \Pi_p} |x - y| \le o(|u - a|), u \ra a\). Но \(\phi^{-1}\) локально Липшицево, т.е. \(|\phi^{-1}(x) - \phi^{-1}(y)| \le C|x - y|\). А значит, \(d(x, \Pi_p) = o(|x - p|), x \ra p\).
+
+\begin{lemma}[О почти изометрии]
+    Для любого \(\epsilon > 0, p \in M\) найдутся окрестности \(U \subset M, W \subset \Pi_p\) и диффеоморфизм \(\psi: U \ra W\), что \((1 - \epsilon)|x - y| \le |\psi(x) - \psi(y)| \le (1 + \epsilon)|x - y|\)
+\end{lemma}
+\begin{proof}
+    Зафиксируем \(\epsilon > 0\). Пусть \(\phi: \tilde{V} \ra \tilde{U}\) --- параметризация в окрестности \(p = \phi(a)\) и \(L(u) = p + d\phi_a(u - a)\). Отображение \(\phi^{-1}\) локально Липшицево. Сужая \(\tilde{U}\), если необходимо, можно считать, что \(|\phi^{-1}(x) - \phi^{-1}(y)| \le C|x - y| \forall x, y \in \tilde{U}\). Известно, что найдется \(V \ni a\) --- окрестность, такая, что \(|\phi(u) - \phi(v) - d\phi_a(u - v)| \le \frac{\epsilon}{C}\). Определим \(U = \phi(V), W = L(V), \psi = L^{-1}\). Тогда \(\psi\) --- диффеоморфизм из \(U\) в \(W\). Пусть \(x = \phi(u), y = \phi(v)\). Имеем: \(|\psi(x) - \psi(y)| = |L(u) - L(v)| = |d\phi_a(u - v)|\). Прибавив \(\phi(u) - \phi(v)\), получим: \(|\psi(x) - \psi(y)| \le |x - y| + \frac{\epsilon}{C}|u - v| \le (1 + \epsilon)|x - y|\). Второе неравенство доказывается аналогично
+\end{proof}
+
+\begin{example}
+    \(M = \{(x, y) : y = |x|\}\). Покажем, что \(M\) --- не одномерное многообразие. Докажем от противного. Пусть \(M\) --- одномерное многообразие, тогда найдется гладкая кривая \(\gamma = (\gamma_1, \gamma_2)\), такая, что \(\gamma(0) = 0, \gamma'(0) \ne 0\). Имеем: \(\gamma_1^2(t) = \gamma_2^2(t)\). Дифференцируя  это равнество, получаем \(2\gamma_1(t)\gamma'_1(t) = 2\gamma_2(t)\gamma_2'(t)\). \(\gamma_2(t) \ge 0 \Ra \) если \(\gamma_2(t) = 0 \Ra \gamma_2'(t) = 0 \Ra \gamma_1'(t) = 0\), противоречие, т.к. \( \gamma'(t) = 0\), противоречие.
+\end{example}
