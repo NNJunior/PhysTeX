@@ -137,7 +137,7 @@
     Доказать, что языки \(\{a^kb^lc^m | k = l\}\), \(\{a^kb^lc^m | m = l\}\) существенно неоднозначные.
 \end{problem}
 
-\subsubsection{Нормальная форма Хомского}
+\subsection{Нормальная форма Хомского}
 
 \begin{definition}
     КС грамматика \(G\) находится в нормальной форме Хомского, если все правила имеют вид:
@@ -147,6 +147,14 @@
         \item \(S \ra \epsilon\)
     \end{enumerate}
 \end{definition}
+\begin{note}\indent
+    \begin{enumerate}
+        \item \(S \vdash \epsilon \Ra S \vdash_1 \epsilon\)
+        \item \(A \vdash \epsilon \Ra A = S\)
+    \end{enumerate}
+\end{note}
+
+\subsubsection{Удаление непорождающих нетерминалов}
 
 \begin{definition}
     \(D \in N\) называеся порождающим, если \(\exists w: D \vdash w\).
@@ -158,3 +166,11 @@
 \begin{proof}
     Пусть \(\exists w \in L(G_0) \setminus L(G_1)\). \(S \vdash_{G_0} w \Ra \exists D\) --- непорождающий, такой, что \(S \vdash uDv \vdash uxv = w \Ra D\) --- порождающий, противоречие. Вложение в другую сторону очевидно.
 \end{proof}
+
+\begin{note}(Алгоритм для поиска непорождающих символов)
+    Храним \(R_A\) --- множество нетерминалов справа для каждого нетерминала \(A\), создаем пустую очередь. Далее делаем следующие шаги, пока очередь не пуста:
+    \begin{enumerate}
+        \item Добавляем все нетерминалы с пустым \(R_X\)
+        \item Удаляем из всех \(R_Y\) нетерминал \(X\)
+    \end{enumerate}
+\end{note}

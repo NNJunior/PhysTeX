@@ -1,0 +1,121 @@
+% !TEX root = ../../../main.tex
+
+\subsubsection{Удаление недостижимых нетерминалов}
+
+\begin{definition}
+    Нетерминал \(D\) называется достижимым, если \(\exists \phi, \psi \in (N \cup \Sigma)^*\), такие, что \(S \vdash \phi D\psi\).
+\end{definition}
+
+\begin{proposition}
+    Пусть нам дана грамматика \(G_1\). Рассмотрим грамматику \(G_2\), такую, что \(N_2 = N_1 \setminus \{D | D\text{ --- недостижимый}\}\). Тогда \(L(G_1) = L(G_2)\).
+\end{proposition}
+\begin{proof}
+    Очевидно, что \(L(G_1) \supset L(G_2)\). Пусть \(w \in L(G_1) \setminus L(G_2)\). Тогда \(\exists w \in \sigma^*: S \vdash \phi D \psi \vdash w \Ra D\) --- достижимый, противоречие
+\end{proof}
+
+\begin{note}
+    Алгоритм для поиска недостижимых символов --- просто запускаем \texttt{dfs}.
+\end{note}
+
+\begin{proposition}
+    Пусть нам дана грамматика \(G_1\) без непорождающих символов. Рассмотрим грамматику \(G_2\), такую, что \(N_2 = N_1 \setminus \{D | D\text{ --- недостижимый}\}\). Тогда в ней не нет непорождающих символов.
+\end{proposition}
+\begin{proof}
+    Пусть есть непорождающий символ \(B\). Тогда есть вывод \(B \vdash_{G_1} \phi C \psi \vdash_{G_1} u\)
+\end{proof}
+
+\subsubsection{Удаление смешанных правил}
+
+\begin{exercise}
+    Для каджого \(a \in \Sigma\) заведем новый нетерминал \(X_a\) с единственным переходом \(X_a \ra a\). Заменим все вхождения буквы \(a\) в правила справа (слева \(a\) не может стоять) на \(X_a\). Тогда полученная грамматика \(G_3\) такова, что \(L(G_3) = L(G_2)\)
+\end{exercise}
+
+\subsubsection{Удаление длинных цепочек}
+\begin{exercise}
+    Если заменить \(A \ra A_1A_2\dots A_n\) в грамматике \(G_3\) на \(A \ra A_1A_1', A_1' \ra A_2\dots A_n \dots\), то \(L(G_4) = L(G_3)\).
+\end{exercise}
+
+\subsubsection{Удаление \(\epsilon\)-переходов}
+\begin{proposition}
+    Если в грамматике \(G_4\) провести следующие операции:
+    \[\left.\begin{array}{r}
+        A \ra BC \\
+        C \ra \epsilon
+    \end{array}\right] \Ra \text{ добавляем } A \ra B\]
+
+    \[\left.\begin{array}{r}
+        A \ra BC \\
+        B \ra \epsilon
+    \end{array}\right] \Ra \text{ добавляем } A \ra C\]
+    А после этого удалить все переходы вида \(A \ra \epsilon\), то множество слов полученной грамматики \(G_5\) не изменится, кроме, быть может, пустого слова (которое удалится).
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \(L(G_4) \setminus \{\epsilon\} \subset L(G_5)\). Ведем индукцию по длине слова \(w \ne \epsilon\)
+        \begin{enumerate}
+            \item[] \textbf{База:} \(|w| = 1\). Очевидно выводим за один шаг
+            \item[] \textbf{Переход:} пусть \(A \vdash_{G_4, 1} \alpha \vdash_{G_4} w\).
+            \begin{enumerate}
+                \item \(\alpha = B\). Тогда \(A \ra B \in P_4\)
+                \item \(\alpha = BC \Ra B \vdash w_1, C \vdash w_2\).
+                
+                \begin{enumerate}
+                    \item \(w_1, w_2 \ne \epsilon \Ra B \vdash_{G_5} w_1, C \vdash_{G_5} w_2 \Ra A \vdash_{G_5} w\).
+                    \item \(w_1, w_2 \ne \epsilon \Ra B \vdash_{G_5} w_1, C \vdash_{G_5} w_2 \Ra A \vdash_{G_5} w\).
+                    \item \(w_1 = \epsilon, w_2 \ne \epsilon \Ra A \vdash_{G_5} C, C \vdash_{G_5} w_2 \Ra A \vdash_{G_5} C \vdash_{G_6} w\).
+                    \item \(w_1 \ne \epsilon, w_2 = \epsilon\) --- аналогично предыдущему
+                \end{enumerate}
+                
+            \end{enumerate}
+        \end{enumerate}
+        \item \(L(G_4) \setminus \{\epsilon\} \supset L(G_5)\). \(A \vdash_{G_5} w \Ra w \ne \epsilon\).Докажем, что \(A \vdash_{G_5} w \Ra A \vdash_{G_4} w\). Ведем индукцию по длине слова \(|\vdash_{G_5}|\). 
+        \begin{enumerate}
+            \item[] \textbf{База:} \(|\vdash_{G_5}| = 1\). \(A \ra w \in P_5 \Ra A \ra w \in P_4\)
+            \item[] \textbf{Переход:}
+            \begin{enumerate}
+                \item \(A \vdash_{G_5, 1} BC \vdash_{G_5} w_1w_2 = w \Ra A \ra BC \in P_5 \ra A \ra BC \in P_4\), но по предположению индукции \(B \vdash_{G_4} w_1, C \vdash{G_4} w_2\)
+                \item \(\alpha = BC \Ra B \vdash w_1, C \vdash w_2\), тогда \(A \vdash_{G_4} BC \vdash_{G_4} w\).
+                
+                \item \(A \vdash_{G_5, 1} B \vdash_{G_5} w\).
+                \begin{enumerate}
+                    \item \(A \ra B \in P_4\), по предположению индукции \(B \vdash_{G_5} w \Ra A \vdash_{G_4} B \vdash_{G_4} w\).
+                    
+                    \item \(A \vdash_{G_4} CB \in P_4, C \vdash_{G_4} \epsilon \Ra A \vdash_{G_4} CB \vdash_{G_4} B \vdash_{G_4} w\).
+                    
+                    \item \(A \vdash_{G_4} BC \in P_4, C \vdash_{G_4} \epsilon \Ra A \vdash_{G_4} BC \vdash_{G_4} B \vdash_{G_4} w\).
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+После этого добавим новый нетерминал \(S'\), с переходом \(S' \ra S\), таким образом он не будет стоять нигде справа и множество слов грамматики не изменится. При этом, если \(S \vdash_{G_4} \epsilon\), то добавим еще правило \(S \ra \epsilon\). Тогда новая грамматика \(G_6\) такова, что \(L(G_4) = L(G_6)\).
+
+\subsubsection{Удаление одиночных правил}
+Сделаем аналогично удалению \(\epsilon\)-переходов в автомате.
+
+Бинго! Мы получили нормальную форму Хомского
+
+\begin{corollary}\indent
+    \begin{enumerate}
+        \item В нормальной форме Хомского дерево вывода бинарное
+        \item Слово длины \(n > 0\) выводится за \(2n - 1\) шаг
+    \end{enumerate}
+\end{corollary}
+
+Перед нами стоит задача проверки \(w \in L(G)\), и, если да, построения вывода.
+
+\subsection{Разбор КС-грамматики}
+\subsubsection{Рекурсивый спуск}
+Рекурсивно спускаемся и таким образом перебираем все возможные выводы. К сожалению, может не закончиться (если есть \(\epsilon\)-переходы).
+
+\begin{enumerate}
+    \item Определить функцию обработки для каждого нетерминала из N.
+    \item Для каждого правила сгенерировать обработку:
+    \item Если символ слова совпадает с символом правила, то обработать символ.
+    \item Если следующий символ правила - нетерминал, то обрабатываем рекурсивно.
+    \item Если символ не совпадает - то выполняем \texttt{backtrack}.
+\end{enumerate}
+
+\subsubsection{Алгоритм Кока-Янгера-Касами}
+\href{https://t.me/c/3021064992/17}{См. презентацию}
