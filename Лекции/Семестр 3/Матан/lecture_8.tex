@@ -1,0 +1,85 @@
+% !TEX root = ../../../main.tex
+
+\begin{note}
+    Из Теоремы Лагранжа следует метод множителей Лагранжа: если \(p\) --- точка условного экстремума \(f\) на \(M\), то \(p\) --- стационарная точка функции Лагранжа:
+    \[L: U \ra \R, L(x) = f(x) - \sum_{i = 1}^n \lambda_i g_i(x)\]
+\end{note}
+
+\begin{theorem}
+    Пусть \(f \in C^2(U), g \in C^2(U, \R^m), rk\;Dg(p) = m\), где \(p\) --- стационарная точка функции Лагранжа, соответствующая множителям \(\lambda_1, \dots \lambda_n\).
+    \begin{enumerate}
+        \item Если \(d^2L_p(h) > 0 \forall h \in T_pM \setminus \{0\}\), то \(p\) --- точка условного минимума \(f\) на \(M\)
+        \item Если \(d^2L_p(h) < 0 \forall h \in T_pM \setminus \{0\}\), то \(p\) --- точка условного максимума \(f\) на \(M\)
+        \item Иначе \(p\) не является точкой условного экстремума.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Пусть \(x = \phi(y)\) --- локальная параметризация многообразия \(M\) в окрестности \(p = \phi(a)\). Точка \(p\) --- точка условного минимума (максимума) \(f\) на \(M\) тогда и только тогда, когда \(a\) --- точка безусловного минимума (максимума) функции \(H = f \circ \phi\). Функции \(f, L\) совпадают на \(M\), поэтому \(H = L \circ \phi\). Поскольку \(\forall v \in \R^{n - m}\) выполнено:
+    \[dH_a(v) = dL_p(d\phi_a(v)) = 0\]
+    Последнее равенство выполняется в силу того, что \(p\) --- стационарная точка функции \(L\). Тогда \(a\) --- стационарная точка функции \(H\). Найдем \(d^2H_a\)
+    \[\frac{\partial H}{\partial y_k} = \sum_{i = 1}^n \frac{\partial L}{\partial x_i} \frac{\partial \phi_i}{\partial y_k}\]
+    \[\frac{\partial^2 H}{\partial y_i \partial y_k} = \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 L}{\partial x_j \partial x_i}\cdot \frac{\partial \phi_j}{\partial x_l}\cdot \frac{\partial \phi_i}{\partial x_k} + \sum_{i = 1}^n \frac{\partial L}{\partial x_i} \frac{\partial^2 \phi_i}{\partial y_l \partial y_k}\]
+    Т.к. \(p\) --- стационарная точка \(L\), то \(\frac{\partial L}{\partial x_i}(p) = 0\) для всех \(i\). Но тогда
+    \[\frac{\partial^2 H}{\partial y_l \partial y_k}(a) = \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 L}{\partial x_j \partial x_i}(p)\cdot \frac{\partial \phi_j}{\partial x_l}(a)\cdot \frac{\partial \phi_i}{\partial x_k}(a)\]
+    \[d^2H_a = \sum_{k = 1}^{n - m}\sum_{l = 1}^{n - m}\frac{\partial^2 H}{\partial y_l \partial y_k}(a)v_lv_k = \sum_{k = 1}^{n - m}\sum_{l = 1}^{n - m}\sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 L}{\partial x_j \partial x_i}(p)\cdot \frac{\partial \phi_j}{\partial x_l}(a)\cdot \frac{\partial \phi_i}{\partial x_k}(a)v_kv_l = \]
+    \[\sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 L}{\partial x_j \partial x_i}(p)\left( \sum_{k = 1}^{n - m} \frac{\partial \phi_i}{\partial y_l}v_l \right)\left( \sum_{k = 1}^{n - m} \frac{\partial \phi_j}{\partial y_k}v_k \right) = d^2L_p(d\phi_a(v))\]
+    Отметим, что \(d\phi_a\) --- изоморфизм \(\R^{n - m}\) на \(T_pM\), причем \(\ker d\phi_a = \{0\}\).
+\end{proof}
+
+\begin{definition}
+    Назовем шар \(B_r(x)\) в \(\R^n\) рациональным, если \(r \in \Q, x \in \Q^n\).
+\end{definition}
+
+\begin{note}
+    Любое открытое множество в \(\R^n\) представимо в виде объединения рациональных шаров, которые в нем содержатся
+\end{note}
+
+\begin{lemma}
+    Если \(M\) --- гладкое многообразие в \(\R^n\), то существует его покрытие \(\{U_i\}\) координатными окрестностями (т.е. образами параметризаций).
+\end{lemma}
+\begin{proof}
+    Рассмотрим \(\{U_p\}_{p \in M}\) --- произвольное покрытие \(M\) координатными окрестностями. \(\forall p \exists \tilde{U}_p\) --- открытое в \(\R^n: \tilde{U}_p \cap M = U_p\). Положим \(\{B_j\}: \forall j \exists p = p(j) (B_j \cap M \subset U_p) \Ra \{B_j \cap M\}\). Для каждого \(j\) выберем ровно одно \(p_j\): \(B_j \cap M \subset U_p\). Следовательно, \(\{U_p\}\) образует искомое покрытие.
+\end{proof}
+
+\section{Интегрирование на многообразиях}
+Пусть \(M\) --- гладкое \(m\)-мерное многообразие в \(\R^n, m < n\).
+
+\begin{definition}
+    Множество \(E \subset M\) называется измеримым, если \(\forall \phi: V \ra U\) --- параметризации окрестности \(U\) в \(M\), множество \(\phi^{-1}(E \cap U)\) измеримо по Лебегу в \(\R^m\).
+\end{definition}
+\begin{note}
+    Для измеримости \(E\) достаточно проверить измеримость по Лебегу множеств \(\phi_j^{-1}(E \cap U_j)\) для счетного набора параметризаций \(\{\phi_j\}\), образы \(U_j\) которых покрывают \(M\).
+\end{note}
+\begin{proof}
+    Пусть \(W\) --- образ параметризации \(\psi\). Имеем: \(W = \bigcup_{j} (W \cap U_j) \Ra \psi^{-1}(E \cap W) = \bigcup_{j} \psi^{-1}(E \cap W \cap U_j)\). Для любого \(j\), \(\phi^{-1}_i(E \cap W \cap U_j) = \phi_i^{-1}(E \cap U_j) \cap \phi^{-1}_j(W)\) измеримо в \(\R^m\), поэтому \(\psi^{-1}(E \cap W \cap U_j) = \psi^{-1} \circ \phi_j(\phi_j^{-1}(E \cap W \cap U_j))\) --- измеримо в \(\R^n\) как образ измеримого множества под действием диффеоморфизма. \(\mathcal{A}_M = \{E \subset M | E\text{ измеримы}\}\)
+\end{proof}
+
+\begin{lemma}
+    \(\mathcal{A}_M\) --- \(\sigma\)-алгебра, содержащая \(\mathcal{B}(M)\)
+\end{lemma}
+\begin{proof}
+    Пусть \(E \in \mathcal{A}_M\) измеримо и \(\phi: V \ra U\) --- параметризация \(U\) в \(M\). Тогда:\(\phi^{-1}(E \cap U)\) измеримо в \(\R^n\). Имеем: \(\phi^{-1}(E^c \cap U) = \phi^{-1} \setminus \phi^{-1}(E \cap U)\). Пусть \(\{E_j\}_{j = 1}^\infty \subset \mathcal{A}_M\) --- измеримы в \(\mathcal{A}_M\). Тогда: \(\phi^{-1}\left( \left( \bigcup E_i \right) \cap U \right) = \phi^{-1}\left( \bigcup E_j \cap U \right) = \bigcup \phi^{-1}(E_j \cap U)\) --- измеримо в \(\R^n \Ra \bigcup E_j \in \mathcal{A}_M\). Очевидно, что \(M \subset \mathcal{A}_M\). Пусть \(O\) --- открытое в \(M \Ra \phi^{-1}(O \cap U)\) --- открытое в \(\R^m \Ra O \in \mathcal{A}_M \Ra \mathcal{B}(M) \subset \mathcal{A}_M\).
+\end{proof}
+
+\begin{definition}
+    Набор \(\{E_j\}_{j = 1}^\infty\) назовем счетным измеримым разбиением \(M\), соответствующим набору параметризаций \(\{\phi_i\}_{i = 1}^\infty\), если \(M = \bigsqcup_{i = 1}E_i\), причем \(E_i\) измеримы и \(\forall i: E_i \in U_i\) --- образе параметризации \(\phi_i\).
+\end{definition}
+
+\begin{note}
+    Измеримое разбиение существует
+\end{note}
+\begin{proof}
+    \(M = \bigcup_{j = 1}^\infty U_j\) --- образы параметризаций. Положим \(E_1 = U_1\). \(E_i = U_i \setminus \bigcup_{j = 1}^{i - 1}U_j\).
+\end{proof}
+
+В случае аффинных пространств на \(\mathcal{A}_M\) можно каноническим образом ввести меру. Пусть \(\Pi\) --- \(m\)-мерное подпространство в \(\R^n\). Тогда \(\exists \Phi\) --- движение, такое, что \(\Phi(\R^m) = \Pi\). Для \(A \in \mathcal{A}_\Pi\) положим \(\mu_\Pi(A) = \mu(\Phi^{-1}(A))\). Покажем, что это определение корректно. Пусть \(\psi\) --- движение в \(\R^n\), такое, что \(\psi(\R^m) = \Pi\). Тогда \(H = \psi^{-1} \circ \Phi |_\R\) --- движение в \(\R^m\) и \(\psi^{-1}(A) = H(\Phi^{-1}(A)) \forall A \subset \R^m\). Т.к. движение сохраняет меру в \(\R^n\), то \(\mu(\psi^{-1}(A)) = \mu(\Phi^{-1}(A)) \forall A \in \mathcal{A}_M\). Тогда мера \(\mu_\Pi\) называется мерой Лебега на подпространстве \(\Pi\).
+
+\begin{lemma}
+    Пусть \(\Pi = L(\R^m)\) где \(L(x) = Ax + b\) --- аффинное отображение, причем \(rk\;A = m\). Тогда \(\mu_\Pi(L(E)) = \sqrt{\det A^TA}\mu(E) \forall E\) --- измеримого в \(\R^m\).
+\end{lemma}
+\begin{proof}
+    Пусть \(\Pi_p\) --- касательная плоскость к \(M\) в точке \(p\). Если \(\phi\) --- параметризация \(M\) в окрестности \(p = \phi(a)\), то \(\Pi_p = L(\R^m)\), где \(L(u) = p + d\phi_a(u - a)\). Пусть \(a = (a_1, \dots a_m), h > 0, Q_h = [a_1, a_1 + h) \times \dots \times [a_m, a_m + h)\). Возьмем за основу, что \(\nu\) на \(M\) должна сохраняться при изометриях. По лемме о почти изометрии, имеем:
+    \[\lim_{n \ra 0} \frac{\nu(\phi(Q_n))}{\mu_\Pi(L(Q_n))} = 1\]
+    \[\nu(\phi(Q_n)) \sim_{n \ra 0} \sqrt{g_\phi(a)}h^m\]
+    Где \(g_\phi = G_\phi, G_\phi = D\phi(a)^TD\phi(a)\) --- матрица Грама.
+\end{proof}
