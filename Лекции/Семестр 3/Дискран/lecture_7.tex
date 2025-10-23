@@ -7,13 +7,7 @@
 
 НЕ ЗАКОНЧЕНО
 
-\begin{theorem}
-    Пусть \(p = \frac{c}{n}, c > 0\).
-    \begin{enumerate}
-        \item Если \(c < 1\), то \(\exists \beta(c)\), такая, что а.п.н. каждая компонента \(G(n, p)\) имеет \(\le \beta \ln n\) вершин.
-        \item Если \(c > 1\), то \(\exists \beta(c), \gamma(c) \in (0, 1)\), такие, что а.п.н. в \(G(n, p)\) есть ровно одна компонента в которой \(\ge \gamma n\) вершин, а все остальные компоненты связности имеют \(\le \beta \ln n\) вершин.
-    \end{enumerate}
-\end{theorem}
+\subsection{Связность случайного графа}
 
 Представим пьяницу, который ходит по целым точкам вещественной прямой либо вправо, либо влево, стартует в кабаке (в 0). Пусть \(\xi_n\) --- куда дошел пьяница за \(n\) шагов. Тогда:
 \[P(\xi_n \ge a) = P(\xi_n - \underbrace{\E \xi_n}_{0} \ge a) \le \frac{\Variance \xi_n}{a^2}\]
@@ -33,7 +27,7 @@
 
 \begin{theorem}[Интегральная предельная теорема Муавра --- Лапласа]
     Пусть \(\xi \sim Bin(n, p)\). Тогда:
-    \[P\left( a \le \frac{\xi n p}{\sqrt{npq}} \le b\right) \sim_{n \ra \infty} \frac{1}{\sqrt{2\pi}} \int_a^b e^{-\frac{x^2}{2}}dx\]
+    \[P\left( a \le \frac{\xi - n p}{\sqrt{npq}} \le b\right) \sim_{n \ra \infty} \frac{1}{\sqrt{2\pi}} \int_a^b e^{-\frac{x^2}{2}}dx\]
 \end{theorem}
 
 

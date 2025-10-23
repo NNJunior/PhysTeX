@@ -173,6 +173,7 @@
       <lecture name="Лекция 5" id="3S_DM_5" description="Теорема Кучеры" date="02.10.25" path="Лекции/Семестр 3/Дискран/lecture_5" setting="Лекции/Семестр 3/Дискран/setting" />
       <lecture name="Лекция 6" id="3S_DM_6" description="Теорема про почти наверное связность (невязность) графа G(n, p) при различных p." date="09.10.25" path="Лекции/Семестр 3/Дискран/lecture_6" setting="Лекции/Семестр 3/Дискран/setting" />
       <lecture name="Лекция 7" id="3S_DM_7" description="Короче. Что-то мы прошли. Что именно - не знает никто. Зачем - тоже." date="16.10.25" path="Лекции/Семестр 3/Дискран/lecture_7" setting="Лекции/Семестр 3/Дискран/setting" />
+      <lecture name="Лекция 8" id="3S_DM_8" description="Нам ведь это сдавать..." date="23.10.25" path="Лекции/Семестр 3/Дискран/lecture_8" setting="Лекции/Семестр 3/Дискран/setting" />
     </subject>
   </semester>
 </all>
