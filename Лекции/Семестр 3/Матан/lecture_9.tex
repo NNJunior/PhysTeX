@@ -1,0 +1,137 @@
+% !TEX root = ../../../main.tex
+
+\begin{theorem}
+    Существует единственная мера \(\nu\) на \(\mathcal{A_M}\), такая, что \(\forall\) параметризации \(\phi: V \ra U\) окрестности \(U\) в \(M\) и любого измеримого \(A \subset U\) выполнено:
+    \[
+        \nu(A) = \int_{\phi^{-1}(A)}\sqrt{g_\phi} d \mu
+    \]
+\end{theorem}
+\begin{proof}
+    Определим \(\nu\) на \(\sigma\)-алгебре измеримых множеств \(\mathcal{A_U}\) таким образом, потом докажем, что продолжение \(\nu\) на \(\mathcal{A_M}\) единственно.
+    \begin{enumerate}
+        \item Покажем, что \(\nu(A)\) не зависит ни от координатной окрестности \(A\), ни от ее параметризации. Пусть \(\phi: V \ra \R^n, \psi: W \ra \R^n\) --- локальные параметризации, \(A \subset O = \phi(V) \cap \psi(W)\). Тогда \(\Phi = \psi^{-1} \circ \phi: \phi^{-1}(O) \ra \psi^{-1}(O)\) --- диффеоморфизм. Обозначим матрицу Якоби \(\Phi\) через \(S\), тогда дифференцируя равенство \(\phi = \psi \circ \Phi\), имеем:
+        \[D\phi = D\psi \cdot S\]
+        Тогда \(G_\phi = S^TG_\psi S, g_\phi = g_\psi(\det S)^2\). Теперь независимость следует из теоремы о замене переменной в кратном интеграле:
+        \[\int_{\psi^{-1}(A)}\sqrt{g_\psi}dy =_{y = \Phi x} \int_{\Phi^{-1}(\psi^{-1}(A))}\sqrt{g_\psi \circ \Phi}|\det S|dx = \int_{\phi^{-1}(A)}\sqrt{g_\phi}dx\]
+
+        \item Пусть \(\{E_i\}_{i = 1}^\infty\) --- измеримое координатное разбиение \(M\). Для \(A \in \mathcal{A_M}\) определим \(A_i = A \cap E_i\). Тогда \(A_i\) измеримо и лежит в образе некоторой параметризации и \(A = \bigsqcup+{i = 1}^\infty A_i\). Любая мера на \(\nu\) на \(\mathcal{A_M}\) удовлетворяет равенству \(\nu(A) = \sum_{i = 1}^\infty \nu(A_i)\). Поскольку \(\nu(A_i)\) определены одназначно, то и \(\nu(A)\) на \(A\) также определено однозначно. Это дает способ продолжения \(\nu\) с \(A_U\) на \(A_M\)
+        
+        \item Покажем, что \(\nu\) является мерой. Пусть дано измеримое разбиение \(A = \bigsqcup_{k = 1}^\infty B_k\). Определим \(B_{ki} = B_k \cap E_i\). Тогда \(B_k = \bigsqcup_{i = 1}^\infty B_{ki}, A_i = A \cap E_i = \bigsqcup_{k = 1}^\infty B_k \cap E_i = \bigsqcup_{k = 1}^\infty B_{ki}\). Поскольку интеграл Лебега счтено аддитивен, имеем:
+        \[\nu(A_i) = \sum_{k = 1}^\infty \nu(B_{ki})\]
+        Меняя порядок суммирования, имеем:
+        \[\nu(A) = \sum_{i = 1}^\infty \nu(A_i) = \sum{i = 1}^\infty \sum_{k = 1}^\infty \nu(B_{ki}) = \sum{k = 1}^\infty \sum_{i = 1}^\infty \nu(B_{ki}) = \sum_{k = 1}^\infty B_k\]
+    \end{enumerate}
+    В частности, показана независимость продолжения \(\nu\) от выбора \(\{E_i\}_{i = 1}^\infty\)
+\end{proof}
+
+\begin{definition}
+    Мера \(\nu\) называется поверхностной мерой на \(M\). 
+\end{definition}
+
+\begin{definition}
+    Пусть \(E \in \mathcal{A_M}, f: E \ra \overline{\R}\). Функция \(f\) называется измеримой, если \(\{p \in E: f(p) < a\} \in \mathcal{A_M}\) для любого \(a\).
+\end{definition}
+
+\begin{lemma}
+    Пусть \(f: E \ra \overline{\R}\). Следующие условия эквивалентны:
+    \begin{enumerate}
+        \item \(f\) измерима
+        \item \(f \circ \phi\) измерима на \(\phi^{-1}(E)\) для любой параметризации \(\phi\)
+        \item \(f \circ \phi_j\) измерима на \(\phi_j^{-1}(E)\) для счетного набора параметризаций \(\phi_j\), образы которых покрывают \(M\)
+    \end{enumerate}
+\end{lemma}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\((1) \Ra (2)\)] Вытекает из равенства \(\{x \in \phi^{-1}(E) | f(\phi(x)) < a\} = \phi^{-1}(\{p \in E | f(p) < a\})\).
+        \item[\((2) \Ra (3)\)] Очевидно
+        \item[\((3) \Ra (1)\)] Пусть \(\{U_j\}_{j = 1}^\infty\) --- набор координатных окрестностей, покрывающих \(M\), причем \(U_j\) --- образ параметризации \(\phi_j\). Пусть \(F = f^{-1}([-\infty, a))\). По равенству из первого следствия получаем, что \(\phi^{-1}_j(F \cap U_j)\) измеримо \(\forall j\). Тогда результат следует по первому замечанию после определения измеримости.
+    \end{enumerate}
+\end{proof}
+\subsection{Интеграл на многообразии}
+\begin{definition}
+    Пусть функция \(f: A \ra [0, +\infty]\) измерима, \(\{E_i\}_{i = 1}^\infty\) --- измеримое координатное разбиение \(M\), соответствующее набору параметризаций \(\{\phi_i\}_{i = 1}^\infty\). Определим
+    \[\int_A fd\nu = \sum_{i = 1}^\infty \int_{\phi^{-1}(A \cap E_i)} f \circ \phi_i \sqrt{g_{\phi_i}}d\mu\]
+\end{definition}
+
+\begin{note}
+    Определение не зависит ни от выбора измеримого координатного разбиения, ни от выбора параметризаций \(\phi_i\). Для этого достаточно в доказательстве теоремы заменить \(\sqrt{g_\phi}\) на \(f \circ \phi\sqrt{g_\phi}\).
+\end{note}
+
+\begin{definition}
+    Функция \(f: A \ra \overline{\R}\) называется интегрируемой, если \(f: A \ra \overline{\R}\) измерима и \(\int_{A} f^\pm d\nu < \infty\). В этом случае
+    \[\int_A f d \nu = \int_A f^+ d \nu - \int_A f^- d \nu\]
+\end{definition}
+
+\subsection{Примеры}
+
+\begin{example}
+    Пусть \(I \subset \R\) --- интервал, \(\gamma: I \ra \R^n\) --- гладкая с \(\gamma'(t) \ne 0\) на \(I\). Если \(\gamma: I \ra \gamma(I)\) --- гомеоморфизм, то \(\Gamma = \gamma(I)\) является гладким одномерным многообразием в \(\R^n\), покрытым образом одной параметризации \(\gamma\). Если \(f: \Gamma \ra \overline{\R}\) неотрицательно измеримая или интегрируема, то:
+    \[\int_{\Gamma}f ds = \int_I f(\gamma(I))\gamma'(t)dt\]
+
+    Такой интеграл называется криволинейным интегралом I рода. Если \(\tilde{\Gamma} = \gamma([a, b])\), то \(\nu(\tilde{\Gamma}) = \int_a^b |\gamma'(t)|dt\) --- длина кривой \(\gamma|_{[a, b]}\)
+\end{example}
+
+\begin{example}
+    Пусть \(V \subset \R^2\) --- открыто, \(r: V \ra \R^n, rk\;Dr = 2\) на \(V\), \(r: V \ra r(V)\) --- гомеоморфизм, то \(M = r(V)\) является 2-мерным многообразием, покрытым образом одной параметризации \(r\), причем:
+    \[(Dr)^TDr = \left( \begin{array}{cc}
+        (r'_u, r'_u) & (r'_u, r'_v) \\
+        (r'_v, r'_u) & (r'_v, r'_v) \\
+    \end{array} \right) = \left( \begin{array}{cc}
+        E & F \\
+        F & G
+    \end{array} \right)\]
+
+    Если \(f: M \ra \overline{\R}\) неотрицательно измерима или интегрируема, то, если положить \(S = \nu\)
+    \[\int_M f dS = \iint_V f(r(u, v))\sqrt{EG - F^2}dudv\]
+    Такой интеграл называется криволинейным интегралом I рода.
+\end{example}
+
+\begin{example}
+    Пусть \(U \subset \R^{n - 1}\) --- открыто, \(h: U \ra \R\) гладкая, тогда \(M = \{(x, h(x)) | x \in U\}\) --- гладкое \((n - 1)\)-мерное многообразие в \(\R^n\), покрытое образом одной параметризации \(\phi: U \ra M, phi(x) = (x, h(x))\). Имеем:
+    \[D\phi = \left( \begin{array}{c}
+        E_{n - 1} \\
+        \nabla h^T
+    \end{array} \right), (D\phi)^TD\phi = \left( \begin{array}{cc}
+        E_{n - 1} & \nabla h
+    \end{array} \right)\left( \begin{array}{c}
+        E_{n - 1} \\
+        \nabla h^T
+    \end{array} \right) = E_{n - 1} + \nabla h(\nabla h)^T\]
+    \[\det G_\phi = 1 + |\nabla h|^2\]
+    Если \(f: M \ra \overline{\R}\) неотрицательно измерима или интегрируема, то
+    \[\int_M f d \nu = \int_U f(x, h(x))\sqrt{1 + \sum_{i = 1}^{n - 1}\left( \frac{\partial h}{\partial x_i} \right)^2}d\mu\]
+\end{example}
+
+\subsection{Площадь поверхности сферы}
+\begin{example}
+    Пусть \(M = \{x \in \R^n: |x| = r, x_n > 0\}\) --- верхняя полусфера. Тогда \(M\) --- график функции \(h(y) = \sqrt{r^2 - |y|^2}\). Имеем:
+    \[\frac{\partial h}{\partial x_i} = \frac{x_i}{\sqrt{r^2 - |y|^2}}, 1 + \sum_{i = 1}^{n - 1}\left( \frac{\partial h}{\partial x_i} \right)^2 = \frac{r^2}{r^2 - |y|^2}\]
+    \[\int_M f d\nu = \int_{B_r(0)}f(y, \sqrt{r^2 - |y|^2})\frac{r}{\sqrt{r^2 - |y|^2}}dy = \int_{B_r(0)}f(rt, r\sqrt{1 - |t|^2})\frac{r^{n - 1}}{\sqrt{1 - |t|^2}}dt\] 
+    В частности,
+    \[\nu(M) = r^{n - 1}\int_{B_1(0)}\frac{dt}{\sqrt{1 - |t|^2}} = r^{n - 1}\nu(M_1)\]
+    Где \(M_1\) --- единичная полусфера.
+\end{example}
+
+\begin{lemma}
+    Пусть \(A \in \mathcal{A_M}\). Тогда следующие утверждения эквивалентны:
+    \begin{enumerate}
+        \item \(\nu(A) = 0\)
+        \item \(\mu(\phi^{-1}(A \cap U)) = 0\) для любой параметризации \(\phi\) (здесь \(U\) --- образ \(\phi\))
+        \item \(\mu(\phi_j^{-1}(A \cap U)) = 0\) для счетного набора параметризаций \(\phi_j\) (здесь \(U_j\) --- образ \(\phi_j\)), образы которых покрывают \(M\).
+    \end{enumerate}
+\end{lemma}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\((1) \Ra (2)\)] Поскольку \(A \cap U\) измерима, то \(0 = \nu(A) \ge \nu(A \cap U) = \int_{\phi^{-1}(A \cap U)}\sqrt{g_\phi}d\mu\). Т.к. \(\sqrt{g_\phi}\) положительно, то \(\phi^{-1}(A \cap U)\) имеет меру \(0\).
+        \item[\((2) \Ra (3)\)] Очевидно
+        \item[\((3) \Ra (1)\)] Имеем \(A = A \cap \bigcup_{j = 1}^\infty U_j = \bigcup_{j = 1}^\infty (A \cap U_j)\). По условию, \(\mu(\phi_j^{-1}(A \cap U_j)) = 0 \Ra \nu(A \cap U_j) = 0\). По счетной аддитивности, \(\nu(A) = 0\).
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    Пусть \(P \subset M\) --- гладкое \(k\)-мерное многообразие, \(k < m\). Тогда \(\nu(P) = 0\) (\(\nu\) --- поверхностная мера на \(M\).
+\end{corollary}
+
+\begin{definition}
+    Множество \(M \subset \R^n\) называется кусочно-гладким \(m\)-мерным многообразием, если \(M = N \cup \bigcup_{i = 1}^\infty P_i\), где \(N, P_i\) --- гладкие многообразия, \(\dim N = m, \dim P_i < m\)
+\end{definition}
