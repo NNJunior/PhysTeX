@@ -65,19 +65,8 @@
 \begin{theorem}[Боллобаш]
     Пусть \(p = \frac{1}{2}\). Тогда \(\exists \phi = o\left( \frac{n}{\ln n} \right):\) а.п.н. \(\left| \chi(G) - \frac{n}{2\log_2 n} \right| \le \phi(n)\)
 \end{theorem}
-\begin{proof}\indent
-    \begin{enumerate}
-        \item \(\chi(G) \ge \frac{n}{\alpha(G)}\), а.п.н. \(\alpha(G) \le 2\log_2 n \Ra\) а.п.н. \(\chi(G) \ge \frac{n}{2\log_2 n}\)
-        \item а.п.н. \(\chi(G) \le \frac{n}{2\log_2 n} + \phi(n)\), \(\phi(n) = ?\). Рассмотрим \(m = \left[ \frac{n}{\ln^2n} \right]\) --- количество вершин в \(G\) и положим \(X_k(G)\) --- число независимых множеств на \(k\)вершинах. Рассмотрим \(f_k(n) = \E X_k = C_n^k 2^{-C_k^2}, k = k(n) = [2\log_2n] \Ra f_k(n) \ra 0\). Положим \(k_0(n) = \min\{k: f_k(n) < 1\}\).
-        
-        \begin{exercise}
-            \(k_0(n) \sim 2\log_2n\).
-        \end{exercise}
-
-        Рассмотрим \(k_1(m) = k_0(m) - 3\).
-        \[\left[\begin{array}{l}
-            k_1(m) \sim 2\log_2m \sim 2\log_2n \\
-            f_{k_1} = m^{3 + o(1)}
-        \end{array}\right.\]
-    \end{enumerate}
-\end{proof}
+\noindent\textit{Доказательство} 
+\begin{enumerate}
+    \item \(\chi(G) \ge \frac{n}{\alpha(G)}\), а.п.н. \(\alpha(G) \le 2\log_2 n \Ra\) а.п.н. \(\chi(G) \ge \frac{n}{2\log_2 n}\)
+    \item а.п.н. \(\chi(G) \le \frac{n}{2\log_2 n} + \phi(n)\), \(\phi(n) = ?\). Рассмотрим \(m = \left[ \frac{n}{\ln^2n} \right]\) --- количество вершин в \(G\) и положим \(X_k(G)\) --- число независимых множеств на \(k\) вершинах. Рассмотрим \(f_k(n) = \E X_k = C_n^k 2^{-C_k^2}, k = k(n) = [2\log_2n] \Ra f_k(n) \ra 0\).
+\end{enumerate}
