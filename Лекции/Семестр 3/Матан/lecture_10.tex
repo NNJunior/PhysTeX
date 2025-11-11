@@ -1,0 +1,180 @@
+% !TEX root = ../../../main.tex
+
+\begin{theorem}[Формула коплощади]
+    Пусть \(f: \R \ra \R (n > 1)\) интегрируемо по Лебегу, тогда для почти всех \(r \in \R_+\) функция \(f\) интегрируема по сфере \(S_r(0) = \{x \in \R^n : |x| = r\}\) и справедлива формула:
+    \[\int_{\R^n} f d\mu = \int_0^{+\infty}\left( \int_{S_r(0)} f(x)d\nu(x) \right) d\mu(r)\]
+\end{theorem}
+\begin{proof}
+    Введем обозначения \(x = (y, x_n), y = (y_1, \dots y_{n - 1}), H_{\pm} = \{x \in \R^n, \pm x_n > 0\}, B = \{y \in \R^{n - 1}: |y| < 1\}\). Рассмотри отображение \(\phi: B \times \R_+ \ra H_+, \phi(y, r) = (ry, r\sqrt{1 - |y|^2})\). Отображение \(\phi\) обратимо, причем \(\phi^{-1}(x) = \left( \frac{y}{|x|}, |x| \right)\). Следовательно, \(\phi\)-дифференциируема. Запишем ее матрицу Якоби:
+    \[D\phi = \left( \begin{array}{ccccc}
+        r & 0 & \dots & 0 & x_1 \\
+        \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0 & 0 & \dots & r & x_{n - 1} \\
+        -\frac{rx_1}{\sqrt{1 - |y|^2}} & -\frac{rx_2}{\sqrt{1 - |y|^2}} & \dots & -\frac{rx_{n - 1}}{\sqrt{1 - |y|^2}} & \sqrt{1 - |y|^2} \\
+    \end{array} \right)\]
+    Тогда:
+    \[\det D\phi = \left| \begin{array}{ccccc}
+        r & 0 & \dots & 0 & x_1 \\
+        \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0 & 0 & \dots & r & x_{n - 1} \\
+        -\frac{rx_1}{\sqrt{1 - |y|^2}} & -\frac{rx_2}{\sqrt{1 - |y|^2}} & \dots & -\frac{rx_{n - 1}}{\sqrt{1 - |y|^2}} & \sqrt{1 - |y|^2} \\
+    \end{array} \right| = \]
+    \[ = r^{n - 1}\left| \begin{array}{ccccc}
+        1 & 0 & \dots & 0 & x_1 \\
+        \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0 & 0 & \dots & 1 & x_{n - 1} \\
+        -\frac{x_1}{\sqrt{1 - |y|^2}} & -\frac{x_2}{\sqrt{1 - |y|^2}} & \dots & -\frac{x_{n - 1}}{\sqrt{1 - |y|^2}} & \sqrt{1 - |y|^2} \\
+    \end{array} \right| = \frac{r^{n - 1}}{\sqrt{1 - |y|^2}}\]
+    % \[ = \frac{r^{n - 1}}{\sqrt{1 - |y|^2}}\left| \begin{array}{ccccc}
+    %     r & 0 & \dots & 0 & x_1 \\
+    %     \vdots & \vdots & \ddots & \vdots & \vdots \\
+    %     0 & 0 & \dots & r & x_{n - 1} \\
+    %     rx_1 & rx_2 & \dots & rx_{n - 1} & 1 \\
+    % \end{array} \right|\]
+    По формуле замены переменной в интеграла и по теореме Фубини:
+    \[\int_{H_+}f d\mu = \int_{B \times \R_+}f(ry, r\sqrt{1 - |y|^2})\frac{r^{n - 1}}{\sqrt{1 - |y|^2}} dydr = \]
+    \[= \int_0^{+\infty} \left( \int_B f(ry, r\sqrt{1 - |y|^2})dy \right)dr = \int_0^{+\infty}\left( \int_{S_r(0) \cap H_+}f(x)d\nu(x)d\mu(r) \right)\]
+    Аналогично проверяется и для замены \(H_+\) на \(H_-\). Складывая полученные формулы, получаем требуемую формулу. Осталось заметить, что так как \(f\) интегрируема, то теорема Фубини дает, тчо внутренний интеграл должен быть конечен для почти всех \(r\).
+\end{proof}
+
+\begin{corollary}
+    Поверхностная мера сферы \(\sigma_{n - 1}\) сферы \(S_1(0) = \{x \in \R^n: |x| = 1\}\) считается через меру \(\omega_n\) единичного шара \(B_1(0)\):
+    \[\omega_n = \int_{R^n}I_{B_1}(x)d\mu = \int_0^{+\infty} \left( \int_{S_r(0)} I_{B_1}(x) d\nu(x) \right) d\mu(r) = \]
+    \[ = \int_{R^n}I_{B_1}(x)d\mu = \int_0^{+\infty} \left( \int_{S_r(0)} d\nu(x) \right) d\mu(r) = \int_{R^n}I_{B_1}(x)d\mu = \int_0^{+\infty} \left( \int_{S_1(0)} r^{n - 1} d\nu(x) \right) d\mu(r) = \]
+    \[\sigma_{n - 1}\int_0^1 r^{n - 1}dr = \frac{\sigma_{n - 1}}{n}\]
+\end{corollary}
+
+\begin{problem}
+    Покажите, что если \(x \mapsto f(|x|)\) неотрицательна или интегрируема, то справедлива формула:
+    \[\int_{\R^n} f(|x|)d\mu(x) = \sigma_{n - 1}\int_0^{+\infty} f(r)r^{n - 1}dr\]
+\end{problem}
+
+\section{Дифференциальные формы}
+\subsection{Дифференциальные 1-формы}
+\begin{definition}
+    Пусть \(U \subset \R^n\) открыто. Дифференциальной 1-формой на \(U\) называется \(\omega: U \ra (\R^n)^*\). (\(X^*\) --- сопряженное пространство к \(X\))
+\end{definition}
+
+\begin{note}
+    На дифференциальную 1-форме можно смотреть как на функцию \(\omega: U \times \R^n \ra \R\), линейную по второму аргументу. Действительно, \(\omega(x, h) = (\omega(x))(h)\), но т.к. \(\omega(x) \in (\R^n)^*\), то замечание верно.
+\end{note}
+
+Пусть \(e_1, \dots e_n\) --- стандартный базис в \(\R^n\). Тогда по линейности \(\omega(x, h) = \sum_{i = 1}^n h_i\omega(x, e_i)\). Функции \(f_i: U \ra \R^n: f_i(x) = \omega(x, e_i)\) называются коэфициентами формы \(\omega\).
+
+\begin{reminder}
+    \(\{dx_1, \dots dx_n\}\), где \(dx_i: \R^n \ra \R, dx_i(h) = h_i\) --- базис \((\R^+)^*\), двойственный к стандартному базису \(\{e_1, \dots e_n\}\).
+\end{reminder}
+
+Следовательно, имеет место координатное представление 1-формы:
+\[\omega = f_1(x)dx_1 + \dots + f_n(x)d_n\]
+
+\begin{note}
+    Сложение и умножение на скаляр производятся поточечно. Множества дифференциальных 1-форм относительно этих операций образует линейное пространство.
+\end{note}
+
+\begin{definition}
+    Будем говорить, что 1-форма непрерывна, если все ее коэфициенты непрерывны.
+\end{definition}
+
+Аналогично определяется 1-форма класса \(C^r(U)\)
+
+\begin{example}
+    Если \(f \in C^1(U)\), то \(df\) --- 1-форма на \(U\).
+\end{example}
+
+\begin{definition}
+    Пусть \(\gamma: [a, b] \ra U\) --- гладкая параметризованная кривая, \(\omega\)-непрерывная 1-форма на \(U\). Интеграл от \(\omega\) по кривой \(\gamma\) (криволинейный интеграл второго рода) определяется по формуле:
+    \[\int_\gamma \omega = \int_a^b \omega(\gamma(t), \gamma'(t))dt = \int_a^b f_1(\gamma(t))\gamma'1(t) + \dots + f_n(\gamma(t))\gamma'_n(t) dt\]
+\end{definition}
+
+\begin{note}
+    Интеграл не зависит от параметризации, т.е. пусть \(\tilde{\gamma}: [c, d] \ra U\) --- гладкая кривая, эквивалентная \(\gamma\). Тогда \(\exists h: [c, d] \ra [a, b]\) --- \(C^1\)-сюрьекция с \(h' > 0\) на \([c, d]\), такой, что \(\tilde{\gamma}(u) = \gamma(h(u)) \forall u \in [c, d]\). Поэтому \(\tilde{\gamma} = \gamma'\cdot h'\) и по формуле замены переменной:
+    \[\int_a^b \omega(\gamma(t), \gamma'(t))dt = \int_c^d \omega(\gamma(h(u)), \gamma'(h(u)))h'(u)du =\]
+    \[ = \int_c^d \omega(\tilde{\gamma}(u), \tilde{\gamma}^{-1}(u))du\]
+    То есть
+    \[\int_\gamma \omega = \int_{\gamma'}\omega\]
+\end{note}
+
+\subsection{Свойства интеграла от 1-форм}
+\begin{proposition}
+    Пусть \(\tilde{\gamma}: [a, b] \ra U, \tilde{\gamma}(t) = \gamma(a + b - t)\), тогда:
+    \[\int_{\tilde{\gamma}}\omega = -\int_\gamma \omega\]
+\end{proposition}
+
+\begin{proposition}
+    Пусть \(\alpha, \beta \in \R\), тогда
+    \[\int_\gamma \alpha\omega_1 + \beta\omega_2 = \alpha\int_\gamma\omega_1 + \beta\int_\gamma\omega_2\]
+\end{proposition}
+
+\begin{proposition}
+    Пусть \(a < c < b, \gamma_1 = \gamma|_{[a, c]}\) и \(\gamma_2 = \gamma_{[c, b]}\), тогда:
+    \[\int_\gamma \omega = \int_{\gamma_1} \omega + \int_{\gamma_2}\omega\]
+\end{proposition}
+
+\begin{proposition}
+    \[\left| \int_\gamma \omega \right| \le \max_{x \in \underbrace{[\gamma]}_{\text{носитель}}}|f(x)|\underbrace{L(\gamma)}_{\text{длина \(\gamma\)}}, f = (f_1, \dots f_n)\]
+\end{proposition}
+\begin{proof}
+    \[\left| \sum_{i = 1}^n f_i(\gamma_i(t))\gamma_i'(t) \right| = |(f(\gamma(t)), \gamma'(t))| \le |f(\gamma(t))||\gamma'(t)| \le \max_{x \in [\gamma]}|f(x)||\gamma'(t)|\]
+\end{proof}
+
+\begin{reminder}
+    Напомним, что кривая \(\gamma: [a, b] \ra \R^n\) называется кусочно-гладкой, если сущесвует такое \(T = \{t_k\}_{k = 0}^N\) --- разбиение \([a, b]\), что каждое сужение \(\gamma_{[x_i, x_{i + 1}]}\) является гладким. В частности, если каждое сужение \(\gamma_{[x_i, x_{i + 1}]}\) постоянна, то \(\gamma\) называтеся ломаной
+\end{reminder}
+
+\begin{definition}
+    Интеграл от 1-формы по кусночно-гладкой кривой определяется как сумма интегралов по отрезкам гладкости
+\end{definition}
+
+\begin{theorem}
+    Пусть \(U \subset \R^n, F \in C^1(U)\) и \(\gamma: [a, b] \ra U\) --- кусочно-гладкая криавая, \(\gamma(a) = p, \gamma(b) = q\). Тогда:
+    \[\int_\gamma dF = F(q) - F(p)\]
+\end{theorem}
+\begin{proof}
+    Предположим, что \(\gamma\) --- гладкая. Тогда по определению:
+    \[\int_\gamma dF = \int_a^b \sum_{i = 1}^n \frac{\partial F}{\partial x_i}(\gamma(t))\gamma'(t)dt = \int_a^b \frac{d}{dt}F(\gamma(t)) = F(\gamma(t))|_{t = a}^{t = b}\]
+    Для кусочно-гладкой кривой утверждение получается по аддитивности.
+\end{proof}
+
+\begin{corollary}
+    Если \(\gamma: [a, b] \ra U\) замкнутая, т.е. \(\gamma(a) = \gamma(b)\), то \(\int_\gamma dF = 0\)
+\end{corollary}
+
+\begin{definition}
+    Пусть \(U \subset \R^n, \omega\) --- 1-форма в \(U\).
+    \begin{enumerate}
+        \item Функция \(F: U \ra \R^n\) называется первообразной \(\omega\), если \(dF = \omega\) на \(U\).
+        \item Форма \(\omega\) называется точной в \(U\), если она имеет там первообразную
+    \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+    Если \(U\) --- область в \(\R^n\), то любую пару точек из \(U\) можно соединить ломаной со сторонами, параллельными осям координат.
+\end{lemma}
+\begin{proof}
+    Отметим, что шар \(B \subset U\) обладает указанным свойством. Теперь, пусть \(x_0 \in U\). Рассмотрим \(A = \{x \in U: \exists \gamma_{x_0, x}\}\), где \(\gamma_{x_0, x}\) --- ломаная со сторонами, параллельными осям, соединяющая \(x_0\), \(x\). Если \(x \in A \ra \exists r: B_r(x) \subset A\). Тогда \(A\) --- открыто. Аналогично, \(U \setminus A\) --- открыто. Т.к. \(U = \underbrace{A}_{\text{открыто}} \sqcup \underbrace{(U \setminus A)}_{\text{открыто}}\). Т.к. \(A \ni x_0 \Ra U \setminus A = \emptyset\). Тогда \(U = A\).
+\end{proof}
+
+\begin{theorem}
+    Пусть \(U\) --- область в \(\R^n\), \(\omega\) --- непрерывная 1-форма в \(U\). Тогда следующие утверждения эквивалентны:
+    \begin{enumerate}
+        \item \(\omega\) точка в \(U\)
+        \item \(\int_\gamma \omega = 0\) по любой замкнутой кусочно-гладкой кривой \(\gamma\) с носителем \(U\).
+        \item \(\int_{\gamma_1} \omega = \int_{\gamma_2} \omega\) для любых \(\gamma_1, \gamma_2\) со сторонами, параллельными осям координат, с совпадающими концами.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item[\((1) \Ra (2)\)] Вытекает из следствия теоремы 1.
+        \item[\((2) \Ra (3)\)] Зафиксируем \(\gamma_1, \gamma_2\) и рассмотрим кривую \(\gamma(t) = \left\{\begin{array}{l}
+            \gamma_1(t), t \in [a, b] \\
+            \gamma_2(2b - t), t \in [b, 2b - a]
+        \end{array}\right.\). Т.к. \(\gamma\) --- замкнутая кусочно-гладкая кривая, то \(\int_\gamma \omega = \int_{\gamma_1} \omega - \int_{\gamma_2} \omega\).
+        \item [\((3) \Ra (1)\)] Зафиксируем \(x_0 \in U\) и рассмотрим \(F(x) = \int_{\gamma_{x_0, x}}\), где интеграл берется по ломаной \(\gamma_{x_0, x}\) со сторонами, параллельными осям координат и соединяет \(x_0, x\). По пункту 3, \(F\) не зависит от выбора \(\gamma_{x_0, x}\). Покажем, что \(F\) --- первообразная для \(\omega\), т.е. \(\frac{\partial F}{\partial x_i} = f_i\) на \(U\), где \(\omega = f_1(x)dx_1 + \dots + f_n(x)dx_n\). Т.к. \(x\) --- внутренняя \(U\), то \(\exists \delta > 0: \forall t \in (-\delta, \delta) (x + te_j \in U)\). Параметризуем отрезок с концами \(x\) и \(x + te_i: \lambda_i \mapsto x + se_i\). При этом:
+        \[\frac{\partial F}{\partial x_i} = \lim_{t \ra 0} \frac{1}{t}(F(x + te_i) - F(x)) = \lim_{t \ra 0}\frac{1}{t}\int_{\gamma_i}\omega =\]
+        \[= \lim_{t \ra 0}\int_0^t f(x + se_i)ds = \left.\frac{d}{dt}\right|_{t = 0} \int_0^t f_i(x + se_i)ds = f_i(x)\]
+    \end{enumerate}
+\end{proof}
+\begin{corollary}
+    При \(n = 2\) для точности формы достаточно проверять равенство нулю интеграла по любому прямоугольнику со сторонами, параллельным осям.
+\end{corollary}
