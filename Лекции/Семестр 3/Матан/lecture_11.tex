@@ -1,0 +1,169 @@
+% !TEX root = ../../../main.tex
+
+\begin{note}
+    Пусть \(F_1, F_2\) --- первообразные 1-формы \(\omega\) в области \(U\), \(x_0, x \in U\). Тогда 
+    \[\int_{\gamma_{x_0, x}} \omega = F_1(x) - F_1(x_0) = F_2(x) - F_2(x_0)\]
+    Где \(\gamma_{x_0, x}\) --- кусочно-гладкая кривая из \(U\) с концами \(x_0, x\). Тогда \(F_1 - F_2 = const\) на \(U\).
+\end{note}
+
+\begin{corollary}
+    Итак, \(f\) по своему дифференциалу \(\omega\) восстанавливется следующим образом:
+    \[f(x) = C + \int_{\gamma_{x_0, x}}\omega = C + \int_a^b \left( f_1(\gamma_1(t)\gamma_1'(t)) + \dots + f_n(\gamma_n(t))\gamma_n'(t) \right)dt\]
+    Где \(\gamma_{x_0,x}: [a, b] \ra U, \gamma_{x_0, x}(a) = x_0, \gamma_{x_0, x}(b) = x\)
+\end{corollary}
+
+\begin{lemma}(Лебега о покрытии)
+    Пусть \(X\) --- компакт, \(\{U_\alpha\}_{\alpha \in \Lambda}\) --- открытое покрытие. Тогда \(\exists \delta > 0: \forall E \subset X (diam\;E \le \delta \Ra (\exists \alpha \in \Lambda: E \subset U_\alpha))\)
+\end{lemma}
+\begin{proof}
+    См. 2 семестр.
+\end{proof}
+
+\begin{definition}
+    Непрерывная 1-форма называется локально точной в \(U\), если \(\forall x \in U \exists B \subset U\) --- открытый шар, такой, что \(x \in B\) и \(\omega\) точна в \(B\).
+\end{definition}
+
+\begin{note}
+    В конце курса будет доказано, что 1-форма \(\omega = f_1(x)dx_1 + \dots + f_n(x)dx_n\) будет локально точна тогда и только тогда, когда:
+    \[\frac{\partial f_i}{\partial x_j} = \frac{\partial f_j}{\partial x_i} \forall i, j = 1, 2, \dots n\]
+\end{note}
+
+\begin{example}
+    \[\omega = \frac{xdy - ydx}{x^2 + y^2}, U = \R^2 \setminus \{(0, 0)\}\]
+    Рассмотрим \(P = -\frac{y^2}{x^2 + y^2}, Q = \frac{x}{x^2 + y^2}\).
+    \[\frac{\partial Q}{\partial x} = \frac{1}{x^2 + y^2} - \frac{y^2 - y^2}{(x^2 + y^2)^2} = \frac{\partial P}{\partial y}\]
+    Это верно на \(U \Ra \omega\) локально точна. Однако \(\omega\) не является точной, т.к. если рассмотреть \(\gamma(t) = (\cos t, \sin t), t \in (0, 2\pi)\), то:
+    \[\int_\gamma \omega = \int_0^{2\pi} (\cos^2t + \sin^2t)dt = 2\pi \ne 0\]
+\end{example}
+
+\begin{definition}
+    Пусть \(\omega\) --- локально точна в области \(U\) и \(\gamma: [a, b] \ra U\) --- непрерывный путь. Рассмотрим разбиение \(P = \{t_i\}_{i = 0}^m\) отрезка \([a, b]\), такое, что \(\gamma([t_{i - 1}, t_i]) \subset B_i\) --- шар, причем \(\omega\) точна в \(B_i\). Тогда интеграл от \(\omega\) по \(\gamma\) вычисляется по формуле:
+    \[\int_\gamma \omega = \sum_{i = 1}^m (F_i(\gamma(t_i)) - F(\gamma(t_{i - 1})))\]
+    Где \(F_i\) --- произвольная первообразная \(\omega\) на \(B_i\)
+\end{definition}
+
+\begin{lemma}
+    Определение интеграла от \(\omega\) корректно
+\end{lemma}
+\begin{proof}
+    Покажем существование необходимого разбиения \(P\). Рассмотрим \(\{B_{\alpha}\}\) --- покрытие \(\gamma([a, b])\) открытыми шарами, в которых \(\omega\) точна. Тогда \(\{\gamma^{-1}(B_\alpha)\}\) --- открытое покрытие \([a, b]\) и пусть \(\delta\) --- число из леммы Лебега о покрытии. Тогда в качестве \(P\) можно взять любое разбиение \([a, b]\) мелкости \(\le \delta\). Покажем, что правая часть формулы не изменится при добавлении точки к \(P\). Пусть \(P \cup \{c\}\) --- разбиение \([a, b], t_{j - 1} < c < t_{j}\). Имеем:
+    \[F_j(\gamma(t)j) - F_j(\gamma(t_{j - 1})) = F_j(\gamma(t)j) - F_j(\gamma(c)) + F_j(\gamma(c)) - F_j(\gamma(t_{j - 1}))\]
+    Пусть \(Q\) --- другое разбиение \([a, b]\). Применяя предыдущий пункт к \(P \cup Q\), получаем, что достаточно доказать утверждение для \(P = Q\) и первообразных \(F_1, F_2, \dots F_n\) на шарах \(B_1, \dots B_n\) и \(\tilde{F_1}, \dots \tilde{F_n}\) на шарах \(\tilde{B_1}, \dots \tilde{B_n}\). Т.к. \(B_i \cap \tilde{B_i} \ne \emptyset\) --- область, то \(\tilde{F_i} - F_i = const\). Это доказывает корректность определения.
+\end{proof}
+
+\begin{definition}
+    Пусть \(\gamma_1, \gamma_2: [a, b] \ra U\) --- пути с общими концами. Пути \(\gamma_1, \gamma_2\) называются гомотопными, если \(\exists H: [a, b] \times [0, 1] \ra U\) --- непрерывное (в таком случае \(H\) называется гомотопией), т.е.
+    \[H(t, 0) = \gamma_1(t), H(t, 1) = \gamma_2(t), H(a, s) = \gamma_1(a) = \gamma_2(a), H(b, s) = \gamma_1(b) = \gamma_2(b)\]
+\end{definition}
+
+\begin{note}
+    \(\gamma_s(t) = H(t, s)\) --- семейство путей, непрерывно зависящих от \(t\).
+\end{note}
+
+\begin{example}
+    Пусть \(\gamma_1, \gamma_2: [a, b] \ra \R^n\) --- пути с общими концами. Тогда \(\gamma_1, \gamma_2\) гомотопны.
+\end{example}
+\begin{proof}
+    Действительно, при \(H(t, s) = (1 - s)\gamma_1(t) + s\gamma_2(t)\) условие гомотопии выполняется.
+\end{proof}
+
+\begin{theorem}
+    Пусть \(\omega\) локально точна в области \(U\). Тогда если \(\gamma_1, \gamma_2\) гомотопны, то \(\int_{\gamma_1} \omega = \int_{\gamma_2} \omega\)
+\end{theorem}
+\begin{proof}
+    Пусть \(H: [a, b] \times [0, 1] \ra U\) --- гомотопия для \(\gamma_1, \gamma_2\). По лемме Лебега, \(\exists \{t_0, \dots t_m\}\) --- разбиение отрезка \([a, b]\), \(\{s_0, \dots s_k\}\) --- разбиение отрезка \([0, 1]\), такие что \(\forall R_{ij} = [t_{i - 1}, t_i] \times [s_{j - 1}, s_j]: H(R_{ij} \subset B_{ij})\) --- шар, где \(\omega\) точна. Для любого \(j \in \{0, \dots k\}\) положим \(\gamma^{(j)}(t) = H(t, s_j)\). Достаточно показать, что \(\int_{\gamma^{(j)}}\omega = \int_{\gamma^{(j - 1)}}\omega \forall j \in \{1, \dots k\}\). Зафиксируем \(j \in \{1, \dots k\}\). Пусть \(F_i\) --- произвольная первообразная для \(\omega\) в \(B_{ij}\) (\(i = 1, \dots m\)). Положим \(x_i = \gamma^{(j - 1)}(t_i)\). Тогда
+    \[\int_{\gamma^{(j)}}\omega - \int_{\gamma^{(j - 1)}}\omega = \sum_{i = 1}^m ((F_i(y_i) - F_i(y_{i - 1})) - (F_i(x_i) - F_i(x_{i - 1}))) = \]
+    \[ = \sum_{i = 1}^m ((F_i(y_i) - F_i(x_i)) - (F_i(y_{i - 1}) - F_i(x_{i - 1}))) = (*)\]
+    Т.к. \(F_i, F_{i - 1}\) --- первообразные \(\omega\) на пересечении \(B_{(i - 1)j} \cap B_{ij}\) --- что является областью, то \(F_i - F_{i - 1} = const\), а значит:
+    \[F_i(y_{i - 1}) - F_i(x_{i - 1}) = F_{i - 1}(y_{i - 1}) - F_{i - 1}(x_{i - 1}), i > 1\]
+    Тогда сумма \((*)\) телескопическая. Тогда:
+    \[\int_{\gamma^{(j)}}\omega - \int_{\gamma^{(j - 1)}}\omega = (F_1(y_1) - F_1(x_1)) - (F_1(y_0) - F_1(x_0)) + (F_m(y_m) - F_m(x_m)) - (F_1(y_1) - F_1(x_1)) = \]
+    \[= (F_m(y_m) - F_m(x_m)) - (F_1(y_0) - F_1(x_0)) = 0\]
+    Последне верно в силу того, что концы путей совпадают
+\end{proof}
+
+\begin{definition}
+    Область \(U \subset \R^n\) называется односвязной, если каждый замкнутый путь в \(U\) гомотопен точке (тождественному пути).
+\end{definition}
+
+\begin{corollary}
+    В односвязной области всякая локально точная форма точна.
+\end{corollary}
+
+\subsection{Внешние формы}
+Пусть \(V\) --- вещественное линейное пространство, пусть \(m = \dim V, k \in N\).
+\begin{reminder}
+    \(S_k\) --- множество перестановок (биекций в себя) множеста \(\{1, 2, \dots k\}\). Четность перестановки \(\epsilon(\sigma) = (-1)^{\nu(\sigma)}\), \(\nu(\sigma) =\) количество инверсий в \(\sigma\), т.е. количество таких пар \(i < j\), что \(\sigma(i) > \sigma(j)\).
+\end{reminder}
+
+\begin{definition}
+    Полилинейная функция \(\omega: \underbrace{V\times V \times \dots \times V}_k \ra \R\) называется кососимметричной (внешней) \(k\)-формой, если 
+    \[\omega(v_{\sigma(1)}, \dots v_{\sigma(k)}) = \epsilon(\sigma)\omega(v_1, \dots v_k)\]
+\end{definition}
+
+\begin{definition}
+    Линейное пространство всех кососимметрических \(k\)-форм будем обозначать \(A_k(V)\). По определению: \(A_0(V) = \R\), а если \(\omega \in A_k(V)\), то \(k\) называется степенью \(\omega\).
+\end{definition}
+
+\begin{problem}
+    Доказать, что следующие утверждения эквивалентны
+    \begin{enumerate}
+        \item \(\omega\) --- кососимметрическая \(k\)-форма.
+        \item \(\omega(v_1, \dots w, \dots w, \dots v_k) = 0\)
+        \item \(\omega(v_1, \dots v_k) = 0\) для любых линейно зависимых \(v_1, \dots v_k\)
+    \end{enumerate}
+\end{problem}
+
+\begin{example}
+    \(A_1(V) = V^*\)
+\end{example}
+
+\begin{example}
+    \(\Omega(v_1, \dots v_m) = \det A\) --- \(m\)-форма
+\end{example}
+
+\begin{example}
+    Пусть \(A^T = -A\), тогда \(\omega(\xi, \eta) = (\xi, A\eta)\) --- \(2\)-форма в \(\R^n\)
+\end{example}
+
+\begin{definition}
+    Пусть \(e^1, \dots e^m\) --- базис сопряженного пространста. Тогда \(\forall I = \left( \begin{array}{cccc}
+    1 & 2 & \dots & k \\
+    i_1 & i_2 & \dots & i_k\\
+    \end{array} \right)\) --- перестановки, положим \(e^I(v_1, \dots v_k) = \det \left( \begin{array}{ccc}
+        e^{i_1}(v_1) & \dots & e^{i_1}(v_k) \\
+        \vdots & \ddots & \vdots \\
+        e^{i_k}(v_1) & \dots & e^{i_k}(v_k) \\
+    \end{array} \right)\). Тогда \(e^I \in A_k(V)\)
+\end{definition}
+
+Положим \(\mathbb{I}_k = \left\{ I = \left( \begin{array}{cccc}
+1 & 2 & \dots & k \\
+i_1 & i_2 & \dots & i_k\\
+\end{array} \right): i \le i_1 < \dots < i_k \le m \right\}\).
+
+\begin{theorem}
+    Пусть \((e^1, \dots e^m)\) --- базис в \(V^*\), двойственный к \(e_1, \dots e_m\). Тогда \(E_k = \{e^I, I \in I_k\}\) образуют базис в \(A_k(V)\).
+\end{theorem}
+\begin{proof}
+    Отметим, что любую перестановку \(J = \left( \begin{array}{cccc}
+1 & 2 & \dots & k \\
+j_1 & j_2 & \dots & j_k\\
+\end{array} \right)\) можно упорядочить по возрастанию ровно одним способом и получить перестановку \(I = \left( \begin{array}{cccc}
+1 & 2 & \dots & k \\
+i_1 & i_2 & \dots & i_k\\
+\end{array} \right), i_1 < \dots < i_k \Ra i \in \mathbb{I}\). Тогда \(e^I = \pm e^J \Lra \epsilon(J) = \pm\epsilon(I)\). Для \(f \in A_k(V)\) имеем \(f = \sum_{J \in S_k}f(e_{j_1}, \dots e_{j_k})e^J\). По замечению выше, заключаем, что \(A_k(V)\) есть линейная оболочка \(E_k\). Докажем линейную независимость этой системы. Пусть \(\sum_{I \in \mathbb{I}_k}c_Ie^I = 0\). Применим эту форму к набору \(e_J = (e_{j_1}, \dots e_{j_k}), J \in \mathbb{I}_k\). Имеем:
+\[e^I(e_J) = \left\{\begin{array}{l}
+    0, I \ne J \\
+    1, I = J \\
+\end{array}\right.\]
+Тогда \(c_J = 0\). Это доказывает линейную независимость \(E_k\).
+\end{proof}
+
+\begin{corollary}
+    \(\dim A_k(V) = C_m^k\).
+\end{corollary}
+
+\begin{corollary}
+    При \(k > m\), имеем \(A_k(V) = \{0\}\).
+\end{corollary}
