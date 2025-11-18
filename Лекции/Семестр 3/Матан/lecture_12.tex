@@ -1,0 +1,168 @@
+% !TEX root = ../../../main.tex
+
+\begin{definition}
+    Пусть \(k, l \in \N\). Рассмотрим \(S_{k, l} = \{\sigma \in S_{k + l}: \sigma(1) < \dots < \sigma(k), \sigma(k + 1) < \dots < \sigma(k + l)\} \subset S_{k + l}\). Элемент \(\sigma \in S_{k, l}\) называется \((k, l)\)-перетасовкой.
+\end{definition}
+
+\begin{definition}
+    Пусть \(\omega \in A_k(V), \tau \in A_l(V)\), тогда внешним произведением \(\omega, \tau\) называется функция, определяемая \(\omega \wedge \tau(v_1, \dots v_{k + l}) = \sum_{\sigma \in S_{k, l}}\epsilon(\sigma)\omega(v_{\sigma(1)}, \dots v_{\sigma(k)})\cdot \omega(v_{\sigma(k + 1)}, \dots v_{\sigma(k + l)})\)
+\end{definition}
+
+\begin{note}
+    Введем обозначение \(h = \omega \otimes \tau, h(v_1, \dots v_{k + l}) = \omega(v_1, \dots v_k)\tau(v_{k. + 1}, \dots v_{k + l}), \sigma h = h(v_{\sigma(1)}, \dots v_{\sigma(k)})\). Тогда \(\omega \wedge \tau = \sum_{\sigma \in S_{k, l}}\epsilon(\sigma) \cdot \sigma(\omega \otimes \tau)\).
+\end{note}
+
+\begin{note}
+    Покажем, что \(\omega \wedge \tau \in A_{k + l}(V)\).
+\end{note}
+\begin{proof}
+    Полилинейность очевидна. Покажем кососимметричность. Для этого достаточно установить, что \(\omega \wedge \tau(v_1, \dots v_{k + l}) = 0\) если в наборе \(v_1, \dots v_{k + l}\) выполнено \(v_r = v_{r + 1}\). Пусть \(A_1 = \{\sigma \in S_{k, l}: i = \sigma^{-1}(r), j = \sigma^{-1}(r + 1) \le k\} \Ra h_i = 0\), т.к. \(\omega(v_1, \dots v_k) = 0\). Аналогично, \(A_2 = \{\sigma \in S_{k, l}: i = \sigma^{-1}(r), j = \sigma^{-1}(r + 1) > k\} \Ra h_i = 0\), т.к. \(\tau(v_{k + 1}, \dots v_{k + l}) = 0\).
+
+    Теперь рассмотрим \(A_3 = \{\sigma \in S_{k, l}: i = \sigma^{-1}(r) \le k, j = \sigma^{-1}(r + 1) \ge k + 1\}, A_4 = \{\sigma \in S_{k, l}: i = \sigma^{-1}(r) \ge k + 1, j = \sigma^{-1}(r + 1) \le k\}\). Рассмотрим \(t_r = (r\;r + 1)\) --- транспозиция. Имеем \(t_r(A_4) = A_3, t_r(A_3) = A_4\). Поэтому
+    \[\epsilon(\sigma)(\sigma h)(v_1, \dots v_{k + l}) + \epsilon(t_r \sigma)(t_r\sigma h)(v_1, \dots v_{k + l}) =\]
+    \[= \epsilon(\sigma)(\sigma h)((\sigma h)(v_1, \dots v_{k + l}) - (\sigma h)(v_1, \dots v_{k + l}))= 0\]
+\end{proof}
+
+\begin{example}
+    Пусть \(\alpha, \beta \in V^*\) рассмотрим \(\alpha \wedge \beta(u, w) = \alpha(v) \beta(w) - \alpha(w)\beta(v)\).
+\end{example}
+
+\begin{lemma}
+    Внешнее произведение удовлетворяет следующим свойствам
+    \begin{enumerate}
+        \item \(w_1 \wedge (w_2 \wedge w_3) = (w_1 \wedge w_2) \wedge w_3\)
+        \item \(w_1 \wedge (w_2 + w_3) = w_1 \wedge w_2 + w_1 \wedge w_3\).
+        \item \(\omega \wedge \tau = (-1)^{\deg \omega \deg \tau}\tau \wedge \omega\).
+    \end{enumerate}
+\end{lemma}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Пусть \(k_i = \deg \omega_i, k = k_1 + k_2 + k_3, S_{k_1, k_2, k_3} = \left\{\sigma \in S: \begin{array}{l}
+            \sigma(1) < \dots < \sigma(k_1) \\
+            \sigma(k_1 + 1) < \dots < \sigma(k_1 + k_2) \\
+            \sigma(k_1 + k_2 + 1) < \dots < \sigma(k_1 + k_2 + k_3) \\
+        \end{array}\right\}\). Положим \(\omega = \sum_{\sigma \in S_{k_1, k_2, k_3}} \epsilon(\sigma)\sigma(\omega_1 \otimes \omega_2 \otimes \omega_3)\). Т.к. \(\otimes\) ассоциативно, то \(\omega_1 \wedge (\omega_2 \wedge \omega_3) = \omega = (\omega_1 \wedge \omega_2) \wedge \omega_3\).
+        \item Непосредственно следует из определения
+        \item Рассмотрим биекцию \(S_{k,l} \ra S_{l, k}, \sigma \mapsto \tilde{\sigma}, \tilde{\sigma}(i) = \left\{\begin{array}{l}
+            \sigma(k + i), i = 1, \dots l \\
+            \sigma(i - l), i = l + 1, \dots k + l \\
+        \end{array}\right.\). В таком случае, \(\epsilon(\tilde{\sigma}) = (-1)^{kl}\epsilon{\sigma}\). Тогда:
+        \[\omega \wedge \tau(v_1, \dots v_{k + l}) = \sum_{\sigma \in S_{k, l}}\epsilon(\sigma)\omega(v_{\sigma(1)}, \dots v_{\sigma{k}})\tau(v_{\sigma(k + 1)}, \dots v_{\sigma{k + l}}) =\]
+        \[(-1)^{kl}\sum_{\tilde{\sigma} \in S_{k, l}}\epsilon(\tilde{\sigma})\omega(v_{\tilde{\sigma}(l + 1)}, \dots v_{\tilde{\sigma}{k + l}})\tau(v_{\tilde{\sigma}(1)}, \dots v_{\tilde{\sigma}{l}})= (-1)^{kl}\tau \wedge \omega\]
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Пусть \(\Phi: V \ra W\) --- линейное отображение. Для \(\omega \in A_k(W)\) можно рассмотреь \(\Phi^*\omega \in A_k(V)\) по правилу
+    \[\Phi^*\omega(v_1, \dots v_k) = \omega(\Phi v_1, \dots \Phi v_k)\]
+    Данная операция называется pullback.
+\end{definition}
+
+\begin{proposition}\indent
+    \begin{enumerate}
+        \item Отображение \(\Phi^*: A_k(W) \ra A_k(V)\) линейно и \(\Phi^*(\omega \wedge \tau) = \Phi^*\omega \wedge \Phi^*\tau\).
+        \item Для \(\Psi: W \ra Z\) --- линейного отображения, верно, что \((\Psi\Phi)^* = \Phi^*\Psi^*\)
+    \end{enumerate}
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Очевидно
+        \item 
+        \[(\Psi\Phi)^*\omega(v_1, \dots v_k) = \omega(\Psi\Phi v_1, \dots \Psi\Phi v_k) = \omega(\Psi(\Phi v_1), \dots \Psi(\Phi v_k)) =\]
+        \[= \Psi^*\omega(\Phi v_1, \dots \Phi v_k) = \Phi^*\Psi^*\omega(v_1, \dots v_k)\]
+    \end{enumerate}
+\end{proof}
+
+\begin{example}[Правило детерминанта]
+    Пусть \(\alpha^1, \dots \alpha^k \in V^*\), тогда
+    \[\alpha^1 \wedge \dots \wedge \alpha^k(v_1, \dots v_k) = \sum_{\sigma \in S_k} \epsilon(\sigma)\alpha^1(v_{\sigma(1)})\dots \alpha^k(v_{\sigma(k)}) = \det(\alpha^i(v_j))\]
+\end{example}
+
+\subsection{Дифференциальные формы на открытых подмножествах \(\R^m\)}
+
+Будем отождествлять \(T_p\R^m = \R^m\). Более формально будет записать \((p, \R^m)\), т.е. для каждой точки у нас будет свое касательное пространство
+
+\begin{definition}
+    Пусть \(U \subset \R^m\) --- открыто, \(k \in \N\). Дифференциальной \(k\)-формой на \(U\) называется функция \(U \ni p \mapsto w_p \in A_k(\R^n)\).
+\end{definition}
+
+Дифференциалы координатных функций \(dx_1, \dots dx_n\) образуют базис в \((\R^m)^*\) (двойственнен к стандартному), тогда \(\{dx_{i_1} \wedge \dots dx_{i_k} : 1 \le i_1 \le \dots \le i_k \le m\}\) образуют базис в \(A_k(\R^m)\). Поэтому имеет место представление
+\[\omega_p = \sum_{i_1 < \dots < i_k}f_{i_1, \dots i_k}dx_{i_1} \wedge \dots \wedge dx_{i_1} = \sum_{I \in \mathbb{I}_k} f_Idx^I\]
+
+Функции \(f_I: U \ra \R\) называется координатным представлением формы \(\omega\). Пусть \(r \in \N_0 \cup \{\infty\}\). Говорят, что дифференциальная форма \(\omega\) класса \(C^r(U)\), если все координатные функции \(\in C^r(U)\).
+
+В дальнейшем (если не указано иное) будем предполагать, что все рассматриваемые нами формы \(\in C^\infty\), множество \(k\)-форм класса \(C^\infty\) обозначается \(\Omega^k(U)\). Напомним, что \(A_0(\R^m) = \R\), поэтому \(\Omega^0(U) = C^\infty(U)\)
+
+\begin{enumerate}
+    \item Пусть \(\omega, \tau \in \Omega^k(U), f \in C^\infty(U)\), тогда \(f\omega \in \Omega^k(U), p\mapsto f(p)\omega_p, \omega + \tau \in \Omega^k(U), p \mapsto \omega_p + \tau_p\).
+    \item Пусть \(\omega \in \Omega^k(U), \tau \in \Omega^l(U)\), положим \(\omega \wedge \tau \in \Omega^{k + l}(U), p \mapsto \omega_p \wedge \tau_p\).
+\end{enumerate}
+
+Таким образом, \(\Omega^k(U)\) является линейным пространством
+
+\begin{example}
+    Пусть \(\omega = \sum_{I \in \mathbb{I}_k}f_Idx^I, \tau = \sum_{I \in \mathbb{I}_k}g_Idx^I\). Тогда:
+    \[\omega \wedge \tau = \sum_{I, J}f_Ig_Jdx^I \wedge dx^J\]
+\end{example}
+
+Пусть \(f: U \ra V\), \(U\) открыто в \(\R^m\), \(V\) открыто в \(\R^n\), \(f \in C^\infty\). Тогда для \(p \in U: df_p: \R^m \ra \R^n\) --- линейное отображение, поэтмоу если \(\omega_p \in A_k(\R^n)\), то \((df_p)^*: A_k(\R^n) \ra A_k(\R^m)\) и \((df_p)^*\omega_p = \omega_{f(p)}(df_p(v_1), \dots df_p(v_k))\).
+
+\begin{definition}
+    Отображение \(p \mapsto (df_p^*\omega)_p\) определяем дифференциальную форму на \(U\), которая обозначается \(f^*\omega\) и называется переносом формы \(\omega\).
+\end{definition}
+
+В частности, при \(k = 0\), т.е. для \(g \in C^\infty(V)\), имеем следующее:
+\[f^*g = g \circ f\]
+
+\begin{proposition}
+    \begin{enumerate}
+        \item Перенос линеен и \(f^*(\omega \wedge \tau) = f^*\omega \wedge f^*\tau\).
+        \item \(f: \underbrace{U}_{\subset \R^m} \ra \underbrace{V}_{\subset \R^n}, g: V \ra \underbrace{W}_{\subset \R^k}\) --- класса \(C^\infty \Ra (g \circ f)^* = f^* \circ g^*\).
+    \end{enumerate}
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item Очевидно
+        \item Композиция \(df_p^*: A_k(\R^b) \ra A_k(\R^m), dg_q^*: A_k(\R^k) \ra A_k(\R^n)\). Так как \(dg_q \circ df_p = d(g \circ f)_p\), то:
+        \[f^*(g^*\omega) = (g \circ f)^*\omega \forall \omega in \Omega^k(W)\]
+    \end{enumerate}
+\end{proof}
+
+Получим координатную запись \(f^*\).
+
+\begin{lemma}(Перенос как замена переменных)
+    Пусть \(f: \underbrace{U}_{\subset \R^m} \ra \underbrace{V}_{\subset \R^n}\) класса \(C^\infty, f = (f_1, \dots f_n)\). Если \(\omega \in \Omega^k(V), \omega = \sum_{(i_1, \dots i_k) \in \mathbb{I}_k}a_Idx_{i_1} \wedge \dots \wedge dx_{i_k}\), то \(f^*\omega = \sum_{I \in \mathbb{I}_k}a_I \circ f df_{i_1} \wedge \dots \wedge df_{i_k}\)
+\end{lemma}
+\begin{proof}
+    По определению, \(f^*a_I = a_I \circ f\). \(f(dx_i)(v) = dx_i(df(v)) = d(x_i \circ f)(v) = df_i(v)\). Поэтому, \(f^*\omega = \sum_{I \in \mathbb{I}_k}f^*a_I(f^*dx_{i_1})\wedge \dots \wedge (f^*dx_{i_k}) = \sum_{I \in \mathbb{I}_k}a_I \circ f df_{i_1} \wedge \dots \wedge df_{i_k}\).
+\end{proof}
+
+\begin{corollary}
+    \(f^*: \Omega^k(V) \ra \Omega^k(U)\) --- то есть сохраняет гладкость.
+\end{corollary}
+\begin{proof}
+    \(df_i \in \Omega^1(U), a_I \circ f \in C^\infty(U) \Ra f^*\omega \in \Omega^k(U)\)
+\end{proof}
+
+\begin{example}
+    Пусть \(U \subset \R^m\) --- открыто и задана \(m\)-форма, \(\omega = f(x)dx_1 \wedge \dots \wedge dx_m\) и пусть \(g: W \ra U\) --- диффеоморфизм, \(x = g(t)\), тогда
+    \[dg_1 \wedge \dots \wedge dg_m = \sum_{\sigma \in S_m}\frac{\partial g_1}{\partial t_{\sigma(1)}}\dots \frac{\partial g_m}{\partial t_{\sigma(m)}}dt_{\sigma(1)} \wedge \dots \wedge dt_{\sigma(m)} = \]
+    \[ = \sum_{\sigma \in S_m} \epsilon(\sigma)\frac{\partial g_1}{\partial t_{\sigma(1)}}\dots \frac{\partial g_m}{\partial t_{\sigma(m)}}dt_{1} \wedge \dots \wedge dt_{m} = J_g dt_{1} \wedge \dots \wedge dt_{m}\]
+    В итоге:
+    \[g^*\omega = f \circ g dg_1 \wedge \dots \wedge dg_m = f \circ g \cdot J_g dt_{1} \wedge \dots \wedge dt_{m}\]
+\end{example}
+
+\begin{definition}
+    Пусть \(U \subset \R^m\) открыто и \(\omega = \sum_{I \in \mathbb{I}_k}f_Idx^I \in \Omega^k(U)\). Внешним дифференциалом \(\omega\) называется:
+    \[d\omega = \sum_{I \in \mathbb{I}_k}df_I \wedge dx^I \in \Omega^{k + 1}(U)\]
+\end{definition}
+
+\begin{example}
+    Пусть \(\omega = Pdx + Qdy\) в \(\R^2\). Тогда:
+    \[d\omega = dP \wedge dx + dQ \wedge dy = \left( \frac{\partial P}{\partial x}dx + \frac{\partial P}{\partial y}dy \right)\wedge dx + \left( \frac{\partial Q}{\partial x}dx + \frac{\partial Q}{\partial y}dy \right)\wedge dy =\]
+    \[= \frac{\partial P}{\partial x} dx \wedge dy + \frac{\partial Q}{\partial y}dy \wedge dx = \left( \frac{\partial P}{\partial x} - \frac{\partial Q}{\partial y} \right)dx \wedge dy\]
+\end{example}
+
+\begin{problem}
+    Покажите, что \(d\omega_p(v_1, \dots v_{k + 1}) = \sum_{j = 1}^{k + 1}(-1)^{j - 1}\left.\frac{d}{dt}\right|_{t = 0}\omega_p + tv_j(v_1, \dots v_{j - 1}, v_{j + 1}, \dots v_{k + 1})\)
+\end{problem}
