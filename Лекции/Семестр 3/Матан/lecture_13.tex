@@ -1,0 +1,174 @@
+% !TEX root = ../../../main.tex
+
+Пололжим \(\Omega(U) = \bigcup_{k = 0}^n \Omega^k(U)\). Тогда внешний дифференциал порождает ''послойное'' отображение \(d: \Omega(U) \ra \Omega(U)\).
+
+\begin{lemma}
+    Для всех форм \(\omega, \nu \in \Omega^k(U), \tau \in \Omega^l(U), c \in \R\) выполнено:
+    \begin{enumerate}
+        \item \textbf{Линейность:} \(d(\omega + \nu) = d\omega + d\nu, d(c\omega) = cd\omega\)
+        \item \textbf{Правило Лейбница:} \(d(\omega \wedge \tau) = d\omega \wedge \tau + (-1)^k\omega \wedge d\tau\)
+        \item \(d(d\omega) = 0\).
+    \end{enumerate}
+    Кроме того, пусть есть \(D: \Omega(U) \ra \Omega(U)\) --- линейный оператор, удовлетворяющий предыдущим свойствам и \(f \in \Omega^0(U) = C^\infty(U)\) верно: \(Df = df\). Тогда \(D = d\)
+\end{lemma}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \textbf{Линейность:} верна по опрелелению
+        \item \textbf{Правило Лейбница:} по линейности, достаточно доказать только для мономов вида \(\omega = fdx^I, \tau = gx^J, I \in \mathbb{I}_k, J \in \mathbb{I}_l,\;f, g \in C^\infty(U)\). По определению внешнего произведения:
+        \[d(\omega \wedge \tau) = d(fgd^I \wedge d^J) = (dfg + fdg) \wedge dx^I \wedge dx^J =\]
+        \[= (df \wedge dx^I) \wedge (gdx^J) + (-1)^k(fdx^I) \wedge (dg \wedge dx^J) = d\omega \wedge \tau + (-1)^k\omega \wedge d\tau\]
+        \item Для \(f \in C^\infty(U)\) имеем:
+        \[d(df) = d\left( \sum_{i = 1}^\infty \sum_{i = 1}^m \frac{\partial f_i}{\partial x_i}dx_i \right) = \sum_{i, j = 1}^m \frac{\partial^2 f}{\partial x_j \partial x_i} dx_i \wedge dx_j\]
+        Также из определения \(d dx^I = 0 \forall I\), тогда:
+        \[d(d(fdx^I)) = d(df \wedge dx^I) = \underbrace{d(df)}_{0} \wedge dx^I - df \wedge \underbrace{d(dx^I)}_{0} = 0\]
+        Таким образом, для \(0\)-форм и для мономов утверждение верно. Для всех остальных функций утерждение следует из линейности
+    \end{enumerate}
+
+    Пусть теперь \(D: \Omega(U) \ra \Omega(U)\) удовлетворяет условиям 1-3. Достаточно показать равенство \(D = d\) на мономах. Заметим, что \(D dx^i = DDx^i = 0 \Ra\) по свойству 2, \(Ddx^I = 0 \forall I \in \mathbb{I}_k\). Следовательно,
+    \[D(fdx^I) = df \wedge dx^I + fDdx^I = df \wedge dx^I = d(fdx^I)\]
+\end{proof}
+
+\begin{theorem}
+    Пусть \(f: U \ra V\) --- гладкое отображение, \(U\) --- открытое в \(\R^n\), \(V\) --- открытое в \(\R^m\). Тогда: \(d(f^*\omega) = f^*d\omega\) для всех \(\omega \in \Omega^k(V)\).
+\end{theorem}
+\begin{proof}
+    Для \(g \in C^\infty(U)\) имеем: 
+    \[d(f^*g) = d(g \circ f) = dg \circ df = f^*(dg)\]
+    При этом для \(I \in \mathbb{I}_k\) по правилу Лейбница:
+    \[d(f^*dy^I) = d(df_{i_1} \wedge \dots \wedge df_{i_k})\]
+    Следовательно,
+    \[d(f^*gdy^I) = d(f^*g \wedge dy^I) = d(f^*g \wedge f^*dy^I) = d(f^*g) \wedge f^*dy^I + f^*g \wedge d(f^*dy^I) = \]
+    \[ = f^*(dg) \wedge f^*(dy^I) = f^*(dg \wedge dy^I)\]
+    Равенство доказано для мономов вида \(\omega = gdy^I\)
+\end{proof}
+
+\section{Дифференциальные формы на многообразиях}
+Напомним, что под гладкостью мы понимаем принадлежность класcу \(C^\infty\)
+
+\begin{definition}
+    Пусть \(M\) --- гладоке \(m\)-мерное многообразие в \(\R^n\), \(k \in \N_0\). Дифференциальной формой \(\omega\) на \(M\) называется функция \(M \ni p \mapsto \omega_p \in A_k(T_pM)\).
+\end{definition}
+
+\begin{definition}
+    Пусть \(f: M \ra N\) --- гладкое отображение многообразий \(M, N\), \(\omega\) --- \(k\)-форма на \(N\). Тогда \(f^*\omega\) называется такая \(k\)-форма на \(N\), что
+    \[(f^*\omega)_p(v_1, \dots v_k) = \omega_{f(p)}(df_p(v_1), \dots df_p(v_k))\]
+    То есть \(f^*\omega_p = df^*_p\omega_{f(p)}\).
+\end{definition}
+
+Поскольку операция переноса поточечная, для нее выполняется линейность, сохранение внешнего произведения и следующего свойства:
+
+Если \(g: N \ra P\) --- гладкое, то \((g \circ f)^* = f^* \circ g^*\)
+
+\begin{example}
+    Пусть \(i_M: M \ra \R^n\), такое, что \(i_M(x) = x\). Если на \(U\) --- открытом в \(\R^n, U \supset M\) задана \(k\)-форма \(\nu\), то ее можно перенести с \(U\) на \(M\): \(i^*_M\nu\) --- \(k\)-форма на \(M\). Такая форма называется сужением формы \(\nu\) на \(M\) и обозначается \(\nu|_M = i_M^*\nu\)
+\end{example}
+
+Определить гладкость формы в точке можно как минимум двумя способами:
+
+\begin{definition}
+    Форма \(\omega\) называется гладкой в \(p \in M\), если существует параметризация \(\phi: V \ra U\) окрестности \(p\) в \(M\), что \(\phi^*\omega\) гладкая в \(V\).
+\end{definition}
+
+\begin{definition}
+    Форма \(\omega\) называется гладкой в \(p \in M\), если существует \(W \ni p\) --- открытое в \(\R^n\) и форма \(\tilde{\omega} \in \Omega(W)\), что \(\omega = \tilde{\omega}|_M\) на \(W \cap M\)
+\end{definition}
+
+\begin{lemma}
+    Два предыдущих определения эквивалентны.
+\end{lemma}
+\begin{proof}
+    Пусть выбрана параметризация \(\phi: V \ra W \cap M\), где \(W\) открыто в \(\R^n\), такая, что \(\phi^*\omega \in \Omega(V)\). \(\phi^{-1}\) определена на \(W\), т.е. существует такая глудкая функция \(F: W \ra V\), такая, что \(F|_{W \cap M} = \phi^{-1}\). Положим \(\tilde{\omega} = F^*(\phi^*\omega)\). Тогда \(\tilde{\omega} \in \Omega(W)\) и \(F \circ i_M = \phi^{-1}\) на \(W \cap M\), то \(i^*_M \circ F^* \circ \phi^*\) --- тождественное, а значит \(i_M^* \tilde{\omega} = \omega\) на \(W \cap M\). 
+
+    Докажем в другую сторону. Пусть \(\tilde{\omega}|_M = \omega\) на \(W \cap M\). Уменьшая \(W\) если надо, можно считать, что существует параметризация \(\phi: V \ra W \cap M\). Тогда \(i_M \circ \phi: V \ra W\) и \(\phi^*\omega = (i_{M}\circ \phi)^*\omega \in \Omega(V)\).
+\end{proof}
+
+\begin{note}
+    Из доказательства эквивалентности определений вытекает, что квантор существования можно заменить на квантор всеобщности.
+\end{note}
+
+\begin{definition}
+    Форма называется гладкой на \(M\), если она является гдадкой в каждой точке.
+\end{definition}
+
+Положим \(\Omega(M) = \bigcup_{k = 0}^n \Omega^k(M)\)
+
+\begin{lemma}
+    Пусть \(f: M \ra N\) --- гладкое отобраэение многообразий. Тогда \(f^*: \Omega^k(M) \ra \Omega^k(M)\).
+\end{lemma}
+\begin{proof}
+    Пусть \(\omega \in \Omega^k(N)\). Для \(p \in M\) и \(q = f(p) \in N\) выберем параметризации \(\phi: U_0 \ra U, \psi: V_0 \ra V\) --- \(p \in U \subset M, q \in V \subset N\). Можно выбрать окрестности так, что \(f(U) \subset V\). Тогда \(g = \psi^{-1} \circ g \circ \phi\) --- координатное представление и \(\psi \circ g = f \circ \phi\). Следовательно, \(g^*(\psi^*\omega) = \phi^*(f^*\omega)\). Поскольку \(g \in C^\infty(U_0)\) и форма \(\psi^*\omega\) гладкая, то в левой части стоит гладкая форма. Но тогда и форма, стоящая в правой части, является гладкой.
+\end{proof}
+
+\begin{definition}
+    Пусть \(\omega \in \Omega(M), \phi\) --- параметризация окрестности \(U\) в \(M\). Определим \(d\omega = (\phi^{-1})^*d(\phi^*\omega)\) на \(U\). 
+\end{definition}
+Существование \(d\) на всем \(M\) следует из того, что локальное определение не зависит от параметризации. Пусть \(\psi: W \ra \R^n\) --- другая параметризация \(M\), такая, что \(O = \phi(V) \cap \psi(W)\) непусто. Тогда \(g: \phi^{-1}(O) \cap \psi^{-1}(O), g = \psi^{-1} \circ \phi\) --- диффеоморфизм и \(\phi = \psi \circ g\). Следовательно,
+\[d(\phi^*\omega) = d(g^*\psi^*\omega^*) = \underbrace{g^*d}_{\text{на \(\phi^{-1}(O)\)}}(\psi^*\omega) = \phi^*\circ (\psi^{-1})^*d(\psi^*\omega)\]
+Тогда:
+\[(\phi^{-1})^*d(\phi^*\omega) = \underbrace{(\psi^{-1})^*d(\psi^*\omega)}_{\text{на \(O\)}}\]
+
+Кроме того, если \(f \in \Omega^0(M) = C^\infty(M)\), то внешний дифференциал на многообразии \(df = (\phi^{-1})^*d(f \circ \phi) = d(f \circ \phi)(d\phi^{-1})\) --- дифференциал функции \(f\).
+
+\begin{note}
+    Возможность продолжения \(d\) на \(M\) также следует из предыдущего утверждения о единственности дифференциала формы
+\end{note}
+
+\begin{theorem}
+    Пусть \(f: M \ra N\) --- гладкое отображение, тогда: \(d(f^*\omega) = f^*d\omega\) для всех \(\omega \in \Omega(N)\)
+\end{theorem}
+\begin{proof}
+    Рассмотрим следующую картинку:
+    \begin{center}
+        \includegraphics[scale=0.1]{images/IMG_4511.jpeg}
+    \end{center}
+    Т.к. \(\psi \circ g = f \circ \phi\), то по определению \(d\) свойствам переноса:
+    \[\phi^*d(f^*\omega) = d(\phi^*f^*\omega) = d((f \circ \phi)^*\omega) = d((\psi \circ g)^*\omega) =\]
+    \[= d(g^*(\psi^*\omega)) = g^*(d(\psi^*\omega)) = g^*\psi^* d\omega = \phi^*f^*d\omega\]
+    Тогда \(d(f^*\omega) = f^*d\omega\).
+\end{proof}
+\begin{corollary}
+    Пусть в \(\R^n\) окрестность \(W \supset M\) и \(\tilde{\omega} \in \Omega^k(M)\), т.ч. \(i_M^*\tilde{\omega} = \omega\). Тогда \(d\omega = i_M^* d\tilde{\omega}\).
+\end{corollary}
+
+\section{Разбиение единицы}
+Вспомним функцию:
+\[f(t) = \left\{\begin{array}{l}
+    e^{-\frac{1}{t}}, t > 0 \\
+    0, t \le 0
+\end{array}\right.\]
+Рассмотрим
+\[h(t) = \frac{f(R - t)}{f(R - t) + f(t - r)}\]
+Рассмотрим \(\beta: \R^n \ra \R, x_0 \in \R^n\):
+\[\beta(x) = h(|x - x_0|^2) \in C^\infty(\R^n)\]
+
+\(\beta\) --- функция ''шапочка''.
+
+\begin{definition}
+    Пусть \(f: X \ra \R\). Тогда носителем \(f = \supp f = \overline{\{x: f(x) \ne 0\}}\).
+\end{definition}
+
+\begin{note}
+    \(\supp \beta = \overline{B}_R(x_0)\).
+\end{note}
+
+\begin{problem}[Лемма об исчерпывании компактами]
+    Для любого открытого множества \(U\) существует \(\{C_i\}_{i = 0}^\infty\), где \(C_i\) --- компакты, что \(C_i \subset C_{i + 1}\), \(\bigcup_{i = 1}^\infty C_i = U\)
+\end{problem}
+
+\begin{lemma}
+    Пусть \(\{U_\alpha\}_{\alpha \in I}\) --- семейство открытых множеств в \(\R^n\), \(U = \bigcup_{\alpha \in I} U_\alpha\). Тогда существует \(\{B_i\}_{i = 1}^\infty\), таких, что:
+    \begin{enumerate}
+        \item \(\bigcup_{i = 1}^\infty B_i = U\)
+        \item \(\forall i \exists \alpha: (\overline{B_i} \subset U_\alpha)\)
+        \item \(\exists U_p \subset U\) --- открытое, \(\exists N_p: B_i \cap N_p = \emptyset \forall i > N_p\).
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Возьмем \(C_i\) из леммы об исчерпывании компактами. Положим \(K_i = C_i \setminus int\;C_{i - 1}, C_0 = \emptyset\). Тогда \(K_i\) --- компакт. \(\forall x \in K_i\) выберем шар \(B_x\), такой, что:
+    \begin{enumerate}
+        \item \(B_x \ni x\)
+        \item \(\exists \alpha: \overline{B_x} \subset U_\alpha\)
+        \item \(B_x \subset int\;C_{i + 1} \setminus C_{i - 2}\).
+    \end{enumerate}
+    \(x \in C_{i + 1}, x \notin int\;C_{i - 1} \Ra x \notin C_{i - 2}\). Т.к. \(K_i\) --- компакт, то существует конечное подпокрытие, т.е. \(K_i \subset B_{x_1} \cup \dots \cup B_{x_{N_i}}\). Рассмотрим \(\{B_{i, r}: i \in \N, 1 \le r \le N\} = \{B_i\}_{i = 1}^\infty\)
+\end{proof}
