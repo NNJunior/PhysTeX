@@ -1,0 +1,158 @@
+% !TEX root = ../../../main.tex
+
+Пусть в условиях предыдущей леммы \(R_i = \) радиус \(B_i\). Рассмотрим функцию ''шапочка'' \(\beta_i\) по числам \(r = \frac{R_i}{2}, R = R_i\). Тогда:
+\begin{enumerate}
+    \item \(\beta_i \in C^\infty(U), \beta_i \ge 0\)
+    \item \(\forall p \in U \exists N_p \exists U_p\) --- окрестность \(p\) в \(U\), что \(\forall i > N_p (U_p \cap \supp(\beta_i) = \emptyset)\)
+    \item \(\forall i \exists \alpha: \supp(\beta_i) \subset U_\alpha\)
+    \item \(\sum_{i = 1}^\infty \beta_i\) --- гладкая функция, т.к. в каждой точке данный ряд превращается в конечную сумму.
+\end{enumerate}
+
+Т.к. \(\{B_i\}_{i = 1}^\infty\) образуют покрытие \(U\), то \(\sum_{i = 1}^\infty \beta_i > 0\). Положим:
+\[f_i = \frac{\beta_i}{\sum_{j = 1}^\infty \beta_j}, i \in \N \Ra \sum_{i = 1}^\infty f_i = 1\]
+
+\begin{theorem}
+    Пусть \(M\) --- гладкое многообразие в \(\R^n\), \(\{U_\alpha\}_{\alpha \in I}\) --- открытое покрытие \(M\). Тогда существует \(\rho_i \in C^\infty(M), i \in \N\), такое, что 
+    \begin{enumerate}
+        \item \(\rho_i \ge 0 \forall i\)
+        \item \(\forall C \subset M\) --- компакта \(\exists N \forall i > N (\supp(\rho_i) \cap C = \emptyset)\)
+        \item \(\sum_{i = 1}^\infty \rho_i = 1\) на \(M\)
+        \item \(\forall i \ge 1 \exists \alpha \in I: (\supp(\rho_i) \subset U_\alpha)\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Пусть \(p \in M\). Тогда \(\exists \alpha: p \in U_{\alpha}\). Выберем \(O_p \subset \R^n\) --- открытое множество, содержащее \(p\) так, что \(\overline{O_p \cap M} \in U_\alpha\). Определим \(O = \bigcup_{p \in M}O_p\) и рассмотрим \(f_i \in C^\infty(O)\) (как мы определяли выше). Положим \(\rho_i = f_i|_M\). Из условия \(\overline{O_p \cap M} \subset U_\alpha\) следует, что \(\supp \rho_i \subset U_\alpha\). Пусть \(C \subset M\) --- компакт. Тогда \(C\) покрывается конечным числом \(U_{p_i}\), таких, что \(U_{p_i} \cap \supp(\rho_i) = \emptyset \forall i > N_{p_i}\). Положим \(N = \max_i N_{p_i}\) --- оно существует, т.к. существует лишь конечное число \(N_{p_i}\).
+\end{proof}
+
+\begin{corollary}
+    Пусть \(K \subset M\) --- компакт, \(\{U_j\}_{j = 1}^N\) --- конечное подпокрытие \(K\) в \(M\). Тогда существует \(\phi_j \in C^\infty(M), j = 1, \dots N\), такие, что:
+    \begin{enumerate}
+        \item \(\phi_j \ge 0\)
+        \item \(\forall j (\supp \phi_j \subset U_j)\)
+        \item \(\sum_{j = 1}^N \phi_j = 1\) на \(K\).
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    Применим теорему к набору \(\{U_j\}_{j = 1}^N\). Получим набор функций \(\{\rho_i\}_{i = 1}^\infty\). По свойству 2, только конечное множество носителей \(\rho_i\) не пересекается с \(K\). Рассмотрим \(A_1 = \{i \in \N: \supp \rho_i \subset U_1\}\). Положим \(\phi_1 = \sum_{i \in A_1}\rho_i\) --- гладкое как конечная сумма гладких функций. Заметим, что \(\supp \phi_1 \subset \bigcup_{i \in A_1} \supp \rho_i \subset U_1\). Положим \(A_2 = \{i \in \N: \supp \rho_i \subset U_2\} \setminus A_1\). Тогда \(\phi_2 = sum_{i \in A_2} \rho_i\) и так далее по индукции. Тогда \(\sum \phi_i = \sum_{i = 1}^\infty \rho_i = 1\) на \(K\)
+\end{proof}
+
+\begin{problem}
+    Пусть форма \(\omega\) --- гладкая \(k\)-форма на \(M\). Покажите, что существует \(W \supset M\) --- открытое в \(\R^n\) и \(\tilde{\omega} \in \Omega^k(W)\), т.ч. \(\tilde{\omega}|_M = \omega\)
+\end{problem}
+
+\section{Интегрирование дифференциальных форм на многообразиях}
+
+\subsection{Регулярные области}
+Рассмотрим полупространство \(\mathbb{H}^m = \{(x_1, \dots x_m): x_1 < 0\}\). Множество \(\mathbb{H}^n\) открыто в \(\R^n\), причем \(\partial \mathbb{H}^m = \{(x_1, \dots x_m): x_1 = 0\}\)
+
+\begin{definition}
+    Пусть \(M\) --- гладкое \(m\)-мерное многообразие, \(N \subset M\) открыто. Множество \(N\) называется регулярной областью в \(M\), если \(\forall p \in \partial M \exists \phi: V \ra U_{\ni p}^{\subset M}\) --- параметризация в \(M\), такая, что \(\phi(V \cap \mathbb{H}^m) = U \cap N\).
+\end{definition}
+
+\begin{note}
+    По критерию непрерывности, \(\phi\) переводит внутренние (внешние) точки \(V \cap \mathbb{H}^m\) во внутренние (внешние) точки \(U \cap M\). Следовательно, \(\phi(V \cap \partial \mathbb{H}^m) = U \cap \partial N\)
+\end{note}
+
+\begin{lemma}
+    Пусть \(M\) --- гладкое \(m\)-мерное многообразие, \(N\) --- регулярная область в \(M\). Тогда \(\partial N\) --- гладкое \(m - 1\) мерным многообразием.
+\end{lemma}
+\begin{proof}
+    Рассмотрим отображение \(L: \R^{m - 1} \ra \partial \mathbb{H}^m\) по правилу: \(L(x') = (0, x')\). Рассмотрим \(V_0 \subset \R^{m - 1}\), такое, что \(\{0\} \times V_0 = V \cap \partial \mathbb{H}^m\). Положим \(U_0 = U \cap \partial N\). Тогда \(\phi_0: V_0 \ra U_0, \phi_0 = \phi \circ L\). Проверим, что \(\phi_0\) --- параметризация. Действительно:
+    \begin{enumerate}
+        \item \(\phi_0\) гдадкая как композиция гладких функций
+        \item \(D\phi_0(x')\) получается из \(D\phi(0, x')\) выкидыванием первого столбца.
+        \item \(\phi_0^{-1}\) непрерывно, как сужение \(\phi^{-1}|_{U_0}\)
+    \end{enumerate}
+\end{proof}
+
+Многообразие \(\partial N\) называется краем \(N\)
+
+\begin{theorem}
+    Пусть \(M\) --- гладкое \(m\)-мерное многообразие и \(f: M \ra \R\) --- гладкая функция на \(M\), такая, что \(f^{-1}(0) \ne \emptyset\) и \(\forall p \in f^{-1}(0): df_p \ne 0\) (т.е \(0\) --- регулярное значение \(f\)). Тогда \(B = f^{-1}(-\infty, 0) = \{p \in M: f(p) < 0\}\) является регулярной областью в \(M\) с краем \(\partial B = f^{-1}(0)\)
+\end{theorem}
+\begin{proof}
+    \(B\) открыто в \(M\) по критерию непрерывности. Пусть \(p \in \partial B\). Тогда \(p \in f^{-1}(0)\). Выберем произвольную параметризацию \(\phi: V \ra U_{\ni p}^{\subset M}\) и рассмотрим \(g = f \circ \phi\). Если \(\phi(a) = p\), то \(dg_a = df_p \circ d\phi_a \ne 0\). Заменяя \(g\) на композицию с перестановкой, можно считать, что \(\frac{\partial g}{\partial x_1}(a) \ne 0\). Рассмотрим на \(V\) функцию \(F(x) = (g(x), x_2, \dots x_m)\). Тогда:
+    \[DF = \left( \begin{array}{cccc}
+        \frac{\partial g}{\partial x_1}(a) & 
+        \dots & \dots & \frac{\partial g}{\partial x_m}(a) \\
+        0 & & & \\
+        \vdots & & E_{m - 1} & \\
+        0 & & & \\
+    \end{array} \right)\]
+    А значит, \(\det DF(a) \ne 0\). Тогда по теореме об обратной функции \(\exists W, V_0\) --- открытые в \(\R^m, a \in V_0 \subset V: F: V_0 \ra W\) --- диффеоморфизм. Положим \(U_0 = \phi(V_0), \psi = \phi \circ F^{-1}\) --- параметризация. Тогда на \(W\) имеем:
+    \[f \circ \psi(x) = f \circ \phi \circ F^{-1}(x) = g(F^{-1}(x)) = x_1\]
+    Следовательно, \(\psi(W \cap \mathbb{H}^m) = \psi\left( \{x \in W: x_1 < 0\} \right) = B \cap U_0\). Кроме того, если \(p \in f^{-1}(0)\), то \(x_1 = 0\), откуда \(p \in \partial B\).
+\end{proof}
+
+\begin{corollary}
+    \(B^m = \{x \in \R^m: |x| < 1\}\) --- регулярная область с краем \(S^{m - 1} = \{x \in \R^m: |x| = 1\}\)
+\end{corollary}
+\begin{proof}
+    Рассмотрим \(f(x) = |x|^2 - 1\) --- гладкая и \(rk\;df_p = 1 \forall p \in S^{m - 1} = f^{-1}(0)\). Тогда по теореме \(B^m\) --- регулярная область с краем \(S^{m - 1}\).
+\end{proof}
+
+\subsection{Ориентируемые многообразия}
+\begin{definition}
+    Пусть \(M\) --- гладкое многообразие. Семейство параметризаций \(\{\phi_\alpha: V_\alpha \ra U_\alpha, \alpha \in I\}\), образы которых покрывают \(M\), называется атласом.
+\end{definition}
+
+\begin{definition}
+    Атлас на \(M\) называется ориентирующим, если якобианы всех функций перехода положительны.
+\end{definition}
+
+\begin{definition}
+    Гладкое многообразие, на котором задан ориентирующий атлас называется ориентированным
+\end{definition}
+
+\begin{definition}
+    Если на гладком многообразии существует ориентирующий атлас, то оно называется ориентируемым
+\end{definition}
+
+\begin{definition}
+    Атласы \(\mathcal{A_1}, \mathcal{A_2}\) эквивалентны, если \(\mathcal{A_1} \cup \mathcal{A_2}\) --- ориентирующий атлас
+\end{definition}
+
+\begin{definition}
+    Ориентация многообразия --- класс эквивалентности ориентирующих атласов
+\end{definition}
+
+\begin{note}
+    Любое непустое открытое множество \(\R^n\) ориентируемо.
+\end{note}
+
+\begin{problem}
+    \(M \subset \R^3\) --- гладкое двумерное многообразие ориентируемо тогда и только тогда, когда на нем существует непрерывное поле (вектор-функция) единичных нормалей
+\end{problem}
+
+\begin{note}
+    Существуют неориентируемые многообразия, например --- лист Мёбиуса
+\end{note}
+
+\begin{note}
+    Пусть на \(M\) при помощи ориентирующего атласа \(\mathcal{A}\) задана фиксированная ориентация и пусть \(\phi\) --- какая-то параметризация окрестности \(M\). Будем говорить, что \(\phi\) не соответствует ориентации, если \(\mathcal{A} \cup \{\phi\}\) --- не ориентирующий. Рассмотрим \(\phi \circ A\), где \(A(x_1, \dots x_n) = (x_1, \dots, x_{m - 1}, -x_m)\). Тогда \(\phi \circ A\) соответствует ориентации.
+\end{note}
+
+\begin{theorem}
+    Пусть \(M\) гладкое \(m\)-мерное ориентируемое многообразие (\(m > 1\)) и \(N\) --- регулярная область в \(M\). Тогда \(\partial N\) --- гладкое \(m - 1\)-мерное ориентируемое многообразие.
+\end{theorem}
+\begin{proof}
+    По определению регулярной области, \(\partial N\) покрывается образами параметризаций \(\phi\) с условием \(\phi(V \cap \mathbb{H}) = U \cap N\). Из предыдущего замечания следует, что каждую из таких параметризаций можно считать соответствующей ориентации. Пусть \(\phi, \psi\) --- такие параметризации на \(M\) в окрестности точки \(p \in \partial N\). Покажем, что если функция перехода между \(\phi \ra psi\) имеет положительный Якобиан, то таким же свойством обладает функция перехода между параметризациями \(\phi_0, \psi_0\). Как мы определим \(psi_0, \phi_0\)? Пусть \(\Phi = \psi^{-1} \circ \phi, \Phi = (\Phi_1, \dots \Phi_m), \Phi_0 = \psi^{-1}_0 \circ \phi_0\). Тогда \(\Phi_0 = (\Phi_2 \circ L, \dots \Phi_m \circ L)\). Если \(\phi(0, a) = p\), то \(\Phi(0, a) = (0, \Phi_0(a))\). Это верно и для достаточно близких к \(a\) точек. Следовательно, \(\frac{\partial \Phi_1}{\partial x_i}(0, a) = 0, i = 2 \dots m\). Тогда:
+    \[D\Phi(a, 0) = \left( \begin{array}{cccc}
+        \frac{\partial \Phi_1}{\partial x_1} & 0 & \dots & 0 \\
+        * & & & \\
+        \vdots & & D\Phi_0(a) & \\
+        * & & & \\
+    \end{array} \right)\]
+    Следовательно, \(\det D\Phi(a) = \frac{\partial \Phi_1}{\partial x_1}(0, a)\det D\Phi_0(a)\). Т.к. \(\Phi\) отображает \(\mathbb{H}^m\) в себя (т.е. \(\Phi_1 < 0\)), то \(\frac{\partial \Phi_1}{\partial x_1} = \lim_{t \ra -0} \frac{\Phi(t, a)}{t} \ge 0\), \(\ne 0\), т.к. \(J_\Phi \ne 0\). Заключаем, что \(\det D\Phi(a)\) и \(\det D\Phi_0(a)\).
+\end{proof}
+
+\begin{note}
+    Таким образом, заданная ориентация \(M\) индуцирует ориентации на \(N\) и на крае \(\partial N\). Сначала сужаем ориентации с \(M\) на \(N\) (как на открытое множество), а потом по предыдущей теореме сузить на край. Тогда говорят, что ориентации \(N\) и \(\partial N\) согласованны.
+\end{note}
+
+\begin{lemma}
+    Пусть гладкое \(m\)-мерное ориентируемое \(M\) в \(\R^{m + 1}\) задано уравнением, т.е. \(M = f^{-1}(0)\), где \(f: U \subset \R^{n + 1} \ra \R\) --- гладкая, с \(rk\;df_p = 1 \forall p \in M \cap U\). Тогда \(M\) ориентируемо.
+\end{lemma}
+\begin{proof}
+    По теореме, \(M = \partial B\), где \(B = f^{-1}(-\infty, 0)\) --- открытое множество в \(\R^{m + 1}\). Оно ориентируемо, и тогда по предыдущей теореме \(M\) --- тоже.
+\end{proof}
