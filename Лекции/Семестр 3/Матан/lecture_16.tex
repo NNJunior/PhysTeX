@@ -1,0 +1,139 @@
+% !TEX root = ../../../main.tex
+
+\subsection{Теорема Стокса}
+
+\begin{theorem}[Стокса]
+    Пусть \(M\) --- гладкое \(m\)-мерное многообразие, \(N\) --- регулярная область в \(M\). Тогда для любой \(\omega \in \Omega_c^{m - 1}(M)\) выполнено:
+    \[\int_Nd\omega = \int_{\partial N}i^*\omega\]
+    Если ориентации \(N, \partial N\) согласованы.
+\end{theorem}
+
+\begin{lemma}
+    Теорема Стокса верна для \(M = \R^m, N = \mathbb{H}^m\).
+\end{lemma}
+\begin{proof}
+    Пусть \(\omega = \sum_{i = 1}^mf_i(x)dx_1\wedge\dots \wedge \widehat{dx_i} \wedge\dots \wedge dx_m\). Тогда:
+    \[d\omega = \sum_{i, j = 1}^m \frac{\partial f_i}{\partial x_j}dx_j\wedge dx_1\wedge\dots \wedge \widehat{dx_i} \wedge\dots \wedge dx_m = \sum_{i = 1}^m (-1)^{i - 1}\frac{\partial f_i}{\partial x_j} dx_1 \wedge\dots \wedge dx_m\]
+    Поэтому
+    \[\int_{\mathbb{H}^m}d\omega = \sum_{i = 1}^m (-1)^{i - 1} \int_{\mathbb{H}^n} \frac{\partial f_i}{\partial x_i} dx_1 \wedge\dots \wedge dx_m\]
+    При \(i > 1\) по теореме Фубини:
+    \[\int_{\mathbb{H}^n}d\omega = \sum_{i = 1}^m (-1)^{i - 1}\int_{(-\infty, 0) \times \R^{m - 2}}\left( \int_{-\infty}^{+\infty} \frac{\partial f_i}{\partial x_i}dx_i \right)dx_1\wedge\dots\wedge \widehat{dx_i} \wedge\dots\wedge dx_m\]
+    Тогда по формуле Ньютона-Лейбница:
+    \[ \int_{-\infty}^{+\infty} \frac{\partial f_i}{\partial x_i}dx_i = \left.f(\dots, x_i, \dots)\right|_{-\infty}^{+\infty}= 0\]
+    Это верно, потому что функция \(f\) имеет компактный носитель \(\Ra\) вне некоторого отрезка \(f(\dots, x_i, \dots)\) обнуляется. Следовательно, из суммы остается только слагаемое при \(i = 1\).
+    \[\int_{\mathbb{H}^n}d\omega = \int_{\R^{m - 1}}\left( \int_{-\infty}^0 \frac{\partial f_1}{\partial x_1}dx_1\right)dx_2\wedge\dots \wedge dx_m = \int_{\R^{m - 1}}f_1(0, x_2, \dots x_m)dx_1\wedge \dots \wedge dx_m\]
+    С другой стороны, вложение \(i_0: \R^{m - 1} \ra \R^m\) имеет вид \(i_0(x') = (0, x') \Ra i_0^*(\omega) = f_1(0, x_2, \dots x_m)dx_1\wedge\dots\wedge dx_m\). Значит,
+    \[\int_{\R^{m - 1}}i_0^*\omega = \int_{\R^{m - 1}}f_1(0, x_2, \dots x_m)dx_1 \wedge \dots \wedge dx_m\]
+    Что совпадает с \(\int_{\partial \mathbb{H}^m} i_0^*\omega\), т.к. ориентации для \(\partial \mathbb{H}^m\) для стандартной ориентации \(\mathbb{H}^m\) соответствует \((x_2, \dots x_m)\)
+\end{proof}
+
+\begin{note}
+    \[\int_{\R^m}d\omega = 0\]
+\end{note}
+
+\begin{proof}[Доказательство теоремы Стокса]
+    Для любой точки \(p \in \supp(\omega)\) существует параметризация \(\phi: V \ra U_p\) с условием:
+    \begin{enumerate}
+        \item Если \(p \in \supp(\omega) \cap \partial N\), то \(\phi(V \cap \mathbb{H}^m) = U_p \cap N\)
+        \item Если \(p \in \supp(\omega) \setminus \partial N\), то \(U_p \cap \partial N = \emptyset\)
+    \end{enumerate}
+    Можно считать, что окрестности \(U_p\) связны. Из покрытия \(U_p\) компакта \(\supp(\omega)\) выделим конечное подпокрытие. Получим набор параметризаций \(\phi_i: V_i \ra U_i, i = 1, \dots n\), соответствующих ориентации \(M\) и покрывающих \(\supp(\omega)\). Пусть \(\{\rho_i\}_{i = 1}^n\) --- гладкое разбиение, подчиненное покрытию \(\{U_i\}_{i = 1}^n\). Поскольку \(\omega = \sum_{i = 1}^n \rho_i \omega\), \(d\omega = \sum_{i = 1}^n d(\rho_i\omega)\), то в силу линейности интеграла формулу можно доказывать для случая, когда \(\supp(\omega)\) покрывается образом одной параметризации. \(\phi: V \ra U\). Рассмотрим несколько случаев:
+    \begin{enumerate}
+        \item \(U \cap \partial N \ne \emptyset\). Рассмотрим сужение \(\phi: V_0 \ra U_0\), \(i_0: \underbrace{\R^{m - 1}}_{\partial \mathbb{H}^m} \ra \R^m\), \(i: \partial N \ra M\), тогда \(i \circ \phi_0 = \phi \circ i_0\). Следовательно, 
+        \[\int_Nd \omega = \int_{V \cap \mathbb{H}^m}\phi^*(d \omega) = \int_{\mathbb{H}^m}\phi^*(d\omega) = \int_{\mathbb{H}^m}d(\phi^*\omega)\]
+        \[\int_{\partial N}i^*\omega = \int_{V_0}\phi_0^*(i^*\omega) = \int_{\R^{m - 1}}\phi_0^*(i^*\omega) = \int_{\R^{m - 1}}i_0^*(\phi^*\omega) = \int_{\partial \mathbb{H}^m}i_0^*(\phi^*\omega)\]
+        Два полученных интеграла равны по предыдущей Лемме
+        \item Пусть \(U \subset int\;N\). Имеем:
+        \[\int_N d\omega = \int_V \phi^*(d\omega) = \int_{\R^m} d(\phi^*\omega) = 0 = \int_{\partial N}i^*\omega\]
+        Последнее равенство верно, т.к. \(i^*\omega = 0\) на \(\partial N\).
+        \item \(U \subset ext\;N\). Сужение \(\omega\) на \(N\) и \(i^*\omega\) нулевые, т.е. формула верна и в этом случае.
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    Пусть \(M\) --- гладкое \(m\)-мерное ориентируемое многообразие, \(\omega \in \Omega_c^{m - 1}(M)\). Тогда \(\int_M d\omega = 0\).
+\end{corollary}
+
+Пусть \(p \in \partial N\), тогда рассмотрим \(v \in T_pM\)
+\begin{enumerate}
+    \item \(v \in T_p\partial N\)
+    \item \(\phi(V \cap \mathbb{H}^m) = U \cap N\), \(d\phi(w) = v, w = (w_1, \dots w_m), w_1 > 0\), тогда \(v\) называется внешним
+    \item Если в предыдущем пункте \(w_1 < 0\), то \(v\) называется внутренним
+\end{enumerate}
+
+\begin{proposition}
+    Пусть \(N\) --- регулярная область в ориентируемом многообразии \(M\). Тогда ориентации \(\partial N\) и \(N\) согласованы тогда и только тогда, когда \((\partial O)_{p \in \partial N} = [(v_1, \dots v_m)] \Ra O_p = [(n, v_1, \dots v_m)]\).
+\end{proposition}
+
+\begin{corollary}[Формула Грина]
+    Пусть \(G\) --- ограниченная регулярная область в \(\R^2\), причем ориентация края согласована со стандартной (индуцированной из \(\R^2\)) ориентацией \(G\), \(\omega = Pdx + Qdy \in \Omega^1(\R^2)\), то:
+    \[\int_{\partial G}Pdx + Qdy = \iint\left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)dxdy\]
+    Согласованность ориентации \(G\) и \(\partial G\) неформально означает, что ''при обходе по краю, область будет слева''
+\end{corollary}
+
+\begin{corollary}[Формула Гаусса-Остроградского]
+    Пусть \(G\) --- ограниченная регулярная область в \(\R^3\), причем ориентация края согласована со стандартной (индуцированной из \(\R^3\)) ориентацией \(G\), \(\omega = Pdy \wedge dz + Qdz \wedge dx + R dx \wedge dz \in \Omega^2(\R^2)\), то:
+    \[\int_{\partial G}Pdy \wedge dz + Qdz \wedge dx + R dx \wedge dz = \iiint\left( \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \right)dxdy\]
+    Согласованность ориентации \(G\) и \(\partial G\) означает, что \(\partial G\) ориентирован внешней нормалью
+\end{corollary}
+
+\begin{corollary}[Классическая формула Стокса]
+    Пусть \(M\) --- гладкое 2-мерное многообразие в \(\R^3\), покрываемое образом параметризации \(r: V \ra \R^3\). Пусть \(S\) --- ограниченная регулярная область в \(M\) и \(\omega = Pdx + Qdy + Rdz \in \Omega^1(\R^3)\). Тогда:
+    \[\int_{\partial S} Pdx + Qdy + Rdz = \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right)dy \wedge dz + \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right)dz \wedge dx + \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)dx \wedge dy\]
+    Согласованность ориентаций \(G\) и \(\partial G\) означает, что: если \(N(p) = \frac{r_u' \times r_v'}{|r_u' \times r_v'|}\), \(n(p)\) --- внешний, то вектор \(\tau(p)\) выбирается так, что \((n, \tau, N)\) --- положительно ориентированная тройка.
+\end{corollary}
+
+\begin{note}
+    Мнемоническое правило: записывать следующий определитель:
+    \[\left| \begin{array}{ccc}
+        e_1 & e_2 & e_3 \\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        P & Q & R
+    \end{array} \right|\]
+\end{note}
+
+\subsection{Замкнутые точные дифференциальные формы}
+Пусть \(M\) --- гладкое многообразие \(\omega \in \Omega^k(M)\).
+
+\begin{definition}
+    \(\omega\) называется замкнутой, если \(d\omega = 0\)
+\end{definition}
+
+\begin{definition}
+    \(\omega\) называется точной, если \(\exists \alpha \in \Omega^{k - 1}(M): d\alpha = 0\)
+\end{definition}
+
+\begin{note}
+    Из условия \(d^2 = 0\) следует, что всякая точная форма замкнута.
+\end{note}
+
+\begin{theorem}[Лемма Пуанкаре]
+    Если \(\omega \in \Omega^k(\R^n)\), \(k \ge 1\) и \(\omega\) замкнута, то она точна.
+\end{theorem}
+\begin{proof}
+    \((t, x_2, \dots x_n)\) --- координаты в \(\R^n\). Тогда всякая \(k\)-форма в \(\R^n\) есть сумма мономов вида \(f(t, x) = dt \wedge dx^I\) и \(g(t, x)dx^J\), где \(I \in \mathbb{I}_{k - 1}, J \in \mathbb{I}_k\). Определим на \(\Omega(\R^n)\) линейный оператор \(\Phi\) по правилу 
+    \[\Phi(f(t, x)dx \wedge dx^I) = \left( \int_0^t f(s, x)ds \right) dx^I\]
+    \[\Phi(g(t, x)dx^I) = 0\]
+    Покажем, что значение \(\Phi\) на \(\omega\) удовлетворяет условию
+    \[d\Phi(\omega) + \Phi(d\omega) = \omega - \pi^*(i^*\omega)\]
+    Где \(\pi: \R^n \ra \R^{n - 1}, \pi(t, x) = x, i: \R^{n - 1} \ra \R^n, i(x) = (0, x)\).
+    \begin{enumerate}
+        \item \(\omega = g(t, x)dx^J \Ra \Phi(\omega) = 0 \Ra d\Phi(\omega) = 0\).
+        \[d\omega = \frac{\partial g}{\partial t}dt \wedge dx^J + \omega_0\]
+        Тогда
+        \[\Phi(d\omega) = \Phi\left( \frac{\partial g}{\partial t}dt \wedge dx^J \right) = \left( \int_0^t \frac{\partial g}{\partial s} ds\right)dx^J = g(t, x)dx^J - g(0, x)dx^J\]
+        Т.к. \(i \circ \pi(t, x) = (0, x)\), то \((i \circ \pi)^*\omega = g(0, x)dx^J\), тогда равенство выполняется.
+        \item \(\omega = f(t, x)dt\wedge dx^I \Ra \Phi(\omega) = \left( \int_0^t f(s, x)ds \right) dx^I\).
+        \[d\Phi(\omega) = f(t, x)dt \wedge dx^I + \sum_{ i = 2}^n \left( \int \frac{\partial f}{\partial x_i}(s, x)ds \right)dx_i \wedge dx^I\]
+        \[d\omega = \sum_{i = 2}^n \frac{\partial f}{\partial x_i}(t, x) dx_i \wedge dt \wedge dx^I\]
+        \[\Phi(d\omega) = \sum_{i = 2}^n \left( \int_0^t \frac{\partial f}{\partial x_i}(s, x)ds \right)dx_i \wedge dx^I\]
+        Но тогда:
+        \[d \Phi(\omega) + \Phi(d\omega) = 0\]
+    \end{enumerate}
+    Полученное равенство позволяет доказать утверждение индукцией по \(n\)
+    \begin{enumerate}
+        \item[] \textbf{База:} \(n = k \Ra \omega \in \Omega^k(\R^k)\), \(\omega\) замкнута. \(i^*\omega = 0\). Следовательно, \(\omega = d\Phi(\omega)\)
+        \item[] \textbf{Переход:} \(n \ra n + 1\). Пусть \(\omega \in \Omega^k(\R^{n + 1})\) и \(\omega\) замкнута. Заметим, что \(i^*\omega \in \Omega^k(R^{n}), d(i^*\omega) = i^*d\omega = 0\). Следовательно, \(\exists \alpha: d\alpha = i^*\omega\). Имеем:
+        \[d\Phi(\omega) = \omega - \pi^*(d\alpha) \Ra \omega = d(\Phi(\omega) + \pi^*\alpha)\]
+    \end{enumerate}
+\end{proof}
