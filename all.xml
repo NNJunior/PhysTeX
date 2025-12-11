@@ -193,6 +193,7 @@
       <lecture name="Лекция 12" id="3S_DM_12" description="Изучение чисел f(n, k, t), m(n, k, t). Различные результаты и оценки." date="20.11.25" path="Лекции/Семестр 3/Дискран/lecture_12" setting="Лекции/Семестр 3/Дискран/setting" />
       <lecture name="Лекция 13" id="3S_DM_13" description="Продолжаем" date="27.11.25" path="Лекции/Семестр 3/Дискран/lecture_13" setting="Лекции/Семестр 3/Дискран/setting" />
       <lecture name="Лекция 14" id="3S_DM_14" description="Кнезеровские графы. Доказательство гипотезы Кнезера через катарсисную топологию" date="04.12.25" path="Лекции/Семестр 3/Дискран/lecture_14" setting="Лекции/Семестр 3/Дискран/setting" />
+      <lecture name="Лекция 15" id="3S_DM_15" description="Конец! Ура!" date="11.12.25" path="Лекции/Семестр 3/Дискран/lecture_15" setting="Лекции/Семестр 3/Дискран/setting" />
     </subject>
   </semester>
 </all>
