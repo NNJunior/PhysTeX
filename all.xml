@@ -199,7 +199,7 @@
   </semester>
   <semester name="Семестр 4" id="4S" description="Все предметы четвертого семестра" date="02.02.26 - ??.05.26">
     <subject name="Теория Вероятностей" id="4S_TEORVER" description="Какова вероятность, что я скипну следующую лекцию?" setting="Лекции/Семестр 4/Теория Вероятностей/setting">
-      <lecture name="Лекция 1" id="4S_TEORVER_1" description="Опять ОВиТМ..." date="03.02.26" path="Лекции/Семестр 4/МТеория Вероятностейатан/lecture_1" setting="Лекции/Семестр 4/Теория Вероятностей/setting" />
+      <lecture name="Лекция 1" id="4S_TEORVER_1" description="Опять ОВиТМ..." date="03.02.26" path="Лекции/Семестр 4/Теория Вероятностейатан/lecture_1" setting="Лекции/Семестр 4/Теория Вероятностей/setting" />
     </subject>
   </semester>
 </all>
