@@ -130,7 +130,7 @@
       <lecture name="Лекция 8" id="2S_CPP_8" description="Скоро здесь появится ссылка на запись лекции" date="25.03.25" />
     </subject>
   </semester>
-  <semester name="Семестр 3" id="3S" description="Все предметы третьего семестра" date="02.09.24 - ??.12.24">
+  <semester name="Семестр 3" id="3S" description="Все предметы третьего семестра" date="02.09.25 - 16.12.25">
     <subject name="Кратные Интегралы и Теория Поля" id="3S_MATAN" description="Ну короче все понятно" setting="Лекции/Семестр 3/Матан/setting">
       <lecture name="Лекция 1" id="3S_MATAN_1" description="Продолжаем, коллеги" date="02.09.25" path="Лекции/Семестр 3/Матан/lecture_1" setting="Лекции/Семестр 3/Матан/setting" />
       <lecture name="Лекция 2" id="3S_MATAN_2" description="Замена переменных в краном интеграле, диффеоморфизмы." date="09.09.25" path="Лекции/Семестр 3/Матан/lecture_2" setting="Лекции/Семестр 3/Матан/setting" />
@@ -198,8 +198,8 @@
     </subject>
   </semester>
   <semester name="Семестр 4" id="4S" description="Все предметы четвертого семестра" date="02.02.26 - ??.05.26">
-    <subject name="Кратные Интегралы и Теория Поля" id="3S_MATAN" description="Ну короче все понятно" setting="Лекции/Семестр 3/Матан/setting">
-      <lecture name="Лекция 1" id="3S_MATAN_1" description="Опять ОВиТМ..." date="03.02.26" path="Лекции/Семестр 4/МТеория Вероятностейатан/lecture_1" setting="Лекции/Семестр 4/Теория Вероятностей/setting" />
+    <subject name="Теория Вероятностей" id="4S_TEORVER" description="Какова вероятность, что я скипну следующую лекцию?" setting="Лекции/Семестр 4/Теория Вероятностей/setting">
+      <lecture name="Лекция 1" id="4S_TEORVER_1" description="Опять ОВиТМ..." date="03.02.26" path="Лекции/Семестр 4/МТеория Вероятностейатан/lecture_1" setting="Лекции/Семестр 4/Теория Вероятностей/setting" />
     </subject>
   </semester>
 </all>
