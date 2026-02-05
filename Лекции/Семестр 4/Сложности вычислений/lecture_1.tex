@@ -1,0 +1,101 @@
+% !TEX root = ../../../main.tex
+
+\section{Введение}
+
+\subsection{Базовые определения}
+
+Будем рассматривать задачи на распознавание, т.е. дан \(A \subset \{0, 1\}^*\) и требуется по \(x \in \{0, 1\}^* \mapsto \left\{\begin{array}{l}
+    1, x \in A \\
+    0, x \notin A
+\end{array}\right.\). Пусть \(M\) решает данную задачу, т.е. \(\forall x (x \in A \Lra M(x) = 1)\).
+
+\begin{definition}
+    \(time_M(x)\) --- число шагов \(M(x)\) при вычислении ответа.
+\end{definition}
+
+\begin{definition}
+    \(time_M(n) = \max_{x: |x| = n} time_M(x)\)
+\end{definition}
+
+\begin{definition}
+    \(time_M(n) = O(f(n))\), если \(\exists C: \forall n: time_M(n) \le C \cdot f(n)\)
+\end{definition}
+
+Возникает вопрос: можно ли сказать, что \(\time_A(n) = \min_{M: M \text{ решает }A} time_M(n)\)? Нет, но показать это достаточно сложно (Теорема Блюма).
+
+Поэтому мы приходим к данному определению:
+\begin{definition}
+    \(\mathbf{DTIME}(t(n)) = \{A | \exists M: M(x) = 1 \Lra x \in A, time_M(n) = O(t(n))\}\)
+\end{definition}
+
+Заметим, что для определения \(\mathbf{DTIME}\), необходимо задать модель вычислений. Обычно такой моделью выбирают многоленточную машину Тьюринга.
+
+\begin{definition}
+    \(\mathbf{P} = \mathbf{DTIME}(poly(n)) = \bigcup_{k = 1}^\infty \mathbf{DTIME}(n^k)\)
+\end{definition}
+
+\textbf{Тезис Черча-Тьюринга в сильной форме}: Любая задача, эффективно решаемая физическим устройстом, решается за полиномиальное время на машине тьюринга.
+
+\begin{example}[Нетривиальные примеры задач из \(\mathbf{P}\)]
+    \begin{enumerate}
+        \item \(\mathbb{P}\) --- множество простых чисел
+        \item Линейное программирование --- как пример, нахождения максимума функции на многограннике. Эта задача не бинарная, но вот задача ''достижима ли это число на многограннике'' принадлежит классу \(\mathbf{P}\).
+        \item Симплекс-метод --- алгоритм решения 
+    \end{enumerate}
+\end{example}
+
+\subsection{Неконструктивные оценки \(\mathbf{P}\)}
+Рассмотрим, например, задачу определения графа на планарность. Для этого существует два критерия: критерий Понтрягина-Куратовского: граф планарен \(\Lra\) в нем нет подграфов, гомеоморфных \(K_5, K_{3,3}\). Также, существует критерий Вагнера: граф планарен \(\Lra\) в нем нет миноров \(K_5, K_{3,3}\) (минор --- граф, полученный из исходного удалением и стягиванием ребер). Рассмотрим свойства, которые сохраняются при удалении и стягивании ребер.
+
+\begin{theorem}[Робертсона-Сеймура]
+    \begin{enumerate}
+        \item Для любого свойства, аналогичного планарности выполнен аналог критерия Вагнера с конечным числом запрещенных миноров.
+        \item Наличие такого минора проверяется за полиномиальное время
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    Любое такое свойство лежит в классе \(\mathbb{P}\).
+\end{corollary}
+
+Но проблема в том, что мы не знаем миноров, которые необходимо проверить, чтобы найти проверить выполнение данного свойства.
+
+\subsection{Другие классы задач}
+
+\begin{definition}
+    \(\mathbf{QP} = \mathbf{DTIME}(2^{poly(\log(n))}) = \bigcup_{c = 1}^\infty \mathbf{DTIME}(2^{(\log n)^c})\)
+\end{definition}
+
+\begin{definition}
+    \(\mathbf{E} = \mathbf{DTIME}(2^{O(n)}) = \bigcup_{c = 1}^\infty \mathbf{DTIME}(2^{cn})\)
+\end{definition}
+
+\begin{definition}
+    \(\mathbf{EXP} = \mathbf{DTIME}(2^{poly(n)}) = \bigcup_{c = 1}^\infty \mathbf{DTIME}(2^{n^c})\)
+\end{definition}
+
+\begin{definition}
+    \(\mathbf{EE} = \mathbf{DTIME(2^{2^{cn}})} = \bigcup_{c = 1}^\infty \mathbf{DTIME}(2^{2^{cn}})\)
+\end{definition}
+
+\subsection{Асимптотики различных задач}
+
+\begin{example}
+    \(\mathsf{LOG-CLIQUE} = \{G | \omega(G) \ge \log_2 n\} \in \mathbf{QP}\). Является квазиполиномиальной, т.к. \(C_n^{\log n} \le n^{\log n}\), т.е. полный перебор осуществляется за квазиполином
+\end{example}
+
+\begin{example}[Задача о доминирующем множестве в турнире]
+    непон
+\end{example}
+
+\begin{example}
+    \(\mathsf{GI} = \{(G_1, G_2): G_1 \cong G_2\} \in \mathbf{QP}\)
+\end{example}
+
+\begin{example}
+    \(\mathsf{3COL} = \{G: \chi(G) \le 3\} \in E\)
+\end{example}
+
+\begin{theorem}[об иерархии по времени]
+    Если \(f << g \Ra \mathbf{DTIME(f(n))} \subsetneq \mathbf{DTIME(g(n))}\)
+\end{theorem}
