@@ -210,5 +210,8 @@
     <subject name="ТКиП" id="4S_TKIP" description="Снова алгем?" setting="Лекции/Семестр 4/ТКиП/setting">
       <lecture name="Лекция 1" id="4S_TKIP_1" description="100500 определений" date="06.02.26" path="Лекции/Семестр 4/ТКиП/lecture_1" setting="Лекции/Семестр 4/ТКиП/setting" />
     </subject>
+    <subject name="Дифференциальные уравнения" id="4S_DE" description="Снова диффуры?" setting="Лекции/Семестр 4/Дифференциальные уравнения/setting">
+      <lecture name="Лекция 1" id="4S_DE_1" description="Продолжаем автономные системы." date="07.02.26" path="Лекции/Семестр 4/Дифференциальные уравнения/lecture_1" setting="Лекции/Семестр 4/Дифференциальные уравнения/setting" />
+    </subject>
   </semester>
 </all>
