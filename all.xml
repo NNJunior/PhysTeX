@@ -200,6 +200,7 @@
   <semester name="Семестр 4" id="4S" description="Все предметы четвертого семестра" date="02.02.26 - ??.05.26">
     <subject name="Теория Вероятностей" id="4S_TEORVER" description="Какова вероятность, что я скипну следующую лекцию?" setting="Лекции/Семестр 4/Теория Вероятностей/setting">
       <lecture name="Лекция 1" id="4S_TEORVER_1" description="Опять ОВиТМ..." date="03.02.26" path="Лекции/Семестр 4/Теория Вероятностей/lecture_1" setting="Лекции/Семестр 4/Теория Вероятностей/setting" />
+      <lecture name="Лекция 2" id="4S_TEORVER_2" description="Вероятностная мера в R^n, R^∞. Теорема Колмогорова" date="10.02.26" path="Лекции/Семестр 4/Теория Вероятностей/lecture_2" setting="Лекции/Семестр 4/Теория Вероятностей/setting" />
     </subject>
     <subject name="Гармонический анализ" id="4S_MATAN" description="Последний семестр матана" setting="Лекции/Семестр 4/Гармонический анализ/setting">
       <lecture name="Лекция 1" id="4S_MATAN_1" description="L_p пространства, различные результаты с ними." date="05.02.26" path="Лекции/Семестр 4/Гармонический анализ/lecture_1" setting="Лекции/Семестр 4/Гармонический анализ/setting" />
