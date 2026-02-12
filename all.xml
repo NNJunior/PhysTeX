@@ -208,6 +208,7 @@
     </subject>
     <subject name="Сложность вычислений" id="4S_COMPLEX" description="Снова матлог?" setting="Лекции/Семестр 4/Сложность вычислений/setting">
       <lecture name="Лекция 1" id="4S_COMPLEX_1" description="100500 определений" date="05.02.26" path="Лекции/Семестр 4/Сложность вычислений/lecture_1" setting="Лекции/Семестр 4/Сложность вычислений/setting" />
+      <lecture name="Лекция 2" id="4S_COMPLEX_2" description="Класс NP и его свойства" date="12.02.26" path="Лекции/Семестр 4/Сложность вычислений/lecture_2" setting="Лекции/Семестр 4/Сложность вычислений/setting" />
     </subject>
     <subject name="ТКиП" id="4S_TKIP" description="Снова алгем?" setting="Лекции/Семестр 4/ТКиП/setting">
       <lecture name="Лекция 1" id="4S_TKIP_1" description="100500 определений" date="06.02.26" path="Лекции/Семестр 4/ТКиП/lecture_1" setting="Лекции/Семестр 4/ТКиП/setting" />
