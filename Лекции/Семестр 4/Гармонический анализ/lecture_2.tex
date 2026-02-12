@@ -1,0 +1,129 @@
+% !TEX root = ../../../main.tex
+
+\begin{theorem}[Кантора]
+    Пусть \(f: U \ra \Cm\), где \(U \subset \R^n\) --- открыто. Тогда, если \(K\) --- компакт и \(f\) непрерывна на нем, то \(f\) равномерно непрерывна на нем, т.е.
+    \[\forall \epsilon > 0 \exists \delta > 0 \forall x \in K \forall h \in \R^n (h < \delta \Ra |f(x) - f(x - h)| < \delta)\]
+\end{theorem}
+\begin{proof}
+    От противного. Тогда \(\exists \{x_k\} \subset K \exists \{h_k\} \subset \R^m |f(x_k) - f(x_k - h_k)| \ge \epsilon_0, h_k \ra 0\). Т.к. \(K\) --- компакт, то \(\exists x_{n_k} \ra x_0 \in K\) и \(x_{n_k} + h_{n_k} \ra x_0\). Тогда по непрерывности, \(f(x_{n_k}) \ra f(x_0), f(x_{n_k} - h_{n_k}) \ra f(x_0) \Ra |f(x_{n_k}) - f(x_{n_k} - h_{n_k})| \ra 0\)
+\end{proof}
+
+\begin{definition}
+    Пусть \(f: \R^m \ra \Cm, h \in \R^m\). Функция \(f_h: \R^m \ra \Cm, f_h(x) = f(x - h)\) называется сдвигом функции \(f\) на \(h\).
+\end{definition}
+
+\begin{note}
+    Функции \(f, f_h\) одновременно лежат в \(L_p(\R^m)\) и \(\|f\|_p = \|f_h\|_p\)
+\end{note}
+
+\begin{theorem}[Непрерывность сдвига]
+    Если \(f \in L_p(\R^m)\), то \(\|f_h - f\|_p \ra 0\) при \(h \ra 0\).
+\end{theorem}
+\begin{proof}
+    Зафиксируем \(\epsilon > 0\). \(\exists g \in C_c(\R^m)\) (можно считать, что \(g = 0\) вне \(B_r(0)\)), такая, что \(\|f - g\|_p < \frac{\epsilon}{3}\). По неравенству треугольника:
+    \[\|f_h - f\|_p \le \|f_h - g_h\|_p + \|g_h - g\|_p + \|g - f\|_p < \frac{2}{3}\epsilon + \|g_h - g\|\]
+    Т.к. \(g\) непрерывна на \(\overline{B_r(0)}\), то \(\exists \delta \in (0, 1] \forall h \in \R^m (|h| < \delta \Ra |g(x) - g(x - h)| < \frac{\epsilon}{3M})\), где \(M^p = \mu()B_{r + 1}(0)\). Поэтому:
+    \[\|g_h - g\|^p_p = \int |g(x - h) - g(x)|^pdx \le \left( \frac{\epsilon}{3M} \right)^p\mu(B_{r + 1}) = \left( \frac{\epsilon}{3} \right)^p\]
+    Следовательно, при \(|h| < \delta\), выполнено \(\|f_h - f\|_p < \epsilon\)
+\end{proof}
+
+\begin{corollary}[Непрерывность сдвига для периодических функций]
+    Пусть \(f\) --- \(2\pi\)-периодичная измеримая на \(\R\) функция. Если \(\int_{[-\pi, \pi]} |f(x)|^p dx < \infty\), то 
+    \[\int_{[-\pi, \pi]} |f(x - h) - f(x)|^pdx \ra 0, h \ra 0\]
+\end{corollary}
+\begin{proof}
+    Пусть \(g = \left\{\begin{array}{l}
+        f, x \in (-2\pi, 2\pi) \\
+        0, \text{иначе}
+    \end{array}\right.\). Тогда \(g \in L_p(\R)\). Также, при \(x \in (-\pi, \pi)\) и \(|h| < \pi\) имеем: \(|g(x - h) - g(x)| = |f(x - h) - f(x)|\), а значит,
+    \[\int_{[-\pi, \pi]} |f(x - h) - f(x)|^pdx = \int_{[-\pi, \pi]} |g(x - h) - g(x)|^pdx \le \|g_h - g\|_p \ra 0, h \ra 0\]
+\end{proof}
+
+\begin{theorem}[Римана об осцилляции]
+    Пусть \(I\) --- промежуток в \(\R\), \(f \in L_1(I)\). Тогда 
+    \[\int_I f(x)e^{i\lambda x}dx \ra 0, \lambda \ra \pm\infty\]
+    В частности, 
+    \[\int_I f(x)\cos xdx \ra 0, \int_I f(x)\cos xdx \ra 0, \lambda \ra \pm\infty\]
+\end{theorem}
+\begin{proof}
+    Рассмотрим случай \(I = \R\). Сделаем в интеграле замену \(x = t - \frac{\pi}{\lambda}\), тогда:
+    \[\int_I f(x)e^{i\lambda x}dx = \int_I f\left( t - \frac{\pi}{\lambda} \right)e^{i\lambda \left( t - \frac{\pi}{\lambda} \right)}dx = -\int_I f\left( t - \frac{\pi}{\lambda} \right)e^{i\lambda t}dx\]
+    Следовательно,
+    \[\int_I f(x)e^{i\lambda x}dx = \frac{1}{2}\left(  \int_I f(x)e^{i\lambda x}dx -\int_I f\left( x - \frac{\pi}{\lambda} \right)e^{i\lambda x}dx\right)= \frac{1}{2}\left(  \int_I \left( f(x) - f\left( x - \frac{\pi}{\lambda} \right) \right)e^{i\lambda x}dx\right)\]
+    Следовательно, 
+    \[\left|\int_I f(x)e^{i\lambda x}dx\right| \le \frac{1}{2}\left(  \int_I \left| f(x) - f\left( x - \frac{\pi}{\lambda} \right) \right|dx\right) = \|f_h - f\|_1 \ra 0\]
+\end{proof}
+
+\subsection{Свертка и аппроксимация функции}
+\begin{definition}
+    Пусть \(f, g\) --- измеримы в \(\R^m\), функция \(f * g\) определяемая по формуле
+    \[(f * g)(x) = \int_{\R^m} f(x - t)g(t)dt\]
+    называется сверткой функций \(f, g\).
+\end{definition}
+
+\begin{note}
+    Покажем измеримость функции \(f(x - t)g(t)\) в \(\R^{2m}\). Т.к. \(g(t)\) измерима в \(\R^{2m}\), достаточно показать измеримость \(f(x - t)\). Положим \(E_a = \{x \in \R^m: f(x) < a\}\) и определим оператор \(L: \R^{2m} \ra \R^{2m}, L(x, t) = (x - t, t)\). Тогда \(\{(x - t): f(x - t) < a\} = \{(x, t): x - t \in E_a\} = L^{-1}(E_a \times \R^m)\) --- измеримо как образ измеримого при диффеоморфизме \(L^{-1}\)
+\end{note}
+
+\begin{lemma}
+    Пусть \(f, g \in L_1(\R^m)\), тогда \(f * g\) определена почти всюду. Более того, \(f * g \in L_1(\R^m)\) и \(\|f * g\|_1 \le \|f\|_1\|g\|_1\)
+\end{lemma}
+\begin{proof}
+    Определим \(H(x) = \int_{\R^m}|f(x - t)||g(t)|dt\). По теореме Тонелли:
+    \[\int_{\R^m}H(x)dx = \int_{\R^m}\left( \int_{\R^m}|f(x - t)| dx\right)|g(t)|dt = \int_{\R^m}\left( \int_{\R^m}|f(y)| dy\right)|g(t)|dt = \|f\|_1\|g\|_1\]
+    Получаем:
+    \[\left|\int_{\R^m}f(x - t)g(t)\right| \le \int_{\R^m}H(x)dx = \|f\|_1\|g\|_1\]
+    Тогда \(|f(x - t)g(t)|\) конечна почти всюду \(\Ra (f * g)(x)\) определена почти всюду.
+\end{proof}
+
+\begin{theorem}
+    \begin{enumerate}
+        \item Если \(f \in L_p(\R^m), g \in L_q(\R^m), \frac{1}{p} + \frac{1}{q} = 1\), то \((f * g)\) существует, равномерно непрерывна на \(\R^m\) и \(|(f * g)(x)| \le \|f\|_p\|g\|_q\)
+        \item Если \(f \in L_p(\R^m), g\) измерима и ограничена в \(\R^m\), то \((f * g)\) существует, равномерно непрерывна на \(\R^m\) и \(|(f * g)(x)| \le \|f\|_p\|g\|_\infty\), где \(\|g\|_\infty = \sup_{\R^m} |g|\)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \[\int_{\R^m} |f(x - t)g(t)|dt \le \left( \int_{\R^m}|f(x - t)|^p dt\right)\frac{1}{p} \left( \int_{\R^m}|g(t)|^q dt\right)\frac{1}{q}= \|f\|_p\|g\|_q < \infty\]
+        Тогда \(f * g\) определена всюду на \(\R^m\), и справедлива оценка из условия. Докажем равномерную непрерывность:
+        \[|(f * g)(x - h) - (f * g)(x)| = \left| \int_{\R^m}(f(x - h - t) - f(x - t))g(t)dt \right| = \]
+        \[= |((f_h - f) * g)(x)| \le \|f_h - f\|_p\|g\|_q \ra 0, h \ra 0\]
+        Последнее стремление равномерное, т.е. не зависит от \(x\), поэтому утверждение доказано
+        \item \[\int_{\R^m} |f(x - t)g(t)|dt \le \|g\|_\infty \|f\|_1 < \infty\]
+        Равномерное стремление доказывается аналогично пункту 1.
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    Пусть \(f, g, h \in L_1(\R^m)\), тогда:
+    \begin{enumerate}
+        \item \((f * g) = (g * f)\)
+        \item \((f * g) * h = f * (g * h)\)
+    \end{enumerate}
+\end{proposition}
+\begin{proof}\indent
+    \begin{enumerate}
+        \item \[(f * g) = \int_{\R^m} f(x - t)g(t) dt = \left\{\begin{array}{c}
+            x - t = y \\
+            |J| = 1
+        \end{array}\right\} = \int_{\R^m} f(y)g(x - y)dy = (g * f)\]
+        \item Следует из теоремы Фубини
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Последовательность \(\{K_n\}_{n = 1}^\infty\) интегрируемых на \(\R^m\) функций называется аппроксимацией единицей (\(\delta\)-образным семейством), если 
+    \begin{enumerate}
+        \item \(K_n \ge 0 \forall n\)
+        \item \(\int_{\R^m} K_ndx = 1\)
+        \item \(\lim_{n \ra \infty} \int_{|x| \ge \delta} K_n(x)dx \ra 0\) для всех \(\delta > 0\).
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    Рассмотрим \(\phi \in L_1(\R), \phi \ge 0\) с \(\int_{\R^m}\phi(x)dx = 1\), положим \(K_n(x) = n^m\phi(nx)\). Тогда:
+    \[\int_{|x| \ge \delta} = \int_{|x| \ge \delta} n^m\phi(nx)dx = \left\{\begin{array}{c}
+        y = nx \\
+        |J| = n^m
+    \end{array}\right\} = \int_{|y| \ge n\delta}\phi dy = \int_{\R^m}\phi I_{\{|y| \ge n\delta\}} dy \ra 0\]
+\end{example}
